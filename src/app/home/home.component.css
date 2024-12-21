@@ -1,0 +1,5 @@
+.flexing-card{
+    display: flex;
+    max-width: 33%;
+    gap: 20px;
+}
