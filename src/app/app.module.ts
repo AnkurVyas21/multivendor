@@ -15,6 +15,7 @@ import { ListingdetailsComponent } from './listingdetails/listingdetails.compone
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ShopComponent } from './shop/shop.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
   imports: [
     BrowserModule,
     appRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

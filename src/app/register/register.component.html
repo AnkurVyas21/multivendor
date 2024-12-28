@@ -35,56 +35,70 @@
                                 <p class="mb-0">Already a Member?<a href="/login" class="fw-medium text-primary"> Signin</a></p>
 
                                 <!-- Form START -->
-                                <form class="mt-4 text-start">
+                                <form class="mt-4 text-start" [formGroup]="registeForm" (ngSubmit)="registerUserFormSubmit()">
                                     <div class="form py-4" bis_skin_checked="1">
-                                        <div class="form-group mb-4" bis_skin_checked="1">
-                                            <label class="form-label">Enter first Name</label>
-                                            <input type="email" class="form-control" placeholder="Enter your first name here">
+                                      <!-- First Name -->
+                                      <div class="form-group mb-4" bis_skin_checked="1">
+                                        <label class="form-label">Enter First Name</label>
+                                        <input type="text" class="form-control" formControlName="firstName" placeholder="Enter your first name here">
+                                      </div>
+                                  
+                                      <!-- Last Name -->
+                                      <div class="form-group mb-4" bis_skin_checked="1">
+                                        <label class="form-label">Enter Last Name</label>
+                                        <input type="text" class="form-control" formControlName="lastName" placeholder="Enter your last name here">
+                                      </div>
+                                  
+                                      <!-- Email -->
+                                      <div class="form-group mb-4" bis_skin_checked="1">
+                                        <label class="form-label">Enter Email ID</label>
+                                        <input type="email" class="form-control" formControlName="email" placeholder="name@example.com">
+                                      </div>
+                                  
+                                      <!-- Phone Number -->
+                                      <div class="form-group mb-4" bis_skin_checked="1">
+                                        <label class="form-label">Enter Phone Number</label>
+                                        <input type="tel" autocomplete="tel" maxlength="10" class="form-control" placeholder="Enter your phone number here">
+                                      </div>
+                                  
+                                      <!-- Date of Birth -->
+                                      <div class="form-group mb-4" bis_skin_checked="1">
+                                        <label class="form-label">Enter Date of Birth</label>
+                                        <input type="date" class="form-control" formControlName="DOB" placeholder="Select your date of birth">
+                                      </div>
+                                  
+                                      <!-- Password -->
+                                      <div class="form-group mb-4" bis_skin_checked="1">
+                                        <label class="form-label">Enter Password</label>
+                                        <div class="position-relative" bis_skin_checked="1">
+                                          <input type="password" class="form-control" id="password-field" formControlName="password" placeholder="Password">
+                                          <span class="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"></span>
                                         </div>
-                                        <div class="form-group mb-4" bis_skin_checked="1">
-                                            <label class="form-label">Enter last Name</label>
-                                            <input type="email" class="form-control" placeholder="Enter your last name here">
+                                      </div>
+                                  
+                                      <!-- Confirm Password -->
+                                      <div class="form-group mb-4" bis_skin_checked="1">
+                                        <label class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" formControlName="confirmPassword" placeholder="*********">
+                                      </div>
+                                  
+                                      <!-- Submit Button -->
+                                      <div class="form-group mb-4" bis_skin_checked="1">
+                                        <button type="submit" class="btn-sell full-width w-100 text-center btn-lg">Create An Account</button>
+                                      </div>
+                                  
+                                      <!-- Checkbox -->
+                                      <div class="modal-flex-item d-flex align-items-center justify-content-between mb-3" bis_skin_checked="1">
+                                        <div class="modal-flex-first" bis_skin_checked="1">
+                                          <div class="form-check form-check-inline" bis_skin_checked="1">
+                                            <input class="form-check-input" type="checkbox" id="savepassword" value="option1">
+                                            <label class="form-check-label" for="savepassword">Keep me signed in</label>
+                                          </div>
                                         </div>
-                                        <div class="form-group mb-4" bis_skin_checked="1">
-                                            <label class="form-label">Enter email ID</label>
-                                            <input type="email" class="form-control" placeholder="name@example.com">
-                                        </div>
-                                        <div class="form-group mb-4" bis_skin_checked="1">
-                                            <label class="form-label">Enter phone number</label>
-                                            <input type="email" class="form-control" placeholder="Enter your phone number here">
-                                        </div>
-                                        <div class="form-group mb-4" bis_skin_checked="1">
-                                            <label class="form-label">Enter Date of birth</label>
-                                            <input type="date" class="form-control" placeholder="Select your date of birth">
-                                        </div>
-                                        <div class="form-group mb-4" bis_skin_checked="1">
-                                            <label class="form-label">Enter Password</label>
-                                            <div class="position-relative" bis_skin_checked="1">
-                                                <input type="password" class="form-control" id="password-field" name="password" placeholder="Password">
-                                                <span class="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group mb-4" bis_skin_checked="1">
-                                            <label class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control" placeholder="*********">
-                                        </div>
-
-                                        <div class="form-group mb-4" bis_skin_checked="1">
-                                                <a href="index.html" class="btn-sell full-width w-100 text-center btn-lg">Create An
-                                                    Account</a>
-                                        </div>
-
-                                        <div class="modal-flex-item d-flex align-items-center justify-content-between mb-3" bis_skin_checked="1">
-                                            <div class="modal-flex-first" bis_skin_checked="1">
-                                                <div class="form-check form-check-inline" bis_skin_checked="1">
-                                                    <input class="form-check-input" type="checkbox" id="savepassword" value="option1">
-                                                    <label class="form-check-label" for="savepassword">Keep me signed in</label>
-                                                </div>
-                                            </div>
-                                        </div>
+                                      </div>
                                     </div>
-                                </form>
+                                  </form>
+                                  
                                 <!-- Form END -->
                             </div>
                         </div>
