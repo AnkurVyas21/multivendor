@@ -23,7 +23,8 @@ export class RegisterComponent {
       email:['',Validators.required,Validators.email,Validators.maxLength(68)],
       DOB:['',Validators.required],
       password:['',Validators.required,Validators.maxLength(32)],
-      confirmPassword:['',Validators.required,Validators.maxLength(32)]
+      confirmPassword:['',Validators.required,Validators.maxLength(32)],
+      keepSignIn:[false]
     })
   }
 

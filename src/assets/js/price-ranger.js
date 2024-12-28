@@ -21,7 +21,7 @@ $(document).ready(function () {
     connect: true
   });
   // Set visual min and max values and also update value hidden form inputs
-  rangeSlider?.noUiSlider.on('update', function (values, handle) {
+  rangeSlider.noUiSlider.on('update', function (values, handle) {
     document.getElementById('slider-range-value1').innerHTML = values[0];
     document.getElementById('slider-range-value2').innerHTML = values[1];
     document.getElementsByName('min-value').value = moneyFormat.from(
@@ -52,7 +52,7 @@ $(document).ready(function () {
     connect: true
   });
   // Set visual min and max values and also update value hidden form inputs
-  rangeSlider?.noUiSlider.on('update', function (values, handle) {
+  rangeSlider.noUiSlider.on('update', function (values, handle) {
     document.getElementById('slider-range-value01').innerHTML = values[0];
     document.getElementById('slider-range-value02').innerHTML = values[1];
     document.getElementsByName('min-value2').value = moneyFormat.from(
@@ -82,7 +82,7 @@ $(document).ready(function () {
     connect: true
   });
   // Set visual min and max values and also update value hidden form inputs
-  rangeSlider?.noUiSlider.on('update', function (values, handle) {
+  rangeSlider.noUiSlider.on('update', function (values, handle) {
     document.getElementById('slider-range-value03').innerHTML = values[0];
     document.getElementById('slider-range-value04').innerHTML = values[1];
     document.getElementsByName('min-value3').value = moneyFormat.from(
@@ -106,7 +106,7 @@ $(document).ready(function () {
     module.exports = factory();
   } else {
     // Browser globals
-    window?.noUiSlider = factory();
+    window.noUiSlider = factory();
   }
 }(function () {
   'use strict';
@@ -1315,7 +1315,7 @@ $(document).ready(function () {
     // Fire 'end' when a mouse or pen leaves the document.
 
     function documentLeave(event, data) {
-      if (event.type === "mouseout" && event.target?.nodeName === "HTML" &&
+      if (event.type === "mouseout" && event.target.nodeName === "HTML" &&
         event.relatedTarget === null) {
         end(event, data);
       }
@@ -1630,7 +1630,7 @@ $(document).ready(function () {
       while (scope_Target.firstChild) {
         scope_Target.removeChild(scope_Target.firstChild);
       }
-      delete scope_Target?.noUiSlider;
+      delete scope_Target.noUiSlider;
     }
     // Get the current step size for the slider.
 
@@ -1717,7 +1717,7 @@ $(document).ready(function () {
       }
     }
     // Throw an error if the slider was already initialized.
-    if (scope_Target?.noUiSlider) {
+    if (scope_Target.noUiSlider) {
       throw new Error('Slider was already initialized.');
     }
     // Create the base element, initialise HTML and set classes.
@@ -1751,7 +1751,7 @@ $(document).ready(function () {
   // Run the standard initializer
 
   function initialize(target, originalOptions) {
-    if (!target?.nodeName) {
+    if (!target.nodeName) {
       throw new Error('noUiSlider.create requires a single element.');
     }
     // Test the options and create the slider environment;
@@ -1759,7 +1759,7 @@ $(document).ready(function () {
       slider = closure(target, options);
     // Use the public value method to set the start values.
     slider.set(options.start);
-    target?.noUiSlider = slider;
+    target.noUiSlider = slider;
     return slider;
   }
   // Use an object instead of a function for future expansibility;

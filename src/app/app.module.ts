@@ -16,6 +16,10 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { ShopComponent } from './shop/shop.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import { MatDialogModule} from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -33,11 +37,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearchResultComponent,
     ShopComponent,
     WatchlistComponent,
+    DialogBoxComponent,
   ],
   imports: [
     BrowserModule,
     appRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
