@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,6 +16,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { ShopComponent } from './shop/shop.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +31,14 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
     ListingdetailsComponent,
     SearchResultComponent,
     ShopComponent,
-    WatchlistComponent
+    WatchlistComponent,
   ],
   imports: [
     BrowserModule,
-    appRoutingModule
+    appRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
