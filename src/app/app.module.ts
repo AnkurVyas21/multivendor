@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,6 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { HotDealComponent } from './hot-deal/hot-deal.component';
 
 
 
@@ -38,13 +40,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShopComponent,
     WatchlistComponent,
     DialogBoxComponent,
+    AboutComponent,
+    ContactComponent,
+    HotDealComponent,
   ],
   imports: [
     BrowserModule,
     appRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

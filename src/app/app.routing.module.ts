@@ -1,4 +1,4 @@
-import { Route, RouterModule, Routes } from "@angular/router";
+import {  RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { NgModule } from "@angular/core";
 import { LoginComponent } from "./login/login.component";
@@ -10,6 +10,9 @@ import { ListingdetailsComponent } from "./listingdetails/listingdetails.compone
 import { SearchResultComponent } from "./search-result/search-result.component";
 import { ShopComponent } from "./shop/shop.component";
 import { WatchlistComponent } from "./watchlist/watchlist.component";
+import { AboutComponent } from "./about/about.component";
+import { ContactComponent } from "./contact/contact.component";
+import { HotDealComponent } from "./hot-deal/hot-deal.component";
 
 
 const routes: Routes = [
@@ -45,6 +48,15 @@ const routes: Routes = [
   },
   {
     path: 'watchlist', component: WatchlistComponent
+  },
+  {
+    path: 'Aboutus', component: AboutComponent
+  },
+  {
+    path: 'contact', component: ContactComponent
+  },
+  {
+    path: 'hotDeal', component: HotDealComponent
   },
   {
     path: '**', component: HomeComponent
