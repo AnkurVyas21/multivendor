@@ -13,6 +13,7 @@ import { WatchlistComponent } from "./watchlist/watchlist.component";
 import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { HotDealComponent } from "./hot-deal/hot-deal.component";
+import { AdminComponent } from "./admin/admin.component";
 
 
 const routes: Routes = [
@@ -57,6 +58,9 @@ const routes: Routes = [
   },
   {
     path: 'hotDeal', component: HotDealComponent
+  },
+  {
+    path:'admin', component:AdminComponent
   },
   {
     path: '**', component: HomeComponent

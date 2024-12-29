@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HotDealComponent } from './hot-deal/hot-deal.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -43,6 +44,7 @@ import { HotDealComponent } from './hot-deal/hot-deal.component';
     AboutComponent,
     ContactComponent,
     HotDealComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
