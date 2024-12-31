@@ -1,24 +1,35 @@
-<div class="admin-container">
-    <div class="sidebar">
-      <ul>
-        <li routerLinkActive="active">
-          <a routerLink="/admin/dashboard">Dashboard</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/admin/users">Users</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/admin/products">Products</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/admin/orders">Orders</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/admin/settings">Settings</a>
-        </li>
-      </ul>
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="profile-section">
+      <!-- Conditional Rendering of Profile Picture or Initials -->
+      <div *ngIf="profilePictureUrl; else initialsTemplate">
+        <img [src]="profilePictureUrl" alt="Admin Profile" class="profile-picture" />
+      </div>
+      <ng-template #initialsTemplate>
+        <div class="profile-initials">
+          {{ getInitials(adminName) }}
+        </div>
+      </ng-template>
+      <h3 style="color: whitesmoke;">{{ adminName }}</h3>
     </div>
-    <div class="content">
+    <ul class="menu-list">
+      <li [routerLink]="['/admin/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Dashboard</li>
+      <li [routerLink]="['/admin/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Test Drives</li>
+      <li [routerLink]="['/admin/add-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add Cars</li>
+      <li [routerLink]="['/admin/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Filters -->
+    <div class="filter-section">
+      <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" />
+    </div>
+    <!-- Dynamic Content -->
+    <div class="content-section">
       <router-outlet></router-outlet>
     </div>
   </div>
+</div>

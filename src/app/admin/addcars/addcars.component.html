@@ -1,0 +1,29 @@
+<div class="add-car-layout">
+    <h2>Cars Added for Selling</h2>
+    
+    <!-- Search Filter Section -->
+    <!-- <div class="filter-section">
+      <input type="text" placeholder="Search by User or Car Model..." [(ngModel)]="searchQuery" (input)="onSearch()" />
+    </div>
+   -->
+    <!-- Cars Added Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>Car Model</th>
+          <th>Car Added Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of filteredCarSales">
+          <td>{{ sale.userId }}</td>
+          <td>{{ sale.userName }}</td>
+          <td>{{ sale.carModel }}</td>
+          <td>{{ sale.carAddedTime }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

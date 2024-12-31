@@ -1,0 +1,31 @@
+<div class="test-drive-requests">
+    <h2>Test Drive Requests</h2>
+  
+    <!-- Search/filter input -->
+  
+    <!-- Table to display test drive requests -->
+    <table class="requests-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer Name</th>
+          <th>Car Model</th>
+          <th>Request Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of filteredRequests">
+          <td>{{ request.id }}</td>
+          <td>{{ request.customerName }}</td>
+          <td>{{ request.carModel }}</td>
+          <td>{{ request.requestTime }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- No results message -->
+    <div *ngIf="filteredRequests.length === 0" class="no-results">
+      No test drive requests found.
+    </div>
+  </div>
+  

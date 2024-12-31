@@ -1,0 +1,31 @@
+<div class="sold-cars-layout">
+    <h2>Sold Cars History</h2>
+    
+    <!-- Search Filter Section -->
+    <!-- <div class="filter-section">
+      <input type="text" placeholder="Search by User or Car Model..." [(ngModel)]="searchQuery" (input)="onSearch()" />
+    </div> -->
+  
+    <!-- Sold Cars Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>Car Model</th>
+          <th>Sold Price</th>
+          <th>Sold Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of filteredSoldCars">
+          <td>{{ sale.userId }}</td>
+          <td>{{ sale.userName }}</td>
+          <td>{{ sale.carModel }}</td>
+          <td>${{ sale.soldPrice }}</td>
+          <td>{{ sale.soldTime }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+s  

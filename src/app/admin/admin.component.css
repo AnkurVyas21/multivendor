@@ -1,32 +1,123 @@
-.admin-container {
+/* Layout */
+.admin-layout {
   display: flex;
+  height: 100vh;
 }
 
+/* Sidebar */
 .sidebar {
-  width: 200px;
-  background-color: #f0f0f0;
-  padding: 20px;
+  width: 250px;
+  background-color: #3e7600;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar ul {
+.profile-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #ecf0f1;
+}
+
+.profile-section h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.menu-list {
   list-style: none;
   padding: 0;
+  width: 100%;
 }
 
-.sidebar li {
-  margin-bottom: 10px;
+.menu-list li {
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #34495e;
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
-.sidebar a {
-  text-decoration: none;
-  color: #333;
+.menu-list li:hover {
+  background-color: #1abc9c;
 }
 
-.sidebar .active {
-  background-color: #ddd;
-}
-
-.content {
-  flex: 1;
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
+}
+
+/* Filter Section */
+.filter-section {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-section input {
+  width: 300px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Content Section */
+.content-section {
+  background-color: #ecf0f1;
+  flex-grow: 1;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-initials {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000509;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Apply active-link only when it's inside the sidebar */
+.sidebar .menu-list li.active-link {
+  background-color: #3498db;  /* Highlight color */
+  color: white;
+}
+
+/* Regular li styles */
+.menu-list li {
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #00060b;
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+/* Hover styles */
+.menu-list li:hover {
+  background-color: #1abc9c;
 }
