@@ -59,9 +59,7 @@ const routes: Routes = [
   {
     path: 'hotDeal', component: HotDealComponent
   },
-  {
-    path:'admin', component:AdminComponent
-  },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.adminModule) },
   {
     path: '**', component: HomeComponent
   },

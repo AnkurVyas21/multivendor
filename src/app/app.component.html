@@ -1,17 +1,30 @@
   <!-- /#page -->
-  <div id="wrapper">
-    <div id="page" class="clearfix">
+   <div *ngIf="currentPath!='admin'">
+    <div id="wrapper">
+      <div id="page" class="clearfix">
+  
+        <app-header></app-header>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+     
+      </div>
+  
+  
+  </div>
+  <!-- /#page -->
+  
+  <!-- Button Top -->
+  <a href="sms:+19199234239&body=Hello, I'm interested in your services." class="button-go"><img src="assets/images/icon-box/chat.png" alt=""></a>
+   </div>
 
-      <app-header></app-header>
-      <router-outlet></router-outlet>
-      <app-footer></app-footer>
-   
-    </div>
+   <div *ngIf="currentPath=='admin'">
+   <app-admin></app-admin>
+   </div>
 
 
-</div>
-<!-- /#page -->
 
-<!-- Button Top -->
-<a href="sms:+19199234239&body=Hello, I'm interested in your services." class="button-go"><img src="assets/images/icon-box/chat.png" alt=""></a>
-<!-- Button Top -->
+<!-- Button Top 
+ 
+test drives 
+add cars 
+-->

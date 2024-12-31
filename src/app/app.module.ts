@@ -14,7 +14,7 @@ import { ListingdetailsComponent } from './listingdetails/listingdetails.compone
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ShopComponent } from './shop/shop.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +22,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HotDealComponent } from './hot-deal/hot-deal.component';
 import { AdminComponent } from './admin/admin.component';
+import { adminModule } from './admin/admin.module';
 
 
 
@@ -45,6 +46,7 @@ import { AdminComponent } from './admin/admin.component';
     ContactComponent,
     HotDealComponent,
     AdminComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,8 @@ import { AdminComponent } from './admin/admin.component';
     ReactiveFormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    FormsModule,
+    adminModule
   ],
   providers: [],
   bootstrap: [AppComponent],
