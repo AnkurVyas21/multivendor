@@ -3,7 +3,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { TestDrivesComponent } from "./test-drives/test-drives.component";
 import { AddcarsComponent } from "./addcars/addcars.component";
-import { AdminComponent } from "./admin.component";
 import { SoldcarsComponent } from "./soldcars/soldcars.component";
 
 const route : Routes = [
@@ -13,6 +12,7 @@ const route : Routes = [
           { path: 'add-cars', component: AddcarsComponent },
           { path: 'sold-cars', component: SoldcarsComponent },
           { path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' },
+          { path: '**', redirectTo: '/admin/dashboard', pathMatch: 'full' },
 ]
 
 @NgModule({

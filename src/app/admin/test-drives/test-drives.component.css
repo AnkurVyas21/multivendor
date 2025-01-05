@@ -1,4 +1,4 @@
-.sold-cars-layout {
+.test-drive-requests {
   padding: 20px;
   background-color: #f4f4f4;
   border-radius: 5px;
@@ -11,34 +11,17 @@
   justify-content: flex-end;
 }
 
-.filter-section input {
+.mat-form-field {
   width: 300px;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
+}
+
+.no-results {
+  text-align: center;
   margin-top: 20px;
-}
-
-table th,
-table td {
-  padding: 12px;
-  text-align: left;
-  border: 1px solid #ddd;
-  color: black;
-}
-
-
-table th {
-  background-color: #a2ab9f;
-  color: rgb(1, 0, 0);
-}
-
-table tr:hover {
-  background-color: #f0f0f0;
+  font-size: 1.2rem;
+  color: #888;
 }

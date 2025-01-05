@@ -1,0 +1,167 @@
+<div style="text-align: center;">
+    <h2 mat-dialog-title>Enter Car Details</h2>
+</div>
+
+<form [formGroup]="carForm" (ngSubmit)="onSubmit()">  
+  <mat-form-field>  
+    <mat-label>Car Name</mat-label>  
+    <input matInput formControlName="carName" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Car Price</mat-label>  
+    <input matInput type="number" formControlName="carPrice" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Car Make</mat-label>  
+    <input matInput formControlName="carMake" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Model</mat-label>  
+    <input matInput formControlName="model" required>  
+  </mat-form-field>  
+  
+  <mat-form-field>  
+    <mat-label>Body</mat-label>  
+    <input matInput formControlName="body" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Car Description</mat-label>  
+    <textarea matInput formControlName="description"></textarea>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Condition</mat-label>  
+    <mat-select formControlName="condition">  
+      <mat-option *ngFor="let option of conditions" [value]="option">{{ option }}</mat-option>  
+    </mat-select>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Cylinders</mat-label>  
+    <mat-select formControlName="cylinders">  
+      <mat-option *ngFor="let cylinder of cylinderOptions" [value]="cylinder">{{ cylinder }}</mat-option>  
+    </mat-select>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Stock Number</mat-label>  
+    <input matInput formControlName="stockNumber" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Fuel Type</mat-label>  
+    <mat-select formControlName="fuelType">  
+      <mat-option *ngFor="let fuel of fuelTypes" [value]="fuel">{{ fuel }}</mat-option>  
+    </mat-select>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>VIN Number</mat-label>  
+    <input matInput formControlName="vin" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Doors</mat-label>  
+    <mat-select formControlName="doors">  
+      <mat-option *ngFor="let door of doorOptions" [value]="door">{{ door }}</mat-option>  
+    </mat-select>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Year</mat-label>  
+    <input matInput type="number" formControlName="year" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Color</mat-label>  
+    <input matInput formControlName="color" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Mileage</mat-label>  
+    <input matInput formControlName="mileage" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Seats</mat-label>  
+    <input matInput type="number" formControlName="seats" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Transmission</mat-label>  
+    <mat-select formControlName="transmission">  
+      <mat-option *ngFor="let type of transmissionTypes" [value]="type">{{ type }}</mat-option>  
+    </mat-select>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>City MPG</mat-label>  
+    <input matInput formControlName="cityMPG" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Engine Size</mat-label>  
+    <input matInput formControlName="engineSize" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Highway MPG</mat-label>  
+    <input matInput formControlName="highwayMPG" required>  
+  </mat-form-field>  
+
+  <mat-form-field>  
+    <mat-label>Driver Type</mat-label>  
+    <mat-select formControlName="driverType">  
+      <mat-option *ngFor="let type of driverTypes" [value]="type">{{ type }}</mat-option>  
+    </mat-select>  
+  </mat-form-field>  
+
+  <div>
+    <mat-label>Upload Images</mat-label>
+    <input type="file" (change)="onFileChange($event)" multiple accept="image/*">
+  </div>
+  
+  <div class="image-preview-container" *ngIf="selectedImages.length > 0">
+    <div class="image-preview" *ngFor="let image of selectedImages; let i = index">
+      <img [src]="image" alt="Selected image" />
+      <button class="delete-button" (click)="deleteImage(i)">&#x2715;</button>
+    </div>
+  </div>
+  
+  <h3>Features</h3>  
+<div formGroupName="features">  
+  <h4>Safety Features</h4>  
+  <div formGroupName="safety">  
+    <div *ngFor="let safetyFeature of safetyFeatures">  
+      <mat-checkbox formControlName="{{safetyFeature.control}}">{{safetyFeature.name}}</mat-checkbox>  
+    </div>  
+  </div>  
+
+  <h4>Exterior Features</h4>  
+  <div formGroupName="exterior">  
+    <div *ngFor="let exteriorFeature of exteriorFeatures">  
+      <mat-checkbox formControlName="{{exteriorFeature.control}}">{{exteriorFeature.name}}</mat-checkbox>  
+    </div>  
+  </div>  
+
+  <h4>Interior Features</h4>  
+  <div formGroupName="interior">  
+    <div *ngFor="let interiorFeature of interiorFeatures">  
+      <mat-checkbox formControlName="{{interiorFeature.control}}">{{interiorFeature.name}}</mat-checkbox>  
+    </div>  
+  </div>  
+
+  <h4>Convenience Features</h4>  
+  <div formGroupName="convenience">  
+    <div *ngFor="let convenienceFeature of convenienceFeatures">  
+      <mat-checkbox formControlName="{{convenienceFeature.control}}">{{convenienceFeature.name}}</mat-checkbox>  
+    </div>  
+  </div>  
+</div>
+
+  <button mat-raised-button type="submit" [disabled]="carForm.invalid">Submit</button>  
+</form>  

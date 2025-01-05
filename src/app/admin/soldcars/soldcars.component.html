@@ -1,31 +1,56 @@
 <div class="sold-cars-layout">
-    <h2>Sold Cars History</h2>
-    
-    <!-- Search Filter Section -->
-    <!-- <div class="filter-section">
-      <input type="text" placeholder="Search by User or Car Model..." [(ngModel)]="searchQuery" (input)="onSearch()" />
-    </div> -->
-  
-    <!-- Sold Cars Table -->
-    <table>
-      <thead>
-        <tr>
-          <th>User ID</th>
-          <th>User Name</th>
-          <th>Car Model</th>
-          <th>Sold Price</th>
-          <th>Sold Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let sale of filteredSoldCars">
-          <td>{{ sale.userId }}</td>
-          <td>{{ sale.userName }}</td>
-          <td>{{ sale.carModel }}</td>
-          <td>${{ sale.soldPrice }}</td>
-          <td>{{ sale.soldTime }}</td>
-        </tr>
-      </tbody>
+  <h2>Sold Cars History</h2>
+
+  <!-- Search Filter Section -->
+  <div class="filter-section">
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Search by User or Car Model..." [(ngModel)]="searchQuery" (input)="onSearch()" />
+    </mat-form-field>
+  </div>
+
+  <!-- Sold Cars Table -->
+  <div *ngIf="filteredSoldCars.length > 0">
+    <table mat-table [dataSource]="filteredSoldCars" class="mat-elevation-z8">
+
+      <!-- User ID Column -->
+      <ng-container matColumnDef="userId">
+        <th mat-header-cell *matHeaderCellDef>User ID</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.userId }}</td>
+      </ng-container>
+
+      <!-- User Name Column -->
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef>User Name</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.userName }}</td>
+      </ng-container>
+
+      <!-- Car Model Column -->
+      <ng-container matColumnDef="carModel">
+        <th mat-header-cell *matHeaderCellDef>Car Model</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.carModel }}</td>
+      </ng-container>
+
+      <!-- Sold Price Column -->
+      <ng-container matColumnDef="soldPrice">
+        <th mat-header-cell *matHeaderCellDef>Sold Price</th>
+        <td mat-cell *matCellDef="let sale">${{ sale.soldPrice }}</td>
+      </ng-container>
+
+      <!-- Sold Time Column -->
+      <ng-container matColumnDef="soldTime">
+        <th mat-header-cell *matHeaderCellDef>Sold Time</th>
+        <td mat-cell *matCellDef="let sale">{{ sale.soldTime }}</td>
+      </ng-container>
+
+      <!-- Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-s  
+
+  <!-- No Results Message -->
+  <div *ngIf="filteredSoldCars.length === 0" class="no-results">
+    No sold cars found.
+  </div>
+</div>

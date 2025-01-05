@@ -1,31 +1,49 @@
 <div class="test-drive-requests">
-    <h2>Test Drive Requests</h2>
-  
-    <!-- Search/filter input -->
-  
-    <!-- Table to display test drive requests -->
-    <table class="requests-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Customer Name</th>
-          <th>Car Model</th>
-          <th>Request Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let request of filteredRequests">
-          <td>{{ request.id }}</td>
-          <td>{{ request.customerName }}</td>
-          <td>{{ request.carModel }}</td>
-          <td>{{ request.requestTime }}</td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <!-- No results message -->
-    <div *ngIf="filteredRequests.length === 0" class="no-results">
-      No test drive requests found.
-    </div>
+  <h2>Test Drive Requests</h2>
+
+  <!-- Search/filter input -->
+  <div class="filter-section">
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" />
+    </mat-form-field>
   </div>
-  
+
+  <!-- Table to display test drive requests -->
+  <div *ngIf="filteredRequests.length > 0">
+    <table mat-table [dataSource]="filteredRequests" class="mat-elevation-z8">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let request">{{ request.id }}</td>
+      </ng-container>
+
+      <!-- Customer Name Column -->
+      <ng-container matColumnDef="customerName">
+        <th mat-header-cell *matHeaderCellDef>Customer Name</th>
+        <td mat-cell *matCellDef="let request">{{ request.customerName }}</td>
+      </ng-container>
+
+      <!-- Car Model Column -->
+      <ng-container matColumnDef="carModel">
+        <th mat-header-cell *matHeaderCellDef>Car Model</th>
+        <td mat-cell *matCellDef="let request">{{ request.carModel }}</td>
+      </ng-container>
+
+      <!-- Request Time Column -->
+      <ng-container matColumnDef="requestTime">
+        <th mat-header-cell *matHeaderCellDef>Request Time</th>
+        <td mat-cell *matCellDef="let request">{{ request.requestTime }}</td>
+      </ng-container>
+
+      <!-- Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <!-- No results message -->
+  <div *ngIf="filteredRequests.length === 0" class="no-results">
+    No test drive requests found.
+  </div>
+</div>
