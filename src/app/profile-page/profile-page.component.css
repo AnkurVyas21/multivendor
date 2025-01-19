@@ -1,0 +1,20 @@
+.colorChange {
+    background-color: #3e7600 !important;
+    color: black !important;
+}
+
+.iconColors {
+    color: #3e7600 !important;
+}
+
+footer i {
+    margin: 10px;
+    color: white;
+}
+
+h6 {
+    color: black !important;
+}
+span {
+    background-color: #3e7600 !important;
+}

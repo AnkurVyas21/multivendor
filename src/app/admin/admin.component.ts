@@ -12,7 +12,8 @@ export class AdminComponent {
   profilePictureUrl: string | null = null; // Set to null if no picture available
 
   constructor(private router: Router) {}
-
+  isVisible = true;
+  arrowButtonVisible = false;
 
   /**
    * Get the initials from the admin's name.
@@ -33,5 +34,10 @@ export class AdminComponent {
 
   navigateTo(route: string): void {
     this.router.navigate([`/admin/${route}`]);
+  }
+
+  toggleToolBar()
+  {
+   this.isVisible = !this.isVisible
   }
 }

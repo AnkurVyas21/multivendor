@@ -14,6 +14,7 @@ import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { HotDealComponent } from "./hot-deal/hot-deal.component";
 import { AdminComponent } from "./admin/admin.component";
+import { ProfilePageComponent } from "./profile-page/profile-page.component";
 
 
 const routes: Routes = [
@@ -33,11 +34,9 @@ const routes: Routes = [
     path: 'forgot', component: ForgotComponent
   }, 
   {
-    path: 'category', component: CategoryComponent
+    path: 'shop', component: CategoryComponent
   },
-  {
-    path: 'addCar', component: AddCarComponent
-  },
+ 
   {
     path: 'detail', component: ListingdetailsComponent
   },
@@ -45,8 +44,12 @@ const routes: Routes = [
     path: 'search', component: SearchResultComponent
   },
   {
-    path: 'shop', component: ShopComponent
+    path: 'brands', component: ShopComponent
   },
+  {
+    path: 'profile', component: ProfilePageComponent
+  },
+ 
   {
     path: 'watchlist', component: WatchlistComponent
   },

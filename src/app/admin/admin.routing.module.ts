@@ -4,6 +4,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { TestDrivesComponent } from "./test-drives/test-drives.component";
 import { AddcarsComponent } from "./addcars/addcars.component";
 import { SoldcarsComponent } from "./soldcars/soldcars.component";
+import { AddCarComponent } from "../add-car/add-car.component";
 
 const route : Routes = [
     
@@ -11,9 +12,12 @@ const route : Routes = [
           { path: 'test-drives', component: TestDrivesComponent },
           { path: 'add-cars', component: AddcarsComponent },
           { path: 'sold-cars', component: SoldcarsComponent },
+          {
+            path: 'addCar', component: AddCarComponent
+          },
           { path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' },
           { path: '**', redirectTo: '/admin/dashboard', pathMatch: 'full' },
-]
+] 
 
 @NgModule({
     imports:[

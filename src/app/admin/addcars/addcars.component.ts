@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -54,19 +55,21 @@ export class AddcarsComponent {
     );
   }
 
-  addCar() {
-   const dialogRef =  this.dialog.open(AdminDialogComponent,{
-    data:{type:'addCar'},
-    width: '500px',
-    height: '800px',
-    disableClose: false,
-    hasBackdrop: true,
-    autoFocus: true,
-   })
 
-   dialogRef.afterClosed().subscribe(result=>{
-    console.log('addCar', result)
-   })
+  addCar() {
+
+  //  const dialogRef =  this.dialog.open(AdminDialogComponent,{
+  //   data:{type:'addCar'},
+  //   width: '500px',
+  //   height: '800px',
+  //   disableClose: false,
+  //   hasBackdrop: true,
+  //   autoFocus: true,
+  //  })
+
+  //  dialogRef.afterClosed().subscribe(result=>{
+  //   console.log('addCar', result)
+  //  })
    
   }
 

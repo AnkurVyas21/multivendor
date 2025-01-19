@@ -23,7 +23,8 @@ import { ContactComponent } from './contact/contact.component';
 import { HotDealComponent } from './hot-deal/hot-deal.component';
 import { AdminComponent } from './admin/admin.component';
 import { adminModule } from './admin/admin.module';
-
+import {MatMenuModule} from '@angular/material/menu';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { adminModule } from './admin/admin.module';
     ContactComponent,
     HotDealComponent,
     AdminComponent,
+    ProfilePageComponent,
 
   ],
   imports: [
@@ -55,7 +57,8 @@ import { adminModule } from './admin/admin.module';
     MatDialogModule,
     BrowserAnimationsModule,
     FormsModule,
-    adminModule
+    adminModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],

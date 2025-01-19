@@ -148,5 +148,47 @@
 }
 
 .example-container:hover {
-  border-color: #3498db;
+  border-color: #000508;
 }
+
+/* Shared styles for the button */
+.arrow-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ecf0f1;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  max-width: 10px;
+}
+
+/* Arrow base */
+.arrow-button .arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+/* Left-pointed arrow */
+.arrow-button.left-arrow .arrow {
+  border-right: 10px solid black;
+  margin-right: 10px;
+}
+
+/* Right-pointed arrow */
+.arrow-button.right-arrow .arrow {
+  border-left: 10px solid black;
+  margin-left: 10px;
+}
+
+.arrow-button:hover {
+  background-color: #ecf0f1;
+}
+

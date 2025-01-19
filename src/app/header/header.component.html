@@ -72,7 +72,14 @@
                                 <div class="register ml--18">
                                     <ul class="icon-topbar-nav">
                                         <li>
-                                            <a [routerLink]="'/login'"><i class="icon-user"></i></a>
+                                            <div mat-button [matMenuTriggerFor]="menu" (click)="toggleDropdown()">
+                                            <a><i class="icon-user"></i></a>
+                                                <!-- Dropdown Menu -->
+                                                <mat-menu #menu="matMenu">
+                                                  <button mat-menu-item (click)="navigateToProfile()">View Profile</button>
+                                                  <button mat-menu-item (click)="logout()">Logout</button>
+                                                </mat-menu>
+                                              </div>
                                         </li>
                                         <li>
                                             <a [routerLink]="'/watchlist'"><i class="icon-heart-1-1"></i></a>
@@ -80,9 +87,13 @@
                                     </ul>
                                 </div>
                                 <div class="flat-bt-top sc-btn-top ml--20 ">
-                                    <a class="btn-icon-list" href="register.html">
-                                        <span>Listing Yours</span>
-                                        <i class="icon-add-button-1"></i>
+                                    <a class="btn-icon-list" href="/admin" *ngIf="!isAdmin">
+                                        <span  >Visit Vendor Site</span>
+                                        <!-- <i class="icon-add-button-1"></i> -->
+                                    </a>
+                                    <a class="btn-icon-list" href="/home" *ngIf="isAdmin">
+                                        <span >Visit Shop Site</span>
+                                        <!-- <i class="icon-add-button-1"></i> -->
                                     </a>
                                 </div>
                             </div>

@@ -1,8 +1,8 @@
 <mat-drawer-container [autosize]="true" class="admin-layout">
-  <mat-drawer mode="side" opened >
+  <mat-drawer mode="side" open *ngIf="isVisible" >
     <div class="sidebar">
       <div class="profile-section">
-        <!-- Conditional Rendering of Profile Picture or Initials -->
+        
         <div *ngIf="profilePictureUrl; else initialsTemplate">
           <img [src]="profilePictureUrl" alt="Admin Profile" class="profile-picture" />
         </div>
@@ -19,9 +19,13 @@
         <li [routerLink]="['/admin/add-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add Cars</li>
         <li [routerLink]="['/admin/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
       </ul>
+      
     </div>
   </mat-drawer>
-  
+    <button class="arrow-button" [ngClass]="{ 'right-arrow': !isVisible, 'left-arrow': isVisible }" (click)="toggleToolBar()">
+      <span class="arrow"></span>
+    </button>
+
   <mat-drawer-content class="main-content">
     <router-outlet></router-outlet>
   </mat-drawer-content>

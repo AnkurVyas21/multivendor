@@ -15,6 +15,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { AdminDialogComponent } from './admin-dialog/admin-dialog.component';
 import { MatSelectModule } from '@angular/material/select';  
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     declarations:[
@@ -38,6 +39,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ReactiveFormsModule,
     MatSelectModule,
     MatCheckboxModule, 
+    MatIconModule
   ]
 })
 export class adminModule{}
