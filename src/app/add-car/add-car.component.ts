@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-car',
@@ -6,5 +7,82 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-car.component.css']
 })
 export class AddCarComponent {
+  carListingForm: FormGroup;
 
+  constructor(private fb: FormBuilder) {
+    this.carListingForm = this.fb.group({
+      title: ['', Validators.required],
+      make: ['', Validators.required],
+      model: ['', Validators.required],
+      type: ['', Validators.required],
+      year: ['', [Validators.required, Validators.min(1900), Validators.max(new Date().getFullYear())]],
+      condition: ['', Validators.required],
+      stockNumber: ['', Validators.required],
+      vinNumber:['',Validators.required],
+      mileage:['',Validators.required],
+      transmission: ['', Validators.required],
+      driverType:['', Validators.required],
+      engineSize:['',Validators.required],
+      cylinders:['',Validators.required],
+      fuel: ['', Validators.required],
+      doors:['',Validators.required],
+      color:['',Validators.required],
+      seats:['',Validators.required],
+      cityMPG:['',Validators.required],
+      highwayMPG:['',Validators.required],
+      description: ['', Validators.maxLength(500)],
+      priceLabel:[false],
+      regularPrice: ['', [Validators.required, Validators.min(1)]],
+      salePrice:['',Validators.required],
+      requestPrice:['',Validators.required],
+      ACFront:[false],
+      ACRear:[false],
+      backupCamera:[false],
+      cruiseControl:[false],
+      navigation:[false],
+      powerLocks:[false],
+      amfmStereo:[false],
+      cdPlayer:[false],
+      dvdSystem:[false],
+      mp3Player:[false],
+      portableAudio:[false],
+      premiumAudio:[false],
+      airbagDriver:[false],
+      airbagPassenger:[false],
+      antilockBrakes:[false],
+      bluetooth:[false],
+      handsFree:[false],
+      fogLights:[false],
+      powerWindows:[false],
+      windowsDefroster:[false],
+      rearWindow:[false],
+      wiperTintedglass:[false],
+      sunroof:[false],
+      towPackage:[false],
+      bucketSeats:[false],
+      heatedSeats:[false],
+      leatherInterior:[false],
+      memorySeats:[false],
+      powerSeats:[false],
+      thirdRowSeats:[false],
+      address:[''],
+      mapLocation:[''],
+      photo1:[''],
+      photo2:[''],
+      photo3:[''],
+      photo4:[''],
+      photo5:[''],
+      video:[''],
+      VINReport:[''],
+    });
+  }
+
+  onSubmit() {
+    console.log(this.carListingForm)
+    if (this.carListingForm.valid) {
+      console.log('Form Submitted', this.carListingForm.value);
+    } else {
+      console.log('Form is invalid');
+    }
+  }
 }

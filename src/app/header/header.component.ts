@@ -21,6 +21,7 @@ navigateToProfile(): void {
 logout() {
   // Implement logout logic here
   this.router.navigate(['/login']);
+  localStorage.clear()
 
 }
 

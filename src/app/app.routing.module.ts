@@ -5,7 +5,6 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { ForgotComponent } from "./forgot/forgot.component";
 import { CategoryComponent } from "./category/category.component";
-import { AddCarComponent } from "./add-car/add-car.component";
 import { ListingdetailsComponent } from "./listingdetails/listingdetails.component";
 import { SearchResultComponent } from "./search-result/search-result.component";
 import { ShopComponent } from "./shop/shop.component";
@@ -13,58 +12,58 @@ import { WatchlistComponent } from "./watchlist/watchlist.component";
 import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { HotDealComponent } from "./hot-deal/hot-deal.component";
-import { AdminComponent } from "./admin/admin.component";
 import { ProfilePageComponent } from "./profile-page/profile-page.component";
+import { AuthGuard } from "./services/authGuard/auth.guard";
 
 
 const routes: Routes = [
   {
-    path: 'home', component: HomeComponent
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard] 
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'login', component: LoginComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
   },
   {
-    path: 'register', component: RegisterComponent
+    path: 'register', component: RegisterComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
   },
   {
-    path: 'signup', component: HomeComponent
+    path: 'signup', component: HomeComponent , canActivate: [AuthGuard] 
   },
   {
-    path: 'forgot', component: ForgotComponent
+    path: 'forgot', component: ForgotComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
   }, 
   {
-    path: 'shop', component: CategoryComponent
+    path: 'shop', component: CategoryComponent , canActivate: [AuthGuard] 
   },
  
   {
-    path: 'detail', component: ListingdetailsComponent
+    path: 'detail', component: ListingdetailsComponent , canActivate: [AuthGuard] 
   },
   {
-    path: 'search', component: SearchResultComponent
+    path: 'search', component: SearchResultComponent , canActivate: [AuthGuard] 
   },
   {
-    path: 'brands', component: ShopComponent
+    path: 'brands', component: ShopComponent , canActivate: [AuthGuard] 
   },
   {
-    path: 'profile', component: ProfilePageComponent
+    path: 'profile', component: ProfilePageComponent , canActivate: [AuthGuard] 
   },
  
   {
-    path: 'watchlist', component: WatchlistComponent
+    path: 'watchlist', component: WatchlistComponent , canActivate: [AuthGuard] 
   },
   {
-    path: 'Aboutus', component: AboutComponent
+    path: 'Aboutus', component: AboutComponent , canActivate: [AuthGuard] 
   },
   {
-    path: 'contact', component: ContactComponent
+    path: 'contact', component: ContactComponent , canActivate: [AuthGuard] 
   },
   {
-    path: 'hotDeal', component: HotDealComponent
+    path: 'hotDeal', component: HotDealComponent , canActivate: [AuthGuard] 
   },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.adminModule) },
   {
-    path: '**', component: HomeComponent
+    path: '**', component: HomeComponent , canActivate: [AuthGuard] 
   },
 ]
 

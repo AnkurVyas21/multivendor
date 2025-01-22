@@ -25,6 +25,7 @@ import { AdminComponent } from './admin/admin.component';
 import { adminModule } from './admin/admin.module';
 import {MatMenuModule} from '@angular/material/menu';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     BrowserAnimationsModule,
     FormsModule,
     adminModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
