@@ -23,7 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
     TestDrivesComponent,
     AddcarsComponent,
     SoldcarsComponent,
-    AdminDialogComponent
+    AdminDialogComponent,
   ],
   imports:[
     FormsModule,

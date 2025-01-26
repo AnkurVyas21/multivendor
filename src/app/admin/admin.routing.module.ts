@@ -5,6 +5,7 @@ import { TestDrivesComponent } from "./test-drives/test-drives.component";
 import { AddcarsComponent } from "./addcars/addcars.component";
 import { SoldcarsComponent } from "./soldcars/soldcars.component";
 import { AddCarComponent } from "../add-car/add-car.component";
+import { AdminAuthGuard } from "../services/authGuard/adminAuth.guard";
 
 const route : Routes = [
     
@@ -15,7 +16,6 @@ const route : Routes = [
           {
             path: 'addCar', component: AddCarComponent
           },
-          { path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' },
           { path: '**', redirectTo: '/admin/dashboard', pathMatch: 'full' },
 ] 
 

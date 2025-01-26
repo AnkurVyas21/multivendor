@@ -1,4 +1,4 @@
-<mat-drawer-container [autosize]="true" class="admin-layout">
+<mat-drawer-container [autosize]="true" class="admin-layout" >
   <mat-drawer mode="side" open *ngIf="isVisible" >
     <div class="sidebar">
       <div class="profile-section">
@@ -16,6 +16,7 @@
       <ul class="menu-list">
         <li [routerLink]="['/admin/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Dashboard</li>
         <li [routerLink]="['/admin/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Test Drives</li>
+        <li [routerLink]="['/admin/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Offer Price</li>
         <li [routerLink]="['/admin/add-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add Cars</li>
         <li [routerLink]="['/admin/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
       </ul>
@@ -30,3 +31,4 @@
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
+<!-- <app-login></app-login> -->
