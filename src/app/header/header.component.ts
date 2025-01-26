@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,12 +6,19 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   constructor(private router: Router) {}
   isDropdownOpen = false; // Flag to control dropdown visibility
-
+  isLogin=false;
+  userType:any
   
 @Input() isAdmin:any;
+
+ngOnInit()
+{
+  this.isLogin = localStorage.getItem('authorization') ? true : false;
+  this.userType = localStorage.getItem('userType')
+}
 
 navigateToProfile(): void {
   this.router.navigate(['/profile']);
@@ -20,7 +27,7 @@ navigateToProfile(): void {
 
 logout() {
   // Implement logout logic here
-  this.router.navigate(['/login']);
+   window.location.href = '/login'
   localStorage.clear()
 
 }

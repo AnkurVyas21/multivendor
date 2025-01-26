@@ -40,8 +40,21 @@
                         <!-- Form START -->
                         <form class="mt-4 text-start">
                             <div class="form py-4" bis_skin_checked="1">
+
+                                <div class="form-group" bis_skin_checked="1">
+                                    <label>Select user type</label>
+                                    <div class="group-select" bis_skin_checked="1">
+                                        <div class="radio" bis_skin_checked="1">
+                                            <input id="user" type="radio" name="numbers" [(ngModel)]="selectedUserType" value="user" >
+                                            <label for="user">User</label>
+                                            <input id="vendor" type="radio" name="numbers" [(ngModel)]="selectedUserType" value="vendor">
+                                            <label for="vendor">Vendor</label>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-floating mb-4" bis_skin_checked="1">
-                                    <input [(ngModel)]="email" type="email" class="form-control" placeholder="name@example.com" required="">
+                                    <input [(ngModel)]="email" type="email" class="form-control" name="email" placeholder="name@example.com" required="">
                                     <label>User Email/Phone</label>
                                 </div>
                                 <div class="form-floating mb-4" bis_skin_checked="1">
@@ -53,6 +66,8 @@
                                 <div class="form-group mb-2" bis_skin_checked="1">
                                     <a (click)="onLogin(email, password)" class="btn-sell full-width w-100 text-center btn-lg">Log In</a>
                                 </div>
+
+                              
 
                                 <div class="modal-flex-item d-flex justify-content-between" bis_skin_checked="1">
                                     <div class="modal-flex-first" bis_skin_checked="1">

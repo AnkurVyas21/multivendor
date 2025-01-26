@@ -26,7 +26,7 @@ import { adminModule } from './admin/admin.module';
 import {MatMenuModule} from '@angular/material/menu';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -60,6 +60,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     adminModule,
     MatMenuModule,
+    MatRadioModule,
     HttpClientModule
   ],
   providers: [],

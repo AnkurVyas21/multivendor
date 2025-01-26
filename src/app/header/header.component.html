@@ -53,10 +53,10 @@
                             </div>
                             <div class="nav-outer flex align-center">
                                 <!-- Main Menu -->
-                                <nav class="main-menu show navbar-expand-md" *ngIf="!isAdmin">
+                                <nav class="main-menu show navbar-expand-md" *ngIf="!isAdmin && isLogin">
                                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                                         <ul class="navigation clearfix">
-                                            <li><a href="'/Home'">Home</a>
+                                            <li><a href="/Home">Home</a>
                                             <li><a [routerLink]="'/Aboutus'">About Us</a>
                                             <li><a [routerLink]="'/shop'">Our Shop</a>
                                                 <li><a href="/hotDeal">Hot Deals</a>
@@ -69,29 +69,29 @@
                                 <!-- Main Menu End-->
                             </div>
                             <div class="header-account flex align-center">            
-                                <div class="register ml--18">
+                                <div class="register ml--18" *ngIf="isLogin">
                                     <ul class="icon-topbar-nav">
                                         <li>
                                             <div mat-button [matMenuTriggerFor]="menu" (click)="toggleDropdown()">
                                             <a><i class="icon-user"></i></a>
                                                 <!-- Dropdown Menu -->
                                                 <mat-menu #menu="matMenu">
-                                                  <button mat-menu-item (click)="navigateToProfile()">View Profile</button>
+                                                  <button  mat-menu-item (click)="navigateToProfile()">View Profile</button>
                                                   <button mat-menu-item (click)="logout()">Logout</button>
                                                 </mat-menu>
                                               </div>
                                         </li>
-                                        <li>
+                                        <li *ngIf="!isAdmin && isLogin">
                                             <a [routerLink]="'/watchlist'"><i class="icon-heart-1-1"></i></a>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="flat-bt-top sc-btn-top ml--20 ">
-                                    <a class="btn-icon-list" href="/admin" *ngIf="!isAdmin">
+                                <div class="flat-bt-top sc-btn-top ml--20 " *ngIf="userType!='user'">
+                                    <a class="btn-icon-list" href="/admin" *ngIf="!isAdmin  ">
                                         <span  >Visit Vendor Site</span>
                                         <!-- <i class="icon-add-button-1"></i> -->
                                     </a>
-                                    <a class="btn-icon-list" href="/home" *ngIf="isAdmin">
+                                    <a class="btn-icon-list" href="/home" *ngIf="isAdmin ">
                                         <span >Visit Shop Site</span>
                                         <!-- <i class="icon-add-button-1"></i> -->
                                     </a>

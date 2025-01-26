@@ -5,17 +5,17 @@ import { TokenService } from '../tokenService/token.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminAuthGuard implements CanActivate {
 
   constructor(private authService: TokenService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const isLoginPage = route.data['isLoginPage'];
-    if (isLoginPage && this.authService.isAuthenticated()) {
-      window.location.href = '/home'
+    if (isLoginPage && this.authService.isAuthenticatedAdmin()) {
+      this.router.navigate(['/admin/dashboard']);
       return false;
-    } else if (!isLoginPage && !this.authService.isAuthenticated()) {
-    window.location.href = '/login'
+    } else if (!isLoginPage && !this.authService.isAuthenticatedAdmin()) {
+      window.location.href = '/login'
       return false;
     }
     return true;
@@ -24,8 +24,8 @@ export class AuthGuard implements CanActivate {
 
 
   canActivateLogin(): boolean {
-    if (this.authService.isAuthenticated()) {
-      window.location.href = '/login'// Redirect to dashboard if already logged in
+    if (this.authService.isAuthenticatedAdmin()) {
+      this.router.navigate(['/admin/dashboard']); // Redirect to dashboard if already logged in
       return false;
     }
     return true;

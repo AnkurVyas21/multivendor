@@ -14,7 +14,7 @@ import { ContactComponent } from "./contact/contact.component";
 import { HotDealComponent } from "./hot-deal/hot-deal.component";
 import { ProfilePageComponent } from "./profile-page/profile-page.component";
 import { AuthGuard } from "./services/authGuard/auth.guard";
-
+import { AdminAuthGuard } from "./services/authGuard/adminAuth.guard";
 
 const routes: Routes = [
   {
@@ -61,7 +61,7 @@ const routes: Routes = [
   {
     path: 'hotDeal', component: HotDealComponent , canActivate: [AuthGuard] 
   },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.adminModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.adminModule), canActivate:[AdminAuthGuard]},
   {
     path: '**', component: HomeComponent , canActivate: [AuthGuard] 
   },

@@ -10,18 +10,27 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   password=''
   email=''
+  selectedUserType='user'
   
   constructor(private authService: AuthService, private router:Router)
   {
 
   }
   onLogin(email: string, password: string) {
-    this.authService.login(email, password,'USER').subscribe(
+    console.log(this.selectedUserType == 'user')
+    this.authService.login(email, password,this.selectedUserType).subscribe(
       response => console.log('Login successful', response),
       error => {
         console.log(error),
         localStorage.setItem('authorization','Basic am9obi5kb2VAZXhhbXBsZS5jb206cGFzc3dvcmQxMjM=');
-        window.location.href = '/home';
+        localStorage.setItem('userType',this.selectedUserType);
+        
+        if(this.selectedUserType == 'user')
+       { window.location.href = 'home';}
+      else if(this.selectedUserType == 'vendor')
+      {
+        window.location.href = '/admin/dashboard';
+      }
       }
     );
   }
