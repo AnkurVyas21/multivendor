@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   isVisible = true;
   arrowButtonVisible = false;
   isLogin = false;
+  userType:string|null=''
 
   /**
    * Get the initials from the admin's name.
@@ -25,6 +26,7 @@ export class AdminComponent implements OnInit {
 
 ngOnInit() {
   this.isLogin = !!localStorage.getItem('adminUserType')&& !!localStorage.getItem('authorization')
+  this.userType = localStorage.getItem('userType')
 }
   getInitials(name: string): string {
     const [firstName, lastName] = name.split(' ');

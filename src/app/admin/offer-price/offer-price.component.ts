@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-soldcars',
-  templateUrl: './soldcars.component.html',
-  styleUrls: ['./soldcars.component.css']
+  selector: 'app-offer-price',
+  templateUrl: './offer-price.component.html',
+  styleUrls: ['./offer-price.component.css']
 })
-export class SoldcarsComponent {
-
-
+export class OfferPriceComponent {
   searchQuery: string = '';
   requests = [
     {
@@ -178,7 +176,7 @@ export class SoldcarsComponent {
 }
 ]
 
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license' ];
+displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license', 'actions'];
 
 
   filteredRequests = this.requests;

@@ -1,0 +1,64 @@
+.test-drive-requests {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filter-section {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .mat-form-field {
+    width: 300px;
+  }s
+  
+  table {
+    width: 100%;
+  }
+  
+  .no-results {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #888;
+  }
+  
+  
+  
+  .table-wrapper {
+    max-height: 500px; /* Adjust height as needed */
+    overflow-y: auto;
+    border: 1px solid #ddd; /* Optional: Border around the table */
+    position: relative;
+    scrollbar-width: none;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    position: sticky;
+    top: 0;
+    background-color: #3e7600 !important; /* Ensure header remains visible */
+    color: white;
+    z-index: 2;
+  }
+  
+  td {
+    background: #fff; /* Ensure rows are visible properly */
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .approveDecline {
+    display: flex;
+  }
+  
+  

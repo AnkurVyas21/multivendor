@@ -13,12 +13,16 @@
         </ng-template>
         <h3 class="admin-name">{{ adminName }}</h3>
       </div>
-      <ul class="menu-list">
+      <ul class="menu-list" style="overflow-y: auto; overflow-x: hidden ;scrollbar-width: none;">
         <li [routerLink]="['/admin/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Dashboard</li>
-        <li [routerLink]="['/admin/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Test Drives</li>
-        <li [routerLink]="['/admin/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Offer Price</li>
-        <li [routerLink]="['/admin/add-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add Cars</li>
-        <li [routerLink]="['/admin/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
+        <li *ngIf="userType!='superAdmin'" [routerLink]="['/admin/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Test Drives</li>
+        <li [routerLink]="['/admin/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Offer Price</li>
+        <li *ngIf="userType!='superAdmin'" [routerLink]="['/admin/add-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add Cars</li>
+        <li *ngIf="userType!='superAdmin'" [routerLink]="['/admin/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
+        <li [routerLink]="['/admin/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Car List</li>
+        <li *ngIf="userType=='superAdmin'" [routerLink]="['/admin/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Vendor List</li>
+        <li  [routerLink]="['/admin/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Customer List</li>
+        <li [routerLink]="['/admin/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Transactions</li>
       </ul>
       
     </div>

@@ -15,7 +15,7 @@ export class RegisterComponent {
 
   }
 
-  ngOnInIt()
+  ngOnInit()
   {
     this.registeForm = this.fb.group({
       firstName:['', Validators.required,Validators.maxLength(32)],
@@ -30,7 +30,7 @@ export class RegisterComponent {
 
   registerUserFormSubmit()
   {
-
+    console.log(this.registeForm)
   }
 
 }

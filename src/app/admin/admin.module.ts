@@ -16,6 +16,12 @@ import { AdminDialogComponent } from './admin-dialog/admin-dialog.component';
 import { MatSelectModule } from '@angular/material/select';  
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { CarListComponent } from './car-list/car-list.component';
+import { OfferPriceComponent } from './offer-price/offer-price.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { VendorListComponent } from './vendor-list/vendor-list.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
     declarations:[
@@ -24,6 +30,11 @@ import { MatIconModule } from '@angular/material/icon';
     AddcarsComponent,
     SoldcarsComponent,
     AdminDialogComponent,
+    CarListComponent,
+    OfferPriceComponent,
+    TransactionsComponent,
+    VendorListComponent,
+    CustomerListComponent,
   ],
   imports:[
     FormsModule,
@@ -39,7 +50,8 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatSelectModule,
     MatCheckboxModule, 
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
   ]
 })
 export class adminModule{}

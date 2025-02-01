@@ -9,12 +9,36 @@
                         <div class="search-filter-listing-car" bis_skin_checked="1">
                             <form id="filter-list-car-side-bar" class="list-filter" action="/">
                                 <div class="form-group" bis_skin_checked="1">
-                                    <div class="input-search-list" bis_skin_checked="1">
-                                        <input type="search" class="form-control" placeholder="Search by make, model, or keyword">
-                                        <span class="input-group-text " id="search-addon">
+                                    <div class="input-search-list searchFilter" bis_skin_checked="1">
+                                        <div class="input-search-list " style="position: relative; width: 72%;">
+                                            <input 
+                                              type="search"
+                                              class="form-control"
+                                              style="width: 100%; padding: 10px;"
+                                              placeholder="Search by make, model, or keyword"
+                                              [formControl]="searchControl"
+                                              (input)="filterOptions()"
+                                              (focus)="showDropdown = true"
+                                              (blur)="hideDropdownWithDelay()"
+                                            />
+                                            
+                                            <!-- Autocomplete Dropdown -->
+                                            <ul *ngIf="showDropdown" class="autocomplete-list">
+                                              <li *ngFor="let option of filteredOptions" (click)="selectOption(option)">
+                                                {{ option }}
+                                              </li>
+                                            </ul>
+                                          </div>
+                                          
+                                        <span class="input-group-text searchFilter " id="search-addon">
                                             <div class="btn-main" bis_skin_checked="1">
                                                 <a href="search-result.html" class="button_main_inner" bis_skin_checked="1">
                                                     <span>Search</span>
+                                                </a>
+                                            </div>
+                                            <div class="btn-main"  bis_skin_checked="1">
+                                                <a (click)="openFilterDialog()" class="button_main_inner"  bis_skin_checked="1">
+                                                    <i  class="fa-solid fa-filter"> </i><span> Filter</span>
                                                 </a>
                                             </div>
                                         </span>

@@ -4,35 +4,35 @@
     <p class="mb-0">Enter following details to book your test drive.</p>
 
     <!-- Form START -->
-    <form class="mt-4 text-start">
+    <form class="mt-4 text-start" [formGroup]="testDriveForm" (submit)="submitTestDrive()">
         <div class="form py-4" bis_skin_checked="1">
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="text" class="form-control" placeholder="Enter your name" required="">
+                <input type="text" class="form-control" placeholder="Enter your name" required="" formControlName="name">
                 <label>Name</label>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="email" class="form-control" id="password-field" name="email" placeholder="Enter your email" required="">
+                <input type="email" class="form-control" id="password-field" formControlName="email" name="email" placeholder="Enter your email" required="">
                 <label>Email</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="tel" class="form-control" id="password-field" name="telephone" placeholder="Enter your phone number" required="">
+                <input type="tel" class="form-control" id="password-field" formControlName="phone" name="telephone" placeholder="Enter your phone number" required="">
                 <label>Phone</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="text" class="form-control" id="password-field" name="address" placeholder="Enter your address" required="">
+                <input type="text" class="form-control" id="password-field" formControlName="address" name="address" placeholder="Enter your address" required="">
                 <label>Address</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="text" class="form-control" id="password-field" name="drivingLicense" placeholder="Enter your driving license number" required="">
+                <input type="text" class="form-control" id="password-field" formControlName="license" name="drivingLicense" placeholder="Enter your driving license number" required="">
                 <label>Driving License Number</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
 
             <div class="form-group mb-2" bis_skin_checked="1">
-                <a href="index.html" class="btn-sell full-width w-100 text-center btn-lg">Book Drive</a>
+                <button type="submit"  class="btn-sell full-width w-100 text-center btn-lg">Book Drive</button>
             </div>
 
             <div class="modal-flex-item d-flex justify-content-between" bis_skin_checked="1">
@@ -51,45 +51,45 @@
     <p class="mb-0">Enter following details to make an offer price.</p>
 
     <!-- Form START -->
-    <form class="mt-4 text-start">
+    <form class="mt-4 text-start" [formGroup]="makeOfferForm" (submit)="submitMakeOffer()">
         <div class="form py-4" bis_skin_checked="1">
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="text" class="form-control" placeholder="Enter your name" required="">
+                <input type="text" class="form-control" placeholder="Enter your name" formControlName="name" required="">
                 <label>Name</label>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="email" class="form-control" id="password-field" name="email" placeholder="Enter your email" required="">
+                <input type="email" class="form-control" id="password-field" name="email" formControlName="email" placeholder="Enter your email" required="">
                 <label>Email</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="tel" class="form-control" id="password-field" name="telephone" placeholder="Enter your phone number" required="">
+                <input type="tel" class="form-control" id="password-field" name="telephone" formControlName="phone" placeholder="Enter your phone number" required="">
                 <label>Phone</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="text" class="form-control" id="password-field" name="address" placeholder="Enter your address" required="">
+                <input type="text" class="form-control" id="password-field" name="address" formControlName="address" placeholder="Enter your address" required="">
                 <label>Address</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="text" class="form-control" id="password-field" name="drivingLicense" placeholder="Enter your driving license number" required="">
+                <input type="text" class="form-control" id="password-field" name="drivingLicense" formControlName="license" placeholder="Enter your driving license number" required="">
                 <label>Driving License Number</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="number" class="form-control" id="password-field" name="OfferedPrice" placeholder="Enter your driving license number" required="">
+                <input type="number" class="form-control" id="password-field" name="OfferedPrice" formControlName="offeredPrice" placeholder="Enter your driving license number" required="">
                 <label>Offered price</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
             <div class="form-floating mb-4" bis_skin_checked="1">
-                <input type="number" class="form-control" id="password-field" name="finalOfferedPrice" placeholder="Enter your driving license number" required="">
+                <input type="number" class="form-control" id="password-field" name="finalOfferedPrice" formControlName="finalOfferedPrice" placeholder="Enter your driving license number" required="">
                 <label>Final offered price</label>
                 <span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
             </div>
 
             <div class="form-group mb-2" bis_skin_checked="1">
-                <a href="index.html" class="btn-sell full-width w-100 text-center btn-lg">Offer Price</a>
+                <button type="submit" class="btn-sell full-width w-100 text-center btn-lg"></button>
             </div>
 
             <div class="modal-flex-item d-flex justify-content-between" bis_skin_checked="1">
@@ -98,4 +98,79 @@
         </div>
     </form>
     <!-- Form END -->
+</div>
+
+<div class="p-3 p-sm-4 p-md-5 scroll" bis_skin_checked="1" *ngIf="data?.dialogType =='filterCars'" style="scrollbar-width: none">
+ <h1 mat-dialog-title>Filter Cars</h1>
+<form [formGroup]="filterForm">
+  <div mat-dialog-content style="display: flex; flex-wrap: wrap;gap: 5px;">
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Brand</mat-label>
+        <mat-select formControlName="brand">
+          <mat-option value="toyota">Toyota</mat-option>
+          <mat-option value="honda">Honda</mat-option>
+          <mat-option value="ford">Ford</mat-option>
+          <!-- Add other brands -->
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Transmission</mat-label>
+        <mat-select formControlName="transmission">
+          <mat-option value="manual">Manual</mat-option>
+          <mat-option value="automatic">Automatic</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-checkbox formControlName="used">Used</mat-checkbox>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Model</mat-label>
+        <input matInput formControlName="model" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Year</mat-label>
+        <input matInput formControlName="year" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Engine Size</mat-label>
+        <input matInput formControlName="engineSize" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Color</mat-label>
+        <input matInput formControlName="color" />
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <mat-dialog-actions style="display: flex; gap: 10px; justify-content: right;">
+    <button style="width: auto;" mat-button mat-dialog-close>Cancel</button>
+    <button style="width: auto;" mat-button [mat-dialog-close]="filterForm.value">Apply Filters</button>
+  </mat-dialog-actions>
+</form>
+
 </div>

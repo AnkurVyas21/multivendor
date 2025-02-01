@@ -44,11 +44,17 @@
                                 <div class="form-group" bis_skin_checked="1">
                                     <label>Select user type</label>
                                     <div class="group-select" bis_skin_checked="1">
-                                        <div class="radio" bis_skin_checked="1">
+                                        <div class="radio" bis_skin_checked="1" *ngIf="lastSegment!='admin'">
                                             <input id="user" type="radio" name="numbers" [(ngModel)]="selectedUserType" value="user" >
                                             <label for="user">User</label>
                                             <input id="vendor" type="radio" name="numbers" [(ngModel)]="selectedUserType" value="vendor">
                                             <label for="vendor">Vendor</label>
+                                        </div>
+                                        <div class="radio" bis_skin_checked="1" *ngIf="lastSegment=='admin'">
+                                            <input id="user" type="radio" name="numbers" [(ngModel)]="selectedUserType" value="admin" >
+                                            <label for="user">Admin</label>
+                                            <input id="vendor" type="radio" name="numbers" [(ngModel)]="selectedUserType" value="superAdmin">
+                                            <label for="vendor">Super Admin</label>
                                         </div>
                                     </div>
                                 </div>

@@ -24,6 +24,9 @@ const routes: Routes = [
     path: 'login', component: LoginComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
   },
   {
+    path: 'login/admin', component: LoginComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
+  },
+  {
     path: 'register', component: RegisterComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
   },
   {

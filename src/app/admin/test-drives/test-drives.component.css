@@ -13,7 +13,7 @@
 
 .mat-form-field {
   width: 300px;
-}
+}s
 
 table {
   width: 100%;
@@ -25,3 +25,39 @@ table {
   font-size: 1.2rem;
   color: #888;
 }
+
+
+
+.table-wrapper {
+  max-height: 500px; /* Adjust height as needed */
+  overflow-y: auto;
+  border: 1px solid #ddd; /* Optional: Border around the table */
+  position: relative;
+  scrollbar-width: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background-color: #3e7600 !important; /* Ensure header remains visible */
+  color: white;
+  z-index: 2;
+}
+
+td {
+  background: #fff; /* Ensure rows are visible properly */
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.approveDecline {
+  display: flex;
+}
+

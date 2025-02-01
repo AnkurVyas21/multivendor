@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/authService/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +10,28 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   password=''
   email=''
-  selectedUserType='user'
-  
-  constructor(private authService: AuthService, private router:Router)
+  selectedUserType:'user'|'vendor'|'admin'|'superAdmin'='user'
+  lastSegment=''
+  constructor(private authService: AuthService, private route:ActivatedRoute)
   {
 
   }
+
+  ngOnInit()
+  {
+    this.route.url.subscribe(urlSegments => {
+      this.lastSegment = urlSegments[urlSegments.length - 1]?.path || '';
+      if(this.lastSegment=='admin')
+      {
+        this.selectedUserType='admin'
+      }
+      else 
+      {
+        this.selectedUserType = 'user'
+      }
+    });
+  }
   onLogin(email: string, password: string) {
-    console.log(this.selectedUserType == 'user')
     this.authService.login(email, password,this.selectedUserType).subscribe(
       response => console.log('Login successful', response),
       error => {
@@ -27,7 +41,7 @@ export class LoginComponent {
         
         if(this.selectedUserType == 'user')
        { window.location.href = 'home';}
-      else if(this.selectedUserType == 'vendor')
+      else 
       {
         window.location.href = '/admin/dashboard';
       }

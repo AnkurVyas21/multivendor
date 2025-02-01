@@ -3,7 +3,7 @@
 
   <!-- Add Cars Button and Search Filter -->
   <div style="margin: 20px; display: flex; justify-content: space-between; align-items: center;">
-    <button mat-raised-button color="primary" class="add-car-button"  [routerLink]="['/admin/addCar']" (click)="addCar()">Add Cars</button>
+    <button mat-raised-button color="primary" class="add-car-button"  [routerLink]="['/admin/add-car']" (click)="addCar()">Add Cars</button>
     <mat-form-field appearance="outline" style="width: 300px;">
       <mat-label>Search</mat-label>
       <input matInput placeholder="Search by User or Car Model..." [(ngModel)]="searchQuery" (input)="onSearch()" />

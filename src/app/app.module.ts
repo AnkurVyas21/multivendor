@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { CategoryComponent } from './category/category.component';
-import { AddCarComponent } from './add-car/add-car.component';
+import { AddCarComponent } from './admin/add-car/add-car.component';
 import { ListingdetailsComponent } from './listingdetails/listingdetails.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ShopComponent } from './shop/shop.component';
@@ -27,6 +27,13 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import {MatTabsModule} from '@angular/material/tabs'
+import { MatSelectModule} from '@angular/material/select'
+import {MatCheckboxModule} from '@angular/material/checkbox'
+
 
 @NgModule({
   declarations: [
@@ -61,7 +68,13 @@ import { MatRadioModule } from '@angular/material/radio';
     adminModule,
     MatMenuModule,
     MatRadioModule,
-    HttpClientModule
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    MatInputModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],

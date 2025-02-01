@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string, userType:string): Observable<any> {
+  login(email: string, password: string, userType:'user' | 'vendor'|'admin'|'superAdmin'): Observable<any> {
     const credentials = btoa(`${email}:${password}`);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -19,5 +19,5 @@ export class AuthService {
     });
   
     return this.http.post(this.apiUrl, {}, { headers });
-  }
+  } 
 }  

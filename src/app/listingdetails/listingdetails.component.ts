@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-listingdetails',
@@ -9,9 +10,21 @@ import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 })
 export class ListingdetailsComponent {
 
-  constructor(public dialog: MatDialog)
+  contactUs!:FormGroup
+
+  constructor(public dialog: MatDialog, private fb:FormBuilder)
   {
 
+  }
+
+  ngOnInit()
+  {
+    this.contactUs = this.fb.group({
+      name:['',Validators.required],
+      email:['',Validators.required, Validators.email],
+      phone:['',Validators.required],
+      message:['',Validators.required]
+    })
   }
 
   opendialogBox(type:string)
@@ -28,6 +41,11 @@ export class ListingdetailsComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  submitContactUs()
+  {
+    console.log(this.contactUs)
   }
 
 }

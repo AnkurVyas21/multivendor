@@ -411,21 +411,21 @@
                             <p class="desc">Support Staff</p>
                         </div>
                     </div>
-                    <form action="/" method="post" class="form-contact-admin" aria-label="Contact form">
+                    <form [formGroup]="contactUs" (submit)="submitContactUs()" class="form-contact-admin" aria-label="Contact form">
                         <div class="group-form" bis_skin_checked="1">
-                            <input class="admin-form" aria-required="true" aria-invalid="false" placeholder="Your Name" value="" type="text">
+                            <input class="admin-form" aria-required="true" formControlName="name" aria-invalid="false" placeholder="Your Name" value="" type="text">
                             <i class="icon-user-1-1"></i>
                         </div>
                         <div class="group-form" bis_skin_checked="1">
-                            <input class="admin-form" aria-required="true" aria-invalid="false" placeholder="Email" value="" type="email">
+                            <input class="admin-form" aria-required="true" formControlName="email"  aria-invalid="false" placeholder="Email" value="" type="email">
                             <i class="icon-Group2"></i>
                         </div>
                         <div class="group-form" bis_skin_checked="1">
-                            <input class="admin-form" aria-invalid="false" placeholder="Enter Phone" value="" type="text">
+                            <input class="admin-form" aria-invalid="false" formControlName="phone"  placeholder="Enter Phone" value="" type="text">
                             <i class="icon-Group-14"></i>
                         </div>
                         <div class="group-form" bis_skin_checked="1">
-                            <textarea class="admin-form" aria-invalid="false"></textarea>
+                            <textarea class="admin-form" aria-invalid="false" formControlName="message" ></textarea>
                             <i class="icon-edit-1"></i>
                         </div>
                         <button type="submit"> Send Message </button>

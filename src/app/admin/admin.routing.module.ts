@@ -4,8 +4,14 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { TestDrivesComponent } from "./test-drives/test-drives.component";
 import { AddcarsComponent } from "./addcars/addcars.component";
 import { SoldcarsComponent } from "./soldcars/soldcars.component";
-import { AddCarComponent } from "../add-car/add-car.component";
+import { AddCarComponent } from "./add-car/add-car.component";
 import { AdminAuthGuard } from "../services/authGuard/adminAuth.guard";
+import { LoginComponent } from "../login/login.component";
+import { CarListComponent } from "./car-list/car-list.component";
+import { OfferPriceComponent } from "./offer-price/offer-price.component";
+import { TransactionsComponent } from "./transactions/transactions.component";
+import { VendorListComponent } from "./vendor-list/vendor-list.component";
+import { CustomerListComponent } from "./customer-list/customer-list.component";
 
 const route : Routes = [
     
@@ -14,7 +20,25 @@ const route : Routes = [
           { path: 'add-cars', component: AddcarsComponent },
           { path: 'sold-cars', component: SoldcarsComponent },
           {
-            path: 'addCar', component: AddCarComponent
+            path: 'add-car', component: AddCarComponent
+          },
+          {
+            path: 'offer-price', component: OfferPriceComponent
+          },
+          {
+            path: 'car-list', component: CarListComponent
+          },
+          {
+            path: 'login', component: LoginComponent
+          },
+          {
+            path: 'transactions', component: TransactionsComponent
+          },
+          {
+            path: 'vendor-list', component: VendorListComponent
+          },
+          {
+            path: 'customer-list', component: CustomerListComponent
           },
           { path: '**', redirectTo: '/admin/dashboard', pathMatch: 'full' },
 ] 

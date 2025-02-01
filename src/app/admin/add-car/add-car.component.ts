@@ -7,10 +7,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-car.component.css']
 })
 export class AddCarComponent {
-  carListingForm: FormGroup;
+  carlistingFormBasic: FormGroup;
+  carlistingFormSpecification: FormGroup;
+  carlistingFormFeature: FormGroup;
+  carlistingFormMedia: FormGroup;
+  carlistingFormAddress:FormGroup
+  selectedTabIndex=0
+  tabsAccess = [true, false, false,false,false];
 
   constructor(private fb: FormBuilder) {
-    this.carListingForm = this.fb.group({
+    this.carlistingFormBasic = this.fb.group({
       title: ['', Validators.required],
       make: ['', Validators.required],
       model: ['', Validators.required],
@@ -19,6 +25,14 @@ export class AddCarComponent {
       condition: ['', Validators.required],
       stockNumber: ['', Validators.required],
       vinNumber:['',Validators.required],
+      description: ['', Validators.maxLength(500)],
+      priceLabel:[false],
+      regularPrice: ['', [Validators.required, Validators.min(1)]],
+      salePrice:['',Validators.required],
+      requestPrice:['',Validators.required],
+    })
+
+    this.carlistingFormSpecification = this.fb.group({
       mileage:['',Validators.required],
       transmission: ['', Validators.required],
       driverType:['', Validators.required],
@@ -30,11 +44,9 @@ export class AddCarComponent {
       seats:['',Validators.required],
       cityMPG:['',Validators.required],
       highwayMPG:['',Validators.required],
-      description: ['', Validators.maxLength(500)],
-      priceLabel:[false],
-      regularPrice: ['', [Validators.required, Validators.min(1)]],
-      salePrice:['',Validators.required],
-      requestPrice:['',Validators.required],
+    })
+
+    this.carlistingFormFeature = this.fb.group({
       ACFront:[false],
       ACRear:[false],
       backupCamera:[false],
@@ -65,22 +77,33 @@ export class AddCarComponent {
       memorySeats:[false],
       powerSeats:[false],
       thirdRowSeats:[false],
-      address:[''],
-      mapLocation:[''],
+    })
+
+this.carlistingFormMedia = this.fb.group({
       photo1:[''],
       photo2:[''],
       photo3:[''],
       photo4:[''],
       photo5:[''],
       video:[''],
-      VINReport:[''],
-    });
+      VINReport:['']
+    })
+
+    this.carlistingFormAddress = this.fb.group({
+      address:[''],
+      mapLocation:['']
+    })
+
   }
 
-  onSubmit() {
-    console.log(this.carListingForm)
-    if (this.carListingForm.valid) {
-      console.log('Form Submitted', this.carListingForm.value);
+  onSubmit(form:FormGroup, nextIndex:number) {
+    console.log(form)
+    if (form.valid) {
+      console.log('Form Submitted', form.value);
+      if(nextIndex !=5)
+    {  this.tabsAccess[nextIndex] = true; // Enable the next tab
+      this.selectedTabIndex = nextIndex; // Move to the next tab
+      }
     } else {
       console.log('Form is invalid');
     }
