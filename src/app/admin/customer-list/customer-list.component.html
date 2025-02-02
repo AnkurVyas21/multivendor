@@ -12,7 +12,7 @@
     <!-- Table to display test drive requests -->
   <div class="container mt-4">
     <div class="table-wrapper">
-      <table mat-table [dataSource]="requests" class="table table-bordered table-hover">
+      <table mat-table [dataSource]="requests" class="table table-bordered table-hover" (click)="navigateToCustomer()">
   
         <!-- ID Column -->
         <ng-container matColumnDef="id">

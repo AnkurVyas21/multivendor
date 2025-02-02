@@ -51,6 +51,13 @@ export class AdminDialogComponent {
     { name: 'Trunk Light', control: 'convenienceTrunkLight' }  
   ];  
 
+  banner1: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9T_6u1r7UkktHqK7BXzWXHCYIk7uayFCNyA&s'; // Placeholder for Banner 1
+  banner2: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9T_6u1r7UkktHqK7BXzWXHCYIk7uayFCNyA&s'; // Placeholder for Banner 2
+
+  categories = ['Sedan', 'Hatchback', 'SUV', 'Coupe', 'Convertible'];
+  selectedCategory: string = this.categories[0]; // Default selection
+  commission: number = 5000;
+
   constructor(  
     private fb: FormBuilder,  
     public dialogRef: MatDialogRef<AdminDialogComponent>,  
@@ -119,4 +126,23 @@ export class AdminDialogComponent {
   onSubmit() {  
     console.log(this.carForm.value);  
   }  
+
+  onImageChange(event: any, bannerNumber: number) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        if (bannerNumber === 1) {
+          this.banner1 = e.target.result;
+        } else {
+          this.banner2 = e.target.result;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  updateCommission() {
+    alert(`Commission for ${this.selectedCategory} updated to ₹${this.commission}`);
+  }
 }  

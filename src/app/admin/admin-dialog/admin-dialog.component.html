@@ -1,4 +1,6 @@
-<div style="text-align: center;">
+
+<div *ngIf="data.type=='addcar'">
+  <div style="text-align: center;">
     <h2 mat-dialog-title>Enter Car Details</h2>
 </div>
 
@@ -165,3 +167,62 @@
 
   <button mat-raised-button type="submit" [disabled]="carForm.invalid">Submit</button>  
 </form>  
+</div>
+
+<div *ngIf="data.type=='updateBanner'">
+  <h2 class="text-center">Update Banners</h2>
+
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Banner 1 -->
+      <div class="col-md-6">
+        <div class="mb-3 text-center">
+          <label for="banner1" class="form-label">Banner 1</label>
+          <img [src]="banner1" alt="Banner 1" class="img-thumbnail" width="200">
+          <input type="file" id="banner1" class="form-control mt-2" (change)="onImageChange($event, 1)">
+        </div>
+      </div>
+  
+      <!-- Banner 2 -->
+      <div class="col-md-6">
+        <div class="mb-3 text-center">
+          <label for="banner2" class="form-label">Banner 2</label>
+          <img [src]="banner2" alt="Banner 2" class="img-thumbnail" width="200">
+          <input type="file" id="banner2" class="form-control mt-2" (change)="onImageChange($event, 2)">
+        </div>
+      </div>
+    </div>
+  
+    <!-- Save and Close buttons -->
+    <div class="text-center mt-4">
+      <button class="btn btn-success me-2" data-bs-dismiss="modal">Save Changes</button>
+      <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+  
+</div>
+
+<div *ngIf="data.type=='updateCommission'">
+  <h2 class="text-center">Update Car Commission</h2>
+
+  <div class="container mt-4">
+    <div class="form-group">
+      <label for="category">Select Car Category</label>
+      <select id="category" class="form-control" [(ngModel)]="selectedCategory">
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+  
+    <div class="form-group mt-4">
+      <label for="commission">Set Commission (₹)</label>
+      <input type="number" id="commission" class="form-control" [(ngModel)]="commission" min="1000">
+    </div>
+  
+    <!-- Save and Close buttons -->
+    <div class="text-center mt-4">
+      <button class="btn btn-success" (click)="updateCommission()">Save Changes</button>
+      <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+  
+</div>

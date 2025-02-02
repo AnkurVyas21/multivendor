@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -184,6 +185,11 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
   filteredRequests = this.requests;
 
+  constructor(public router:Router)
+  {
+
+  }
+
   onSearch() {
     const query = this.searchQuery.toLowerCase();
     this.filteredRequests = this.requests.filter(
@@ -200,5 +206,10 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
   decline(element: any) {
     alert(`Declined: ${element.name}`);
+  }
+
+  navigateToCustomer()
+  {
+    this.router.navigate(['admin/customer-details/25'])
   }
 }

@@ -1,0 +1,41 @@
+<div class="container mt-4">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h3>Vendor Details</h3>
+      </div>
+      <div class="card-body">
+        <div *ngIf="vendor; else noVendor">
+          <p><strong>Name:</strong> {{ vendor.name }}</p>
+          <p><strong>Email:</strong> {{ vendor.email }}</p>
+          <p>
+            <strong>Status:</strong>
+            <span class="badge" [ngClass]="getStatusClass(vendor.status)">{{ vendor.status }}</span>
+          </p>
+          <p><strong>Total Listings:</strong> {{ vendor.totalListings }}</p>
+  
+          <!-- Editable Commission Field -->
+          <p>
+            <strong>Commissions Paid:</strong>
+            ₹<input type="number" [(ngModel)]="vendor.commissionsPaid" class="form-control d-inline w-25 ms-2" />
+            <button class="btn btn-sm btn-primary ms-2" (click)="updateCommission()">Save</button>
+          </p>
+  
+          <div class="mt-4">
+            <button class="btn btn-success me-2" (click)="approveVendor()" [disabled]="vendor.status === 'Approved'">
+              Approve
+            </button>
+            <button class="btn btn-warning me-2" (click)="suspendVendor()" [disabled]="vendor.status === 'Suspended'">
+              Suspend
+            </button>
+            <button class="btn btn-danger" (click)="removeVendor()">Remove</button>
+          </div>
+        </div>
+  
+        <!-- Show this if vendor is removed -->
+        <ng-template #noVendor>
+          <p class="text-danger">Vendor not found or removed.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  

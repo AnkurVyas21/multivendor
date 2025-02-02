@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-vendor-list',
@@ -176,10 +177,15 @@ export class VendorListComponent {
 }
 ]
 
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license'];
+displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license', 'actions'];
 
 
   filteredRequests = this.requests;
+
+  constructor(public router:Router)
+  {
+
+  }
 
   onSearch() {
     const query = this.searchQuery.toLowerCase();
@@ -197,5 +203,9 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
   decline(element: any) {
     alert(`Declined: ${element.name}`);
+  }
+
+  navigateToDetails(){
+    this.router.navigate(['admin/vendor-details/25'])
   }
 }

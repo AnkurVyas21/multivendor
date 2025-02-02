@@ -20,7 +20,7 @@
         <li *ngIf="userType!='superAdmin'" [routerLink]="['/admin/add-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add Cars</li>
         <li *ngIf="userType!='superAdmin'" [routerLink]="['/admin/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
         <li [routerLink]="['/admin/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Car List</li>
-        <li *ngIf="userType=='superAdmin'" [routerLink]="['/admin/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Vendor List</li>
+        <li *ngIf="userType=='superAdmin'" [routerLink]="['/admin/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Vendor Management</li>
         <li  [routerLink]="['/admin/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Customer List</li>
         <li [routerLink]="['/admin/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Transactions</li>
       </ul>

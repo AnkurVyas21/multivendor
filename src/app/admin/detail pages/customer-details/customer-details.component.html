@@ -1,0 +1,51 @@
+<div class="container mt-4">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h3>Customer Details</h3>
+      </div>
+      <div class="card-body" *ngIf="customer; else noCustomer">
+        <p><strong>Name:</strong> {{ customer.name }}</p>
+        <p><strong>Email:</strong> {{ customer.email }}</p>
+        <p>
+          <strong>Status:</strong>
+          <span class="badge" [ngClass]="getStatusClass(customer.status)">{{ customer.status }}</span>
+        </p>
+  
+        <!-- Customer Inquiries -->
+        <h5 class="mt-3">Inquiries</h5>
+        <table class="table table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Car Model</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inquiry of customer.inquiries">
+              <td>{{ inquiry.car }}</td>
+              <td>{{ inquiry.date }}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <!-- Purchased Cars -->
+        <h5 class="mt-3">Purchased Cars</h5>
+        <ul>
+          <li *ngFor="let car of customer.purchasedCars">{{ car }}</li>
+        </ul>
+  
+        <div class="mt-4">
+          <button class="btn btn-warning me-2" (click)="suspendUser()" [disabled]="customer.status === 'Suspended'">
+            Suspend
+          </button>
+          <button class="btn btn-danger" (click)="removeUser()">Remove</button>
+        </div>
+      </div>
+  
+      <!-- Show this if customer is removed -->
+      <ng-template #noCustomer>
+        <p class="text-danger">Customer not found or removed.</p>
+      </ng-template>
+    </div>
+  </div>
+  

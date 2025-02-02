@@ -1,45 +1,58 @@
 <div class="dashboard-container">
     <h2>Admin Dashboard</h2>
   
-    <div class="dashboard-stats" style="display: flex;flex-wrap: wrap;">
-      <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
-        <div class="card-body">
-          <h5 class="card-title">Total Cars Buys</h5>
-          <p class="card-text">{{ totalCarBuy }}  </p>
-          <a href="#" class="btn btn-primary">Learn More</a>
+    <div>
+      <div style="display: flex;gap: 10px;">
+        <button (click)="openImageDialog('updateCommission')">Set Commission</button>
+        <button (click)="openImageDialog('updateBanner')">Set Advertise Banner</button>
+      </div>
+      <div class="dashboard-stats" style="display: flex;flex-wrap: wrap;">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title">Total Vendors</h5>
+            <p class="card-text">{{ totalCarBuy }}  </p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+  
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title">Total Users</h5>
+            <p class="card-text">{{ totalCarBuy }}  </p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+  
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title">Total Cars listed</h5>
+            <p class="card-text">{{ totalCarBuy }}  </p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+  
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title">Pending approval</h5>
+            <p class="card-text">{{ totalCarBuy }}  </p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+  
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title">Total Commission Earned</h5>
+            <p class="card-text">{{ totalTestDrives }}</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
         </div>
       </div>
-
-      <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
-        <div class="card-body">
-          <h5 class="card-title">Total Test Drives</h5>
-          <p class="card-text">{{ totalTestDrives }}</p>
-          <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-      </div>
-
-
-      <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
-        <div class="card-body">
-          <h5 class="card-title">Total Users</h5>
-          <p class="card-text">{{ totalUsers }}</p>
-          <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-      </div>
-
-
-      <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
-        <div class="card-body">
-          <h5 class="card-title">Chart will come here</h5>
-          <p class="card-text">{{ totalUsers }}</p>
-          <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-      </div>
-    
     </div>
+   
   </div>
   

@@ -22,6 +22,8 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { VendorListComponent } from './vendor-list/vendor-list.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { VendorDetailsComponent } from "./detail pages/vendor-details/vendor-details.component";
+import { CustomerDetailsComponent } from "./detail pages/customer-details/customer-details.component";
 
 @NgModule({
     declarations:[
@@ -35,6 +37,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     TransactionsComponent,
     VendorListComponent,
     CustomerListComponent,
+    VendorDetailsComponent,
+    CustomerDetailsComponent,
   ],
   imports:[
     FormsModule,

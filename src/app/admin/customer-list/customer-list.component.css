@@ -51,6 +51,7 @@
   
   td {
     background: #fff; /* Ensure rows are visible properly */
+    cursor: pointer;
   }
   
   tr:hover {

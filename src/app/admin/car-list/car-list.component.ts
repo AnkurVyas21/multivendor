@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 export class CarListComponent {
 
-
   searchQuery: string = '';
   requests = [
     {
@@ -178,7 +177,7 @@ export class CarListComponent {
 }
 ]
 
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license'];
+displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license', 'actions'];
 
 
   filteredRequests = this.requests;
@@ -201,4 +200,5 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
     alert(`Declined: ${element.name}`);
   }
 }
+
 
