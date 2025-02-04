@@ -33,6 +33,15 @@ import { MatInputModule } from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs'
 import { MatSelectModule} from '@angular/material/select'
 import {MatCheckboxModule} from '@angular/material/checkbox'
+import { TrendingCarsComponent } from './home/trending-cars/trending-cars.component';
+import { RecentlyAddedCarsComponent } from './home/recently-added-cars/recently-added-cars.component';
+import { ExploreAllCarsComponent } from './home/explore-all-cars/explore-all-cars.component';
+import { ExploreOurCarsComponent } from './home/explore-our-cars/explore-our-cars.component';
+import { SearchAndBannerComponent } from './home/search-and-banner/search-and-banner.component';
+import { ShopByBrandComponent } from './home/shop-by-brand/shop-by-brand.component';
+import { WebsiteFeaturesCardsComponent } from './home/website-features-cards/website-features-cards.component';
+import { SellOrBuycarsCardsComponent } from './home/sell-or-buycars-cards/sell-or-buycars-cards.component';
+import { ContactUsBannerComponent } from './home/contact-us-banner/contact-us-banner.component';
 
 
 @NgModule({
@@ -56,6 +65,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox'
     HotDealComponent,
     AdminComponent,
     ProfilePageComponent,
+    TrendingCarsComponent,
+    RecentlyAddedCarsComponent,
+    ExploreAllCarsComponent,
+    ExploreOurCarsComponent,
+    SearchAndBannerComponent,
+    ShopByBrandComponent,
+    WebsiteFeaturesCardsComponent,
+    SellOrBuycarsCardsComponent,
+    ContactUsBannerComponent
 
   ],
   imports: [

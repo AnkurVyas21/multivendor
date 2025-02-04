@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  selector: 'app-contact-us-banner',
+  templateUrl: './contact-us-banner.component.html',
+  styleUrls: ['./contact-us-banner.component.css']
 })
-export class ContactComponent {
+export class ContactUsBannerComponent {
+
   buyCarForm: FormGroup;
 
   constructor(private fb: FormBuilder) {

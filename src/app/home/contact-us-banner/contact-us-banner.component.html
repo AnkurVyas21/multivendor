@@ -1,0 +1,39 @@
+<div class="widget-form-buy-car mg-2">
+    <div class="themesflat-container">
+        <div class="form-buy-car-wrap">
+            <div class="form-buy-car-content">
+                <div class="buy-car">Buy a car today</div>
+                <div class="buy-car-ab">Buy a car today</div>
+            </div>
+            <div class="form-buy-car-form">
+                <div class="title">Contact us Today</div>
+                <p class="description">Your email address will not be published.</p>
+                <form [formGroup]="buyCarForm" (ngSubmit)="onSubmit()" class="form-buy-car">
+                    <input type="text" formControlName="fullName" class="input-buy-car" placeholder="Full Name here" />
+                    <div *ngIf="buyCarForm.get('fullName')?.invalid && buyCarForm.get('fullName')?.touched" class="error-message">
+                      Full Name is required.
+                    </div>
+                  
+                    <input type="email" formControlName="email" class="input-buy-car" placeholder="Email Address" />
+                    <div *ngIf="buyCarForm.get('email')?.invalid && buyCarForm.get('email')?.touched" class="error-message">
+                      Enter a valid email.
+                    </div>
+                  
+                    <input type="tel" formControlName="phone" class="input-buy-car" placeholder="Phone Number" />
+                    <div *ngIf="buyCarForm.get('phone')?.invalid && buyCarForm.get('phone')?.touched" class="error-message">
+                      Phone number should be 10 digits.
+                    </div>
+                  
+                    <textarea formControlName="message" class="input-buy-car" placeholder="Write Message....."></textarea>
+                    <div *ngIf="buyCarForm.get('message')?.invalid && buyCarForm.get('message')?.touched" class="error-message">
+                      Message is required.
+                    </div>
+                  
+                    <button type="submit" [disabled]="buyCarForm.invalid">Send message</button>
+                  </form>
+                  
+                
+            </div>
+        </div>
+    </div>
+</div>

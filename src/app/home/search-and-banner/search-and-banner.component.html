@@ -1,0 +1,58 @@
+<div class="tf-slide-form">
+    <div class="themesflat-container">
+        <div class="row car-listing-list justify-content-center" bis_skin_checked="1">
+            <div class="col-md-10 col-lg-10" bis_skin_checked="1">
+                <div class="search-filter-listing-car" bis_skin_checked="1">
+                    <form id="filter-list-car-side-bar" class="list-filter" action="/">
+                        <div class="form-group" bis_skin_checked="1">
+                            <div class="input-search-list searchFilter" bis_skin_checked="1">
+                                <div class="input-search-list " style="position: relative; width: 72%;">
+                                    <input 
+                                      type="search"
+                                      class="form-control"
+                                      style="width: 100%; padding: 10px;"
+                                      placeholder="Search by make, model, or keyword"
+                                      [formControl]="searchControl"
+                                      (input)="filterOptions()"
+                                      (focus)="showDropdown = true"
+                                      (blur)="hideDropdownWithDelay()"
+                                    />
+                                    
+                                    <!-- Autocomplete Dropdown -->
+                                    <ul *ngIf="showDropdown" class="autocomplete-list">
+                                      <li *ngFor="let option of filteredOptions" (click)="selectOption(option)">
+                                        {{ option }}
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  
+                                <span class="input-group-text searchFilter " id="search-addon">
+                                    <div class="btn-main" bis_skin_checked="1">
+                                        <a href="search-result.html" class="button_main_inner" bis_skin_checked="1">
+                                            <span>Search</span>
+                                        </a>
+                                    </div>
+                                    <div class="btn-main"  bis_skin_checked="1">
+                                        <a (click)="openFilterDialog()" class="button_main_inner"  bis_skin_checked="1">
+                                            <i  class="fa-solid fa-filter"> </i><span> Filter</span>
+                                        </a>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="slide-form t-al-center">
+            <span class="wow fadeInUp" data-wow-delay="100ms"
+            data-wow-duration="2000ms">Save up to <span class="text-red">15%</span></span>
+            <h1 class="wow fadeInUp" data-wow-delay="300ms"
+            data-wow-duration="2000ms">Find <span class="text-red">Perfect</span> Car. Let’s Go!</h1>
+            <p class="wow fadeInUp" data-wow-delay="600ms"
+            data-wow-duration="2000ms">Unlimited mileage · No hidden fees · Free cancellation</p>                  
+        </div>
+        <!-- Tab -->
+        <!-- Tab -->
+    </div>
+</div>

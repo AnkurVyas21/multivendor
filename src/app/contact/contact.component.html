@@ -31,73 +31,37 @@
                         <div class="col-lg-12" bis_skin_checked="1">
                             <div class="p-3 p-sm-4 p-md-5" bis_skin_checked="1">
                                 <!-- Title -->
-                                <h2 class="mb-2 fs-2">Create New Account</h2>
-                                <p class="mb-0">Already a Member?<a href="/login" class="fw-medium text-primary"> Signin</a></p>
+                                <h2 class="mb-2 fs-2">Contact Us</h2>
 
                                 <!-- Form START -->
-                                <form class="mt-4 text-start" [formGroup]="registeForm" (ngSubmit)="registerUserFormSubmit()">
-                                    <div class="form py-4" bis_skin_checked="1">
-                                      <!-- First Name -->
-                                      <div class="form-group mb-4" bis_skin_checked="1">
-                                        <label class="form-label">Enter First Name</label>
-                                        <input type="text" class="form-control" formControlName="firstName" placeholder="Enter your first name here">
+                                <div class="form-buy-car-form">
+                                  <p class="description">Your email address will not be published.</p>
+                                  <form [formGroup]="buyCarForm" (ngSubmit)="onSubmit()" class="form-buy-car">
+                                      <input type="text" formControlName="fullName" class="input-buy-car" placeholder="Full Name here" />
+                                      <div *ngIf="buyCarForm.get('fullName')?.invalid && buyCarForm.get('fullName')?.touched" class="error-message">
+                                        Full Name is required.
                                       </div>
+                                    
+                                      <input type="email" formControlName="email" class="input-buy-car" placeholder="Email Address" />
+                                      <div *ngIf="buyCarForm.get('email')?.invalid && buyCarForm.get('email')?.touched" class="error-message">
+                                        Enter a valid email.
+                                      </div>
+                                    
+                                      <input type="tel" formControlName="phone" class="input-buy-car" placeholder="Phone Number" />
+                                      <div *ngIf="buyCarForm.get('phone')?.invalid && buyCarForm.get('phone')?.touched" class="error-message">
+                                        Phone number should be 10 digits.
+                                      </div>
+                                    
+                                      <textarea formControlName="message" class="input-buy-car" placeholder="Write Message....."></textarea>
+                                      <div *ngIf="buyCarForm.get('message')?.invalid && buyCarForm.get('message')?.touched" class="error-message">
+                                        Message is required.
+                                      </div>
+                                    
+                                      <button type="submit" [disabled]="buyCarForm.invalid">Send message</button>
+                                    </form>
+                                    
                                   
-                                      <!-- Last Name -->
-                                      <div class="form-group mb-4" bis_skin_checked="1">
-                                        <label class="form-label">Enter Last Name</label>
-                                        <input type="text" class="form-control" formControlName="lastName" placeholder="Enter your last name here">
-                                      </div>
-                                  
-                                      <!-- Email -->
-                                      <div class="form-group mb-4" bis_skin_checked="1">
-                                        <label class="form-label">Enter Email ID</label>
-                                        <input type="email" class="form-control" formControlName="email" placeholder="name@example.com">
-                                      </div>
-                                  
-                                      <!-- Phone Number -->
-                                      <div class="form-group mb-4" bis_skin_checked="1">
-                                        <label class="form-label">Enter Phone Number</label>
-                                        <input type="tel" autocomplete="tel" maxlength="10" class="form-control" placeholder="Enter your phone number here">
-                                      </div>
-                                  
-                                      <!-- Date of Birth -->
-                                      <div class="form-group mb-4" bis_skin_checked="1">
-                                        <label class="form-label">Enter Date of Birth</label>
-                                        <input type="date" class="form-control" formControlName="DOB" placeholder="Select your date of birth">
-                                      </div>
-                                  
-                                      <!-- Password -->
-                                      <div class="form-group mb-4" bis_skin_checked="1">
-                                        <label class="form-label">Enter Password</label>
-                                        <div class="position-relative" bis_skin_checked="1">
-                                          <input type="password" class="form-control" id="password-field" formControlName="password" placeholder="Password">
-                                          <span class="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"></span>
-                                        </div>
-                                      </div>
-                                  
-                                      <!-- Confirm Password -->
-                                      <div class="form-group mb-4" bis_skin_checked="1">
-                                        <label class="form-label">Confirm Password</label>
-                                        <input type="password" class="form-control" formControlName="confirmPassword" placeholder="*********">
-                                      </div>
-                                  
-                                      <!-- Submit Button -->
-                                      <div class="form-group mb-4" bis_skin_checked="1">
-                                        <button type="submit" class="btn-sell full-width w-100 text-center btn-lg">Create An Account</button>
-                                      </div>
-                                  
-                                      <!-- Checkbox -->
-                                      <div class="modal-flex-item d-flex align-items-center justify-content-between mb-3" bis_skin_checked="1">
-                                        <div class="modal-flex-first" bis_skin_checked="1">
-                                          <div class="form-check form-check-inline" bis_skin_checked="1">
-                                            <input class="form-check-input" formControlName="keepSignIn" type="checkbox" id="savepassword" value="option1">
-                                            <label class="form-check-label" for="savepassword">Keep me signed in</label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </form>
+                              </div>
                                   
                                 <!-- Form END -->
                             </div>

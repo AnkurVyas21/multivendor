@@ -1,0 +1,17 @@
+<div class="widget-explore-car">
+    <div class="themesflat-container">
+        <div class="explore-car-wrap">
+            <ng-content></ng-content>
+
+         
+            <div class="box-car-wrap">
+                <a *ngFor="let car of cars" href="shop.html" class="box-car-item">
+                    <div class="image-car">
+                        <img [src]="car.image" alt="{{car.name}}">
+                    </div>
+                    <span>{{ car.name }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

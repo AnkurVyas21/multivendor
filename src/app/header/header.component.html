@@ -54,20 +54,20 @@
                             <div class="nav-outer flex align-center">
                                 <!-- Main Menu -->
                                 <nav class="main-menu show navbar-expand-md" *ngIf="!isAdmin && isLogin">
-                                    <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                                        <ul class="navigation clearfix">
-                                            <li><a href="/Home">Home</a>
-                                            <li><a [routerLink]="'/Aboutus'">About Us</a>
-                                            <li><a [routerLink]="'/shop'">Our Shop</a>
-                                                <li><a href="/hotDeal">Hot Deals</a>
-                                                    <li><a href="#">News & Videos</a>
-                                            <li><a href="/contact">Contact</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                  <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                    <ul class="navigation clearfix">
+                                      <li><a [routerLink]="'/Home'" routerLinkActive="active-link">Home</a></li>
+                                      <li><a [routerLink]="'/Aboutus'" routerLinkActive="active-link">About Us</a></li>
+                                      <li><a [routerLink]="'/shop'" routerLinkActive="active-link">Our Shop</a></li>
+                                      <li><a [routerLink]="'/hotDeal'" routerLinkActive="active-link">Hot Deals</a></li>
+                                      <li><a [routerLink]="'/newsAndVideos'" routerLinkActive="active-link">News & Videos</a></li>
+                                      <li><a [routerLink]="'/contact'" routerLinkActive="active-link">Contact</a></li>
+                                    </ul>
+                                  </div>
                                 </nav>
                                 <!-- Main Menu End-->
-                            </div>
+                              </div>
+                              
                             <div class="header-account flex align-center">            
                                 <div class="register ml--18" *ngIf="isLogin">
                                     <ul class="icon-topbar-nav">
