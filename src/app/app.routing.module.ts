@@ -15,6 +15,7 @@ import { HotDealComponent } from "./hot-deal/hot-deal.component";
 import { ProfilePageComponent } from "./profile-page/profile-page.component";
 import { AuthGuard } from "./services/authGuard/auth.guard";
 import { AdminAuthGuard } from "./services/authGuard/adminAuth.guard";
+import { NewsVideosComponent } from "./news-videos/news-videos.component";
 
 const routes: Routes = [
   {
@@ -60,6 +61,9 @@ const routes: Routes = [
   },
   {
     path: 'contact', component: ContactComponent , canActivate: [AuthGuard] 
+  },
+  {
+    path: 'news', component: NewsVideosComponent , canActivate: [AuthGuard] 
   },
   {
     path: 'hotDeal', component: HotDealComponent , canActivate: [AuthGuard] 

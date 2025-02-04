@@ -42,6 +42,7 @@ import { ShopByBrandComponent } from './home/shop-by-brand/shop-by-brand.compone
 import { WebsiteFeaturesCardsComponent } from './home/website-features-cards/website-features-cards.component';
 import { SellOrBuycarsCardsComponent } from './home/sell-or-buycars-cards/sell-or-buycars-cards.component';
 import { ContactUsBannerComponent } from './home/contact-us-banner/contact-us-banner.component';
+import { NewsVideosComponent } from './news-videos/news-videos.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { ContactUsBannerComponent } from './home/contact-us-banner/contact-us-ba
     ShopByBrandComponent,
     WebsiteFeaturesCardsComponent,
     SellOrBuycarsCardsComponent,
-    ContactUsBannerComponent
+    ContactUsBannerComponent,
+    NewsVideosComponent
 
   ],
   imports: [

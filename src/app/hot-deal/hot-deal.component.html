@@ -16,6 +16,7 @@
         </div>
     </div>
 </div>
+
 <div class="widget-car-listing-list" bis_skin_checked="1">
     <div class="themesflat-container" bis_skin_checked="1">
         <div class="row car-listing-list" bis_skin_checked="1">
@@ -46,474 +47,60 @@
                 <div class="tab-content" id="nav-listing-car" bis_skin_checked="1">
                     <div class="tab-pane fade active show" id="all" role="tabpanel" aria-labelledby="all-tab" tabindex="0" bis_skin_checked="1">
                         <div class="listing-list-car-grid" bis_skin_checked="1">
-                            <div class="listing-grid-item" bis_skin_checked="1">
-                                <div class="listing-item-image" bis_skin_checked="1">
-                                    <div class="hover-listing-image" bis_skin_checked="1">
-                                        <div class="wrap-hover-listing" bis_skin_checked="1">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car5.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car11.jpg" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car12.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit" bis_skin_checked="1">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing" bis_skin_checked="1">
-                                                <div class="bl-item active" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                            </div>
-                                        </div>
+                            <div class="listing-grid-item" *ngFor="let car of cars" bis_skin_checked="1">
+                              <div class="listing-item-image" bis_skin_checked="1">
+                                <div class="hover-listing-image" bis_skin_checked="1">
+                                  <div class="wrap-hover-listing" bis_skin_checked="1">
+                                    <div class="listing-item active" [title]="car.title" bis_skin_checked="1">
+                                      <div class="images" bis_skin_checked="1">
+                                        <img [src]="car.images[0]" class="swiper-image tfcl-light-gallery" alt="images">
+                                      </div>
                                     </div>
-                                    <a href="watchlist.html" class="icon-favorite">
-                                        <i class="icon-heart-1-1"></i>
+                                    <div class="listing-item" [title]="car.title" bis_skin_checked="1">
+                                      <div class="images" bis_skin_checked="1">
+                                        <img [src]="car.images[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
+                                      </div>
+                                    </div>
+                                    <div class="listing-item view-gallery" [title]="car.title" bis_skin_checked="1">
+                                      <div class="images" bis_skin_checked="1">
+                                        <img [src]="car.images[2]" class="swiper-image tfcl-light-gallery" alt="images">
+                                        <div class="overlay-limit" bis_skin_checked="1">
+                                          <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
+                                          <p>2 more photos</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="bullet-hover-listing" bis_skin_checked="1">
+                                      <div class="bl-item active" bis_skin_checked="1"></div>
+                                      <div class="bl-item" bis_skin_checked="1"></div>
+                                      <div class="bl-item" bis_skin_checked="1"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <a href="watchlist.html" class="icon-favorite">
+                                  <i class="icon-heart-1-1"></i>
+                                </a>
+                              </div>
+                              <div class="listing-item-content" bis_skin_checked="1">
+                                <div class="listing-top-content" bis_skin_checked="1">
+                                  <h6 class="title">
+                                    <a href="#"></a>
+                                    <a [routerLink]="car.detailLink">{{ car.title }}</a>
+                                  </h6>
+                                </div>
+                                <div class="bottom-price-wrap" bis_skin_checked="1">
+                                  <div class="price-wrap" bis_skin_checked="1">
+                                    <p class="price">{{ car.price }}</p>
+                                    <p class="price-sale">{{ car.priceSale }}</p>
+                                  </div>
+                                  <div class="btn-read-more" bis_skin_checked="1">
+                                    <a class="more-link" [routerLink]="car.detailLink">
+                                      <span>View details</span>
+                                      <i class="icon-arrow-right2"></i>
                                     </a>
+                                  </div>
                                 </div>
-                                <div class="listing-item-content" bis_skin_checked="1">
-                                    <div class="listing-top-content" bis_skin_checked="1">
-                                        <h6 class="title"><a href="#"></a><a href="/detail">Mercedez benz - c class</a></h6>
-                                    </div>
-                                    <div class="bottom-price-wrap" bis_skin_checked="1">
-                                        <div class="price-wrap" bis_skin_checked="1">
-                                            <p class="price">$489</p>
-                                            <p class="price-sale">$399</p>
-                                        </div>
-                                        <div class="btn-read-more" bis_skin_checked="1">
-                                            <a class="more-link" href="/detail">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="listing-grid-item" bis_skin_checked="1">
-                                <div class="listing-item-image" bis_skin_checked="1">
-                                    <div class="hover-listing-image" bis_skin_checked="1">
-                                        <div class="wrap-hover-listing" bis_skin_checked="1">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car16.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car11.jpg" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car12.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit" bis_skin_checked="1">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing" bis_skin_checked="1">
-                                                <div class="bl-item active" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="watchlist.html" class="icon-favorite">
-                                        <i class="icon-heart-1-1"></i>
-                                    </a>
-                                </div>
-                                <div class="listing-item-content" bis_skin_checked="1">
-                                    <div class="listing-top-content" bis_skin_checked="1">
-                                        <h6 class="title"><a href="/detail">Mercedez benz - c class</a></h6>
-                                    </div>
-                                    <div class="bottom-price-wrap" bis_skin_checked="1">
-                                        <div class="price-wrap" bis_skin_checked="1">
-                                            <p class="price">$489</p>
-                                            <p class="price-sale">$399</p>
-                                        </div>
-                                        <div class="btn-read-more" bis_skin_checked="1">
-                                            <a class="more-link" href="/detail">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="listing-grid-item" bis_skin_checked="1">
-                                <div class="listing-item-image" bis_skin_checked="1">
-                                    <div class="hover-listing-image" bis_skin_checked="1">
-                                        <div class="wrap-hover-listing" bis_skin_checked="1">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car23.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car11.jpg" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car12.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit" bis_skin_checked="1">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing" bis_skin_checked="1">
-                                                <div class="bl-item active" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="watchlist.html" class="icon-favorite">
-                                        <i class="icon-heart-1-1"></i>
-                                    </a>
-                                </div>
-                                <div class="listing-item-content" bis_skin_checked="1">
-                                    <div class="listing-top-content" bis_skin_checked="1">
-                                        <h6 class="title"><a href="/detail">Mercedez benz - c class</a></h6>
-                                    </div>
-                                    <div class="bottom-price-wrap" bis_skin_checked="1">
-                                        <div class="price-wrap" bis_skin_checked="1">
-                                            <p class="price">$489</p>
-                                            <p class="price-sale">$399</p>
-                                        </div>
-                                        <div class="btn-read-more" bis_skin_checked="1">
-                                            <a class="more-link" href="/detail">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="listing-grid-item" bis_skin_checked="1">
-                                <div class="listing-item-image" bis_skin_checked="1">
-                                    <div class="hover-listing-image" bis_skin_checked="1">
-                                        <div class="wrap-hover-listing" bis_skin_checked="1">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car8.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car11.jpg" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car12.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit" bis_skin_checked="1">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing" bis_skin_checked="1">
-                                                <div class="bl-item active" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="watchlist.html" class="icon-favorite">
-                                        <i class="icon-heart-1-1"></i>
-                                    </a>
-                                    <span class="feature">Featured</span>
-                                </div>
-                                <div class="listing-item-content" bis_skin_checked="1">
-                                    <div class="listing-top-content" bis_skin_checked="1">
-                                        <h6 class="title"><a href="/detail">Mercedez benz - c class</a></h6>
-                                    </div>
-                                    <div class="bottom-price-wrap" bis_skin_checked="1">
-                                        <div class="price-wrap" bis_skin_checked="1">
-                                            <p class="price">$489</p>
-                                            <p class="price-sale">$399</p>
-                                        </div>
-                                        <div class="btn-read-more" bis_skin_checked="1">
-                                            <a class="more-link" href="/detail">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="listing-grid-item" bis_skin_checked="1">
-                                <div class="listing-item-image" bis_skin_checked="1">
-                                    <div class="hover-listing-image" bis_skin_checked="1">
-                                        <div class="wrap-hover-listing" bis_skin_checked="1">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car17.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car11.jpg" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car12.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit" bis_skin_checked="1">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing" bis_skin_checked="1">
-                                                <div class="bl-item active" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="watchlist.html" class="icon-favorite">
-                                        <i class="icon-heart-1-1"></i>
-                                    </a>
-                                </div>
-                                <div class="listing-item-content" bis_skin_checked="1">
-                                    <div class="listing-top-content" bis_skin_checked="1">
-                                        <h6 class="title"><a href="/detail">Mercedez benz - c class</a></h6>
-                                    </div>
-                                    <div class="bottom-price-wrap" bis_skin_checked="1">
-                                        <div class="price-wrap" bis_skin_checked="1">
-                                            <p class="price">$489</p>
-                                            <p class="price-sale">$399</p>
-                                        </div>
-                                        <div class="btn-read-more" bis_skin_checked="1">
-                                            <a class="more-link" href="/detail">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="listing-grid-item" bis_skin_checked="1">
-                                <div class="listing-item-image" bis_skin_checked="1">
-                                    <div class="hover-listing-image" bis_skin_checked="1">
-                                        <div class="wrap-hover-listing" bis_skin_checked="1">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car21.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car11.jpg" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car12.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit" bis_skin_checked="1">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing" bis_skin_checked="1">
-                                                <div class="bl-item active" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="watchlist.html" class="icon-favorite">
-                                        <i class="icon-heart-1-1"></i>
-                                    </a>
-                                </div>
-                                <div class="listing-item-content" bis_skin_checked="1">
-                                    <div class="listing-top-content" bis_skin_checked="1">
-                                        <h6 class="title"><a href="/detail">Mercedez benz - c class</a></h6>
-                                    </div>
-                                    <div class="bottom-price-wrap" bis_skin_checked="1">
-                                        <div class="price-wrap" bis_skin_checked="1">
-                                            <p class="price">$489</p>
-                                            <p class="price-sale">$399</p>
-                                        </div>
-                                        <div class="btn-read-more" bis_skin_checked="1">
-                                            <a class="more-link" href="/detail">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="listing-grid-item" bis_skin_checked="1">
-                                <div class="listing-item-image" bis_skin_checked="1">
-                                    <div class="hover-listing-image" bis_skin_checked="1">
-                                        <div class="wrap-hover-listing" bis_skin_checked="1">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car9.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car11.jpg" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car12.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit" bis_skin_checked="1">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing" bis_skin_checked="1">
-                                                <div class="bl-item active" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="icon-favorite">
-                                        <i class="icon-heart-1-1"></i>
-                                    </a>
-                                </div>
-                                <div class="listing-item-content" bis_skin_checked="1">
-                                    <div class="listing-top-content" bis_skin_checked="1">
-                                        <h6 class="title"><a href="#">Mercedez benz - c class</a></h6>
-                                    </div>
-                                    <div class="bottom-price-wrap" bis_skin_checked="1">
-                                        <div class="price-wrap" bis_skin_checked="1">
-                                            <p class="price">$489</p>
-                                            <p class="price-sale">$399</p>
-                                        </div>
-                                        <div class="btn-read-more" bis_skin_checked="1">
-                                            <a class="more-link" href="/detail">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="listing-grid-item" bis_skin_checked="1">
-                                <div class="listing-item-image" bis_skin_checked="1">
-                                    <div class="hover-listing-image" bis_skin_checked="1">
-                                        <div class="wrap-hover-listing" bis_skin_checked="1">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car18.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car11.jpg" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car12.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit" bis_skin_checked="1">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing" bis_skin_checked="1">
-                                                <div class="bl-item active" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="icon-favorite">
-                                        <i class="icon-heart-1-1"></i>
-                                    </a>
-                                </div>
-                                <div class="listing-item-content" bis_skin_checked="1">
-                                    <div class="listing-top-content" bis_skin_checked="1">
-                                        <h6 class="title"><a href="#">Mercedez benz - c class</a></h6>
-                                    </div>
-                                    <div class="bottom-price-wrap" bis_skin_checked="1">
-                                        <div class="price-wrap" bis_skin_checked="1">
-                                            <p class="price">$489</p>
-                                            <p class="price-sale">$399</p>
-                                        </div>
-                                        <div class="btn-read-more" bis_skin_checked="1">
-                                            <a class="more-link" href="/detail">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="listing-grid-item" bis_skin_checked="1">
-                                <div class="listing-item-image" bis_skin_checked="1">
-                                    <div class="hover-listing-image" bis_skin_checked="1">
-                                        <div class="wrap-hover-listing" bis_skin_checked="1">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car21.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car11.jpg" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024" bis_skin_checked="1">
-                                                <div class="images" bis_skin_checked="1">
-                                                    <img src="./assets/images/car-list/car12.jpg" class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit" bis_skin_checked="1">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing" bis_skin_checked="1">
-                                                <div class="bl-item active" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                                <div class="bl-item" bis_skin_checked="1"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="icon-favorite">
-                                        <i class="icon-heart-1-1"></i>
-                                    </a>
-                                </div>
-                                <div class="listing-item-content" bis_skin_checked="1">
-                                    <div class="listing-top-content" bis_skin_checked="1">
-                                        <h6 class="title"><a href="#">Mercedez benz - c class</a></h6>
-                                    </div>
-                                    <div class="bottom-price-wrap" bis_skin_checked="1">
-                                        <div class="price-wrap" bis_skin_checked="1">
-                                            <p class="price">$489</p>
-                                            <p class="price-sale">$399</p>
-                                        </div>
-                                        <div class="btn-read-more" bis_skin_checked="1">
-                                            <a class="more-link" href="/detail">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                              </div>
                             </div>
                         </div>
                         <div class="tf-pagination" bis_skin_checked="1">
@@ -529,7 +116,14 @@
                             </a>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab" tabindex="0" bis_skin_checked="1">
+
+
+
+
+
+                    
+                    <!-- not in use currently  -->
+                    <div class="tab-pane fade " id="new" role="tabpanel" aria-labelledby="new-tab" tabindex="0" bis_skin_checked="1">
                         <div class="listing-list-car-grid" bis_skin_checked="1">
                             <div class="listing-grid-item" bis_skin_checked="1">
                                 <div class="listing-item-image" bis_skin_checked="1">

@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, startWith } from 'rxjs';
 import { register } from 'swiper/element/bundle';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import * as $ from 'jquery';
+
 // register Swiper custom elements
 register();
 
@@ -23,11 +25,14 @@ export class HomeComponent implements OnInit {
 
   }
   ngOnInit() {
+ 
+    
     setTimeout(() => {
       this.loader = false;
     }, 2000);
   }
   
+
  
 
 

@@ -7,4 +7,106 @@ import { Component } from '@angular/core';
 })
 export class HotDealComponent {
 
-}
+    cars = [
+      {
+        title: 'Mercedez benz - c class',
+        images: [
+          './assets/images/car-list/car5.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail'
+      },
+      {
+        title: 'Lexus LC Hybrid 2024',
+        images: [
+          './assets/images/car-list/car16.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail'
+      },
+      {
+        title: 'BMW X5 2024',
+        images: [
+          './assets/images/car-list/car23.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail'
+      },
+      {
+        title: 'Mercedez benz - c class',
+        images: [
+          './assets/images/car-list/car5.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail'
+      },
+      {
+        title: 'Lexus LC Hybrid 2024',
+        images: [
+          './assets/images/car-list/car16.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail'
+      },
+      {
+        title: 'BMW X5 2024',
+        images: [
+          './assets/images/car-list/car23.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail'
+      },
+      {
+        title: 'Mercedez benz - c class',
+        images: [
+          './assets/images/car-list/car5.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail'
+      },
+      {
+        title: 'Lexus LC Hybrid 2024',
+        images: [
+          './assets/images/car-list/car16.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail'
+      },
+      {
+        title: 'BMW X5 2024',
+        images: [
+          './assets/images/car-list/car23.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail'
+      }
+    ];
+  }
+  
