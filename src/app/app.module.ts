@@ -43,6 +43,8 @@ import { WebsiteFeaturesCardsComponent } from './home/website-features-cards/web
 import { SellOrBuycarsCardsComponent } from './home/sell-or-buycars-cards/sell-or-buycars-cards.component';
 import { ContactUsBannerComponent } from './home/contact-us-banner/contact-us-banner.component';
 import { NewsVideosComponent } from './news-videos/news-videos.component';
+import { VendorModule } from './vendor/vendor.module';
+import { VendorComponent } from './vendor/vendor/vendor.component';
 
 
 @NgModule({
@@ -55,7 +57,6 @@ import { NewsVideosComponent } from './news-videos/news-videos.component';
     RegisterComponent,
     ForgotComponent,
     CategoryComponent,
-    AddCarComponent,
     ListingdetailsComponent,
     SearchResultComponent,
     ShopComponent,
@@ -65,6 +66,7 @@ import { NewsVideosComponent } from './news-videos/news-videos.component';
     ContactComponent,
     HotDealComponent,
     AdminComponent,
+    VendorComponent,
     ProfilePageComponent,
     TrendingCarsComponent,
     RecentlyAddedCarsComponent,
@@ -86,6 +88,7 @@ import { NewsVideosComponent } from './news-videos/news-videos.component';
     BrowserAnimationsModule,
     FormsModule,
     adminModule,
+    VendorModule,
     MatMenuModule,
     MatRadioModule,
     MatAutocompleteModule,
@@ -96,6 +99,7 @@ import { NewsVideosComponent } from './news-videos/news-videos.component';
     MatSelectModule,
     MatCheckboxModule
   ],
+ 
   providers: [],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

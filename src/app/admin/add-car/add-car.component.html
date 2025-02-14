@@ -480,7 +480,8 @@
         </form> </mat-tab>
 
 
-        <mat-tab label="Car Media Features" [disabled]="!tabsAccess[3]">    <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormMedia" (ngSubmit)="onSubmit(carlistingFormMedia,4)">
+        <mat-tab label="Car Media Features" [disabled]="!tabsAccess[3]">    
+            <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormMedia" (ngSubmit)="onSubmit(carlistingFormMedia,4)">
             <fieldset id="upload-media" class="pd-bg">
                 <div class="inner-title mb-30" bis_skin_checked="1">
                     <span class="sub-title">Media</span>
@@ -554,7 +555,8 @@
             </fieldset></form> </mat-tab>
 
 
-        <mat-tab label="Location" [disabled]="!tabsAccess[4]">    <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormAddress" (ngSubmit)="onSubmit(carlistingFormAddress,5)">
+        <mat-tab label="Location" [disabled]="!tabsAccess[4]">   
+             <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormAddress" (ngSubmit)="onSubmit(carlistingFormAddress,5)">
          
             <fieldset id="location" class="pd-bg mb-60">
                 <div class="inner-title mb-30" bis_skin_checked="1">
@@ -570,9 +572,9 @@
                     </div>
                 </div>
                 <div class="form-group" bis_skin_checked="1">
-                    <label>Map Location</label>
+                    <label>City Name</label>
                     <div class="group-map-address-field" bis_skin_checked="1">
-                        <input class="address-searching " id="address-searching" type="text" value="" aria-invalid="false" formControlName="mapLocation">
+                        <input class="address-searching " id="address-searching" type="text" value="" aria-invalid="false" formControlName="cityName">
                         <button type="button" class="button-location">
                             <i class="icon-search-1"></i>
                         </button>

@@ -69,6 +69,17 @@
                               </div>
                               
                             <div class="header-account flex align-center">            
+                             
+                                <div class="flat-bt-top sc-btn-top ml--20 " *ngIf="userType!='user'">
+                                    <a class="btn-icon-list" href={{navigateOnVisitPage().path}} *ngIf="!isAdmin" target="_blank">
+                                        <span  >{{navigateOnVisitPage().showText}}</span>
+                                        <!-- <i class="icon-add-button-1"></i> -->
+                                    </a>
+                                    <a class="btn-icon-list" href="/home" *ngIf="isAdmin" target="_blank">
+                                        <span >Visit Shop Site</span>
+                                        <!-- <i class="icon-add-button-1"></i> -->
+                                    </a>
+                                </div>
                                 <div class="register ml--18" *ngIf="isLogin">
                                     <ul class="icon-topbar-nav">
                                         <li>
@@ -77,6 +88,7 @@
                                                 <!-- Dropdown Menu -->
                                                 <mat-menu #menu="matMenu">
                                                   <button  mat-menu-item (click)="navigateToProfile()">View Profile</button>
+                                                  <button mat-menu-item (click)="logout()">Reset Password</button>
                                                   <button mat-menu-item (click)="logout()">Logout</button>
                                                 </mat-menu>
                                               </div>
@@ -85,16 +97,6 @@
                                             <a [routerLink]="'/watchlist'"><i class="icon-heart-1-1"></i></a>
                                         </li>
                                     </ul>
-                                </div>
-                                <div class="flat-bt-top sc-btn-top ml--20 " *ngIf="userType!='user'">
-                                    <a class="btn-icon-list" href="/admin" *ngIf="!isAdmin" target="_blank">
-                                        <span  >Visit Vendor Site</span>
-                                        <!-- <i class="icon-add-button-1"></i> -->
-                                    </a>
-                                    <a class="btn-icon-list" href="/home" *ngIf="isAdmin" target="_blank">
-                                        <span >Visit Shop Site</span>
-                                        <!-- <i class="icon-add-button-1"></i> -->
-                                    </a>
                                 </div>
                             </div>
                         </div>

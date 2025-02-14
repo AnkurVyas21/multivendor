@@ -1,194 +1,141 @@
-/* Layout */
-.admin-layout {
-  display: flex;
-  height: 100vh;
-}
-
-.sidebar {
-  width: 260px;
-  background: linear-gradient(135deg, #3e7600, #2b5804);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* This ensures all children (like profile section) are centered */
-  justify-content: flex-start; /* Align items to the top */
-  padding: 20px 15px;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-  position: relative;
-  height: 100vh;
-  border-right: 2px solid #2c3e50;
-} 
-
-/* Profile Section */
-.profile-section {
-  text-align: center;
-  margin-bottom: 20px;
-  width: 100%; /* Ensure the profile section takes up the full width */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Vertically center the content */
-  align-items: center; /* Horizontally center the content */
-}
-
-/* Profile Picture */
-.profile-picture {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 3px solid #ecf0f1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Admin Name */
-.admin-name {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ecf0f1;
-}
-
-/* Profile Initials */
-.profile-initials {
-  width: 80px;
-  height: 80px;
-  display: flex;
+.titleImage{
+  width: 18vw;
+  border: 0.5px solid #d2cfcf;
+  display: flex  ;
   justify-content: center;
   align-items: center;
-  background-color: #000509;
-  color: white;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: bold;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  line-height: 1.1;
+  font-size: 30px;
+  font-weight: 700;
+  font-family: roboto, sans-serif;
 }
 
-
-/* Menu List */
-.menu-list {
-  list-style: none;
-  padding: 0;
+.collapse{
+  width: 5vw;
+  border: 0.5px solid #d2cfcf;
+  display: flex  ;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 700;
+  font-family: roboto, sans-serif;
+}
+.headerBar{
   width: 100%;
-  margin-top: 30px; /* Added space between profile and menu */
+  border: 0.5px solid #d2cfcf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.parentHeader{
+  display: flex;
+  font-family: roboto, sans-serif;
+  color: black;
+  height: 11vh;
+}
+.profileImage{
+  border-radius: 100%;
+  width: 3vw;
 }
 
-.menu-list li {
-  padding: 15px;
-  text-align: center;
+.searchInput{
+  width: 35vw;
+  background-color: gainsboro;
+  border-radius: 25px;
+  border: none;
+  padding-left: 20px; /* Moves placeholder inside */
+  padding-right: 50px; /* Prevents text from overlapping with the icon */
+  font-size: 18px;
+  height: 6vh;
+}
+
+.magnifyingGlass {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: large;
+      color: gray;
+}
+
+.rightSideHeader {
+  margin-right: 4vw;
+  display: flex;
+  gap: 3vw;
+  align-items: center;
+}
+
+.sideMenu{
+  width: 32vh ;
+  border-right: 0.5px solid #d2cfcf;
+  height: 100vh;
+  font-family: roboto, sans-serif;
+  font-weight: 400;
+}
+
+.collapseSideMenu
+{
+  width: 10vh ;
+  border-right: 0.5px solid #d2cfcf;
+  height: 100vh;
+  font-family: roboto, sans-serif;
+  font-weight: 400;
+}
+
+.Dashboard {
+  justify-content: left;
+  display: flex;
+  gap: 2vh;
+  align-items: center;
+  padding-left: 2vw;
+  height: 10vh;
+  border-bottom: 0.5px solid #d2cfcf;
   cursor: pointer;
-  background-color: #000000;
-  margin: 5px 0;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  color: #bdc3c7;
 }
 
-.menu-list li:hover {
-  background-color: #072d19;
-  color: white;
-  transform: scale(1.05);
+.active-link
+{
+  color: rgb(20, 9, 233);
+  opacity: 10;
 }
 
-.menu-list li.active-link {
-  background-color: #07572c;
-  color: white;
-  box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+.active-link h6
+{
+  color: rgb(20, 9, 233);
+  opacity: 10;
 }
 
-/* Main Content */
-.main-content {
-  flex-grow: 1;
+.vendorCustomer {
+  margin-top: 2vh;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  background-color: #ecf0f1;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  padding-left: 2vw;
+  gap: 1vw;
+  border-bottom: 0.5px solid #d2cfcf;
+  padding-bottom: 2vh;
 }
 
-/* Filter Section */
-.filter-section {
-  margin-bottom: 20px;
+.vendor {
   display: flex;
-  justify-content: flex-end;
+    align-items: center;
+    gap: 1vw;
+    cursor: pointer;
 }
 
-.filter-section input {
-  width: 300px;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border-color 0.3s ease;
-}
-
-.filter-section input:focus {
-  border-color: #3498db;
-  outline: none;
-}
-
-/* Content Section */
-.content-section {
-  background-color: #ecf0f1;
-  flex-grow: 1;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.example-container {
-  width: 400px;
-  height: 200px;
-  margin: 10px;
-  border: 1px solid #555;
-  border-radius: 8px;
-  transition: border-color 0.3s ease;
-}
-
-.example-container:hover {
-  border-color: #000508;
-}
-
-/* Shared styles for the button */
-.arrow-button {
+.customer {
   display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #ecf0f1;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  position: relative;
-  overflow: hidden;
-  outline: none;
-  max-width: 10px;
+    align-items: center;
+    gap: 1vw;
+    cursor: pointer;
 }
 
-/* Arrow base */
-.arrow-button .arrow {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
+.routerOutlet{
+margin-left: 4vh;
+margin-top: 4vh;  
+background-color: blue;
 }
 
-/* Left-pointed arrow */
-.arrow-button.left-arrow .arrow {
-  border-right: 10px solid black;
-  margin-right: 10px;
-}
 
-/* Right-pointed arrow */
-.arrow-button.right-arrow .arrow {
-  border-left: 10px solid black;
-  margin-left: 10px;
-}
-
-.arrow-button:hover {
-  background-color: #ecf0f1;
+h6{
+  font-weight:400
 }
 

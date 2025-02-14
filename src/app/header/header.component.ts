@@ -37,4 +37,17 @@ toggleDropdown(): void {
   this.isDropdownOpen = !this.isDropdownOpen;
 }
 
+navigateOnVisitPage()
+{
+  let userType = localStorage.getItem('userType');
+  if(userType=='vendor')
+  {
+    return {showText:'Visit Vendor Site', path:'/vendor'}
+  }
+  else(userType=='admin' || userType=='superAdmin')
+  {
+    return {showText:'Visit Admin Site', path:'/admin'}
+  }
+}
+
 }

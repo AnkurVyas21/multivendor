@@ -1,14 +1,15 @@
   <!-- /#page -->
-   <div >
+   <div  *ngIf="currentPath!='admin' && currentPath!='vendor'" >
     <div id="wrapper">
       <div id="page" class="clearfix">
-  
-        <app-header [isAdmin]="currentPath=='admin'"></app-header>
-        <router-outlet  *ngIf="currentPath!='admin'"></router-outlet>
-        <app-admin *ngIf="currentPath=='admin'"></app-admin>
+        <app-header [isAdmin]="currentPath=='admin'|| currentPath=='vendor'"></app-header>
+        <router-outlet ></router-outlet>
+        <!-- <app-admin *ngIf="currentPath=='admin'"></app-admin>
+        <app-vendor *ngIf="currentPath=='vendor'"></app-vendor> -->
         <app-footer></app-footer>
      
       </div>
+     
   
   
   </div>
@@ -18,16 +19,7 @@
   <a *ngIf="currentPath!='admin'" href="sms:+19199234239&body=Hello, I'm interested in your services." class="button-go"><img src="assets/images/icon-box/chat.png" alt=""></a>
    </div>
 
-   <!-- <div *ngIf="currentPath=='admin'">
-    <app-header></app-header>
-   <app-admin></app-admin>
-   <app-footer></app-footer>
-   </div> -->
-
-
-
-<!-- Button Top 
- 
-test drives 
-add cars 
--->
+   <div *ngIf="currentPath=='admin' || currentPath=='vendor'">
+    <app-admin *ngIf="currentPath=='admin'"></app-admin>
+    <app-vendor *ngIf="currentPath=='vendor'"></app-vendor>
+  </div>

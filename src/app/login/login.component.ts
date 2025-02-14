@@ -41,6 +41,8 @@ export class LoginComponent {
         
         if(this.selectedUserType == 'user')
        { window.location.href = 'home';}
+        else  if(this.selectedUserType == 'vendor')
+          { window.location.href = '/vendor/dashboard';} 
       else 
       {
         window.location.href = '/admin/dashboard';

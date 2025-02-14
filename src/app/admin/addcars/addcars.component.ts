@@ -5,13 +5,21 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 
-interface CarSale {
-  userId: number;
-  userName: string;
-  carModel: string;
-  carAddedTime: string;
+interface Car {
+  title: string;
+  make: string;
+  model: string;
+  type: string;
+  year: string;
+  condition: string;
+  stockNumber: string;
+  vinNumber: string;
+  description: string;
+  priceLabel: boolean;
+  regularPrice: number;
+  salePrice: number;
+  requestPrice: number;
 }
-
 @Component({
   selector: 'app-addcars',
   templateUrl: './addcars.component.html',
@@ -20,40 +28,79 @@ interface CarSale {
 export class AddcarsComponent {
 
   searchQuery: string = '';
-  dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator ;
-  displayedColumns: string[] = ['userId', 'userName', 'carModel', 'carAddedTime'];
-  carSales = [
-    { userId: 1, userName: 'John Doe', carModel: 'Tesla Model 3', carAddedTime: '2024-12-30 10:00 AM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
-    { userId: 2, userName: 'Jane Smith', carModel: 'Ford Mustang', carAddedTime: '2024-12-29 4:30 PM' },
+  displayedColumns: string[] = [
+    'title', 'make', 'model', 'type', 'year', 'condition', 'stockNumber', 'vinNumber', 'description', 'priceLabel', 'regularPrice', 'salePrice', 'requestPrice'
   ];
-  filteredCarSales = this.carSales;
+  dataSource = new MatTableDataSource<Car>([
+    {
+      title: 'edax',
+      make: 'Bentley',
+      model: '718 Boxster T',
+      type: 'Crossover',
+      year: '2020',
+      condition: 'New',
+      stockNumber: '2514251',
+      vinNumber: '52415241',
+      description: 'Luxury sports car',
+      priceLabel: true,
+      regularPrice: 33,
+      salePrice: 23,
+      requestPrice: 23
+    },
+    {
+      title: 'speedster',
+      make: 'Porsche',
+      model: '911 Carrera',
+      type: 'Convertible',
+      year: '2021',
+      condition: 'New',
+      stockNumber: '987654',
+      vinNumber: '654987321',
+      description: 'High-performance coupe',
+      priceLabel: true,
+      regularPrice: 50,
+      salePrice: 45,
+      requestPrice: 44
+    },
+    {
+      title: 'mustang',
+      make: 'Ford',
+      model: 'GT',
+      type: 'Sports',
+      year: '2019',
+      condition: 'Used',
+      stockNumber: '753951',
+      vinNumber: '852741963',
+      description: 'Classic muscle car',
+      priceLabel: false,
+      regularPrice: 40,
+      salePrice: 35,
+      requestPrice: 34
+    },
+    {
+      title: 'roadster',
+      make: 'Tesla',
+      model: 'Roadster',
+      type: 'Electric',
+      year: '2022',
+      condition: 'New',
+      stockNumber: '112233',
+      vinNumber: '9988776655',
+      description: 'Fast electric sports car',
+      priceLabel: true,
+      regularPrice: 200,
+      salePrice: 180,
+      requestPrice: 175
+    }
+  ]);
 
   constructor(private dialog:MatDialog)
   {
 
   }
 
-  onSearch() {
-    const query = this.searchQuery.toLowerCase();
-    this.filteredCarSales = this.carSales.filter(
-      (car) =>
-        car.userName.toLowerCase().includes(query) ||
-        car.carModel.toLowerCase().includes(query) ||
-        car.userId.toString().includes(query)
-    );
-  }
 
 
   addCar() {
@@ -74,12 +121,24 @@ export class AddcarsComponent {
   }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.filteredCarSales);
   }
 
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  onRowClick(rowData:any)
+  {
+    const dialogRef =  this.dialog.open(AdminDialogComponent,{
+      data:{type:'viewCar'},
+      width:'100%',
+      height: '550px',
+     })
+  
+     dialogRef.afterClosed().subscribe(result=>{
+      console.log('viewCar', result)
+     })
   }
 
 }

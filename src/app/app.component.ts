@@ -14,10 +14,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events.subscribe(() => {
-      const fullUrl = this.router.url; // e.g., '/admin'
-      const segments = fullUrl.split('/'); // Split by '/'
-      this.currentPath = segments[1] || ''; // Extract 'admin'
-      console.log('Current Path:', this.currentPath); // Output: 'admin'
+      const fullUrl = this.router.url; 
+      const segments = fullUrl.split('/'); 
+      this.currentPath = segments[1] || ''; 
+      console.log('Current Path:', this.currentPath); 
     });
   }
 }

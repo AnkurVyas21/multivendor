@@ -52,6 +52,9 @@ const route : Routes = [
           {
             path:'customer-details/:id',component:CustomerDetailsComponent
           },
+          // {
+          //   path: 'profile', component: profileComponent
+          // },
           { path: '**', redirectTo: '/admin/dashboard', pathMatch: 'full' },
 ] 
 

@@ -69,7 +69,7 @@ const routes: Routes = [
     path: 'hotDeal', component: HotDealComponent , canActivate: [AuthGuard] 
   },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.adminModule), canActivate:[AdminAuthGuard]},
-  { path: 'vendor', loadChildren: () => import('./admin/admin.module').then(m => m.adminModule), canActivate:[AdminAuthGuard]},
+  { path: 'vendor', loadChildren: () => import('./vendor/vendor.module').then(m => m.VendorModule)},
   {
     path: '**', component: HomeComponent , canActivate: [AuthGuard] 
   },

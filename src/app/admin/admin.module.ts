@@ -24,12 +24,18 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { VendorDetailsComponent } from "./detail pages/vendor-details/vendor-details.component";
 import { CustomerDetailsComponent } from "./detail pages/customer-details/customer-details.component";
+import { MatTabsModule } from "@angular/material/tabs";
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import { MatChipsModule } from '@angular/material/chips';
+import { AddCarComponent } from "./add-car/add-car.component";
 
 @NgModule({
     declarations:[
     DashboardComponent,
     TestDrivesComponent,
     AddcarsComponent,
+    AddCarComponent,
     SoldcarsComponent,
     AdminDialogComponent,
     CarListComponent,
@@ -55,7 +61,27 @@ import { CustomerDetailsComponent } from "./detail pages/customer-details/custom
     MatSelectModule,
     MatCheckboxModule, 
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTabsModule,
+    MatCardModule,
+    MatDividerModule,
+    MatChipsModule,
+  ],
+  exports:[
+    DashboardComponent,
+    TestDrivesComponent,
+    AddcarsComponent,
+    AddCarComponent,
+    SoldcarsComponent,
+    AdminDialogComponent,
+    CarListComponent,
+    OfferPriceComponent,
+    TransactionsComponent,
+    VendorListComponent,
+    CustomerListComponent,
+    VendorDetailsComponent,
+    CustomerDetailsComponent,
   ]
+ 
 })
 export class adminModule{}
