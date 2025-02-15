@@ -31,6 +31,7 @@
   font-family: roboto, sans-serif;
   color: black;
   height: 11vh;
+  opacity: 0.5;
 }
 .profileImage{
   border-radius: 100%;
@@ -129,13 +130,12 @@
 }
 
 .routerOutlet{
-margin-left: 4vh;
-margin-top: 4vh;  
-background-color: blue;
+  background-color: #fbf7f7eb;
+  width: 100%;
 }
 
 
 h6{
-  font-weight:400
+  font-weight:400  
 }
 

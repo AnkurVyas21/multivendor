@@ -1,4 +1,59 @@
-<div class="container mt-4">
+<div class="vendorProfileContainer">
+  <div>
+    <h4>Vendor Profile</h4>
+  </div>
+  <div class="mainDetailContainer">
+    <div class="profileContainer">
+      <div class="basicDetails">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" style="width: 6vw; height: 13vh;">
+        <p> {{ vendor.name }}</p>
+        <p> {{ vendor.email }}</p> 
+      </div>
+      <div class="status">
+        <h5>{{ vendor.status }}</h5>
+      </div>
+      <div class="totalListing">
+      <strong>{{ vendor.totalListings }}</strong>
+      <span>Total Listings</span>
+      </div>
+    </div > 
+   
+
+
+    <div class="settingContainer">
+      <div class="commission">
+        <strong>Commissions Paid:(INR)</strong>
+        <input type="number" [(ngModel)]="vendor.commissionsPaid"  class="form-control d-inline w-25 ms-2 commissionInput" />
+        <button class="btn btn-sm btn-primary ms-2 commissionBtn" (click)="updateCommission()">Save</button>
+      </div>
+      <div class="mt-4" style="display: flex;justify-content: space-evenly; margin-top: 25px; border-top: 1px solid grey;padding: 5vh;">
+        <strong style="padding: 1vh;">Action:</strong>
+        <button  class="btn commissionBtn me-2" (click)="approveVendor()" [disabled]="vendor.status === 'Approved'">
+          Approve
+        </button>
+        <button class="btn commissionBtn me-2" (click)="suspendVendor()" [disabled]="vendor.status === 'Suspended'">
+          Suspend
+        </button>
+        <button class="btn commissionBtn" (click)="removeVendor()">Remove</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container mt-4">
     <div class="card shadow">
       <div class="card-header bg-primary text-white">
         <h3>Vendor Details</h3>
@@ -13,7 +68,6 @@
           </p>
           <p><strong>Total Listings:</strong> {{ vendor.totalListings }}</p>
   
-          <!-- Editable Commission Field -->
           <p>
             <strong>Commissions Paid:</strong>
             ₹<input type="number" [(ngModel)]="vendor.commissionsPaid" class="form-control d-inline w-25 ms-2" />
@@ -31,11 +85,10 @@
           </div>
         </div>
   
-        <!-- Show this if vendor is removed -->
         <ng-template #noVendor>
           <p class="text-danger">Vendor not found or removed.</p>
         </ng-template>
       </div>
     </div>
   </div>
-  
+   -->
