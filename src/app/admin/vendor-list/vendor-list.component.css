@@ -53,6 +53,8 @@ td {
   background: #fff;
   /* Ensure rows are visible properly */
   cursor: pointer;
+  gap: 20px;
+
 }
 
 tr:hover {
@@ -61,4 +63,8 @@ tr:hover {
 
 .approveDecline {
   display: flex;
+}
+
+.table-bordered{
+  border-radius: 5px;
 }

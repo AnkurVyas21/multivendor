@@ -1,16 +1,18 @@
 <div class="test-drive-requests">
-    <h2>Transaction Lists   </h2>
-  
-    <!-- Search/filter input -->
-    <div class="filter-section">
+  <div style="display: flex;justify-content: space-between;align-items: center;">
+    <div>
+      <h4>Transaction List</h4>
+    </div>
+    <div style="margin-top: 2vw;">
       <mat-form-field appearance="outline">
         <mat-label>Search</mat-label>
         <input matInput placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" />
       </mat-form-field>
     </div>
+  </div>
   
     <!-- Table to display test drive requests -->
-  <div class="container mt-4">
+  <div >
     <div class="table-wrapper">
       <table mat-table [dataSource]="requests" class="table table-bordered table-hover">
   

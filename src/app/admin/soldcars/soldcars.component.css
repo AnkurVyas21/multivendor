@@ -1,21 +1,18 @@
 .test-drive-requests {
-  padding: 20px;
-  background-color: #f4f4f4;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
-.filter-section {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: flex-end;
-}
+
 
 .mat-form-field {
   width: 300px;
-}s
+}
 
-table {
+s table {
   width: 100%;
 }
 
@@ -29,9 +26,11 @@ table {
 
 
 .table-wrapper {
-  max-height: 500px; /* Adjust height as needed */
+  max-height: 500px;
+  /* Adjust height as needed */
   overflow-y: auto;
-  border: 1px solid #ddd; /* Optional: Border around the table */
+  border: 1px solid #ddd;
+  /* Optional: Border around the table */
   position: relative;
   scrollbar-width: none;
 }
@@ -44,17 +43,28 @@ table {
 th {
   position: sticky;
   top: 0;
-  background-color: #3e7600 !important; /* Ensure header remains visible */
-  color: white;
+  background-color: #dbdcd9 !important;
+  /* Ensure header remains visible */
+  color: rgb(5, 5, 5);
   z-index: 2;
 }
 
 td {
-  background: #fff; /* Ensure rows are visible properly */
+  background: #fff;
+  /* Ensure rows are visible properly */
+  cursor: pointer;
+  gap: 20px;
+
 }
 
 tr:hover {
   background-color: #f1f1f1;
 }
 
+.approveDecline {
+  display: flex;
+}
 
+.table-bordered{
+  border-radius: 5px;
+}

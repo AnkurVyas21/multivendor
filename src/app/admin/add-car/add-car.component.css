@@ -1,0 +1,22 @@
+.commissionBtn {
+    width: auto;
+    border-radius: 1.5vw;
+    color: rgb(244, 242, 242);
+    background-color: #747573;
+    border: none;
+    height: 7vh;
+  }
+
+  .sub-title{
+    color: #8c8e8a;
+  }
+
+  input  {
+    border-radius: 25px;
+    border: none;
+  }
+
+  select{
+    border-radius: 25px;
+    border: none;
+  }

@@ -21,13 +21,7 @@
 
 
     <div class="settingContainer">
-      <div class="commission">
-        <strong>Commissions Paid:(INR)</strong>
-        <input type="number" [(ngModel)]="vendor.commissionsPaid"  class="form-control d-inline w-25 ms-2 commissionInput" />
-        <button class="btn btn-sm btn-primary ms-2 commissionBtn" (click)="updateCommission()">Save</button>
-      </div>
-      <div class="mt-4" style="display: flex;justify-content: space-evenly; margin-top: 25px; border-top: 1px solid grey;padding: 5vh;">
-        <strong style="padding: 1vh;">Action:</strong>
+      <div class="mt-4" style="display: flex;justify-content: space-evenly; margin-top: 25px; border-bottom: 1px solid grey;padding: 5vh;">
         <button  class="btn commissionBtn me-2" (click)="approveVendor()" [disabled]="vendor.status === 'Approved'">
           Approve
         </button>
@@ -36,6 +30,12 @@
         </button>
         <button class="btn commissionBtn" (click)="removeVendor()">Remove</button>
       </div>
+      <div class="commission">
+        <strong>Commissions Paid:(INR)</strong>
+        <input type="number" [(ngModel)]="vendor.commissionsPaid"  class="form-control d-inline w-25 ms-2 commissionInput" />
+        <button class="btn btn-sm btn-primary ms-2 commissionBtn" (click)="updateCommission()">Save</button>
+      </div>
+     
     </div>
   </div>
 </div>

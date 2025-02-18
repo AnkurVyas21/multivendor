@@ -48,4 +48,19 @@ ngOnInit() {
   {
    this.isVisible = !this.isVisible
   }
+  
+  viewProfile() {
+    console.log("View Profile clicked");
+    // Navigate to the profile page
+  }
+  
+  resetPassword() {
+    console.log("Reset Password clicked");
+    // Implement reset password logic
+  }
+  
+  logout() {
+    console.log("Logout clicked");
+    // Implement logout logic
+  }
 }

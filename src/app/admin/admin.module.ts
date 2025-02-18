@@ -29,6 +29,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { AddCarComponent } from "./add-car/add-car.component";
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
     declarations:[
@@ -66,6 +67,7 @@ import { AddCarComponent } from "./add-car/add-car.component";
     MatCardModule,
     MatDividerModule,
     MatChipsModule,
+    MatMenuModule
   ],
   exports:[
     DashboardComponent,

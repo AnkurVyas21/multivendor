@@ -37,13 +37,14 @@
 </mat-drawer-container>  -->
 
 <div class="parentHeader">
-  <div [ngClass]="isVisible ?'titleImage':'collapse'">
+  <div [ngClass]="isVisible ?'titleImage':'collapse'" >
     <img style="width:8vh"
      src="assets/images/logo/search.png">
-    <h5 *ngIf="isVisible">Multi Vendor</h5>
+     <a href="index.html" style="cursor: pointer;" target="_blank"> <h5 *ngIf="isVisible">Multi Vendor</h5></a>
+   
   </div>
   <div class="headerBar" >
-    <div>
+    <div style="cursor: pointer;">
       <i *ngIf="isVisible" (click)="toggleToolBar()" style="font-size: x-large; margin-left: 2vw;" class="fa-regular fa-square-caret-left"></i>
       <i *ngIf="!isVisible" (click)="toggleToolBar()" style="font-size: x-large; margin-left: 2vw;" class="fa-regular fa-square-caret-right"></i>
     </div>
@@ -53,12 +54,24 @@
     </div>
 
     <div class="rightSideHeader">
-      <div style="display: flex;align-items: center;gap: 0.5vw;">
+      <div style="display: flex; align-items: center; gap: 0.5vw; cursor: pointer;" [matMenuTriggerFor]="menu">
         <img class="profileImage"
-          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png">
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" 
+          alt="Profile">
         <i style="font-size: x-large;" class="fa-solid fa-angle-down"></i>
       </div>
-      <i style="font-size: x-large;" class="fa-regular fa-bell"></i>
+      
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="viewProfile()">
+          <i class="fa-solid fa-user"></i> Profile
+        </button>
+        <button mat-menu-item (click)="resetPassword()">
+          <i class="fa-solid fa-key"></i> Reset Password
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <i class="fa-solid fa-sign-out"></i> Logout
+        </button>
+      </mat-menu>
     </div>
   </div>
 </div>

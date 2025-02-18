@@ -1,15 +1,19 @@
 <div class="test-drive-requests">
-  <h2>Car List Requests</h2>
 
-  <!-- Search/filter input -->
-  <div class="filter-section">
-    <div>
-      <button [routerLink]="['/vendor/add-cars']"style="margin-top: 20px;">Add Car</button>
+  <div style="display: flex;justify-content: space-between;align-items: center;">
+    <div style="display: flex;flex-direction: column;gap: 10px;">
+      <h4>Car List Requests</h4>
+      <button class="btn commissionBtn me-2" [routerLink]="['/vendor/add-cars']">
+        Add Car
+      </button>
     </div>
-    <mat-form-field appearance="outline">
-      <mat-label>Search</mat-label>
-      <input matInput placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" />
-    </mat-form-field>
+    <div style="margin-top: 2vw;">
+     
+      <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" />
+      </mat-form-field>
+    </div>
   </div>
 
   <!-- Table to display test drive requests -->

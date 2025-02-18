@@ -1,11 +1,80 @@
-.badge {
-    font-size: 14px;
-    padding: 5px 10px;
-  }
-  
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
+.vendorProfileContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  margin: 2vh;
+}
+
+.profileContainer {
+  background-color: white;
+  padding: 2vw;
+  border-radius: 2vw;
+}
+
+.basicDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  background: rgb(242, 145, 145);
+  border-radius: 2vh;
+}
+
+.settingContainer {
+  background-color: white;
+  padding: 2vw;
+  border-radius: 2vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column ;
+  gap: 1vw;
+  justify-content: space-evenly;
+}
+
+.mainDetailContainer {
+  display: flex;
+  margin-top: 2vw;
+  gap: 1vw;
+}
+
+.totalListing {
+  display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    opacity: 0.7;
+    margin-top: 1vw;
+    background-color: ghostwhite;
+}
+
+.commissionBtn {
+  width: 7vw;
+    border-radius: 1.5vw;
+    color: black;
+    background-color: #f2f3f1;
+    border: none;
+    height: 7vh;
+}
+
+.commission{
+  display: flex;
+  align-items: center;
+}
+
+.commissionInput {
+  border: none;
+  background: lightgrey;
+  border-radius: 7vh;
+  opacity: 0.5;
+}
+
+th {
+  background-color: #dbdcd9 !important;
+  color: black;
+}
