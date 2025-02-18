@@ -8,6 +8,7 @@ import { VendorAddCarComponent } from "./vendor-add-car/vendor-add-car.component
 import { VendorTestDrivesComponent } from "./vendor-test-drives/vendor-test-drives.component";
 import { VendorOfferPriceComponent } from "./vendor-offer-price/vendor-offer-price.component";
 import { VendorTransactionComponent } from "./vendor-transaction/vendor-transaction.component";
+import { VendorSoldCarsComponent } from "./vendor-sold-cars/vendor-sold-cars.component";
 
 
 const route: Routes = [
@@ -24,6 +25,9 @@ const route: Routes = [
     { path: 'test-drives', component: VendorTestDrivesComponent },
     {
         path: 'offer-price', component: VendorOfferPriceComponent
+    },
+    {
+        path: 'sold-cars', component: VendorSoldCarsComponent
     },
     {
         path: 'transactions', component: VendorTransactionComponent

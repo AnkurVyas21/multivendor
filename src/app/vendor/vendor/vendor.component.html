@@ -37,4 +37,165 @@
   </mat-drawer-container>
    -->
 
-  <app-admin></app-admin>
+   <!-- <mat-drawer-container [autosize]="true" class="admin-layout" >
+  <mat-drawer mode="side" open *ngIf="isVisible" >
+    <div class="sidebar">
+      <div class="profile-section">
+        
+        <div *ngIf="profilePictureUrl; else initialsTemplate">
+          <img [src]="profilePictureUrl" alt="Admin Profile" class="profile-picture" />
+        </div>
+        <ng-template #initialsTemplate>
+          <div class="profile-initials">
+            {{ getInitials(adminName) }}
+          </div>
+        </ng-template>
+        <h3 class="admin-name">{{ adminName }}</h3>
+      </div>
+      <ul class="menu-list" style="overflow-y: auto; overflow-x: hidden ;scrollbar-width: none;">
+        <li [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Dashboard</li>
+        <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Test Drives</li>
+        <li [routerLink]="['/vendor/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Offer Price</li>
+        <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/add-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add Cars</li>
+        <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
+        <li [routerLink]="['/vendor/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Car List</li>
+        <li *ngIf="userType=='superAdmin'" [routerLink]="['/vendor/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Vendor Management</li>
+        <li  [routerLink]="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Customer List</li>
+        <li [routerLink]="['/vendor/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Transactions</li>
+      </ul>
+      
+    </div>
+  </mat-drawer>
+    <button class="arrow-button" [ngClass]="{ 'right-arrow': !isVisible, 'left-arrow': isVisible }" (click)="toggleToolBar()">
+      <span class="arrow"></span>
+    </button>
+
+  <mat-drawer-content class="main-content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>  -->
+
+<div class="parentHeader">
+  <div [ngClass]="isVisible ?'titleImage':'collapse'" >
+    <img style="width:8vh"
+     src="assets/images/logo/search.png">
+     <a href="index.html" style="cursor: pointer;" target="_blank"> <h5 *ngIf="isVisible">Multi Vendor</h5></a>
+   
+  </div>
+  <div class="headerBar" >
+    <div style="cursor: pointer;">
+      <i *ngIf="isVisible" (click)="toggleToolBar()" style="font-size: x-large; margin-left: 2vw;" class="fa-regular fa-square-caret-left"></i>
+      <i *ngIf="!isVisible" (click)="toggleToolBar()" style="font-size: x-large; margin-left: 2vw;" class="fa-regular fa-square-caret-right"></i>
+    </div>
+    <div style="position: relative; display: inline-block;">
+      <input type="text" placeholder="search..." class="searchInput">
+      <i class="fa-solid fa-magnifying-glass magnifyingGlass"></i>
+    </div>
+
+    <div class="rightSideHeader">
+      <div style="display: flex; align-items: center; gap: 0.5vw; cursor: pointer;" [matMenuTriggerFor]="menu">
+        <img class="profileImage"
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" 
+          alt="Profile">
+        <i style="font-size: x-large;" class="fa-solid fa-angle-down"></i>
+      </div>
+      
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="viewProfile()">
+          <i class="fa-solid fa-user"></i> Profile
+        </button>
+        <button mat-menu-item (click)="resetPassword()">
+          <i class="fa-solid fa-key"></i> Reset Password
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <i class="fa-solid fa-sign-out"></i> Logout
+        </button>
+      </mat-menu>
+      
+    </div>
+  </div>
+</div>
+<mat-drawer-container [autosize]="true" class="admin-layout" >
+<div style="font-family: roboto, sans-serif;color: black; display: flex;">
+<mat-drawer mode="side" open *ngIf="isVisible" style="opacity: 0.5;">
+  <div class="sideMenu">
+    <div class="Dashboard" [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <i style="font-size: medium ;" class="fa-solid fa-qrcode"></i>
+      <h6 class="dashboardTxt">Dashboard</h6>
+    </div>
+    <div class="vendorCustomer" >
+      <!-- <div class="vendor" [routerLink]="['/admin/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: medium;" class="fa-solid fa-people-group"></i>
+        <h6 class="vendorTxt">Vendor</h6>
+      </div> -->
+      <div  class="customer"  [routerLink]="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: medium" class="fa-solid fa-user"></i>
+        <h6 class="customerTxt">Customer</h6>
+      </div>
+    </div>
+    <div class="vendorCustomer" >
+      <div class="vendor" [routerLink]="['/vendor/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: medium;" class="fa-solid fa-car-on"></i>
+        <h6 class="vendorTxt">Test Drive</h6>
+      </div>
+      <div  class="customer"  [routerLink]="['/vendor/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: medium" class="fa-solid  fa-hand-holding-dollar"></i>
+        <h6 class="customerTxt">Offer Price</h6>
+      </div>
+    </div>
+    <div class="vendorCustomer" >
+      <div class="vendor" [routerLink]="['/vendor/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: medium;" class="fa-solid fa-car-side"></i>
+        <h6 class="vendorTxt">Car List</h6>
+      </div>
+      <div  class="customer"  [routerLink]="['/vendor/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: medium" class="fa-solid  fa-handshake"></i>
+        <h6 class="customerTxt">Sold car</h6>
+      </div>
+    </div>
+    <div class="Dashboard" [routerLink]="['/vendor/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <i style="font-size: medium ;" class="fa-solid fa-money-check-dollar"></i>
+      <h6 class="dashboardTxt">Transaction</h6>
+    </div>
+  </div>
+</mat-drawer>
+<mat-drawer *ngIf="!isVisible" style="opacity: 0.5;">
+  <div class="collapseSideMenu">
+    <div class="Dashboard" [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <i style="font-size: large ;" class="fa-solid fa-qrcode"></i>
+    </div>
+    <div class="vendorCustomer" >
+      <!-- <div class="vendor" [routerLink]="['/admin/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: large;" class="fa-solid fa-people-group"></i>
+      </div> -->
+      <div  class="customer"  [routerLink]="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: large" class="fa-solid fa-user"></i>
+      </div>
+    </div>
+    <div class="vendorCustomer" >
+      <div class="vendor" [routerLink]="['/vendor/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: large;" class="fa-solid fa-car-on"></i>
+      </div>
+      <div  class="customer"  [routerLink]="['/vendor/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: large" class="fa-solid  fa-hand-holding-dollar"></i>
+      </div>
+    </div>
+    <div class="vendorCustomer" >
+      <div class="vendor" [routerLink]="['/vendor/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: large;" class="fa-solid fa-car-side"></i>
+      </div>
+      <div  class="customer"  [routerLink]="['/vendor/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <i style="font-size: large" class="fa-solid  fa-handshake"></i>
+      </div>
+    </div>
+    <div class="Dashboard" [routerLink]="['/vendor/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <i style="font-size: large ;" class="fa-solid fa-money-check-dollar"></i>
+    </div>
+  </div>
+</mat-drawer>
+
+  <div class="routerOutlet">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+</mat-drawer-container>
