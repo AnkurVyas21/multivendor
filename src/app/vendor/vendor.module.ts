@@ -15,10 +15,12 @@ import { VendorSoldCarsComponent } from './vendor-sold-cars/vendor-sold-cars.com
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { VendorProfileImageComponent } from './vendor-profile-image/vendor-profile-image.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [ VendorDashboardComponent, VendorCustomerListComponent, VendorCarListComponent, VendorAddCarComponent, VendorTestDrivesComponent, VendorOfferPriceComponent, VendorTransactionComponent, VendorSoldCarsComponent],
+  declarations: [VendorDashboardComponent, VendorCustomerListComponent, VendorCarListComponent, VendorAddCarComponent, VendorTestDrivesComponent, VendorOfferPriceComponent, VendorTransactionComponent, VendorSoldCarsComponent, VendorProfileImageComponent],
   imports: [
     CommonModule,
     vendorRoutingModule,
@@ -26,7 +28,9 @@ import { MatButtonModule } from '@angular/material/button';
     adminModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    SharedModule
+  ],
+
 })
 export class VendorModule { }

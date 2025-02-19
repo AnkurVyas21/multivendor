@@ -9,31 +9,36 @@ import { VendorTestDrivesComponent } from "./vendor-test-drives/vendor-test-driv
 import { VendorOfferPriceComponent } from "./vendor-offer-price/vendor-offer-price.component";
 import { VendorTransactionComponent } from "./vendor-transaction/vendor-transaction.component";
 import { VendorSoldCarsComponent } from "./vendor-sold-cars/vendor-sold-cars.component";
+import { VendorProfileImageComponent } from "./vendor-profile-image/vendor-profile-image.component";
+import { VendorAuthGuard } from "../services/authGuard/vendorAuth.guard";
 
 
 const route: Routes = [
-    { path: 'dashboard', component: VendorDashboardComponent },
+    { path: 'dashboard', component: VendorDashboardComponent, canActivate:[VendorAuthGuard] },
     {
-        path: 'customer-list', component: VendorCustomerListComponent
+        path: 'customer-list', component: VendorCustomerListComponent , canActivate:[VendorAuthGuard]
     },
     {
-        path: 'car-list', component: VendorCarListComponent
+        path: 'car-list', component: VendorCarListComponent, canActivate:[VendorAuthGuard]
     },
     {
-        path: 'add-cars', component: VendorAddCarComponent
+        path: 'add-cars', component: VendorAddCarComponent, canActivate:[VendorAuthGuard]
     },
-    { path: 'test-drives', component: VendorTestDrivesComponent },
+    { path: 'test-drives', component: VendorTestDrivesComponent, canActivate:[VendorAuthGuard] },
     {
-        path: 'offer-price', component: VendorOfferPriceComponent
-    },
-    {
-        path: 'sold-cars', component: VendorSoldCarsComponent
+        path: 'offer-price', component: VendorOfferPriceComponent, canActivate:[VendorAuthGuard]
     },
     {
-        path: 'transactions', component: VendorTransactionComponent
+        path: 'sold-cars', component: VendorSoldCarsComponent, canActivate:[VendorAuthGuard]
     },
     {
-        path: 'vendor', component: VendorComponent
+        path: 'transactions', component: VendorTransactionComponent, canActivate:[VendorAuthGuard]
+    },
+    {
+        path: 'profile', component: VendorProfileImageComponent, canActivate:[VendorAuthGuard]
+    },
+    {
+        path: 'vendor', component: VendorComponent, canActivate:[VendorAuthGuard]
     },
     { path: '**', redirectTo: '/vendor/dashboard', pathMatch: 'full' },
 
