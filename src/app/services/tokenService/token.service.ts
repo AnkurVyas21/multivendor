@@ -36,7 +36,15 @@ export class TokenService {
   }
 
   isAuthenticatedAdmin(): boolean {
-    return !!this.getToken() && (this.getUserType()=='vendor' || this.getUserType()=='admin' || this.getUserType()=='superAdmin'); // Returns true if token exists, false otherwise
+    return !!this.getToken() && this.getUserType()=='admin' ; // Returns true if token exists, false otherwise
+  }
+
+  isAuthenticatedVendor(): boolean {
+    return !!this.getToken() && this.getUserType()=='vendor'; // Returns true if token exists, false otherwise
+  }
+
+  isAuthenticatedSuperAdmin(): boolean {
+    return !!this.getToken() && this.getUserType()=='superAdmin'; // Returns true if token exists, false otherwise
   }
 
   // Logout function

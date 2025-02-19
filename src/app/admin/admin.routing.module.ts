@@ -14,6 +14,7 @@ import { VendorListComponent } from "./vendor-list/vendor-list.component";
 import { CustomerListComponent } from "./customer-list/customer-list.component";
 import { VendorDetailsComponent } from "./detail pages/vendor-details/vendor-details.component";
 import { CustomerDetailsComponent } from "./detail pages/customer-details/customer-details.component";
+import { ProfileImageComponent } from "./profile-image/profile-image.component";
 
 const route : Routes = [
     
@@ -51,6 +52,9 @@ const route : Routes = [
 
           {
             path:'customer-details/:id',component:CustomerDetailsComponent
+          },
+          {
+            path:'profile',component:ProfileImageComponent
           },
           // {
           //   path: 'profile', component: profileComponent

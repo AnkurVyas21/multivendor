@@ -30,6 +30,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { AddCarComponent } from "./add-car/add-car.component";
 import { MatMenuModule } from '@angular/material/menu';
+import { ProfileImageComponent } from './profile-image/profile-image.component';
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
     declarations:[
@@ -46,6 +48,7 @@ import { MatMenuModule } from '@angular/material/menu';
     CustomerListComponent,
     VendorDetailsComponent,
     CustomerDetailsComponent,
+    ProfileImageComponent,
   ],
   imports:[
     FormsModule,
@@ -67,7 +70,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatCardModule,
     MatDividerModule,
     MatChipsModule,
-    MatMenuModule
+    MatMenuModule,
+    SharedModule
   ],
   exports:[
     DashboardComponent,

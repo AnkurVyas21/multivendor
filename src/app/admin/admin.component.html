@@ -62,7 +62,7 @@
       </div>
       
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="viewProfile()">
+        <button mat-menu-item [routerLink]="['admin/profile']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
           <i class="fa-solid fa-user"></i> Profile
         </button>
         <button mat-menu-item (click)="resetPassword()">
