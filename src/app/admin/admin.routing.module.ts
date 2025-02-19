@@ -18,43 +18,43 @@ import { ProfileImageComponent } from "./profile-image/profile-image.component";
 
 const route : Routes = [
     
-          { path: 'dashboard', component: DashboardComponent },
-          { path: 'test-drives', component: TestDrivesComponent },
-          { path: 'add-cars', component: AddcarsComponent },
-          { path: 'sold-cars', component: SoldcarsComponent },
+          { path: 'dashboard', component: DashboardComponent,canActivate:[AdminAuthGuard] },
+          { path: 'test-drives', component: TestDrivesComponent,canActivate:[AdminAuthGuard] },
+          { path: 'add-cars', component: AddcarsComponent,canActivate:[AdminAuthGuard] },
+          { path: 'sold-cars', component: SoldcarsComponent,canActivate:[AdminAuthGuard] },
           {
-            path: 'add-car', component: AddCarComponent
+            path: 'add-car', component: AddCarComponent,canActivate:[AdminAuthGuard]
           },
         
 
           {
-            path: 'offer-price', component: OfferPriceComponent
+            path: 'offer-price', component: OfferPriceComponent,canActivate:[AdminAuthGuard]
           },
           {
-            path: 'car-list', component: CarListComponent
+            path: 'car-list', component: CarListComponent,canActivate:[AdminAuthGuard]
           },
           {
             path: 'login', component: LoginComponent
           },
           {
-            path: 'transactions', component: TransactionsComponent
+            path: 'transactions', component: TransactionsComponent,canActivate:[AdminAuthGuard]
           },
           {
-            path: 'vendor-list', component: VendorListComponent
+            path: 'vendor-list', component: VendorListComponent,canActivate:[AdminAuthGuard]
           },
           {
-            path: 'customer-list', component: CustomerListComponent
-          },
-
-          {
-            path:'vendor-details/:id',component:VendorDetailsComponent
+            path: 'customer-list', component: CustomerListComponent,canActivate:[AdminAuthGuard]
           },
 
           {
-            path:'customer-details/:id',component:CustomerDetailsComponent
+            path:'vendor-details/:id',component:VendorDetailsComponent,canActivate:[AdminAuthGuard]
+          },
+
+          {
+            path:'customer-details/:id',component:CustomerDetailsComponent,canActivate:[AdminAuthGuard]
           },
           {
-            path:'profile',component:ProfileImageComponent
+            path:'profile',component:ProfileImageComponent,canActivate:[AdminAuthGuard]
           },
           // {
           //   path: 'profile', component: profileComponent
