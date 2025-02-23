@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-recently-added-cars',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./recently-added-cars.component.css']
 })
 export class RecentlyAddedCarsComponent {
+
+  constructor(private httpService:HttpServiceService)
+  {
+
+  }
 
     cars = [
       {
@@ -75,5 +81,21 @@ export class RecentlyAddedCarsComponent {
         ]
       }
     ];
+
+    ngOnInit(): void {
+      this.getExploreCars()
+     }
+   
+     getExploreCars()
+     {
+       this.httpService.getCars('recentlyAddedCars').subscribe((value)=>{
+        if(value.success)
+        {
+          this.cars = value.cars
+        }
+       },(error)=>{
+          console.log('error occured in explore all car list ')
+       })
+     }
   }
   

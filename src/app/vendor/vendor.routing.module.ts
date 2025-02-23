@@ -11,12 +11,16 @@ import { VendorTransactionComponent } from "./vendor-transaction/vendor-transact
 import { VendorSoldCarsComponent } from "./vendor-sold-cars/vendor-sold-cars.component";
 import { VendorProfileImageComponent } from "./vendor-profile-image/vendor-profile-image.component";
 import { VendorAuthGuard } from "../services/authGuard/vendorAuth.guard";
+import { CustomerDetailsComponent } from "../admin/detail pages/customer-details/customer-details.component";
 
 
 const route: Routes = [
     { path: 'dashboard', component: VendorDashboardComponent, canActivate:[VendorAuthGuard] },
     {
         path: 'customer-list', component: VendorCustomerListComponent , canActivate:[VendorAuthGuard]
+    },
+    {
+        path: 'customer-details/:id', component: CustomerDetailsComponent , canActivate:[VendorAuthGuard]
     },
     {
         path: 'car-list', component: VendorCarListComponent, canActivate:[VendorAuthGuard]

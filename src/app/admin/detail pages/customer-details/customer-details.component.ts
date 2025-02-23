@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-customer-details',
@@ -8,8 +10,26 @@ import { Component, OnInit } from '@angular/core';
 export class CustomerDetailsComponent implements OnInit {
   customer: any;
 
+  constructor(private httpService:HttpServiceService, private router:ActivatedRoute)
+  {
+
+  }
+
   ngOnInit(): void {
     this.loadCustomerDetails();
+    this.router.params.subscribe((value)=>{
+      this.getCustomerDetails(value['id'])
+    })
+  }
+
+  getCustomerDetails(id:string)
+  {
+    this.httpService.getCustomerDetails(id).subscribe((value)=>{
+      console.log('success')
+    },(error)=>{
+      console.log(error)
+    }
+    )
   }
 
   loadCustomerDetails() {

@@ -27,10 +27,12 @@
     </div>
     <div class="rightSideMenu">
         <div class="options">
-            <h6 style="border-bottom: 2px solid blue; cursor: pointer;">Profile</h6>
-            <h6  style="cursor: pointer;">Settings</h6>
+            <h6 (click)="selectTab('profile')" style="cursor: pointer;" [ngStyle]="{'border-bottom': tabName === 'profile' ? '2px solid blue' : 'none'}"
+            >Profile</h6>
+            <h6 (click)="selectTab('settings')"  style="cursor: pointer;" [ngStyle]="{'border-bottom': tabName === 'settings' ? '2px solid blue' : 'none'}">Settings</h6>
+            <h6 (click)="selectTab('status')"  style="cursor: pointer;" [ngStyle]="{'border-bottom': tabName === 'status' ? '2px solid blue' : 'none'}">Status</h6>
         </div>
-        <div class="cards">
+        <div class="cards" *ngIf="tabName=='profile'">
             <div class="card">
                 <div>
                 <i style="color: blue;" class="fa-solid fa-user"></i>
@@ -60,6 +62,106 @@
                     <p>Bought</p>
                 </div>
             </div>
+        </div>
+        <div class="cards" *ngIf="tabName=='settings'">
+            <div class="card">
+                <div>
+                <i style="color: blue;" class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                    <strong>546</strong>
+                    <p>Bought</p>
+                </div>
+               
+            </div>
+            <div class="card">
+                <div>
+                <i style="color: red; " class="fa-solid fa-heart"></i>
+                </div>
+                <div>
+                    <strong>546</strong>
+                    <p>Wish List</p>
+                </div>
+               
+            </div>
+            <div class="card">
+                <div>
+                    <i style="color: red;" class="fa-solid fa-heart"></i>
+                </div>
+                <div>
+                    <strong>546</strong>
+                    <p>Bought</p>
+                </div>
+            </div>
+        </div>
+        <div class="cardsStatus" *ngIf="tabName=='status'">
+           <div class="subOptions" >
+            <button (click)="selectSubType('testDrive')" [ngStyle]="{'backgroundColor': selectSubButton =='testDrive' ? '#0074D9' : 'rgb(227, 222, 222)'}" >Test Drive Status</button>
+            <button (click)="selectSubType('offerPrice')" [ngStyle]="{'backgroundColor': selectSubButton =='offerPrice' ? '#0074D9' : 'rgb(227, 222, 222)'}">Offer Price Status</button>
+           </div>
+           <div class="table">
+            <div >
+                <div class="table-wrapper">
+                  <table mat-table [dataSource]="requests" class="table table-bordered table-hover">
+              
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef> ID </th>
+                      <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+                    </ng-container>
+              
+                    <!-- Car ID Column -->
+                    <ng-container matColumnDef="carID">
+                      <th mat-header-cell *matHeaderCellDef> Car ID </th>
+                      <td mat-cell *matCellDef="let element"> {{ element.carID }} </td>
+                    </ng-container>
+              
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef> Name </th>
+                      <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+                    </ng-container>
+              
+                    <!-- Email Column -->
+                    <ng-container matColumnDef="email">
+                      <th mat-header-cell *matHeaderCellDef> Email </th>
+                      <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+                    </ng-container>
+              
+                    <!-- Phone Column -->
+                    <ng-container matColumnDef="phone">
+                      <th mat-header-cell *matHeaderCellDef> Phone </th>
+                      <td mat-cell *matCellDef="let element"> {{ element.phone }} </td>
+                    </ng-container>
+              
+                    <!-- Address Column -->
+                    <ng-container matColumnDef="address">
+                      <th mat-header-cell *matHeaderCellDef> Address </th>
+                      <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+                    </ng-container>
+              
+                    <!-- License Column -->
+                    <ng-container matColumnDef="license">
+                      <th mat-header-cell *matHeaderCellDef> License </th>
+                      <td mat-cell *matCellDef="let element"> {{ element.license }} </td>
+                    </ng-container>
+              
+              
+                    <!-- Table Header & Row -->
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              
+                  </table>
+                </div>
+              </div>
+              
+                
+              
+                <!-- No results message -->
+                <div *ngIf="filteredRequests.length === 0" class="no-results">
+                  No test drive requests found.
+                </div>
+           </div>
         </div>
         <div>
 

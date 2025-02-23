@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-soldcars',
@@ -182,6 +183,25 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
 
   filteredRequests = this.requests;
+
+  constructor(private httpService:HttpServiceService)
+  {
+
+  }
+
+  ngOnInit()
+  {
+    this.getSoldCars()
+  }
+
+  getSoldCars()
+  {
+    this.httpService.getSoldCars().subscribe((value)=>{
+      console.log(value)
+    },(error)=>{
+      console.log(error)
+    })
+  }
 
   onSearch() {
     const query = this.searchQuery.toLowerCase();

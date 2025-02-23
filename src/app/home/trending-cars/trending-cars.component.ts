@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-trending-cars',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./trending-cars.component.css']
 })
 export class TrendingCarsComponent {
+
+  constructor(private httpService:HttpServiceService)
+  {
+
+  }
 
   cars = [
     {
@@ -75,4 +81,23 @@ export class TrendingCarsComponent {
       additionalPhotos: 2
     }
   ];
+
+  ngOnInit(): void {
+    this.getExploreCars()
+   }
+ 
+   getExploreCars()
+   {
+     this.httpService.getCars('trendingcars').subscribe((value)=>{
+      if(value.success)
+      {
+        this.cars = value.cars
+      }
+     },(error)=>{
+        console.log('error occured in explore all car list ')
+     })
+   }
+
+
+
 }

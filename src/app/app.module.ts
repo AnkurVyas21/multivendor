@@ -45,6 +45,7 @@ import { VendorModule } from './vendor/vendor.module';
 import { VendorComponent } from './vendor/vendor/vendor.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { SharedModule } from './shared/shared.module';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -97,7 +98,9 @@ import { SharedModule } from './shared/shared.module';
     MatTabsModule,
     MatSelectModule,
     MatCheckboxModule,
-    SharedModule
+    SharedModule,
+     
+    
   ],
  
  

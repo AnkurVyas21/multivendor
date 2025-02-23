@@ -14,4 +14,6 @@ export class ShopByBrandComponent {
     { name: 'Hybrid', image: './assets/images/banner/4.jpg' },
     { name: 'Coupe', image: './assets/images/banner/5.jpg' }
   ];
+
+  
 }

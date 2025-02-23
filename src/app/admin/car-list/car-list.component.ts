@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-car-list',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./car-list.component.css']
 })
 export class CarListComponent {
+
+  constructor(private httpService:HttpServiceService)
+  {
+
+  }
+
 
   searchQuery: string = '';
   requests = [
@@ -181,6 +188,25 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
 
   filteredRequests = this.requests;
+
+
+  
+  ngOnInit()
+  {
+    this.carListApi()
+  }
+
+  carListApi()
+  {
+    this.httpService.getCars('all').subscribe((value)=>{
+      if(value.success)
+      {
+        this.requests = value.cars;
+      }
+    },(error)=>{
+
+    })
+  }
 
   onSearch() {
     const query = this.searchQuery.toLowerCase();

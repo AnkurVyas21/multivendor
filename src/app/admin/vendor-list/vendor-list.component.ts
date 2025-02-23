@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {  Router } from '@angular/router';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-vendor-list',
@@ -182,10 +183,26 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
   filteredRequests = this.requests;
 
-  constructor(public router:Router)
+  constructor(public router:Router,private httpService:HttpServiceService)
   {
 
   }
+
+    
+  
+    ngOnInit()
+    {
+      this.getVendorList()
+    }
+  
+    getVendorList()
+    {
+      this.httpService.getVendorList().subscribe((value)=>{
+        console.log(value)
+      },(error)=>{
+        console.log(error)
+      })
+    }
 
   onSearch() {
     const query = this.searchQuery.toLowerCase();

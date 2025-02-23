@@ -116,8 +116,8 @@
   </div>
 </div>
 <mat-drawer-container [autosize]="true" class="admin-layout" >
-<div style="font-family: roboto, sans-serif;color: black; display: flex;">
-<mat-drawer mode="side" open *ngIf="isVisible" style="opacity: 0.5;">
+<div class="sideMenuDiv">
+<mat-drawer mode="side" open *ngIf="isVisible" >
   <div class="sideMenu">
     <div class="Dashboard" [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
       <i style="font-size: medium ;" class="fa-solid fa-qrcode"></i>

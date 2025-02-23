@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-test-drives',
@@ -180,6 +181,25 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
 
   filteredRequests = this.requests;
+
+  constructor(private httpService:HttpServiceService)
+  {
+
+  }
+
+  ngOnInit()
+  {
+    this.getTestDrive()
+  }
+
+  getTestDrive()
+  {
+    this.httpService.getTestDrive().subscribe((value)=>{
+      console.log(value)
+    },(error)=>{
+      console.log(error)
+    })
+  }
 
   onSearch() {
     const query = this.searchQuery.toLowerCase();

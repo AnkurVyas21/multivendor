@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from 'src/app/dialog-box/dialog-box.component';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-search-and-banner',
@@ -16,7 +17,7 @@ export class SearchAndBannerComponent {
   ];
   filteredOptions: string[] = [];
   showDropdown: boolean = false;
-   constructor(public dialog: MatDialog)
+   constructor(public dialog: MatDialog, private httpService:HttpServiceService)
     {
   
     }

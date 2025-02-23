@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-vendor-details',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class VendorDetailsComponent implements OnInit {
   vendor: any;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private httpService:HttpServiceService) {}
 
   ngOnInit(): void {
     const vendorId = this.route.snapshot.paramMap.get('id');
@@ -17,10 +18,19 @@ export class VendorDetailsComponent implements OnInit {
     if (vendorId) {
       this.getVendorDetails(vendorId);
     }
+
+   
   }
 
   getVendorDetails(id: string) {
     // 🔹 Dummy Data for testing
+
+    this.httpService.getVendorDetails(id).subscribe((value)=>{
+      console.log('success')
+    },(error)=>{
+      console.log(error)
+    }
+    )
     const dummyVendors = [
       { id: '25', name: 'John Doe', email: 'john@example.com', status: 'Pending', totalListings: 15, commissionsPaid: 5000 },
     ];

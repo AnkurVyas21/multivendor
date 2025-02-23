@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/authService/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpServiceService } from '../services/http-service.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
   email=''
   selectedUserType:'user'|'vendor'|'admin'|'superAdmin'='user'
   lastSegment=''
-  constructor(private authService: AuthService, private route:ActivatedRoute)
+  constructor(private authService: AuthService, private route:ActivatedRoute, private httpService:HttpServiceService)
   {
 
   }
@@ -23,7 +24,7 @@ export class LoginComponent {
       this.lastSegment = urlSegments[urlSegments.length - 1]?.path || '';
       if(this.lastSegment=='admin')
       {
-        this.selectedUserType='admin'
+        this.selectedUserType='superAdmin'
       }
       else 
       {
@@ -31,7 +32,22 @@ export class LoginComponent {
       }
     });
   }
+
   onLogin(email: string, password: string) {
+    let credentials = {email:email,password:password,userType:this.selectedUserType}
+    this.httpService.login(credentials).subscribe((value)=>{
+      if(value)
+      {
+        this.authServiceLogin(email,password,this.selectedUserType)
+      }
+    },(error)=>{
+      this.authServiceLogin(email,password,this.selectedUserType)
+  })
+   
+  }
+
+  authServiceLogin(email: string, password: string, userType:string)
+  {
     this.authService.login(email, password,this.selectedUserType).subscribe(
       response => console.log('Login successful', response),
       error => {

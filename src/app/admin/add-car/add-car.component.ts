@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-add-car',
@@ -14,8 +15,9 @@ export class AddCarComponent {
   carlistingFormAddress:FormGroup
   selectedTabIndex=0
   tabsAccess = [true, false, false,false,false];
+  @Input() vendor = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private httpService:HttpServiceService) {
     this.carlistingFormBasic = this.fb.group({
       title: ['', Validators.required],
       make: ['', Validators.required],
@@ -98,12 +100,17 @@ this.carlistingFormMedia = this.fb.group({
 
   onSubmit(form:FormGroup, nextIndex:number) {
     console.log(form)
+    console.log(this.vendor)
     if (form.valid) {
+      this.httpService.addCar(form.value).subscribe((value)=>{
+
+      },(error)=>{
+        if(nextIndex !=5)
+          {  this.tabsAccess[nextIndex] = true; // Enable the next tab
+            this.selectedTabIndex = nextIndex; // Move to the next tab
+            }
+      })
       console.log('Form Submitted', form.value);
-      if(nextIndex !=5)
-    {  this.tabsAccess[nextIndex] = true; // Enable the next tab
-      this.selectedTabIndex = nextIndex; // Move to the next tab
-      }
     } else {
       console.log('Form is invalid');
     }

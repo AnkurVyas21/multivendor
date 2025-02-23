@@ -31,7 +31,14 @@
   font-family: roboto, sans-serif;
   color: black;
   height: 11vh;
-  opacity: 0.5;
+  background: linear-gradient(to bottom, #e0e0e0, #f3efef, #f8f7f7);
+}
+
+
+
+.sideMenuDiv {
+  font-family: roboto, sans-serif;color: black; display: flex;
+
 }
 .profileImage{
   border-radius: 100%;

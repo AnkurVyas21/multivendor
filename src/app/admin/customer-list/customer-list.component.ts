@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -185,9 +186,23 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
   filteredRequests = this.requests;
 
-  constructor(public router:Router)
+  constructor(public router:Router, private httpService:HttpServiceService)
   {
 
+  }
+
+  ngOnInit()
+  {
+    this.getCustomerList()
+  }
+
+  getCustomerList()
+  {
+    this.httpService.getCustomer('33').subscribe((value)=>{
+      this.requests = value.customerList
+  },(error)=>{
+    console.log(error)
+  })
   }
 
   onSearch() {
@@ -210,7 +225,7 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
   navigateToCustomer()
   {
-    this.router.navigate(['admin/customer-details/25'])
+    this.router.navigate(['vendor/customer-details/25'])
   }
   
 

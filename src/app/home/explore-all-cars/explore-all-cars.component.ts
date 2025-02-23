@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-explore-all-cars',
@@ -7,7 +8,13 @@ import { Component } from '@angular/core';
 })
 export class ExploreAllCarsComponent {
 
-  carList = [
+
+ constructor(private httpService:HttpServiceService)
+ {
+
+ }
+
+ public carList = [
     {
       id: 1,
       title: 'Chevrolet Suburban 2021 mo',
@@ -82,4 +89,21 @@ export class ExploreAllCarsComponent {
     }
 
   ];
+
+
+  ngOnInit(): void {
+    this.getExploreCars()
+   }
+ 
+   getExploreCars()
+   {
+     this.httpService.getCars('exploreAllCars').subscribe((value)=>{
+      if(value.success)
+      {
+        this.carList = value.cars
+      }
+     },(error)=>{
+        console.log('error occured in explore all car list ')
+     })
+   }
 }

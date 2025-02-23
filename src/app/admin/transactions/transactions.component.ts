@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-transactions',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent {
+
+    constructor(private httpService:HttpServiceService)
+    {
+  
+    }
 
   searchQuery: string = '';
   requests = [
@@ -179,6 +185,19 @@ export class TransactionsComponent {
 
 displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license'];
 
+ngOnInit()
+  {
+    this.getTransactions()
+  }
+
+  getTransactions()
+  {
+    this.httpService.getTransaction().subscribe((value)=>{
+      console.log(value)
+    },(error)=>{
+      console.log(error)
+    })
+  }
 
   filteredRequests = this.requests;
 
