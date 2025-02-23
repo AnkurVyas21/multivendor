@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { HttpServiceService } from 'src/app/services/http-service.service';
+import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 
 @Component({
   selector: 'app-add-car',
@@ -17,7 +19,7 @@ export class AddCarComponent {
   tabsAccess = [true, false, false,false,false];
   @Input() vendor = false;
 
-  constructor(private fb: FormBuilder, private httpService:HttpServiceService) {
+  constructor(private fb: FormBuilder, private httpService:HttpServiceService, private dialog:MatDialog) {
     this.carlistingFormBasic = this.fb.group({
       title: ['', Validators.required],
       make: ['', Validators.required],
@@ -108,11 +110,29 @@ this.carlistingFormMedia = this.fb.group({
         if(nextIndex !=5)
           {  this.tabsAccess[nextIndex] = true; // Enable the next tab
             this.selectedTabIndex = nextIndex; // Move to the next tab
-            }
+          }
+         else {
+        this.openDialog('addCarSuccess')
+         }
       })
       console.log('Form Submitted', form.value);
     } else {
       console.log('Form is invalid');
     }
   }
+
+   openDialog(type:string)
+   {
+      const dialogRef =  this.dialog.open(AdminDialogComponent,{
+      data:{type:type},
+      width:'450px',
+     })
+  
+     dialogRef.afterClosed().subscribe(result=>{
+      console.log('addCar', result)
+     })
+   }
+  
 }
+
+

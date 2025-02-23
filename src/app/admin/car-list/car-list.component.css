@@ -70,7 +70,7 @@ tr:hover {
 }
 
 .commissionBtn {
-  width: 7vw;
+    width: 60%;
     border-radius: 1.5vw;
     color: black;
     background-color: #c1c3bf;
@@ -81,4 +81,17 @@ tr:hover {
 .commissionBtn:hover{
   background-color: #e6e9e3;
 
+}
+
+.topGroupElements{
+  display: flex;justify-content: space-between;align-items: center;
+}
+
+@media screen and (max-width: 550px) {
+  .topGroupElements
+  {  display: flex;flex-direction: column;align-items: revert;  }
+
+  .commissionBtn{
+    width: 30%;
+  }
 }

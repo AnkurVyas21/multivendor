@@ -382,4 +382,8 @@ export class AdminDialogComponent {
       console.log('Form is invalid');
     }
   }
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
 }  

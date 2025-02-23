@@ -969,3 +969,9 @@
     
   </mat-tab-group>
 </div>
+
+<div class="dialog-container" *ngIf="data.type=='addCarSuccess'">
+  <h2>🎉 Congratulations!</h2>
+  <p>Your car is added successfully.</p>
+  <button mat-button color="primary" (click)="closeDialog()">OK</button>
+</div>

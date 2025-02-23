@@ -1,47 +1,9 @@
- <!-- <mat-drawer-container [autosize]="true" class="admin-layout" >
-  <mat-drawer mode="side" open *ngIf="isVisible" >
-    <div class="sidebar">
-      <div class="profile-section">
-        
-        <div *ngIf="profilePictureUrl; else initialsTemplate">
-          <img [src]="profilePictureUrl" alt="Admin Profile" class="profile-picture" />
-        </div>
-        <ng-template #initialsTemplate>
-          <div class="profile-initials">
-            {{ getInitials(adminName) }}
-          </div>
-        </ng-template>
-        <h3 class="admin-name">{{ adminName }}</h3>
-      </div>
-      <ul class="menu-list" style="overflow-y: auto; overflow-x: hidden ;scrollbar-width: none;">
-        <li [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Dashboard</li>
-        <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Test Drives</li>
-        <li [routerLink]="['/vendor/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Offer Price</li>
-        <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/add-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add Cars</li>
-        <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
-        <li [routerLink]="['/vendor/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Car List</li>
-        <li *ngIf="userType=='superAdmin'" [routerLink]="['/vendor/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Vendor Management</li>
-        <li  [routerLink]="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Customer List</li>
-        <li [routerLink]="['/vendor/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Transactions</li>
-      </ul>
-      
-    </div>
-  </mat-drawer>
-    <button class="arrow-button" [ngClass]="{ 'right-arrow': !isVisible, 'left-arrow': isVisible }" (click)="toggleToolBar()">
-      <span class="arrow"></span>
-    </button>
-
-  <mat-drawer-content class="main-content">
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>  -->
 
 <div class="parentHeader">
   <div [ngClass]="isVisible ?'titleImage':'collapse'" >
-    <img style="width:8vh"
+    <img class="multiVendorImage"
      src="assets/images/logo/search.png">
      <a href="index.html" style="cursor: pointer;" target="_blank"> <h5 *ngIf="isVisible">Multi Vendor</h5></a>
-   
   </div>
   <div class="headerBar" >
     <div style="cursor: pointer;">
@@ -75,6 +37,7 @@
     </div>
   </div>
 </div>
+
 <mat-drawer-container [autosize]="true" class="admin-layout" >
 <div style="font-family: roboto, sans-serif;color: black; display: flex;">
 <mat-drawer mode="side" open *ngIf="isVisible" style="opacity: 0.5;">

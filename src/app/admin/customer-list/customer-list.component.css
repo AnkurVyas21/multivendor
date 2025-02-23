@@ -68,3 +68,13 @@ tr:hover {
 .table-bordered{
   border-radius: 5px;
 }
+
+.topGroupElements{
+  display: flex;justify-content: space-between;align-items: center;
+}
+
+
+@media screen and (max-width: 550px) {
+  .topGroupElements
+  {  display: flex;flex-direction: column;align-items: revert;  }
+}

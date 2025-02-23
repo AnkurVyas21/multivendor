@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -27,6 +27,12 @@ export class AdminComponent implements OnInit {
 ngOnInit() {
   this.isLogin = !!localStorage.getItem('adminUserType')&& !!localStorage.getItem('authorization')
   this.userType = localStorage.getItem('userType')
+}
+
+
+checkScreenSize() {
+  console.log(window.innerWidth, 'inner widhth')
+  this.isVisible = (window.innerWidth < 768); // Adjust breakpoint as needed
 }
   getInitials(name: string): string {
     const [firstName, lastName] = name.split(' ');

@@ -1,7 +1,8 @@
-.titleImage{
+/* Base styles */
+.titleImage, .collapse {
   width: 18vw;
   border: 0.5px solid #d2cfcf;
-  display: flex  ;
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30px;
@@ -9,52 +10,52 @@
   font-family: roboto, sans-serif;
 }
 
-.collapse{
+.collapse {
   width: 5vw;
-  border: 0.5px solid #d2cfcf;
-  display: flex  ;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  font-weight: 700;
-  font-family: roboto, sans-serif;
 }
-.headerBar{
+
+.headerBar {
   width: 100%;
   border: 0.5px solid #d2cfcf;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.parentHeader{
+
+.multiVendorImage {
+  width: 8vh;
+}
+
+.parentHeader {
   display: flex;
   font-family: roboto, sans-serif;
   color: black;
   height: 11vh;
 }
-.profileImage{
+
+.profileImage {
   border-radius: 100%;
   width: 3vw;
 }
 
-.searchInput{
+.searchInput {
   width: 35vw;
   background-color: gainsboro;
   border-radius: 25px;
   border: none;
-  padding-left: 20px; /* Moves placeholder inside */
-  padding-right: 50px; /* Prevents text from overlapping with the icon */
+  padding-left: 20px;
+  padding-right: 50px;
   font-size: 18px;
   height: 6vh;
 }
 
 .magnifyingGlass {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: large;
-      color: gray;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: large;
+  color: gray;
 }
 
 .rightSideHeader {
@@ -64,21 +65,16 @@
   align-items: center;
 }
 
-.sideMenu{
-  width: 32vh ;
+.sideMenu, .collapseSideMenu {
+  width: 32vh;
   border-right: 0.5px solid #d2cfcf;
   height: 100vh;
   font-family: roboto, sans-serif;
   font-weight: 400;
 }
 
-.collapseSideMenu
-{
-  width: 10vh ;
-  border-right: 0.5px solid #d2cfcf;
-  height: 100vh;
-  font-family: roboto, sans-serif;
-  font-weight: 400;
+.collapseSideMenu {
+  width: 10vh;
 }
 
 .Dashboard {
@@ -92,14 +88,12 @@
   cursor: pointer;
 }
 
-.active-link
-{
+.active-link {
   color: rgb(20, 9, 233);
   opacity: 10;
 }
 
-.active-link h6
-{
+.active-link h6 {
   color: rgb(20, 9, 233);
   opacity: 10;
 }
@@ -114,41 +108,91 @@
   padding-bottom: 2vh;
 }
 
-.vendor {
+.vendor, .customer {
   display: flex;
-    align-items: center;
-    gap: 1vw;
-    cursor: pointer;
+  align-items: center;
+  gap: 1vw;
+  cursor: pointer;
 }
 
-.customer {
-  display: flex;
-    align-items: center;
-    gap: 1vw;
-    cursor: pointer;
-}
-
-.routerOutlet{
+.routerOutlet {
   background-color: #fbf7f7eb;
   width: 100%;
 }
 
-
-h6{
-  font-weight:400  
+h6 {
+  font-weight: 400;
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .titleImage, .collapse {
+    width: 100%;
+    font-size: 24px;
+  }
+
+  .titleImage{
+    display: none;
+  }
 
 
+  .headerBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
+  .searchInput {
+    width: 80%;
+    margin: 10px 0;
+  }
 
+  .rightSideHeader {
+    margin-right: 2vw;
+    gap: 2vw;
+  }
 
+  .sideMenu, .collapseSideMenu {
+    width: 100%;
+    height: auto;
+  }
 
+  .Dashboard, .vendor, .customer {
+    padding-left: 1vw;
+    gap: 1vh;
+  }
 
+  .vendorCustomer {
+    flex-direction: row;
+    gap: 2vw;
+  }
 
+  .routerOutlet {
+    width: 100%;
+  }
+}
 
+@media (max-width: 480px) {
+  .titleImage, .collapse {
+    font-size: 20px;
+  }
 
+  .searchInput {
+    width: 90%;
+    font-size: 16px;
+  }
 
+  .rightSideHeader {
+    margin-right: 1vw;
+    gap: 1vw;
+  }
 
+  .Dashboard, .vendor, .customer {
+    padding-left: 0.5vw;
+    gap: 0.5vh;
+  }
 
-
+  .vendorCustomer {
+    flex-direction: column;
+    gap: 1vw;
+  }
+}

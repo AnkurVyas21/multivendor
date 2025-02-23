@@ -1,14 +1,12 @@
 <div class="test-drive-requests">
-
-  <div style="display: flex;justify-content: space-between;align-items: center;">
+  <div class="topGroupElements">
     <div style="display: flex;flex-direction: column;gap: 10px;">
       <h4>Car List Requests</h4>
-      <button class="btn commissionBtn me-2" [routerLink]="['/vendor/add-cars']">
+      <button class="btn commissionBtn" [routerLink]="['/vendor/add-cars']">
         Add Car
       </button>
     </div>
     <div style="margin-top: 2vw;">
-     
       <mat-form-field appearance="outline">
         <mat-label>Search</mat-label>
         <input matInput placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" />
