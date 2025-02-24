@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../enviornment/environment';
 
@@ -22,13 +22,61 @@ export class HttpServiceService {
   }
 
   getCars(type:string): Observable<any> {
-    return this.http.get(`${this.baseURL}/cars/${type}`).pipe(
+    return this.http.get(`${this.baseURL}/api/cars`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
         return throwError(() => error);
       })
     );
   }
+
+  getCarsDetailsSpecification(id:number): Observable<any> {
+    return this.http.get(`${this.baseURL}/cars/${id}/specifications`).pipe(
+      catchError((error) => {
+        console.error('Error fetching users:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getCarsDetailsFeature(id:number): Observable<any> {
+    return this.http.get(`${this.baseURL}/cars/${id}/features`).pipe(
+      catchError((error) => {
+        console.error('Error fetching users:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getCarsDetailsMedia(id:number): Observable<any> {
+    return this.http.get(`${this.baseURL}/cars/${id}/media`).pipe(
+      catchError((error) => {
+        console.error('Error fetching users:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+
+  getCarsDetailsAddress(id:number): Observable<any> {
+    return this.http.get(`${this.baseURL}/cars/${id}/address`).pipe(
+      catchError((error) => {
+        console.error('Error fetching users:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+
+  getCarsDetailsPhoto(id:number): Observable<any> {
+    return this.http.get(`${this.baseURL}/cars/media/${id}/photo1`).pipe(
+      catchError((error) => {
+        console.error('Error fetching users:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
 
   getSoldCars(): Observable<any> {
     return this.http.get(`${this.baseURL}/soldCars`).pipe(
@@ -91,8 +139,8 @@ export class HttpServiceService {
     return this.http.post(`${this.baseURL}/users`, user);
   }
 
-  addCar(carInfo: any): Observable<any> {
-    return this.http.post(`${this.baseURL}/addCars`, carInfo);
+  addCar(carInfo: any,formType:string): Observable<any> {
+    return this.http.post(`${this.baseURL}/cars/${formType}`, carInfo);
   }
 
 
@@ -107,14 +155,21 @@ export class HttpServiceService {
   }
 
   // Login method
-  login(credentials: { email: string; password: string,userType:string }): Observable<any> {
-    return this.http.post(`${this.baseURL}/auth/login`, credentials).pipe(
+  login(credentials: { email: string; password: string; userType: string }): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'User-Type': credentials.userType,
+      'Authorization': `Basic ${btoa(`${credentials.email}:${credentials.password}`)}`,
+    });
+  
+    return this.http.post(`${this.baseURL}/api/auth/login`, {}, { headers }).pipe(
       catchError((error) => {
         console.error('Login failed:', error);
         return throwError(() => error);
       })
     );
   }
+  
 
   // Forgot password
   forgotPassword(email: string): Observable<any> {
@@ -194,4 +249,18 @@ export class HttpServiceService {
       })
     );
   }
+
+  register(userType: string, userData: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+  
+    return this.http.post(`${this.baseURL}/api/${userType}/register`, userData, { headers }).pipe(
+      catchError((error) => {
+        console.error('Registration failed:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+  
 }

@@ -104,7 +104,7 @@ this.carlistingFormMedia = this.fb.group({
     console.log(form)
     console.log(this.vendor)
     if (form.valid) {
-      this.httpService.addCar(form.value).subscribe((value)=>{
+      this.httpService.addCar(form.value,this.formType(nextIndex)).subscribe((value)=>{
 
       },(error)=>{
         if(nextIndex !=5)
@@ -118,6 +118,30 @@ this.carlistingFormMedia = this.fb.group({
       console.log('Form Submitted', form.value);
     } else {
       console.log('Form is invalid');
+    }
+  }
+
+  formType(index:number)
+  {
+    switch (index)
+    {
+      case 1:
+      return 'add-basic'
+
+      case 2:
+      return '1/add-specifications'
+
+      case 3:
+      return '1/add-features'
+
+      case 4:
+      return '1/add-media'
+
+      case 5:
+      return '1/add-address'
+
+      default:
+      return ''
     }
   }
 

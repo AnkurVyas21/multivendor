@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpServiceService } from '../services/http-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-listingdetails',
@@ -12,7 +14,7 @@ export class ListingdetailsComponent {
 
   contactUs!:FormGroup
 
-  constructor(public dialog: MatDialog, private fb:FormBuilder)
+  constructor(public dialog: MatDialog, private fb:FormBuilder, private httpService:HttpServiceService,private route:ActivatedRoute)
   {
 
   }
@@ -25,6 +27,44 @@ export class ListingdetailsComponent {
       phone:['',Validators.required],
       message:['',Validators.required]
     })
+
+    this.route.params.subscribe((value)=>{
+    this.getCarDetails(value['id'])
+    })
+  }
+
+  getCarDetails(id:number)
+  {
+    this.httpService.getCarsDetailsFeature(id).subscribe((value)=>{
+      console.log(value)
+    },(error)=>{
+      console.log(error)
+    })
+
+    this.httpService.getCarsDetailsSpecification(id).subscribe((value)=>{
+      console.log(value)
+    },(error)=>{
+      console.log(error)
+    })
+
+    this.httpService.getCarsDetailsMedia(id).subscribe((value)=>{
+      console.log(value)
+    },(error)=>{
+      console.log(error)
+    })
+
+    this.httpService.getCarsDetailsAddress(id).subscribe((value)=>{
+      console.log(value)
+    },(error)=>{
+      console.log(error)
+    })
+
+    this.httpService.getCarsDetailsPhoto(id).subscribe((value)=>{
+      console.log(value)
+    },(error)=>{
+      console.log(error)
+    })
+
   }
 
   opendialogBox(type:string)

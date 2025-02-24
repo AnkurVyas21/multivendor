@@ -17,7 +17,7 @@ export class HotDealComponent {
         ],
         price: '$489',
         priceSale: '$399',
-        detailLink: '/detail'
+        detailLink: '/detail/25'
       },
       {
         title: 'Lexus LC Hybrid 2024',
@@ -28,7 +28,7 @@ export class HotDealComponent {
         ],
         price: '$489',
         priceSale: '$399',
-        detailLink: '/detail'
+        detailLink: '/detail/25'
       },
       {
         title: 'BMW X5 2024',
@@ -39,7 +39,7 @@ export class HotDealComponent {
         ],
         price: '$489',
         priceSale: '$399',
-        detailLink: '/detail'
+        detailLink: '/detail/25'
       },
       {
         title: 'Mercedez benz - c class',
@@ -50,7 +50,7 @@ export class HotDealComponent {
         ],
         price: '$489',
         priceSale: '$399',
-        detailLink: '/detail'
+        detailLink: '/detail/25'
       },
       {
         title: 'Lexus LC Hybrid 2024',
@@ -61,7 +61,7 @@ export class HotDealComponent {
         ],
         price: '$489',
         priceSale: '$399',
-        detailLink: '/detail'
+        detailLink: '/detail/25'
       },
       {
         title: 'BMW X5 2024',
@@ -72,7 +72,7 @@ export class HotDealComponent {
         ],
         price: '$489',
         priceSale: '$399',
-        detailLink: '/detail'
+        detailLink: '/detail/25'
       },
       {
         title: 'Mercedez benz - c class',
@@ -83,7 +83,7 @@ export class HotDealComponent {
         ],
         price: '$489',
         priceSale: '$399',
-        detailLink: '/detail'
+        detailLink: '/detail/25'
       },
       {
         title: 'Lexus LC Hybrid 2024',
@@ -94,7 +94,7 @@ export class HotDealComponent {
         ],
         price: '$489',
         priceSale: '$399',
-        detailLink: '/detail'
+        detailLink: '/detail/25'
       },
       {
         title: 'BMW X5 2024',
@@ -105,7 +105,7 @@ export class HotDealComponent {
         ],
         price: '$489',
         priceSale: '$399',
-        detailLink: '/detail'
+        detailLink: '/detail/25'
       }
     ];
   }

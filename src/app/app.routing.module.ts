@@ -28,7 +28,7 @@ const routes: Routes = [
     path: 'login/admin', component: LoginComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
   },
   {
-    path: 'register', component: RegisterComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
+    path: 'register/:userType', component: RegisterComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
   },
   {
     path: 'signup', component: HomeComponent , canActivate: [AuthGuard] 
@@ -41,7 +41,7 @@ const routes: Routes = [
   },
  
   {
-    path: 'detail', component: ListingdetailsComponent , canActivate: [AuthGuard] 
+    path: 'detail/:id', component: ListingdetailsComponent , canActivate: [AuthGuard] 
   },
   {
     path: 'search', component: SearchResultComponent , canActivate: [AuthGuard] 

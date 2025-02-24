@@ -66,5 +66,11 @@ export class LoginComponent {
       }
     );
   }
+
+  userType()
+  {
+        let registerUser = this.selectedUserType =='user' ? 'public' :this.selectedUserType
+        return '/register/'+registerUser
+  }
   
 }

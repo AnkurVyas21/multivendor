@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpServiceService } from '../services/http-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ export class RegisterComponent {
 
   registeForm!:FormGroup;
 
-  constructor(private fb:FormBuilder)
+  constructor(private fb:FormBuilder, private httpService:HttpServiceService, private route:ActivatedRoute)
   {
 
   }
@@ -18,12 +20,12 @@ export class RegisterComponent {
   ngOnInit()
   {
     this.registeForm = this.fb.group({
-      firstName:['', Validators.required,Validators.maxLength(32)],
-      lastName:['',Validators.required,Validators.maxLength(32)],
-      email:['',Validators.required,Validators.email,Validators.maxLength(68)],
-      DOB:['',Validators.required],
-      password:['',Validators.required,Validators.maxLength(32)],
-      confirmPassword:['',Validators.required,Validators.maxLength(32)],
+      firstName:['', [Validators.required,Validators.maxLength(32)]],
+      lastName:['',[Validators.required,Validators.maxLength(32)]],
+      email:['',[Validators.required,Validators.email,Validators.maxLength(68)]],
+      DOB:['',[Validators.required]],
+      password:['',[Validators.required,Validators.maxLength(32)]],
+      confirmPassword:['',[Validators.required,Validators.maxLength(32)]],
       keepSignIn:[false]
     })
   }
@@ -31,6 +33,15 @@ export class RegisterComponent {
   registerUserFormSubmit()
   {
     console.log(this.registeForm)
+    this.route.params.subscribe((value)=>{
+      console.log(value['userType'])
+      this.httpService.register(value['userType'],this.registeForm.value).subscribe((value)=>{
+        console.log(value)
+      },(error)=>{
+        console.log(error)
+      })
+    })
+
   }
 
 }

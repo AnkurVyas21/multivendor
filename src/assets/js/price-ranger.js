@@ -1252,7 +1252,7 @@ $(document).ready(function () {
     function move(event, data) {
       // Fix #498
       // Check value of .buttons in 'start' to work around a bug in IE10 mobile (data.buttonsProperty).
-      // https://connect.microsoft.com/IE/feedback/details/927005/mobile-ie10-windows-phone-buttons-property-of-pointermove-event-always-zero
+      // https://connect.microsoft.com/IE/feedback/detail/927005/mobile-ie10-windows-phone-buttons-property-of-pointermove-event-always-zero
       // IE9 has .buttons and .which zero on mousemove.
       // Firefox breaks the spec MDN defines.
       if (navigator.appVersion.indexOf("MSIE 9") === -1 && event.buttons ===
