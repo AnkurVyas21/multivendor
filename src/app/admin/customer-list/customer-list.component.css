@@ -40,13 +40,21 @@ table {
   border-collapse: collapse;
 }
 
+tr {
+  border-bottom: 1px solid black;
+}
+
 th {
   position: sticky;
   top: 0;
-  background-color: #dbdcd9 !important;
+  font-size: x-large;
+  /* background-color: #dbdcd9 !important; */
+  background-image: linear-gradient(to top left, rgb(93, 76, 240), rgb(89, 84, 239)) !important;
+  color:rgb(243, 245, 249);
   /* Ensure header remains visible */
-  color: rgb(5, 5, 5);
   z-index: 2;
+  padding:3vh;
+
 }
 
 td {
@@ -54,7 +62,7 @@ td {
   /* Ensure rows are visible properly */
   cursor: pointer;
   gap: 20px;
-
+  padding:3vh;
 }
 
 tr:hover {

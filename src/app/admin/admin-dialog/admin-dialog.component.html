@@ -975,3 +975,9 @@
   <p>Your car is added successfully.</p>
   <button mat-button color="primary" (click)="closeDialog()">OK</button>
 </div>
+
+<div class="dialog-container" *ngIf="data.type=='addCarSuccess'">
+  <p>Are you want to approve this test drive ?</p>
+  <button mat-button color="primary" (click)="approveTestDrive()">Yes</button>
+  <button mat-button color="primary" (click)="closeDialog()">Back</button>
+</div>

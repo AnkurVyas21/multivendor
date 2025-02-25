@@ -20,7 +20,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+  background-color: #3e7600;
+ }
 
 .multiVendorImage {
   width: 8vh;
@@ -117,6 +118,7 @@
 
 .routerOutlet {
   background-color: #fbf7f7eb;
+  /* background-color: #3e7600; */
   width: 100%;
 }
 

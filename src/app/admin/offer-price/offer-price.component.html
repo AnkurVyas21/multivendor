@@ -1,15 +1,11 @@
-<div class="test-drive-requests">
-  <div class="topGroupElements">
-    <div>
-      <h4>Offer Price List</h4>
+  <div class="test-drive-requests">
+    <div >
+      <div style="display: flex;justify-content: space-between;align-items: center;">
+        <h4>Offer Price List</h4>
+        <input style="height: 6vh; margin-top: 2vh; border-radius: 2vh; padding: 3vh; border:none; background-color: gainsboro;" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearch()">
+      </div>
     </div>
-    <div style="margin-top: 2vw;">
-      <mat-form-field appearance="outline">
-        <mat-label>Search</mat-label>
-        <input matInput placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" />
-      </mat-form-field>
-    </div>
-  </div>
+  
   
     <!-- Table to display test drive requests -->
   <div >

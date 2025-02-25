@@ -15,7 +15,6 @@ export class CustomerListComponent {
   requests = [
     {
         "id": 1,
-        "carID": "CAR1001",
         "name": "Ankur Vyas",
         "email": "ankurvyas033@gmail.com",
         "phone": "9303493424",
@@ -24,7 +23,6 @@ export class CustomerListComponent {
     },
     {
         "id": 2,
-        "carID": "CAR1002",
         "name": "Rahul Sharma",
         "email": "rahul.sharma@gmail.com",
         "phone": "9876543210",
@@ -33,7 +31,6 @@ export class CustomerListComponent {
     },
     {
         "id": 3,
-        "carID": "CAR1003",
         "name": "Priya Verma",
         "email": "priya.verma@example.com",
         "phone": "9123456789",
@@ -42,7 +39,6 @@ export class CustomerListComponent {
     },
     {
         "id": 4,
-        "carID": "CAR1004",
         "name": "Amit Singh",
         "email": "amit.singh@gmail.com",
         "phone": "9988776655",
@@ -51,7 +47,6 @@ export class CustomerListComponent {
     },
     {
         "id": 5,
-        "carID": "CAR1005",
         "name": "Neha Gupta",
         "email": "neha.gupta@example.com",
         "phone": "9871234567",
@@ -60,7 +55,6 @@ export class CustomerListComponent {
     },
     {
       "id": 6,
-      "carID": "CAR1005",
       "name": "Neha Gupta",
       "email": "neha.gupta@example.com",
       "phone": "9871234567",
@@ -69,7 +63,6 @@ export class CustomerListComponent {
   },
   {
     "id": 7,
-    "carID": "CAR1005",
     "name": "Neha Gupta",
     "email": "neha.gupta@example.com",
     "phone": "9871234567",
@@ -78,7 +71,6 @@ export class CustomerListComponent {
 },
 {
   "id": 8,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -87,7 +79,6 @@ export class CustomerListComponent {
 },
 {
   "id": 9,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -95,7 +86,6 @@ export class CustomerListComponent {
   "license": "6677889900"
 },{
   "id": 8,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -104,7 +94,6 @@ export class CustomerListComponent {
 },
 {
   "id": 9,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -112,7 +101,6 @@ export class CustomerListComponent {
   "license": "6677889900"
 },{
   "id": 8,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -121,7 +109,6 @@ export class CustomerListComponent {
 },
 {
   "id": 9,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -129,7 +116,6 @@ export class CustomerListComponent {
   "license": "6677889900"
 },{
   "id": 8,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -138,7 +124,6 @@ export class CustomerListComponent {
 },
 {
   "id": 9,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -146,7 +131,6 @@ export class CustomerListComponent {
   "license": "6677889900"
 },{
   "id": 8,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -155,7 +139,6 @@ export class CustomerListComponent {
 },
 {
   "id": 9,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -163,7 +146,6 @@ export class CustomerListComponent {
   "license": "6677889900"
 },{
   "id": 8,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -172,7 +154,6 @@ export class CustomerListComponent {
 },
 {
   "id": 9,
-  "carID": "CAR1005",
   "name": "Neha Gupta",
   "email": "neha.gupta@example.com",
   "phone": "9871234567",
@@ -181,7 +162,7 @@ export class CustomerListComponent {
 }
 ]
 
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license'];
+displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'address', 'license'];
 
 
   filteredRequests = this.requests;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 
@@ -12,6 +12,7 @@ export class DashboardComponent {
  totalCarBuy: number = 120;     // Example value for total car buys
  totalTestDrives: number = 85;  // Example value for total test drives
  totalUsers: number = 500;      // Example value for total users
+ @Input() userType ='admin'
 
  constructor(private dialog:MatDialog) { }
 

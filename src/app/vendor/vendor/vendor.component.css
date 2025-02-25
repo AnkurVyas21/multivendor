@@ -1,17 +1,23 @@
 .titleImage{
   width: 18vw;
-  border: 0.5px solid #d2cfcf;
+  border-bottom: 0.5px solid #403c3c;
   display: flex  ;
   justify-content: center;
   align-items: center;
   font-size: 30px;
   font-weight: 700;
   font-family: roboto, sans-serif;
+  background-color: black;
+}
+
+.titleImage h5 {
+  color: white;
 }
 
 .collapse{
   width: 5vw;
-  border: 0.5px solid #d2cfcf;
+  border: 0.5px solid #403c3c;
+  background-color: black;
   display: flex  ;
   justify-content: center;
   align-items: center;
@@ -21,10 +27,10 @@
 }
 .headerBar{
   width: 100%;
-  border: 0.5px solid #d2cfcf;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #3e7600;
 }
 .parentHeader{
   display: flex;
@@ -37,8 +43,11 @@
 
 
 .sideMenuDiv {
-  font-family: roboto, sans-serif;color: black; display: flex;
+  font-family: roboto, sans-serif;color: rgb(251, 251, 251); display: flex;background-color: black;
+}
 
+.sideMenuDiv h6 {
+  color: white;
 }
 .profileImage{
   border-radius: 100%;
@@ -74,7 +83,7 @@
 
 .sideMenu{
   width: 32vh ;
-  border-right: 0.5px solid #d2cfcf;
+  border-right: 0.5px solid #403c3c;
   height: 100vh;
   font-family: roboto, sans-serif;
   font-weight: 400;
@@ -83,7 +92,7 @@
 .collapseSideMenu
 {
   width: 10vh ;
-  border-right: 0.5px solid #d2cfcf;
+  border-right: 0.5px solid #403c3c;
   height: 100vh;
   font-family: roboto, sans-serif;
   font-weight: 400;
@@ -96,19 +105,19 @@
   align-items: center;
   padding-left: 2vw;
   height: 10vh;
-  border-bottom: 0.5px solid #d2cfcf;
+  border-bottom: 0.5px solid #403c3c;
   cursor: pointer;
 }
 
 .active-link
 {
-  color: rgb(20, 9, 233);
+  color: rgb(185, 224, 12);
   opacity: 10;
 }
 
 .active-link h6
 {
-  color: rgb(20, 9, 233);
+  color: rgb(185, 224, 12);
   opacity: 10;
 }
 
@@ -118,7 +127,7 @@
   flex-direction: column;
   padding-left: 2vw;
   gap: 1vw;
-  border-bottom: 0.5px solid #d2cfcf;
+  border-bottom: 0.5px solid #403c3c;
   padding-bottom: 2vh;
 }
 

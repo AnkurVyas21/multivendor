@@ -1,36 +1,40 @@
  
    <div class="dashboardMain">
-    <div>
-      <div class="buttonParent">
+    <div >
+      <div class="buttonParent" *ngIf="userType=='admin'">
         <button class="button-white">Set Commission</button>
         <button class="button-white">Set Advertise Banner</button>
+      </div>
+      <div class="buttonParent" style=" justify-content: right; margin-right: 5vh;" *ngIf="userType=='vendor'">
+        <button [routerLink]="['/vendor/add-cars']" class="addcarButton">Add Car</button>
       </div>
   </div>
 
     <div class="cardsParent">
-      <div class="cards">
-        <h5 >{{ totalCarBuy }}</h5>
+  
+  <div  *ngIf="userType=='admin'" class="cards" style="background-image: linear-gradient(to top right, rgb(34, 2, 40), rgb(97, 5, 150));">
+        <h3 >{{ 15 }}</h3>
         <p  >Total Vendors</p>
       </div>
      
 
-      <div class="cards">
-        <h5 >{{ totalCarBuy }}  </h5>
+      <div class="cards" style="background-image: linear-gradient(to top right, rgb(2, 32, 40), rgb(5, 121, 150));">
+        <h3 >{{ 20 }}  </h3>
         <p  >Total Customers</p>
       </div>
 
-      <div class="cards">
-        <h5 >{{ totalCarBuy }}  </h5>
-        <p  >Total Cars listed</p>
+      <div class="cards" style="background-image: linear-gradient(to top right, rgb(40, 37, 2), rgb(150, 150, 5));">
+        <h3 >{{ 13 }}  </h3>
+        <p  >Total Cars Listed</p>
       </div>
 
-      <div class="cards">
-        <h5 >{{ totalCarBuy }}  </h5>
-        <p  >Pending approval</p>
+      <div class="cards" style="background-image: linear-gradient(to top right, rgb(2, 40, 10), rgb(5, 150, 15));">
+        <h3 >{{ 5 }}  </h3>
+        <p  >Pending Approval</p>
       </div>
       
-      <div class="cards">
-        <h5 >{{ totalCarBuy }}  </h5>
+      <div class="cards" style="background-image: linear-gradient(to top right, rgb(40, 2, 15), rgb(150, 5, 75));">
+        <h3 >${{ 1400 }}  </h3>
         <p  >Commission Earned</p>
       </div>
     </div>
@@ -51,7 +55,7 @@
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
           <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
           <div class="card-body">
-            <h5 class="card-title">Total Vendors</h5>
+            <h3 class="card-title">Total Vendors</h3>
             <p class="card-text">{{ totalCarBuy }}  </p>
             <a href="#" class="btn btn-primary">Learn More</a>
           </div>
@@ -60,7 +64,7 @@
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
           <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
           <div class="card-body">
-            <h5 class="card-title">Total Users</h5>
+            <h3 class="card-title">Total Users</h3>
             <p class="card-text">{{ totalCarBuy }}  </p>
             <a href="#" class="btn btn-primary">Learn More</a>
           </div>
@@ -69,7 +73,7 @@
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
           <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
           <div class="card-body">
-            <h5 class="card-title">Total Cars listed</h5>
+            <h3 class="card-title">Total Cars listed</h3>
             <p class="card-text">{{ totalCarBuy }}  </p>
             <a href="#" class="btn btn-primary">Learn More</a>
           </div>
@@ -78,7 +82,7 @@
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
           <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
           <div class="card-body">
-            <h5 class="card-title">Pending approval</h5>
+            <h3 class="card-title">Pending approval</h3>
             <p class="card-text">{{ totalCarBuy }}  </p>
             <a href="#" class="btn btn-primary">Learn More</a>
           </div>
@@ -87,7 +91,7 @@
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
           <img src="https://via.placeholder.com/150" class="card-img-top" alt="Card Image">
           <div class="card-body">
-            <h5 class="card-title">Total Commission Earned</h5>
+            <h3 class="card-title">Total Commission Earned</h3>
             <p class="card-text">{{ totalTestDrives }}</p>
             <a href="#" class="btn btn-primary">Learn More</a>
           </div>

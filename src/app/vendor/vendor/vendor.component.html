@@ -80,10 +80,9 @@
     <img style="width:8vh"
      src="assets/images/logo/search.png">
      <a href="index.html" style="cursor: pointer;" target="_blank"> <h5 *ngIf="isVisible">Multi Vendor</h5></a>
-   
   </div>
   <div class="headerBar" >
-    <div style="cursor: pointer;">
+    <div style="cursor: pointer;color: white;">
       <i *ngIf="isVisible" (click)="toggleToolBar()" style="font-size: x-large; margin-left: 2vw;" class="fa-regular fa-square-caret-left"></i>
       <i *ngIf="!isVisible" (click)="toggleToolBar()" style="font-size: x-large; margin-left: 2vw;" class="fa-regular fa-square-caret-right"></i>
     </div>
@@ -97,7 +96,7 @@
         <img class="profileImage"
           src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" 
           alt="Profile">
-        <i style="font-size: x-large;" class="fa-solid fa-angle-down"></i>
+        <i style="font-size: x-large;color: white;" class="fa-solid fa-angle-down"></i>
       </div>
       
       <mat-menu #menu="matMenu">
