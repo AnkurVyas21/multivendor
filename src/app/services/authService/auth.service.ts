@@ -17,7 +17,8 @@ export class AuthService {
       'User-Type': userType,
       'Authorization': `Basic ${credentials}`
     });
-  
+    localStorage.setItem('authorization',`Basic ${credentials}`);
+
     return this.http.post(this.apiUrl, {}, { headers });
   } 
 }  

@@ -140,7 +140,17 @@ export class HttpServiceService {
   }
 
   addCar(carInfo: any,formType:string): Observable<any> {
-    return this.http.post(`${this.baseURL}/cars/${formType}`, carInfo);
+    let token = '';
+    token = localStorage.getItem("authorization") as string;
+    console.log(token);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    });
+    const options = {
+      headers,
+    };
+    return this.http.post(`${this.baseURL}/cars/${formType}`, carInfo, options);
   }
 
 
@@ -242,7 +252,17 @@ export class HttpServiceService {
   }
 
   contactUS(offerId: string): Observable<any> {
-    return this.http.post(`${this.baseURL}/contact/${offerId}`, {}).pipe(
+    let token = '';
+    token = localStorage.getItem("authorization") as string;
+    console.log(token);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    });
+    const options = {
+      headers,
+    };
+    return this.http.post(`${this.baseURL}/contact/${offerId}`, {}, options).pipe(
       catchError((error) => {
         console.error('Error rejecting offer price:', error);
         return throwError(() => error);

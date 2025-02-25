@@ -52,7 +52,6 @@ export class LoginComponent {
       response => console.log('Login successful', response),
       error => {
         console.log(error),
-        localStorage.setItem('authorization','Basic am9obi5kb2VAZXhhbXBsZS5jb206cGFzc3dvcmQxMjM=');
         localStorage.setItem('userType',this.selectedUserType);
         
         if(this.selectedUserType == 'user')
