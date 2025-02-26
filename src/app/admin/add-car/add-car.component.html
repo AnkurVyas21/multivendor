@@ -1,5 +1,5 @@
 <div style="overflow-y: auto; height:100vh;">
-    <div class="breadcrumb__area breadcrumb__bg" bis_skin_checked="1">
+    <!-- <div class="breadcrumb__area breadcrumb__bg" bis_skin_checked="1">
         <div class="container" bis_skin_checked="1">
             <div class="row" bis_skin_checked="1">
                 <div class="col-lg-12" bis_skin_checked="1">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- End Page Title -->
 
     <mat-tab-group [(selectedIndex)]="selectedTabIndex">
@@ -23,18 +23,21 @@
              <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormBasic" (ngSubmit)="onSubmit(carlistingFormBasic,1)">
             <fieldset id="information" class="pd-bg">
                 <div class="inner-title mb-30" bis_skin_checked="1">
-                    <span class="sub-title">Basic Details</span>
+                    <!-- <span class="sub-title">Basic Details</span> -->
                     <h3 class="title">Add Basic Details</h3>
                 </div>
                 <div class="tfad-listing-title mb-30" bis_skin_checked="1">
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Listing Title (*)</label>
+                        <label>Listing Title <span class="text-danger">*</span></label>
                         <input type="text" id="listing-title" formControlName="title" class="form-control" name="listing-title" placeholder="Enter title here" value="">
+                        <div class="text-danger" *ngIf="carlistingFormBasic.get('title')?.invalid && carlistingFormBasic.get('title')?.touched">
+                            Title is required.
+                        </div>
                     </div>
                 </div>
                 <div class="listing-fields-grid mb-30" bis_skin_checked="1">
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Listing Title (*)</label>
+                        <label>Maker <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                                 <select class="list" formControlName="make">
                                     <option data-value="" class="option selected">BMV</option>
@@ -50,9 +53,12 @@
                                     <option data-value="Toyota" class="option">Toyota</option>
                                 </select>
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormBasic.get('make')?.invalid && carlistingFormBasic.get('make')?.touched">
+                            Make is required.
+                        </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label> Model (*)</label>
+                        <label> Model <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <!-- <div class="nice-select" tabindex="0" bis_skin_checked="1"><span class="current">X5</span> -->
                                 <select class="list" formControlName="model">
@@ -70,9 +76,12 @@
                                 </select>
                             <!-- </div> -->
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormBasic.get('model')?.invalid && carlistingFormBasic.get('model')?.touched">
+                            Model is required.
+                        </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Type (*)</label>
+                        <label>Type <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <!-- <div class="nice-select" tabindex="0" bis_skin_checked="1"><span class="current">Crossover</span> -->
                                 <select class="list" formControlName="type">
@@ -85,16 +94,22 @@
                                     <option data-value="SUV" class="option">SUV</option>
                                 </select>
                             </div>
+                            <div class="text-danger" *ngIf="carlistingFormBasic.get('type')?.invalid && carlistingFormBasic.get('type')?.touched">
+                                Type is required.
+                            </div>
                         <!-- </div> -->
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Years (*)</label>
+                        <label>Years <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <input formControlName="year" type="tel" id="year" value="2022" required="">
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormBasic.get('year')?.invalid && carlistingFormBasic.get('year')?.touched">
+                            Year is required.
+                        </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Condition</label>
+                        <label>Condition  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <!-- <div class="nice-select" tabindex="0" bis_skin_checked="1"><span class="current">Used</span> -->
                                 <select formControlName="condition" class="list">
@@ -103,23 +118,26 @@
                                 </select>
                             <!-- </div> -->
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormBasic.get('condition')?.invalid && carlistingFormBasic.get('condition')?.touched">
+                            Condition is required.
+                        </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Stock Number</label>
+                        <label>Stock Number  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <input formControlName="stockNumber" type="tel" id="stock-number" placeholder="Enter Number" required="">
                         </div>
-                    </div>
-                    <div class="form-group" bis_skin_checked="1">
-                        <label>VIN Number</label>
-                        <div class="group-select" bis_skin_checked="1">
-                            <input formControlName="vinNumber" type="tel" id="vin-number" placeholder="Enter VIN" required="">
+                        <div class="text-danger" *ngIf="carlistingFormBasic.get('stockNumber')?.invalid && carlistingFormBasic.get('stockNumber')?.touched">
+                            Stock Number is required.
                         </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Highway MPG</label>
+                        <label>VIN Number  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
-                            <input formControlName="highwayMPG" type="text" id="highway-mpg" placeholder="28" required="">
+                            <input formControlName="vinNumber" type="tel" id="vin-number" placeholder="Enter VIN" required="">
+                        </div>
+                        <div class="text-danger" *ngIf="carlistingFormBasic.get('vinNumber')?.invalid && carlistingFormBasic.get('vinNumber')?.touched">
+                            Vin Number is required.
                         </div>
                     </div>
                 </div>
@@ -127,7 +145,7 @@
                 
                 <div class="description-fields mb-30" bis_skin_checked="1">
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Description</label>
+                        <label>Description  </label>
                         <div class="group-select" bis_skin_checked="1">
                             <textarea id="description" formControlName="description" name="Description">                                            </textarea>
                         </div>
@@ -135,28 +153,28 @@
                 </div>
                 <div class="listing-fields-grid mb-30" bis_skin_checked="1">
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Request Price Label</label>
+                        <label>Request Price Label  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <div class="radio" bis_skin_checked="1">
                                 <input id="first" type="checkbox" name="numbers" value="first" formControlName="priceLabel">
-                                <label for="first">Negotiable</label>
+                                <label for="first">Negotiable </label>
                             </div>
                         </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label> Regular Price *</label>
+                        <label> Regular Price  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <input type="number" id="regular-price" formControlName="regularPrice" placeholder="Enter Sale Price" required="">
                         </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Sale Price</label>
+                        <label>Sale Price  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <input type="number" id="sale-price" formControlName="salePrice" placeholder="Enter Sale Price" required="">
                         </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Request Price Label</label>
+                        <label>Request Price Label  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <input type="number" id="requesr-price " formControlName="requestPrice" placeholder="Enter Sale Price" required="">
                         </div>
@@ -172,18 +190,21 @@
         <mat-tab label="Car Specifications" [disabled]="!tabsAccess[1]">    <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormSpecification" (ngSubmit)="onSubmit(carlistingFormSpecification,2)">
             <fieldset id="information" class="pd-bg">
                 <div class="inner-title mb-30" bis_skin_checked="1">
-                    <span class="sub-title">Specification</span>
+                    <!-- <span class="sub-title">Specification</span> -->
                     <h3 class="title">Add car's specifications</h3>
                 </div>
                 <div class="listing-fields-grid mb-30" bis_skin_checked="1">
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Mileage</label>
+                        <label>Mileage  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <input formControlName="mileage" type="number" id="mileage" placeholder="Enter Mileage" required="">
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormSpecification.get('mileage')?.invalid && carlistingFormSpecification.get('mileage')?.touched">
+                            Mileage is required.
+                         </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Transmission</label>
+                        <label>Transmission  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <!-- <div class="nice-select" tabindex="0" bis_skin_checked="1"><span class="current">Manual
                                     Transmission</span> -->
@@ -196,9 +217,12 @@
                                 </select>
                             <!-- </div> -->
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormSpecification.get('transmission')?.invalid && carlistingFormSpecification.get('transmission')?.touched">
+                            Transmission is required.
+                         </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Driver Type</label>
+                        <label>Driver Type  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <!-- <div class="nice-select" tabindex="0" bis_skin_checked="1"><span class="current">FWD</span> -->
                                 <select class="list" formControlName="driverType">
@@ -210,15 +234,21 @@
                                 </select>
                             <!-- </div> -->
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormSpecification.get('driverType')?.invalid && carlistingFormSpecification.get('driverType')?.touched">
+                            Driver Type is required.
+                         </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Engine Size</label>
+                        <label>Engine Size  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <input formControlName="engineSize" type="text" id="engine-size" placeholder="Enter Engine" required="">
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormSpecification.get('engineSize')?.invalid && carlistingFormSpecification.get('engineSize')?.touched">
+                            Engine size is required.
+                         </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Cylinders</label>
+                        <label>Cylinders  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <!-- <div class="nice-select" tabindex="0" bis_skin_checked="1"><span class="current">1</span> -->
                                 <select class="list" formControlName="cylinders">
@@ -230,10 +260,13 @@
                                     <option data-value="6" class="option">6</option>
                                 </select>
                             </div>
+                            <div class="text-danger" *ngIf="carlistingFormSpecification.get('cylinders')?.invalid && carlistingFormSpecification.get('cylinders')?.touched">
+                               Cylinders are required.
+                             </div>
                         <!-- </div> -->
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Fuel Type</label>
+                        <label>Fuel Type  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <!-- <div class="nice-select" tabindex="0" bis_skin_checked="1"><span class="current">Petrol</span> -->
                                 <select class="list" formControlName="fuel">
@@ -244,10 +277,13 @@
                                     <option data-value="Hybrid" class="option">Hybrid</option>
                                 </select>
                             </div>
+                            <div class="text-danger" *ngIf="carlistingFormSpecification.get('fuel')?.invalid && carlistingFormSpecification.get('fuel')?.touched">
+                                Fuel is required.
+                              </div>
                         <!-- </div> -->
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Doors</label>
+                        <label>Doors  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <!-- <div class="nice-select" tabindex="0" bis_skin_checked="1"><span class="current">4</span> -->
                                 <select class="list" formControlName="doors">
@@ -256,24 +292,21 @@
                                 </select>
                             <!-- </div> -->
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormSpecification.get('doors')?.invalid && carlistingFormSpecification.get('doors')?.touched">
+                            Doors field is required.
+                          </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Color</label>
+                        <label>Color  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <input formControlName="color" type="text" id="engine-size" placeholder="Enter Color" required="">
                         </div>
-                        <!-- <div class="group-select" bis_skin_checked="1">
-                                <select class="list" formControlName="color">
-                                    <option data-value="" class="option selected">Black</option>
-                                    <option data-value="red" class="option">Red</option>
-                                    <option data-value="White" class="option">White</option>
-                                    <option data-value="Green" class="option">Green</option>
-                                    <option data-value="Yellow" class="option">Yellow</option>
-                                </select>
-                        </div> -->
+                        <div class="text-danger" *ngIf="carlistingFormSpecification.get('color')?.invalid && carlistingFormSpecification.get('color')?.touched">
+                            Color is required.
+                          </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Seats</label>
+                        <label>Seats  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
                             <!-- <div class="nice-select" tabindex="0" bis_skin_checked="1"><span class="current">1</span> -->
                                 <select class="list" formControlName="seats">
@@ -284,19 +317,28 @@
                                     <option data-value="5" class="option">5</option>
                                 </select>
                             </div>
+                            <div class="text-danger" *ngIf="carlistingFormSpecification.get('seats')?.invalid && carlistingFormSpecification.get('seats')?.touched">
+                               Seats is required.
+                              </div>
                         <!-- </div> -->
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>City MPG</label>
+                        <label>City MPG  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
-                            <input  formControlName="cityMPG" type="text" id="city-mpg" placeholder="18" required="">
+                            <input  formControlName="cityMPG" type="text" id="city-mpg" placeholder="Enter City MPG" required="">
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormSpecification.get('cityMPG')?.invalid && carlistingFormSpecification.get('cityMPG')?.touched">
+                            City MPG is required.
+                           </div>
                     </div>
                     <div class="form-group" bis_skin_checked="1">
-                        <label>Highway MPG</label>
+                        <label>Highway MPG  <span class="text-danger">*</span></label>
                         <div class="group-select" bis_skin_checked="1">
-                            <input formControlName="highwayMPG" type="text" id="highway-mpg" placeholder="28" required="">
+                            <input formControlName="highwayMPG" type="text" id="highway-mpg" placeholder="Enter Highway MPG" required="">
                         </div>
+                        <div class="text-danger" *ngIf="carlistingFormSpecification.get('highwayMPG')?.invalid && carlistingFormSpecification.get('highwayMPG')?.touched">
+                            Highway MPG is required.
+                         </div>
                     </div>
                 </div>
                 </fieldset>
@@ -312,7 +354,7 @@
            
             <fieldset id="amenities" class="pd-bg">
                 <div class="inner-title mb-30" bis_skin_checked="1">
-                    <span class="sub-title">Features</span>
+                    <!-- <span class="sub-title">Features</span> -->
                     <h3 class="title">Select Listing Features</h3>
                 </div>
                 <div class="tfad-listing-feature" bis_skin_checked="1">
@@ -488,41 +530,72 @@
                     <h3 class="title">Upload Your Photos</h3>
                 </div>
                 <div class="upload-image-add-car" bis_skin_checked="1">
-                    <div class="upload-image" bis_skin_checked="1">
-                        <label for="photoLoad" class="uploadLabel">
+                    <div class="upload-image" bis_skin_checked="1" *ngIf="!carlistingFormMedia.get('photo1')?.value">
+                        <label for="photoLoad" class="uploadLabel" >
                             <i class="icon-Group4"></i>
                             <span>Add a Photo</span>
-                            <input type="file"  formControlName="photo1" id="photoLoad" class="photoLoad" accept="image/*">
+                            <input type="file" (input)="onFileSelected($event,0)"  formControlName="photo1" id="photoLoad" class="photoLoad" accept="image/*">
                         </label>
                     </div>
-                    <div class="upload-image" bis_skin_checked="1">
+                    <div class="image-container" *ngIf="carlistingFormMedia.get('photo1')?.value">
+                        <button class="delete-btn" (click)="deleteImage('photo1')">×</button>
+                        <img [src]="imagesList[0]" alt="Uploaded Image">
+                    </div>
+
+
+                    <div class="upload-image" bis_skin_checked="1" *ngIf="!carlistingFormMedia.get('photo2')?.value">
                         <label for="photoLoad1" class="uploadLabel">
                             <i class="icon-Group4"></i>
                             <span>Add a Photo</span>
-                            <input type="file" formControlName="photo2" id="photoLoad1" class="photoLoad" accept="image/*">
+                            <input type="file" (input)="onFileSelected($event,1)" formControlName="photo2" id="photoLoad1" class="photoLoad" accept="image/*">
                         </label>
                     </div>
-                    <div class="upload-image" bis_skin_checked="1">
+                    <div class="image-container" *ngIf="carlistingFormMedia.get('photo2')?.value">
+                        <button class="delete-btn" onclick="deleteImage('photo2')">×</button>
+                        <img [src]="imagesList[1]" alt="Image">
+                    </div>
+
+
+                    <div class="upload-image" bis_skin_checked="1" *ngIf="!carlistingFormMedia.get('photo3')?.value">
                         <label for="photoLoad2" class="uploadLabel">
                             <i class="icon-Group4"></i>
                             <span>Add a Photo</span>
-                            <input type="file" formControlName="photo3" id="photoLoad2" class="photoLoad" accept="image/*">
+                            <input type="file" (input)="onFileSelected($event,2)" formControlName="photo3" id="photoLoad2" class="photoLoad" accept="image/*">
                         </label>
                     </div>
-                    <div class="upload-image" bis_skin_checked="1">
+                    <div class="image-container" *ngIf="carlistingFormMedia.get('photo3')?.value">
+                        <button class="delete-btn" onclick="deleteImage('photo3')">×</button>
+                        <img [src]="imagesList[2]" alt="Image">
+                    </div>
+
+
+                    <div class="upload-image" bis_skin_checked="1" *ngIf="!carlistingFormMedia.get('photo4')?.value">
                         <label for="photoLoad3" class="uploadLabel">
                             <i class="icon-Group4"></i>
                             <span>Add a Photo</span>
-                            <input type="file" formControlName="photo4" id="photoLoad3" class="photoLoad" accept="image/*">
+                            <input (input)="onFileSelected($event,3)" type="file" formControlName="photo4" id="photoLoad3" class="photoLoad" accept="image/*">
                         </label>
                     </div>
-                    <div class="upload-image" bis_skin_checked="1">
+                    <div class="image-container" *ngIf="carlistingFormMedia.get('photo4')?.value">
+                        <button class="delete-btn" onclick="deleteImage('photo4')">×</button>
+                        <img [src]="imagesList[3]" alt="Image">
+                    </div>
+
+
+
+                    <div class="upload-image" bis_skin_checked="1" *ngIf="!carlistingFormMedia.get('photo5')?.value">
                         <label for="photoLoad4" class="uploadLabel">
                             <i class="icon-Group4"></i>
                             <span>Add a Photo</span>
-                            <input type="file" formControlName="photo5" id="photoLoad4" class="photoLoad" accept="image/*">
+                            <input (input)="onFileSelected($event,4)" type="file" formControlName="photo5" id="photoLoad4" class="photoLoad" accept="image/*">
                         </label>
                     </div>
+                    <div class="image-container" *ngIf="carlistingFormMedia.get('photo5')?.value">
+                        <button class="delete-btn" onclick="deleteImage('photo5')">×</button>
+                        <img [src]="imagesList[4]" alt="Image">
+                    </div>
+
+
                 </div>
                 <p class="one-photo text-red">*You must upload at least one photo</p>
             </fieldset>
@@ -540,12 +613,16 @@
                 <div class="inner-title mb-30" bis_skin_checked="1">
                     <h3 class="title">Attachment / VIN Report</h3>
                 </div>
-                <div class="upload-image" bis_skin_checked="1">
+                <div class="upload-image" bis_skin_checked="1" *ngIf="!carlistingFormMedia.get('VINReport')?.value">
                     <label for="photoLoad-vin" class="uploadLabel">
                         <i class="icon-Group4"></i>
                         <span>Add a Photo</span>
-                        <input type="file" formControlName="VINReport" id="photoLoad-vin" class="photoLoad" accept="image/*">
+                        <input (input)="onFileSelected($event,5)" type="file" formControlName="VINReport" id="photoLoad-vin" class="photoLoad" accept="image/*">
                     </label>
+                </div>
+                <div class="image-container" *ngIf="carlistingFormMedia.get('VINReport')?.value">
+                    <button class="delete-btn" (click)="deleteImage('VINReport')">×</button>
+                    <img [src]="imagesList[5]" alt="Image">
                 </div>
             </fieldset>
           
@@ -575,9 +652,9 @@
                     <label>City Name</label>
                     <div class="group-map-address-field" bis_skin_checked="1">
                         <input class="address-searching " id="address-searching" type="text" value="" aria-invalid="false" formControlName="cityName">
-                        <button type="button" class="button-location">
+                        <!-- <button type="button" class="button-location">
                             <i class="icon-search-1"></i>
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </fieldset>

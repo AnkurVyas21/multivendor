@@ -16,6 +16,8 @@ export class AddCarComponent {
   carlistingFormMedia: FormGroup;
   carlistingFormAddress:FormGroup
   selectedTabIndex=0
+  imagePreview: string | ArrayBuffer | null = null;
+  imagesList :any=[]
   tabsAccess = [true, false, false,false,false];
   @Input() vendor = false;
 
@@ -84,11 +86,11 @@ export class AddCarComponent {
     })
 
 this.carlistingFormMedia = this.fb.group({
-      photo1:[''],
-      photo2:[''],
-      photo3:[''],
-      photo4:[''],
-      photo5:[''],
+      photo1:[null],
+      photo2:[null],
+      photo3:[null],
+      photo4:[null],
+      photo5:[null],
       video:[''],
       VINReport:['']
     })
@@ -156,7 +158,23 @@ this.carlistingFormMedia = this.fb.group({
       console.log('addCar', result)
      })
    }
+
+   deleteImage(formType:string) {
+    this.carlistingFormMedia.get(formType)?.reset()
+}
+
+onFileSelected(event: Event, index:number): void {
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+          this.imagePreview = reader.result; 
+          this.imagesList[index]=this.imagePreview 
+      };
+      reader.readAsDataURL(file); // Convert file to Base64
+  }
   
+}
 }
 
 

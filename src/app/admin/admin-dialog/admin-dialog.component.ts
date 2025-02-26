@@ -385,7 +385,7 @@ export class AdminDialogComponent {
 
   approveTestDrive()
   {
-    
+    this.dialogRef.close('yes');
   }
 
   closeDialog() {

@@ -976,8 +976,10 @@
   <button mat-button color="primary" (click)="closeDialog()">OK</button>
 </div>
 
-<div class="dialog-container" *ngIf="data.type=='addCarSuccess'">
-  <p>Are you want to approve this test drive ?</p>
-  <button mat-button color="primary" (click)="approveTestDrive()">Yes</button>
-  <button mat-button color="primary" (click)="closeDialog()">Back</button>
+<div class="dialog-container" *ngIf="data.type=='approveTestDrive' || data.type=='declineTestDrive' || data.type=='approveOfferPrice' || data.type=='declineOfferPrice'">
+  <p *ngIf="data.type=='approveTestDrive'|| data.type=='declineTestDrive'" style="color: black;">Are you want to {{data.type=='approveTestDrive' ? 'approve':'reject'}} this test drive ?</p>
+  <p *ngIf="data.type=='approveOfferPrice'|| data.type=='declineOfferPrice'" style="color: black;">Are you want to {{data.type=='approveOfferPrice' ? 'approve':'reject'}} this offer price ?</p>
+  <button mat-button style="background-color: #3e7600; color: white; width: 40%; margin-right: 20%;" (click)="approveTestDrive()">Yes</button>
+  <button mat-button style="background-color: #151615; color: white;width: 40%;" (click)="closeDialog()">Back</button>
 </div>
+

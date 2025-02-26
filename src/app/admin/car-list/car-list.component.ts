@@ -184,7 +184,7 @@ export class CarListComponent {
 }
 ]
 
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license', 'actions'];
+displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license'];
 
 
   filteredRequests = this.requests;

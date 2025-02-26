@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpServiceService } from 'src/app/services/http-service.service';
+import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-offer-price',
@@ -182,7 +184,7 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
   filteredRequests = this.requests;
 
-  constructor(private httpService:HttpServiceService)
+  constructor(private httpService:HttpServiceService,private dialog:MatDialog)
   {
 
   }
@@ -212,11 +214,26 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
   }
 
   approve(element: any) {
-    alert(`Approved: ${element.name}`);
+    this.openDialog('approveOfferPrice')
+    
   }
 
   decline(element: any) {
-    alert(`Declined: ${element.name}`);
+    this.openDialog('declineOfferPrice')
+
   }
+
+
+    openDialog(type:string)
+     {
+        const dialogRef =  this.dialog.open(AdminDialogComponent,{
+        data:{type:type},
+        width:'450px',
+       })
+    
+       dialogRef.afterClosed().subscribe(result=>{
+        console.log('addCar', result)
+       })
+     }
 }
 
