@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 })
 export class CarListComponent {
 
-  constructor(private httpService:HttpServiceService)
+  constructor(private httpService:HttpServiceService, private route:Router)
   {
 
   }
@@ -184,7 +185,7 @@ export class CarListComponent {
 }
 ]
 
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license'];
+displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license','actions'];
 
 
   filteredRequests = this.requests;
@@ -218,12 +219,13 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
     );
   }
 
-  approve(element: any) {
-    alert(`Approved: ${element.name}`);
+  viewCar(id: any=25) {
+   this.route.navigate(['vendor/car-detail/'+id])
   }
 
-  decline(element: any) {
-    alert(`Declined: ${element.name}`);
+  editCar(id: any=25) {
+    this.route.navigate(['vendor/car-edit/'+id])
+
   }
 
 }

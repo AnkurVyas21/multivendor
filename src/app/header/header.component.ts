@@ -24,6 +24,11 @@ navigateToProfile(): void {
   this.router.navigate(['/profile']);
 }
 
+navigateToResetPassword()
+{
+  this.router.navigate(['/reset-password'])
+}
+
 
 logout() {
   // Implement logout logic here

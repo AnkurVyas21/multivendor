@@ -1,80 +1,274 @@
-.vendorProfileContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 2vh;
-  margin: 2vh;
-}
-
 .profileContainer {
-  background-color: white;
-  padding: 2vw;
-  border-radius: 2vw;
+  width:80vw;
+  height: 100vh;
+  background-color: rgb(234, 228, 228);
+  color: black;
+  display: flex;
+  gap: 5vh;
+  justify-content: space-around;
 }
 
-.basicDetails {
+
+.leftSideMenu {
+  max-width: 30%;
+  height: auto;
+  background-color: rgb(249, 246, 246);
+  color: black;
+  padding: 3vw;
+  margin-left: 6vh;
+  margin-top: 7vh;
+  border-radius: 5vh;
   display: flex;
   flex-direction: column;
-  padding: 2vw;
   justify-content: center;
   align-items: center;
+  margin-bottom: 7vh;
+  gap: 2vh;
 }
 
-.status {
+
+.profileCounts {
   display: flex;
-  justify-content: center;
-  background: rgb(242, 145, 145);
-  border-radius: 2vh;
+  gap: 4vh;
+  justify-content: space-evenly;
+  border-bottom: 1px solid grey;
+
 }
 
-.settingContainer {
-  background-color: white;
-  padding: 2vw;
-  border-radius: 2vw;
+.profileCounts div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 2vh;
+  margin-left: -110px;
+  opacity: 0.7;
+  margin-bottom: 2vh;
+  padding-left: 11vh;
+}
+
+.rightSideMenu {
+  max-width: 70%;
+  min-width: 70%;
+  height: auto;
+  background-color: rgb(249, 246, 246);
+  color: black;
+  padding: 3vw;
+  margin-right: 6vh;
+  margin-top: 7vh;
+  border-radius: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  margin-bottom: 7vh;
+  gap: 2vh;
+}
+
+.cards {
+  display: flex;
+  gap: 4vh;
+}
+
+.card {
+  border-radius: 2vh;
+  display: flex;
+  justify-content: left;
+  padding-left:2vh;
+  width: 21vw;
+  align-items: center;
+  flex-direction: row;
+  gap: 4vh;
+}
+
+.options {
+  display: flex;
+  gap: 10vh;
+  justify-content: left;
+  border-bottom: 1px solid black;
+  opacity: 0.7;
+}
+.subOptions{
   width: 100%;
   display: flex;
-  flex-direction: column ;
-  gap: 1vw;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
-.mainDetailContainer {
+.subOptions button {
+  background-color: rgb(227, 222, 222);
+  padding: 1vh;
+  border-radius: 2vb;
+  color: black;
+  width: 25vh;
+}
+
+.cardsStatus {
   display: flex;
-  margin-top: 2vw;
-  gap: 1vw;
+  gap: 4vh;
 }
 
-.totalListing {
+.cardsStatus {
   display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: center;
-    opacity: 0.7;
-    margin-top: 1vw;
-    background-color: ghostwhite;
+  gap: 4vh;
+  flex-direction: column;
 }
 
-.commissionBtn {
-  width: 7vw;
-    border-radius: 1.5vw;
-    color: black;
-    background-color: #f2f3f1;
-    border: none;
-    height: 7vh;
+
+
+.table-wrapper {
+  max-height: 50vh;
+  /* Adjust height as needed */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  /* Optional: Border around the table */
+  position: relative;
+  scrollbar-width: none;
 }
 
-.commission{
-  display: flex;
-  align-items: center;
-}
-
-.commissionInput {
-  border: none;
-  background: lightgrey;
-  border-radius: 7vh;
-  opacity: 0.5;
+table {
+  background-color: whitesmoke;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 th {
+  position: sticky;
+  top: 0;
   background-color: #dbdcd9 !important;
-  color: black;
+  /* Ensure header remains visible */
+  color: rgb(5, 5, 5);
+  z-index: 2;
+}
+
+td {
+  background: #fff;
+  /* Ensure rows are visible properly */
+  cursor: pointer;
+  gap: 20px;
+
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.approveDecline {
+  display: flex;
+}
+
+.table-bordered{
+  border-radius: 5px;
+}
+
+
+
+.test-drive-requests {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.addcarButton {
+  background-color: #3e7600;
+  color: #f5f1f1;
+  border: 2px solid #ddd;
+  margin-top: 2vh;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3sease -in-out;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 16vh;
+  height: 6vh;
+}
+
+.addcarButton:hover {
+  background-color: black;
+}
+
+
+.mat-form-field {
+  width: 300px;
+}
+
+s table {
+  width: 100%;
+}
+
+.no-results {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+
+
+.table-wrapper {
+  max-height: 500px;
+  /* Adjust height as needed */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  /* Optional: Border around the table */
+  position: relative;
+  scrollbar-width: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 1px solid black;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  font-size: medium;
+  /* background-color: #dbdcd9 !important; */
+  background-image: linear-gradient(to top left, rgb(93, 76, 240), rgb(89, 84, 239)) !important;
+  color:rgb(243, 245, 249);
+  /* Ensure header remains visible */
+  z-index: 2;
+  padding:2vh;
+}
+
+td {
+  background: #fff;
+  /* Ensure rows are visible properly */
+  cursor: pointer;
+  padding:1vh;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.approveDecline {
+  display: flex;
+}
+
+.table-bordered{
+  border-radius: 5px;
+}
+
+.topGroupElements{
+  display: flex;justify-content: space-between;align-items: center;
+}
+
+
+@media screen and (max-width: 550px) {
+  .topGroupElements
+  {  display: flex;flex-direction: column;align-items: revert;  }
 }

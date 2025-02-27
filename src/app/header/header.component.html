@@ -87,8 +87,8 @@
                                             <a><i class="icon-user"></i></a>
                                                 <!-- Dropdown Menu -->
                                                 <mat-menu #menu="matMenu">
-                                                  <button  mat-menu-item (click)="navigateToProfile()">View Profile</button>
-                                                  <button mat-menu-item (click)="logout()">Reset Password</button>
+                                                  <button  mat-menu-item [routerLink]="'/profile'" routerLinkActive="active-link">View Profile</button>
+                                                  <button mat-menu-item [routerLink]="'/reset-password'" routerLinkActive="active-link" >Reset Password</button>
                                                   <button mat-menu-item (click)="logout()">Logout</button>
                                                 </mat-menu>
                                               </div>

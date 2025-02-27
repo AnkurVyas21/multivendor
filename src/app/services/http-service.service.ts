@@ -30,6 +30,16 @@ export class HttpServiceService {
     );
   }
 
+  getCarsDetailsBasics(id:number): Observable<any> {
+    return this.http.get(`${this.baseURL}/cars/${id}/basics`).pipe(
+      catchError((error) => {
+        console.error('Error fetching users:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+
   getCarsDetailsSpecification(id:number): Observable<any> {
     return this.http.get(`${this.baseURL}/cars/${id}/specifications`).pipe(
       catchError((error) => {
@@ -151,6 +161,20 @@ export class HttpServiceService {
       headers,
     };
     return this.http.post(`${this.baseURL}/cars/${formType}`, carInfo, options);
+  }
+
+  updateCar(carInfo: any,formType:string): Observable<any> {
+    let token = '';
+    token = localStorage.getItem("authorization") as string;
+    console.log(token);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    });
+    const options = {
+      headers,
+    };
+    return this.http.put(`${this.baseURL}/cars/${formType}`, carInfo, options);
   }
 
 

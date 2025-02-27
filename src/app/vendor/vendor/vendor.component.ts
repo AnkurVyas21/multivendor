@@ -56,8 +56,7 @@ ngOnInit() {
   }
   
   resetPassword() {
-    console.log("Reset Password clicked");
-    // Implement reset password logic
+ this.router.navigate(['/reset-password'])
   }
   
   logout() {

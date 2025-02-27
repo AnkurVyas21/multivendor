@@ -1,0 +1,66 @@
+.commissionBtn {
+    width: auto;
+    border-radius: 1.5vw;
+    color: rgb(244, 242, 242);
+    background-color: #3e7600;
+    border: none;
+    height: 7vh;
+    margin-top: 5vh;
+  }
+
+  .sub-title{
+    color: #8c8e8a;
+  }
+
+  input  {
+    border-radius: 25px;
+    border: none;
+  }
+
+  select{
+    border-radius: 25px;
+    border: none;
+  }
+
+
+
+
+
+
+
+
+
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.image-container img {
+  max-width: 30vh;
+  height: auto;
+  border-radius: 5px;
+  max-height: 20vh;
+}

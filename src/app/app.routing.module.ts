@@ -16,6 +16,7 @@ import { ProfilePageComponent } from "./profile-page/profile-page.component";
 import { AuthGuard } from "./services/authGuard/auth.guard";
 import { AdminAuthGuard } from "./services/authGuard/adminAuth.guard";
 import { NewsVideosComponent } from "./news-videos/news-videos.component";
+import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 
 const routes: Routes = [
   {
@@ -67,6 +68,9 @@ const routes: Routes = [
   },
   {
     path: 'hotDeal', component: HotDealComponent , canActivate: [AuthGuard] 
+  },
+  {
+    path: 'reset-password', component: ResetPasswordComponent , canActivate: [AuthGuard] 
   },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.adminModule), canActivate:[AdminAuthGuard]},
   { path: 'vendor', loadChildren: () => import('./vendor/vendor.module').then(m => m.VendorModule)},

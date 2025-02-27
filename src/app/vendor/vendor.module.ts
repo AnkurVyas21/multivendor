@@ -17,10 +17,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { VendorProfileImageComponent } from './vendor-profile-image/vendor-profile-image.component';
 import { SharedModule } from '../shared/shared.module';
+import { VendorCarDetailComponent } from './detail pages/vendor-car-detail/vendor-car-detail.component';
+import { VendorCarEditComponent } from './detail pages/vendor-car-edit/vendor-car-edit.component';
 
 
 @NgModule({
-  declarations: [VendorDashboardComponent, VendorCustomerListComponent, VendorCarListComponent, VendorAddCarComponent, VendorTestDrivesComponent, VendorOfferPriceComponent, VendorTransactionComponent, VendorSoldCarsComponent, VendorProfileImageComponent],
+  declarations: [VendorDashboardComponent, VendorCustomerListComponent, VendorCarListComponent, VendorAddCarComponent, VendorTestDrivesComponent, VendorOfferPriceComponent, VendorTransactionComponent, VendorSoldCarsComponent, VendorProfileImageComponent,VendorCarDetailComponent,VendorCarEditComponent],
   imports: [
     CommonModule,
     vendorRoutingModule,

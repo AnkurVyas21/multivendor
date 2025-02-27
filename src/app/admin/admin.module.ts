@@ -32,6 +32,8 @@ import { AddCarComponent } from "./add-car/add-car.component";
 import { MatMenuModule } from '@angular/material/menu';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { SharedModule } from "../shared/shared.module";
+import { CarDetailsComponent } from "./detail pages/car-details/car-details.component";
+import { CarEditComponent } from "./detail pages/car-edit/car-edit.component";
 
 @NgModule({
     declarations:[
@@ -49,6 +51,8 @@ import { SharedModule } from "../shared/shared.module";
     VendorDetailsComponent,
     CustomerDetailsComponent,
     ProfileImageComponent,
+    CarDetailsComponent,
+    CarEditComponent
   ],
   imports:[
     FormsModule,
@@ -87,6 +91,8 @@ import { SharedModule } from "../shared/shared.module";
     CustomerListComponent,
     VendorDetailsComponent,
     CustomerDetailsComponent,
+    CarDetailsComponent,
+    CarEditComponent
   ]
  
 })
