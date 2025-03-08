@@ -299,7 +299,7 @@ export class HttpServiceService {
       'Content-Type': 'application/json',
     });
   
-    return this.http.post(`${this.baseURL}/api/${userType}/register`, userData, { headers }).pipe(
+    return this.http.post(`/api/${userType}/register`, userData, { headers }).pipe(
       catchError((error) => {
         console.error('Registration failed:', error);
         return throwError(() => error);

@@ -23,9 +23,11 @@ export class RegisterComponent {
       firstName:['', [Validators.required,Validators.maxLength(32)]],
       lastName:['',[Validators.required,Validators.maxLength(32)]],
       email:['',[Validators.required,Validators.email,Validators.maxLength(68)]],
-      DOB:['',[Validators.required]],
+      phoneNumber:['',[Validators.required,Validators.email,Validators.maxLength(68)]],
+      dob:['',[Validators.required]],
       password:['',[Validators.required,Validators.maxLength(32)]],
       confirmPassword:['',[Validators.required,Validators.maxLength(32)]],
+      address:['023'],
       keepSignIn:[false]
     })
   }
