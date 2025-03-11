@@ -4,7 +4,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.css']
+  styleUrls: ['./transactions.component.css','../../../assets/css/modern.css']
 })
 export class TransactionsComponent {
 

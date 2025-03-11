@@ -1,4 +1,4 @@
-.titleImage{
+/* .titleImage{
   width: 18vw;
   border-bottom: 0.5px solid #403c3c;
   display: flex  ;
@@ -39,41 +39,39 @@
   height: 11vh;
   background: linear-gradient(to bottom, #e0e0e0, #f3efef, #f8f7f7);
 }
-
+ */
 
 
 .sideMenuDiv {
-  font-family: roboto, sans-serif;color: rgb(251, 251, 251); display: flex;background-color: black;
+  display: flex;
 }
 
-.sideMenuDiv h6 {
-  color: white;
-}
-.profileImage{
+
+/* .profileImage{
   border-radius: 100%;
   width: 3vw;
-}
+} */
 
-.searchInput{
+/* .searchInput{
   width: 35vw;
   background-color: gainsboro;
   border-radius: 25px;
   border: none;
-  padding-left: 20px; /* Moves placeholder inside */
-  padding-right: 50px; /* Prevents text from overlapping with the icon */
+  padding-left: 20px; 
+  padding-right: 50px; 
   font-size: 18px;
   height: 6vh;
-}
+} */
 
-.magnifyingGlass {
+/* .magnifyingGlass {
       position: absolute;
       right: 15px;
       top: 50%;
       transform: translateY(-50%);
       font-size: large;
       color: gray;
-}
-
+} */
+/* 
 .rightSideHeader {
   margin-right: 4vw;
   display: flex;
@@ -145,13 +143,16 @@
     cursor: pointer;
 }
 
-.routerOutlet{
-  background-color: #fbf7f7eb;
-  width: 100%;
-}
-
 
 h6{
   font-weight:400  
 }
+
+ */
+
+ .routerOutlet{
+  /* background-color: #fbf7f7eb; */
+  width: 100%;
+}
+
 

@@ -1,4 +1,4 @@
-.cards {
+/* .cards {
   width: 18vw;
   height: 22vh;
   padding: 2vh;
@@ -89,7 +89,6 @@
 }
 
 
-/* responsive design  */
 
 @media screen and (max-width: 1200px) {
   .titleImage {
@@ -126,4 +125,4 @@
     margin-right: 1vw;
     margin-top: 1vw;
   }
-}
+} */

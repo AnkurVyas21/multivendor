@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-offer-price',
   templateUrl: './offer-price.component.html',
-  styleUrls: ['./offer-price.component.css']
+  styleUrls: ['./offer-price.component.css','../../../assets/css/modern.css']
 })
 export class OfferPriceComponent {
   searchQuery: string = '';

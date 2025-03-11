@@ -19,10 +19,11 @@ import { VendorProfileImageComponent } from './vendor-profile-image/vendor-profi
 import { SharedModule } from '../shared/shared.module';
 import { VendorCarDetailComponent } from './detail pages/vendor-car-detail/vendor-car-detail.component';
 import { VendorCarEditComponent } from './detail pages/vendor-car-edit/vendor-car-edit.component';
+import { VendorCarApprovalListComponent } from './vendor-car-approval-list/vendor-car-approval-list.component';
 
 
 @NgModule({
-  declarations: [VendorDashboardComponent, VendorCustomerListComponent, VendorCarListComponent, VendorAddCarComponent, VendorTestDrivesComponent, VendorOfferPriceComponent, VendorTransactionComponent, VendorSoldCarsComponent, VendorProfileImageComponent,VendorCarDetailComponent,VendorCarEditComponent],
+  declarations: [VendorDashboardComponent, VendorCustomerListComponent, VendorCarListComponent, VendorAddCarComponent, VendorTestDrivesComponent, VendorOfferPriceComponent, VendorTransactionComponent, VendorSoldCarsComponent, VendorProfileImageComponent,VendorCarDetailComponent,VendorCarEditComponent,  VendorCarApprovalListComponent],
   imports: [
     CommonModule,
     vendorRoutingModule,

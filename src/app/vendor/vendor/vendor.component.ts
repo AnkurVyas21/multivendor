@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-vendor',
   templateUrl: './vendor.component.html',
-  styleUrls: ['./vendor.component.css']
+  styleUrls: ['./vendor.component.css','../../../assets/css/modern.css']
 })
 export class VendorComponent {
   searchQuery: string = '';

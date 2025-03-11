@@ -34,6 +34,8 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { SharedModule } from "../shared/shared.module";
 import { CarDetailsComponent } from "./detail pages/car-details/car-details.component";
 import { CarEditComponent } from "./detail pages/car-edit/car-edit.component";
+import { CarApprovalStatusComponent } from './car-approval-status/car-approval-status.component';
+import { MatSortModule } from "@angular/material/sort";
 
 @NgModule({
     declarations:[
@@ -52,7 +54,8 @@ import { CarEditComponent } from "./detail pages/car-edit/car-edit.component";
     CustomerDetailsComponent,
     ProfileImageComponent,
     CarDetailsComponent,
-    CarEditComponent
+    CarEditComponent,
+    CarApprovalStatusComponent
   ],
   imports:[
     FormsModule,
@@ -75,7 +78,8 @@ import { CarEditComponent } from "./detail pages/car-edit/car-edit.component";
     MatDividerModule,
     MatChipsModule,
     MatMenuModule,
-    SharedModule
+    SharedModule,
+    MatSortModule
   ],
   exports:[
     DashboardComponent,
@@ -92,7 +96,8 @@ import { CarEditComponent } from "./detail pages/car-edit/car-edit.component";
     VendorDetailsComponent,
     CustomerDetailsComponent,
     CarDetailsComponent,
-    CarEditComponent
+    CarEditComponent,
+    CarApprovalStatusComponent
   ]
  
 })

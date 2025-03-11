@@ -1,81 +1,6 @@
-<!-- <mat-drawer-container [autosize]="true" class="admin-layout" >
 
-    <mat-drawer mode="side" open *ngIf="isVisible" >
-      <div class="sidebar">
-        <div class="profile-section">
-          
-          <div *ngIf="profilePictureUrl; else initialsTemplate">
-            <img [src]="profilePictureUrl" alt="Admin Profile" class="profile-picture" />
-          </div>
-          <ng-template #initialsTemplate>
-            <div class="profile-initials">
-              {{ getInitials(adminName) }}
-            </div>
-          </ng-template>
-          <h3 class="admin-name">{{ adminName }}</h3>
-        </div>
-        <ul class="menu-list" style="overflow-y: auto; overflow-x: hidden ;scrollbar-width: none;">
-          <li [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Dashboard</li>
-          <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Test Drives</li>
-          <li [routerLink]="['/vendor/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Offer Price</li>
-          <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
-          <li [routerLink]="['/vendor/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Car List</li>
-          <li *ngIf="userType=='superAdmin'" [routerLink]="['/vendor/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Vendor Management</li>
-          <li  [routerLink]="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Customer List</li>
-          <li [routerLink]="['/vendor/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Transactions</li>
-        </ul>
-        
-      </div>
-    </mat-drawer>
-      <button class="arrow-button" [ngClass]="{ 'right-arrow': !isVisible, 'left-arrow': isVisible }" (click)="toggleToolBar()">
-        <span class="arrow"></span>
-      </button>
-  
-    <mat-drawer-content class="main-content">
-      <router-outlet></router-outlet>
-    </mat-drawer-content>
-  </mat-drawer-container>
-   -->
 
-   <!-- <mat-drawer-container [autosize]="true" class="admin-layout" >
-  <mat-drawer mode="side" open *ngIf="isVisible" >
-    <div class="sidebar">
-      <div class="profile-section">
-        
-        <div *ngIf="profilePictureUrl; else initialsTemplate">
-          <img [src]="profilePictureUrl" alt="Admin Profile" class="profile-picture" />
-        </div>
-        <ng-template #initialsTemplate>
-          <div class="profile-initials">
-            {{ getInitials(adminName) }}
-          </div>
-        </ng-template>
-        <h3 class="admin-name">{{ adminName }}</h3>
-      </div>
-      <ul class="menu-list" style="overflow-y: auto; overflow-x: hidden ;scrollbar-width: none;">
-        <li [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Dashboard</li>
-        <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Test Drives</li>
-        <li [routerLink]="['/vendor/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Offer Price</li>
-        <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/add-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add Cars</li>
-        <li *ngIf="userType!='superAdmin'" [routerLink]="['/vendor/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Sold Cars</li>
-        <li [routerLink]="['/vendor/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Car List</li>
-        <li *ngIf="userType=='superAdmin'" [routerLink]="['/vendor/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Vendor Management</li>
-        <li  [routerLink]="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Customer List</li>
-        <li [routerLink]="['/vendor/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Transactions</li>
-      </ul>
-      
-    </div>
-  </mat-drawer>
-    <button class="arrow-button" [ngClass]="{ 'right-arrow': !isVisible, 'left-arrow': isVisible }" (click)="toggleToolBar()">
-      <span class="arrow"></span>
-    </button>
-
-  <mat-drawer-content class="main-content">
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>  -->
-
-<div class="parentHeader">
+<!-- <div class="parentHeader">
   <div [ngClass]="isVisible ?'titleImage':'collapse'" >
     <img style="width:8vh"
      src="assets/images/logo/search.png">
@@ -110,63 +35,89 @@
           <i class="fa-solid fa-sign-out"></i> Logout
         </button>
       </mat-menu>
-      
     </div>
+  </div>
+</div> -->
+<div class="sideMenuDiv">
+  <nav id="sidebar" class="sidebar">
+    <a class='sidebar-brand' href='index.html'>
+      <svg>
+        <use xlink:href="#ion-ios-pulse-strong"></use>
+      </svg>
+      Vendor Dashboard
+    </a>
+    <div class="sidebar-content">
+      <div class="sidebar-user">
+        <img src="../../../assets/images/avatar/avatar.jpg" class="img-fluid rounded-circle mb-2" alt="Linda Miller" />
+        <div class="fw-bold">Linda Miller</div>
+        <small>{{"user@gmail.com"}}</small>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="sidebar-header">
+          Main
+        </li>
+        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/dashboard']">
+          <a class="sidebar-link" >
+            <i class="align-middle me-2 fas fa-fw fa-home"></i> <span class="align-middle">Overview</span>
+          </a>
+        </li>
+        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/add-cars']">
+          <a class='sidebar-link' >
+            <i class="align-middle me-2 fas fa-fw fa-car-alt"></i> <span class="align-middle">Add Car</span>
+          </a>
+        </li>
+        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/car-approval']">
+          <a class='sidebar-link' >
+            <i class="align-middle me-2 fas fa-fw fa-bell"></i> <span class="align-middle">Car Approval Status</span>
+          </a>
+        </li>
+        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/car-list']">
+          <a class='sidebar-link'>
+            <i class="align-middle me-2 fas fa-fw fa-table-list"></i> <span class="align-middle">My Car Listing</span>
+          </a>
+        </li>
+        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/test-drives']">
+          <a class='sidebar-link' >
+            <i class="align-middle me-2 fas fa-fw fa-traffic-light"></i> <span class="align-middle">Test Drive View</span>
+          </a>
+        </li>
+        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/offer-price']">
+          <a class='sidebar-link' >
+            <i class="align-middle me-2 fas fa-fw fa-car-side"></i> <span class="align-middle">Offer Price View</span>
+          </a>
+        </li>
+        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/transactions']">
+          <a class='sidebar-link' >
+            <i class="align-middle me-2 fas fa-fw fa-file-invoice-dollar"></i> <span class="align-middle">Payment History</span>
+          </a>
+        </li>
+        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/transactions']">
+          <a class='sidebar-link'>
+            <i class="align-middle me-2 fas fa-fw fa-circle-info"></i> <span class="align-middle">Support & Help</span>
+          </a>
+        </li>
+        <li class="sidebar-item" (click)="logout()">
+          <a class='sidebar-link' >
+            <i class="align-middle me-2 fas fa-fw fa-arrow-alt-circle-right"></i> <span class="align-middle">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="routerOutlet">
+    <router-outlet></router-outlet>
   </div>
 </div>
-<mat-drawer-container [autosize]="true" class="admin-layout" >
-<div class="sideMenuDiv">
-<mat-drawer mode="side" open *ngIf="isVisible" >
-  <div class="sideMenu">
-    <div class="Dashboard" [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-      <i style="font-size: medium ;" class="fa-solid fa-qrcode"></i>
-      <h6 class="dashboardTxt">Dashboard</h6>
-    </div>
-    <div class="vendorCustomer" >
-      <!-- <div class="vendor" [routerLink]="['/admin/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-        <i style="font-size: medium;" class="fa-solid fa-people-group"></i>
-        <h6 class="vendorTxt">Vendor</h6>
-      </div> -->
-      <div  class="customer"  [routerLink]="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-        <i style="font-size: medium" class="fa-solid fa-user"></i>
-        <h6 class="customerTxt">Customer</h6>
-      </div>
-    </div>
-    <div class="vendorCustomer" >
-      <div class="vendor" [routerLink]="['/vendor/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-        <i style="font-size: medium;" class="fa-solid fa-car-on"></i>
-        <h6 class="vendorTxt">Test Drive</h6>
-      </div>
-      <div  class="customer"  [routerLink]="['/vendor/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-        <i style="font-size: medium" class="fa-solid  fa-hand-holding-dollar"></i>
-        <h6 class="customerTxt">Offer Price</h6>
-      </div>
-    </div>
-    <div class="vendorCustomer" >
-      <div class="vendor" [routerLink]="['/vendor/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-        <i style="font-size: medium;" class="fa-solid fa-car-side"></i>
-        <h6 class="vendorTxt">Car List</h6>
-      </div>
-      <div  class="customer"  [routerLink]="['/vendor/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-        <i style="font-size: medium" class="fa-solid  fa-handshake"></i>
-        <h6 class="customerTxt">Sold car</h6>
-      </div>
-    </div>
-    <div class="Dashboard" [routerLink]="['/vendor/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-      <i style="font-size: medium ;" class="fa-solid fa-money-check-dollar"></i>
-      <h6 class="dashboardTxt">Transaction</h6>
-    </div>
-  </div>
-</mat-drawer>
-<mat-drawer *ngIf="!isVisible" style="opacity: 0.5;">
+
+
+<!-- <mat-drawer *ngIf="!isVisible" style="opacity: 0.5;">
   <div class="collapseSideMenu">
     <div class="Dashboard" [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
       <i style="font-size: large ;" class="fa-solid fa-qrcode"></i>
     </div>
     <div class="vendorCustomer" >
-      <!-- <div class="vendor" [routerLink]="['/admin/vendor-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-        <i style="font-size: large;" class="fa-solid fa-people-group"></i>
-      </div> -->
+    
       <div  class="customer"  [routerLink]="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
         <i style="font-size: large" class="fa-solid fa-user"></i>
       </div>
@@ -191,10 +142,4 @@
       <i style="font-size: large ;" class="fa-solid fa-money-check-dollar"></i>
     </div>
   </div>
-</mat-drawer>
-
-  <div class="routerOutlet">
-    <router-outlet></router-outlet>
-  </div>
-</div>
-</mat-drawer-container>
+</mat-drawer> -->

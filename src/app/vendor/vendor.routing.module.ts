@@ -15,6 +15,7 @@ import { CustomerDetailsComponent } from "../admin/detail pages/customer-details
 import { VendorCarEditComponent } from "./detail pages/vendor-car-edit/vendor-car-edit.component";
 import { VendorCarDetailComponent } from "./detail pages/vendor-car-detail/vendor-car-detail.component";
 import { ResetPasswordComponent } from "../reset-password/reset-password.component";
+import { VendorCarApprovalListComponent } from "./vendor-car-approval-list/vendor-car-approval-list.component";
 
 
 const route: Routes = [
@@ -40,6 +41,9 @@ const route: Routes = [
     },
     {
         path: 'transactions', component: VendorTransactionComponent, canActivate: [VendorAuthGuard]
+    }, 
+    {
+        path: 'car-approval', component: VendorCarApprovalListComponent, canActivate: [VendorAuthGuard]
     },
     {
         path: 'profile', component: VendorProfileImageComponent, canActivate: [VendorAuthGuard]

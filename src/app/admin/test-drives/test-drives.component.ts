@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs5';
 
 @Component({
   selector: 'app-test-drives',
   templateUrl: './test-drives.component.html',
-  styleUrls: ['./test-drives.component.css']
+  styleUrls: ['./test-drives.component.css','../../../assets/css/modern.css']
 })
 export class TestDrivesComponent {
   searchQuery: string = '';
@@ -180,7 +183,7 @@ export class TestDrivesComponent {
 ]
 
 displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license', 'actions'];
-
+@ViewChild('dataTable', { static: false }) table!: ElementRef;
 
   filteredRequests = this.requests;
 
@@ -194,14 +197,24 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
     this.getTestDrive()
   }
 
-  getTestDrive()
-  {
-    this.httpService.getTestDrive().subscribe((value)=>{
-      console.log(value)
-    },(error)=>{
-      console.log(error)
-    })
+  ngAfterViewInit(): void {
+    this.getTestDrive();
   }
+  
+  getTestDrive() {
+    this.httpService.getTestDrive().subscribe((data) => {
+      this.getTestDrive = data;
+      setTimeout(() => { // Ensure the table exists before initializing
+        ($(this.table.nativeElement) as any).DataTable({
+          responsive: true,
+          paging: true,
+          searching: true,
+          ordering: true
+        });
+      }, 0);
+    });
+  }
+  
 
   onSearch() {
     const query = this.searchQuery.toLowerCase();
