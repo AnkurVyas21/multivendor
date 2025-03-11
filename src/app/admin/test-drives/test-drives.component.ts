@@ -186,6 +186,7 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 @ViewChild('dataTable', { static: false }) table!: ElementRef;
 
   filteredRequests = this.requests;
+  public activeLoader = true;
 
   constructor(private httpService:HttpServiceService, private dialog:MatDialog)
   {
@@ -195,6 +196,9 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
   ngOnInit()
   {
     this.getTestDrive()
+    setTimeout(() => {
+      this.activeLoader = false;
+    }, 1500);
   }
 
   ngAfterViewInit(): void {

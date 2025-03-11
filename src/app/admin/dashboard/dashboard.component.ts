@@ -14,11 +14,15 @@ export class DashboardComponent {
  totalTestDrives: number = 85;  // Example value for total test drives
  totalUsers: number = 500;      // Example value for total users
  @Input() userType ='admin'
+ public activeLoader = true;
+
 
  constructor(private dialog:MatDialog) { }
 
  ngOnInit(): void {
-   // Here, you can call a service to get real data from an API
+  setTimeout(() => {
+    this.activeLoader = false;
+  }, 1500);
  }
 
  openImageDialog(type:string)

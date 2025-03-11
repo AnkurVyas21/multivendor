@@ -7,6 +7,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
   styleUrls: ['./transactions.component.css','../../../assets/css/modern.css']
 })
 export class TransactionsComponent {
+  public activeLoader = true;
 
     constructor(private httpService:HttpServiceService)
     {
@@ -188,6 +189,9 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 ngOnInit()
   {
     this.getTransactions()
+    setTimeout(() => {
+      this.activeLoader = false;
+    }, 1500);
   }
 
   getTransactions()

@@ -36,6 +36,7 @@ import { CarDetailsComponent } from "./detail pages/car-details/car-details.comp
 import { CarEditComponent } from "./detail pages/car-edit/car-edit.component";
 import { CarApprovalStatusComponent } from './car-approval-status/car-approval-status.component';
 import { MatSortModule } from "@angular/material/sort";
+import { CommonHeaderComponent } from './common-header/common-header.component';
 
 @NgModule({
     declarations:[
@@ -55,7 +56,8 @@ import { MatSortModule } from "@angular/material/sort";
     ProfileImageComponent,
     CarDetailsComponent,
     CarEditComponent,
-    CarApprovalStatusComponent
+    CarApprovalStatusComponent,
+    CommonHeaderComponent
   ],
   imports:[
     FormsModule,

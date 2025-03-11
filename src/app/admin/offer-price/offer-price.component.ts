@@ -183,6 +183,8 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
 
   filteredRequests = this.requests;
+  public activeLoader = true;
+
 
   constructor(private httpService:HttpServiceService,private dialog:MatDialog)
   {
@@ -192,6 +194,9 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
   ngOnInit()
   {
     this.getOfferPriceList()
+    setTimeout(() => {
+      this.activeLoader = false;
+    }, 1500);
   }
 
   getOfferPriceList()

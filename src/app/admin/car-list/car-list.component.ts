@@ -15,6 +15,8 @@ export class CarListComponent {
   }
 
 
+
+
   searchQuery: string = '';
   requests = [
     {
@@ -184,6 +186,8 @@ export class CarListComponent {
   "license": "6677889900"
 }
 ]
+public activeLoader = true;
+
 
 displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license','actions'];
 
@@ -195,6 +199,9 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
   ngOnInit()
   {
     this.carListApi()
+    setTimeout(() => {
+      this.activeLoader = false;
+    }, 1500);
   }
 
   carListApi()

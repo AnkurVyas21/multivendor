@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.css']
+  styleUrls: ['./profile-page.component.css','../../assets/css/modern.css'],
+  // encapsulation: ViewEncapsulation.None
 })
 export class ProfilePageComponent implements OnInit {
   customer: any;
@@ -181,6 +182,7 @@ export class ProfilePageComponent implements OnInit {
 }
 ]
 
+public activeLoader = true;
 displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license'];
 
 
@@ -190,6 +192,10 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
   ngOnInit(): void {
     this.loadCustomerDetails();
+    setTimeout(() => {
+      this.activeLoader = false;
+    }, 1500);
+
   }
 
   loadCustomerDetails() {

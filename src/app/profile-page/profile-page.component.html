@@ -160,77 +160,12 @@
 
 
 
-<div class="splash active">
+<div class="splash" [ngClass]="activeLoader ? 'active':''">
     <div class="splash-icon"></div>
 </div>
 
 <div class="wrapper">
-    <nav id="sidebar" class="sidebar">
-        <a class='sidebar-brand' href='index.html'>
-            <svg>
-                <use xlink:href="#ion-ios-pulse-strong"></use>
-            </svg>
-            Vendor Dashboard
-        </a>
-        <div class="sidebar-content">
-            <div class="sidebar-user">
-                <img src="../../assets/images/avatar/avatar.jpg" class="img-fluid rounded-circle mb-2" alt="Linda Miller" />
-                <div class="fw-bold">Linda Miller</div>
-                <small>{{'user@gmail.com'}}</small>
-            </div>
-
-            <ul class="sidebar-nav">
-                <li class="sidebar-header">
-                    Main
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link">
-                        <i class="align-middle me-2 fas fa-fw fa-home"></i> <span class="align-middle">Overview</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href='#'>
-                        <i class="align-middle me-2 fas fa-fw fa-car-alt"></i> <span class="align-middle">Add Car</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href='car-approval-status.html'>
-                        <i class="align-middle me-2 fas fa-fw fa-bell"></i> <span class="align-middle">Car Approval Status</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href='#'>
-                        <i class="align-middle me-2 fas fa-fw fa-table-list"></i> <span class="align-middle">My Car Listing</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href='#'>
-                        <i class="align-middle me-2 fas fa-fw fa-traffic-light"></i> <span class="align-middle">Test Drive View</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href='#'>
-                        <i class="align-middle me-2 fas fa-fw fa-car-side"></i> <span class="align-middle">Offer Price View</span>
-                    </a>
-                </li>
-                <li class="sidebar-item active">
-                    <a class='sidebar-link' href='#'>
-                        <i class="align-middle me-2 fas fa-fw fa-file-invoice-dollar"></i> <span class="align-middle">Payment History</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href='#'>
-                        <i class="align-middle me-2 fas fa-fw fa-circle-info"></i> <span class="align-middle">Support & Help</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href='#'>
-                        <i class="align-middle me-2 fas fa-fw fa-arrow-alt-circle-right"></i> <span class="align-middle">Logout</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+  
     <div class="main">
         <nav class="navbar navbar-expand navbar-theme">
             <a class="sidebar-toggle d-flex me-2">

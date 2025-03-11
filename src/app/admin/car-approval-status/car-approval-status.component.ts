@@ -28,6 +28,7 @@ const CAR_DATA: CarData[] = [
 export class CarApprovalStatusComponent  implements AfterViewInit {
   displayedColumns: string[] = ['name', 'uploadDate', 'status', 'reason', 'actions'];
   dataSource = new MatTableDataSource<CarData>(CAR_DATA);
+  public activeLoader = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -35,6 +36,9 @@ export class CarApprovalStatusComponent  implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    setTimeout(() => {
+      this.activeLoader = false;
+    }, 1500);
   }
 
   applyFilter(event: Event) {
