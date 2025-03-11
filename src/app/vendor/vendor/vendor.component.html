@@ -25,7 +25,7 @@
       </div>
       
       <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['vendor/profile']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <button mat-menu-item href="['vendor/profile']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
           <i class="fa-solid fa-user"></i> Profile
         </button>
         <button mat-menu-item (click)="resetPassword()">
@@ -58,42 +58,42 @@
           Main
         </li>
         <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/dashboard']">
-          <a class="sidebar-link" >
+          <a class="sidebar-link" href="vendor/dashboard">
             <i class="align-middle me-2 fas fa-fw fa-home"></i> <span class="align-middle">Overview</span>
           </a>
         </li>
         <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/add-cars']">
-          <a class='sidebar-link' >
+          <a class='sidebar-link' href='vendor/add-cars' >
             <i class="align-middle me-2 fas fa-fw fa-car-alt"></i> <span class="align-middle">Add Car</span>
           </a>
         </li>
         <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/car-approval']">
-          <a class='sidebar-link' >
+          <a class='sidebar-link' href='vendor/car-approval'>
             <i class="align-middle me-2 fas fa-fw fa-bell"></i> <span class="align-middle">Car Approval Status</span>
           </a>
         </li>
         <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/car-list']">
-          <a class='sidebar-link'>
+          <a class='sidebar-link' href='vendor/car-list'>
             <i class="align-middle me-2 fas fa-fw fa-table-list"></i> <span class="align-middle">My Car Listing</span>
           </a>
         </li>
         <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/test-drives']">
-          <a class='sidebar-link' >
+          <a class='sidebar-link' href='vendor/test-drives'>
             <i class="align-middle me-2 fas fa-fw fa-traffic-light"></i> <span class="align-middle">Test Drive View</span>
           </a>
         </li>
-        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/offer-price']">
-          <a class='sidebar-link' >
+        <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/offer-price']" >
+          <a class='sidebar-link' href='vendor/offer-price'>
             <i class="align-middle me-2 fas fa-fw fa-car-side"></i> <span class="align-middle">Offer Price View</span>
           </a>
         </li>
         <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/transactions']">
-          <a class='sidebar-link' >
+          <a class='sidebar-link' href='vendor/transactions'>
             <i class="align-middle me-2 fas fa-fw fa-file-invoice-dollar"></i> <span class="align-middle">Payment History</span>
           </a>
         </li>
         <li class="sidebar-item" [routerLinkActive]="'active'" [routerLink]="['vendor/transactions']">
-          <a class='sidebar-link'>
+          <a class='sidebar-link' href='vendor/transactions'>
             <i class="align-middle me-2 fas fa-fw fa-circle-info"></i> <span class="align-middle">Support & Help</span>
           </a>
         </li>
@@ -113,32 +113,32 @@
 
 <!-- <mat-drawer *ngIf="!isVisible" style="opacity: 0.5;">
   <div class="collapseSideMenu">
-    <div class="Dashboard" [routerLink]="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+    <div class="Dashboard" href="['/vendor/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
       <i style="font-size: large ;" class="fa-solid fa-qrcode"></i>
     </div>
     <div class="vendorCustomer" >
     
-      <div  class="customer"  [routerLink]="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <div  class="customer"  href="['/vendor/customer-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
         <i style="font-size: large" class="fa-solid fa-user"></i>
       </div>
     </div>
     <div class="vendorCustomer" >
-      <div class="vendor" [routerLink]="['/vendor/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <div class="vendor" href="['/vendor/test-drives']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
         <i style="font-size: large;" class="fa-solid fa-car-on"></i>
       </div>
-      <div  class="customer"  [routerLink]="['/vendor/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <div  class="customer"  href="['/vendor/offer-price']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
         <i style="font-size: large" class="fa-solid  fa-hand-holding-dollar"></i>
       </div>
     </div>
     <div class="vendorCustomer" >
-      <div class="vendor" [routerLink]="['/vendor/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <div class="vendor" href="['/vendor/car-list']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
         <i style="font-size: large;" class="fa-solid fa-car-side"></i>
       </div>
-      <div  class="customer"  [routerLink]="['/vendor/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <div  class="customer"  href="['/vendor/sold-cars']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
         <i style="font-size: large" class="fa-solid  fa-handshake"></i>
       </div>
     </div>
-    <div class="Dashboard" [routerLink]="['/vendor/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+    <div class="Dashboard" href="['/vendor/transactions']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
       <i style="font-size: large ;" class="fa-solid fa-money-check-dollar"></i>
     </div>
   </div>

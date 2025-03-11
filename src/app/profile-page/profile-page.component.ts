@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.css','../../assets/css/modern.css'],
-  // encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ProfilePageComponent implements OnInit {
   customer: any;

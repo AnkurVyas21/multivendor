@@ -69,7 +69,5 @@ checkScreenSize() {
     console.log("Logout clicked");
     localStorage.clear()
     this.router.navigate(['/login'])
-
-    // Implement logout logic
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 
@@ -6,7 +6,7 @@ import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css','../../../assets/css/modern.css']
+  styleUrls: ['./dashboard.component.css','../../../assets/css/modern.css'],
 })
 export class DashboardComponent {
  // Mock data for the dashboard

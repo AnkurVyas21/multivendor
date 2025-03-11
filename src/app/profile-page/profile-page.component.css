@@ -164,4 +164,13 @@
     border-radius: 5px;
   } */
 
-@import url('../../assets/css/modern.css');
+  div .form-control{
+    border: 1px solid lightgray;
+  }
+
+  a.bg-black {
+    background-color: black !important;
+  }
+  a.text-white {
+    color: white !important;
+  }
