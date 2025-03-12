@@ -4,32 +4,7 @@
 
 <div class="wrapper">
   <div class="main">
-    <nav class="navbar navbar-expand navbar-theme">
-      <a class="sidebar-toggle d-flex me-2">
-          <i class="hamburger align-self-center"></i>
-      </a>
-  
-      <div class="navbar-collapse collapse">
-          <ul class="navbar-nav ms-auto align-items-center">
-              <li class="nav-item ms-lg-2">
-                  <a href="#" class="btn bg-black text-white">Website</a>
-              </li>
-              <li class="nav-item dropdown ms-lg-2">
-                  <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">
-                      <i class="align-middle fas fa-cog"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                      <a class="dropdown-item" [routerLink]="['/vendor/profile']" ><i class="align-middle me-1 fas fa-fw fa-user"></i> View Profile</a>
-                      <a class="dropdown-item" ><i class="align-middle me-1 fas fa-fw fa-comments"></i> Contacts</a>
-                      <a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-chart-pie"></i> Analytics</a>
-                      <a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Settings</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Sign out</a>
-                  </div>
-              </li>
-          </ul>
-      </div>
-  </nav>
+    <app-common-header></app-common-header>
 
     <main class="content">
       <div class="container-fluid">
@@ -44,48 +19,69 @@
           <div class="col-12">
             <div class="card">
               <div class="card-body">
-                                  <table id="datatables-reponsive" class="table table-striped">
-                                      <thead class="table-dark">
-                                          <tr>
-                                              <th>Payment ID</th>
-                                              <th>Car ID</th>
-                                              <th>Car Model</th>
-                                              <th>Payment Date</th>
-                                              <th>Amount Paid</th>
-                                              <th>Status</th>
-                                              <th>Transaction ID</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          <tr>
-                                              <td>#P101</td>
-                                              <td>#C301</td>
-                                              <td>Honda Civic 2023</td>
-                                              <td>2025/03/06</td>
-                                              <td>$50</td>
-                                              <td><span class="badge bg-success">Success</span></td>
-                                              <td>TXN789654</td>
-                                          </tr>
-                                          <tr>
-                                              <td>#P102</td>
-                                              <td>#C302</td>
-                                              <td>Ford Mustang 2022</td>
-                                              <td>2025/03/04</td>
-                                              <td>$75</td>
-                                              <td><span class="badge bg-warning">Pending</span></td>
-                                              <td>TXN456321</td>
-                                          </tr>
-                                          <tr>
-                                              <td>#P103</td>
-                                              <td>#C303</td>
-                                              <td>BMW X5 2021</td>
-                                              <td>2025/03/02</td>
-                                              <td>$100</td>
-                                              <td><span class="badge bg-danger">Failed</span></td>
-                                              <td>TXN123987</td>
-                                          </tr>
-                                      </tbody>
-                                  </table>
+                <div class="mat-elevation-z8">
+                  <div class="table-header">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Search</mat-label>
+                      <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+                    </mat-form-field>
+                  </div>
+                  <table mat-table [dataSource]="dataSource" matSort class="custom-table">
+
+                       <!-- Car ID Column -->
+                       <ng-container matColumnDef="paymentId">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment ID </th>
+                        <td mat-cell *matCellDef="let element"> {{ element.paymentId }} </td>
+                      </ng-container>
+                    
+                
+                    <!-- Upload Date Column -->
+                    <ng-container matColumnDef="carId">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Car ID </th>
+                      <td mat-cell *matCellDef="let element"> {{ element.carId }} </td>
+                    </ng-container>
+
+                       <!-- Upload Price -->
+                       <ng-container matColumnDef="carModel">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Car Model </th>
+                        <td mat-cell *matCellDef="let element"> {{ element.carModel }} </td>
+                      </ng-container>
+
+                       <!-- Locatioin -->
+                       <ng-container matColumnDef="paymentDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Date </th>
+                        <td mat-cell *matCellDef="let element"> {{ element.paymentDate }} </td>
+                      </ng-container>
+
+                       <!-- Offered Price -->
+                       <ng-container matColumnDef="amountPaid">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount Paid </th>
+                        <td mat-cell *matCellDef="let element"> {{ element.amountPaid }} </td>
+                      </ng-container>
+                
+                    <!-- Status Column -->
+                    <ng-container matColumnDef="status">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                      <td mat-cell *matCellDef="let element">
+                        <span class="status" [ngClass]="element.status.toLowerCase()">
+                          {{ element.status }}
+                        </span>
+                      </td>
+                    </ng-container>
+                
+                    <!-- Actions Column -->
+                    <ng-container matColumnDef="transactionId">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction ID </th>
+                      <td mat-cell *matCellDef="let element"> {{ element.transactionId }} </td>
+                    </ng-container> 
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="height: 36px;"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="zebra-row" style="height: 36px;"></tr>
+                  </table>
+                
+                  <!-- Pagination -->
+                  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                </div>
               </div>
             </div>
           </div>

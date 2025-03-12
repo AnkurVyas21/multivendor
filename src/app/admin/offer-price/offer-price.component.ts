@@ -22,7 +22,8 @@ export interface CarData {
 @Component({
   selector: 'app-offer-price',
   templateUrl: './offer-price.component.html',
-  styleUrls: ['./offer-price.component.css','../../../assets/css/modern.css']
+  styleUrls: ['./offer-price.component.css','../../../assets/css/modern.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class OfferPriceComponent {
 
