@@ -17,7 +17,7 @@
                       <a href="/detail/25" class="image">
                         <div class="stm-badge-top">
                           <div class="feature">
-                            <span>{{ car.badge }}</span>
+                            <span>{{ car.condition }}</span>
                           </div>
                         </div>
                         <div class="listing-images">
@@ -25,17 +25,17 @@
                             <div class="wrap-hover-listing">
                               <div class="listing-item active" [title]="car.title">
                                 <div class="images">
-                                  <img [src]="car.images[0]" class="swiper-image tfcl-light-gallery" alt="images">
+                                  <img [src]="car.media.photo1" class="swiper-image tfcl-light-gallery" alt="images">
                                 </div>
                               </div>
                               <div class="listing-item" [title]="car.title">
                                 <div class="images">
-                                  <img [src]="car.images[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
+                                  <img [src]="car.media.photo2" class="swiper-image lazy tfcl-light-gallery" alt="images">
                                 </div>
                               </div>
                               <div class="listing-item view-gallery" [title]="car.title">
                                 <div class="images">
-                                  <img [src]="car.images[2]" class="swiper-image tfcl-light-gallery" alt="images">
+                                  <img [src]="car.media.photo3" class="swiper-image tfcl-light-gallery" alt="images">
                                   <div class="overlay-limit">
                                     <img src="assets/images/car-list/img.png" class="icon-img" alt="icon-map">
                                     <p>2 more photos</p>
@@ -52,9 +52,9 @@
                         </div>
                       </a>
                       <div class="content">
-                        <span class="sub-title">{{ car.subtitle }}</span>
+                        <span class="sub-title">{{ car.make+' '+car.model+' '+car.type }}</span>
                         <h6 class="title"><a href="/detail/25">{{ car.title }}</a></h6>
-                        <span class="price">{{ car.price }}</span>
+                        <span class="price">{{ car.requestPrice }}</span>
                         <div class="bottom-btn-wrap">
                           <div class="btn-read-more">
                             <a class="more-link" href="/detail/25">

@@ -19,7 +19,7 @@
                         <div class="listing-images">
                           <div class="hover-listing-image">
                             <div class="wrap-hover-listing">
-                              <div *ngFor="let image of car.images; let first = first" 
+                              <div *ngFor="let image of convertArray(car.media); let first = first" 
                                    class="listing-item" 
                                    [class.active]="first" 
                                    [title]="car.title">
@@ -27,12 +27,12 @@
                                   <img [src]="image" class="swiper-image tfcl-light-gallery" alt="images">
                                   <div *ngIf="first" class="overlay-limit">
                                     <img src="assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                    <p>{{ car.additionalPhotos }} more photos</p>
+                                    <!-- <p>{{ car.additionalPhotos }} more photos</p> -->
                                   </div>
                                 </div>
                               </div>
                               <div class="bullet-hover-listing">
-                                <div *ngFor="let dot of car.images; let first = first" 
+                                <div *ngFor="let dot of convertArray(car.media); let first = first" 
                                      class="bl-item" 
                                      [class.active]="first">
                                 </div>
@@ -42,9 +42,9 @@
                         </div>
                       </a>
                       <div class="content">
-                        <span class="sub-title">{{ car.subTitle }}</span>
+                        <span class="sub-title">{{ car.make+' '+car.model+' '+car.type }}</span>
                         <h6 class="title"><a href="detail/25">{{ car.title }}</a></h6>
-                        <span class="price">{{ car.price }}</span>
+                        <span class="price">{{ car.requestPrice }}</span>
                       </div>
                     </div>
                   </div>

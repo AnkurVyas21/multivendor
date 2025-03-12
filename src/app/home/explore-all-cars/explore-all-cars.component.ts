@@ -14,81 +14,164 @@ export class ExploreAllCarsComponent {
 
  }
 
- public carList = [
-    {
-      id: 1,
-      title: 'Chevrolet Suburban 2021 mo',
-      subtitle: 'Mini Cooper 3 Similar',
-      price: '$27,000',
-      badge: 'New',
-      images: [
-        'assets/images/car-list/car7.jpg',
-        'assets/images/car-list/car11.jpg',
-        'assets/images/car-list/car12.jpg'
-      ]
-    },
-    {
-      id: 2,
-      title: 'Lexus LC Hybrid 2024',
-      subtitle: 'Luxury Hybrid Car',
-      price: '$35,000',
-      badge: 'Trending',
-      images: [
-        'assets/images/car-list/car2.jpg',
-        'assets/images/car-list/car11.jpg',
-        'assets/images/car-list/car12.jpg'
-      ]
-    },
-    {
-      id: 3,
-      title: 'BMW X5 2023',
-      subtitle: 'SUV 4WD',
-      price: '$40,500',
-      badge: 'Popular',
-      images: [
-        'assets/images/car-list/car6.jpg',
-        'assets/images/car-list/car11.jpg',
-        'assets/images/car-list/car12.jpg'
-      ]
-    },
-    {
-      id: 3,
-      title: 'BMW X5 2023',
-      subtitle: 'SUV 4WD',
-      price: '$40,500',
-      badge: 'Popular',
-      images: [
-        'assets/images/car-list/car6.jpg',
-        'assets/images/car-list/car11.jpg',
-        'assets/images/car-list/car12.jpg'
-      ]
-    },
-    {
-      id: 3,
-      title: 'BMW X5 2023',
-      subtitle: 'SUV 4WD',
-      price: '$40,500',
-      badge: 'Popular',
-      images: [
-        'assets/images/car-list/car6.jpg',
-        'assets/images/car-list/car11.jpg',
-        'assets/images/car-list/car12.jpg'
-      ]
-    },
-    {
-      id: 3,
-      title: 'BMW X5 2023',
-      subtitle: 'SUV 4WD',
-      price: '$40,500',
-      badge: 'Popular',
-      images: [
-        'assets/images/car-list/car6.jpg',
-        'assets/images/car-list/car11.jpg',
-        'assets/images/car-list/car12.jpg'
-      ]
-    }
-
-  ];
+ cars = [
+  {
+    "id": 2,
+    "title": "Lexus LC Hybrid 2024",
+    "make": "Audi",
+    "model": "X5",
+    "type": "Compact",
+    "year": "2020",
+    "condition": "Used",
+    "stockNumber": "2514251",
+    "vinNumber": "52415241",
+    "regularPrice": 80000,
+    "salePrice": 27000,
+    "requestPrice": 142334.0,
+    "description": null,
+    "priceLabel": false,
+    "createTime": "2025-02-24T19:54:24.000+00:00",
+    "updateTime": "2025-02-24T19:54:52.000+00:00",
+    "media": {
+        "photo1": "assets/images/car-list/car11.jpg",
+        "photo2": "assets/images/car-list/car18.jpg",
+        "photo3": "assets/images/car-list/car12.jpg",
+        "photo4": "assets/images/car-list/car11.jpg",
+        "photo5": "assets/images/car-list/car12.jpg",
+        "videoUrl": "https://www.youtube.com/shorts/example",
+        "vinReport": null
+      }},
+  {
+    "id": 2,
+    "title": "Chevrolet Suburban 2021 mo",
+    "make": "Audi",
+    "model": "X5",
+    "type": "Compact",
+    "year": "2020",
+    "condition": "Used",
+    "stockNumber": "2514251",
+    "vinNumber": "52415241",
+    "regularPrice": 33332.0,
+    "salePrice": 27000,
+    "requestPrice": 142334.0,
+    "description": null,
+    "priceLabel": false,
+    "createTime": "2025-02-24T19:54:24.000+00:00",
+    "updateTime": "2025-02-24T19:54:52.000+00:00",
+    "media": {
+        "photo1": "assets/images/car-list/car12.jpg",
+        "photo2": "assets/images/car-list/car11.jpg",
+        "photo3": "assets/images/car-list/car12.jpg",
+        "photo4": "assets/images/car-list/car11.jpg",
+        "photo5": "assets/images/car-list/car12.jpg",
+        "videoUrl": "https://www.youtube.com/shorts/example",
+        "vinReport": null
+      }},
+  {
+    "id": 2,
+    "title": "Chevrolet Suburban 2021 mo",
+    "make": "Audi",
+    "model": "X5",
+    "type": "Compact",
+    "year": "2020",
+    "condition": "Used",
+    "stockNumber": "2514251",
+    "vinNumber": "52415241",
+    "regularPrice": 33332.0,
+    "salePrice": 27000,
+    "requestPrice": 142334.0,
+    "description": null,
+    "priceLabel": false,
+    "createTime": "2025-02-24T19:54:24.000+00:00",
+    "updateTime": "2025-02-24T19:54:52.000+00:00",
+    "media": {
+        "photo1": "assets/images/car-list/car18.jpg",
+        "photo2": "assets/images/car-list/car11.jpg",
+        "photo3": "assets/images/car-list/car12.jpg",
+        "photo4": "assets/images/car-list/car11.jpg",
+        "photo5": "assets/images/car-list/car12.jpg",
+        "videoUrl": "https://www.youtube.com/shorts/example",
+        "vinReport": null
+      }},
+  {
+    "id": 2,
+    "title": "Chevrolet Suburban 2021 mo",
+    "make": "Audi",
+    "model": "X5",
+    "type": "Compact",
+    "year": "2020",
+    "condition": "Used",
+    "stockNumber": "2514251",
+    "vinNumber": "52415241",
+    "regularPrice": 33332.0,
+    "salePrice": 27000,
+    "requestPrice": 142334.0,
+    "description": null,
+    "priceLabel": false,
+    "createTime": "2025-02-24T19:54:24.000+00:00",
+    "updateTime": "2025-02-24T19:54:52.000+00:00",
+    "media": {
+        "photo1": "assets/images/car-list/car12.jpg",
+        "photo2": "assets/images/car-list/car11.jpg",
+        "photo3": "assets/images/car-list/car12.jpg",
+        "photo4": "assets/images/car-list/car11.jpg",
+        "photo5": "assets/images/car-list/car12.jpg",
+        "videoUrl": "https://www.youtube.com/shorts/example",
+        "vinReport": null
+      }},
+  {
+    "id": 2,
+    "title": "Chevrolet Suburban 2021 mo",
+    "make": "Audi",
+    "model": "X5",
+    "type": "Compact",
+    "year": "2020",
+    "condition": "Used",
+    "stockNumber": "2514251",
+    "vinNumber": "52415241",
+    "regularPrice": 33332.0,
+    "salePrice": 27000,
+    "requestPrice": 142334.0,
+    "description": null,
+    "priceLabel": false,
+    "createTime": "2025-02-24T19:54:24.000+00:00",
+    "updateTime": "2025-02-24T19:54:52.000+00:00",
+    "media": {
+        "photo1": "assets/images/car-list/car2.jpg",
+        "photo2": "assets/images/car-list/car11.jpg",
+        "photo3": "assets/images/car-list/car12.jpg",
+        "photo4": "assets/images/car-list/car11.jpg",
+        "photo5": "assets/images/car-list/car12.jpg",
+        "videoUrl": "https://www.youtube.com/shorts/example",
+        "vinReport": null
+      }},
+  {
+    "id": 2,
+    "title": "Chevrolet Suburban 2021 mo",
+    "make": "Audi",
+    "model": "X5",
+    "type": "Compact",
+    "year": "2020",
+    "condition": "Used",
+    "stockNumber": "2514251",
+    "vinNumber": "52415241",
+    "regularPrice": 33332.0,
+    "salePrice": 27000,
+    "requestPrice": 142334.0,
+    "description": null,
+    "priceLabel": false,
+    "createTime": "2025-02-24T19:54:24.000+00:00",
+    "updateTime": "2025-02-24T19:54:52.000+00:00",
+    "media": {
+        "photo1": "assets/images/car-list/car18.jpg",
+        "photo2": "assets/images/car-list/car11.jpg",
+        "photo3": "assets/images/car-list/car12.jpg",
+        "photo4": "assets/images/car-list/car11.jpg",
+        "photo5": "assets/images/car-list/car12.jpg",
+        "videoUrl": "https://www.youtube.com/shorts/example",
+        "vinReport": null
+      }},
+    ];
 
 
   ngOnInit(): void {
@@ -100,7 +183,7 @@ export class ExploreAllCarsComponent {
      this.httpService.getCars('exploreAllCars').subscribe((value)=>{
       if(value.success)
       {
-        this.carList = value.cars
+        this.cars = value.cars
       }
      },(error)=>{
         console.log('error occured in explore all car list ')
