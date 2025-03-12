@@ -1,233 +1,86 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs5';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+
+export interface CarData {
+  leadId:string;
+  carId: string;
+  customerName: string;
+  carModel: string;
+  status:string;
+}
 
 @Component({
   selector: 'app-test-drives',
   templateUrl: './test-drives.component.html',
-  styleUrls: ['./test-drives.component.css','../../../assets/css/modern.css']
+  styleUrls: ['./test-drives.component.css','../../../assets/css/modern.css'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class TestDrivesComponent {
-  searchQuery: string = '';
-  requests = [
-    {
-        "id": 1,
-        "carID": "CAR1001",
-        "name": "Ankur Vyas",
-        "email": "ankurvyas033@gmail.com",
-        "phone": "9303493424",
-        "address": "H. No. 239",
-        "license": "5494654654"
-    },
-    {
-        "id": 2,
-        "carID": "CAR1002",
-        "name": "Rahul Sharma",
-        "email": "rahul.sharma@gmail.com",
-        "phone": "9876543210",
-        "address": "Flat No. 12, Green Park",
-        "license": "9876543211"
-    },
-    {
-        "id": 3,
-        "carID": "CAR1003",
-        "name": "Priya Verma",
-        "email": "priya.verma@example.com",
-        "phone": "9123456789",
-        "address": "House No. 45, Lake View",
-        "license": "1234567890"
-    },
-    {
-        "id": 4,
-        "carID": "CAR1004",
-        "name": "Amit Singh",
-        "email": "amit.singh@gmail.com",
-        "phone": "9988776655",
-        "address": "B-22, Skyline Apartments",
-        "license": "1122334455"
-    },
-    {
-        "id": 5,
-        "carID": "CAR1005",
-        "name": "Neha Gupta",
-        "email": "neha.gupta@example.com",
-        "phone": "9871234567",
-        "address": "Sector 14, Noida",
-        "license": "6677889900"
-    },
-    {
-      "id": 6,
-      "carID": "CAR1005",
-      "name": "Neha Gupta",
-      "email": "neha.gupta@example.com",
-      "phone": "9871234567",
-      "address": "Sector 14, Noida",
-      "license": "6677889900"
-  },
-  {
-    "id": 7,
-    "carID": "CAR1005",
-    "name": "Neha Gupta",
-    "email": "neha.gupta@example.com",
-    "phone": "9871234567",
-    "address": "Sector 14, Noida",
-    "license": "6677889900"
-},
-{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-}
-]
 
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license', 'actions'];
-@ViewChild('dataTable', { static: false }) table!: ElementRef;
-
-  filteredRequests = this.requests;
-  public activeLoader = true;
-
-  constructor(private httpService:HttpServiceService, private dialog:MatDialog)
-  {
-
-  }
-
-  ngOnInit()
-  {
-    this.getTestDrive()
-    setTimeout(() => {
-      this.activeLoader = false;
-    }, 1500);
-  }
-
-  ngAfterViewInit(): void {
-    this.getTestDrive();
-  }
+export class TestDrivesComponent { 
   
+  public carList: CarData[] = [
+    { leadId: '#201', carId: '#car01', customerName: 'John Doe', carModel: 'Toyota Camry 2022', status: 'Pending' },
+    { leadId: '#201', carId: '#car01', customerName: 'John Doe', carModel: 'Toyota Camry 2022', status: 'Pending' },
+    { leadId: '#201', carId: '#car01', customerName: 'John Doe', carModel: 'Toyota Camry 2022', status: 'Pending' },
+  ];
+
+
+constructor(private httpService:HttpServiceService, private route:Router, private dialog:MatDialog)
+{
+
+}
+
+searchQuery: string = '';
+
+public activeLoader = true;
+
+displayedColumns: string[] = ['leadId', 'carId', 'customerName', 'carModel', 'status', 'actions'];
+dataSource = new MatTableDataSource<CarData>(this.carList);
+
+@ViewChild(MatPaginator) paginator!: MatPaginator;
+@ViewChild(MatSort) sort!: MatSort;
+
+
+
+
+ngOnInit()
+{
+  this.getTestDrive()
+  setTimeout(() => {
+    this.activeLoader = false;
+  }, 1500);
+}
+
+ngAfterViewInit() {
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
+  setTimeout(() => {
+    this.activeLoader = false;
+  }, 1500);
+}
+
+
+applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+}
+
+ viewDetails(element: CarData) {
+    alert(`Viewing details for: ${element.customerName}`);
+  }
   getTestDrive() {
     this.httpService.getTestDrive().subscribe((data) => {
-      this.getTestDrive = data;
-      setTimeout(() => { // Ensure the table exists before initializing
-        ($(this.table.nativeElement) as any).DataTable({
-          responsive: true,
-          paging: true,
-          searching: true,
-          ordering: true
-        });
-      }, 0);
+      this.carList = data;
     });
-  }
-  
-
-  onSearch() {
-    const query = this.searchQuery.toLowerCase();
-    this.filteredRequests = this.requests.filter(
-      (req) =>
-        req.name.toLowerCase().includes(query) ||
-        req.email.toLowerCase().includes(query) ||
-        req.id.toString().includes(query)
-    );
   }
 
   approve(element: any) {
@@ -240,16 +93,59 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
 
   }
 
+  openDialog(type:string)
+   {
+      const dialogRef =  this.dialog.open(AdminDialogComponent,{
+      data:{type:type},
+      width:'450px',
+     })
+  
+     dialogRef.afterClosed().subscribe(result=>{
+      console.log('addCar', result)
+     })
+   }
 
-    openDialog(type:string)
-     {
-        const dialogRef =  this.dialog.open(AdminDialogComponent,{
-        data:{type:type},
-        width:'450px',
-       })
-    
-       dialogRef.afterClosed().subscribe(result=>{
-        console.log('addCar', result)
-       })
-     }
 }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+

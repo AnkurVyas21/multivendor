@@ -1,7 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs5';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+
+export interface CarData {
+  leadId:string;
+  location:string;
+  offeredPrice:string;
+  customerName: string;
+  carModel: string;
+  status:string;
+}
 
 @Component({
   selector: 'app-offer-price',
@@ -9,188 +25,33 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./offer-price.component.css','../../../assets/css/modern.css']
 })
 export class OfferPriceComponent {
-  searchQuery: string = '';
-  requests = [
-    {
-        "id": 1,
-        "carID": "CAR1001",
-        "name": "Ankur Vyas",
-        "email": "ankurvyas033@gmail.com",
-        "phone": "9303493424",
-        "address": "H. No. 239",
-        "license": "5494654654"
-    },
-    {
-        "id": 2,
-        "carID": "CAR1002",
-        "name": "Rahul Sharma",
-        "email": "rahul.sharma@gmail.com",
-        "phone": "9876543210",
-        "address": "Flat No. 12, Green Park",
-        "license": "9876543211"
-    },
-    {
-        "id": 3,
-        "carID": "CAR1003",
-        "name": "Priya Verma",
-        "email": "priya.verma@example.com",
-        "phone": "9123456789",
-        "address": "House No. 45, Lake View",
-        "license": "1234567890"
-    },
-    {
-        "id": 4,
-        "carID": "CAR1004",
-        "name": "Amit Singh",
-        "email": "amit.singh@gmail.com",
-        "phone": "9988776655",
-        "address": "B-22, Skyline Apartments",
-        "license": "1122334455"
-    },
-    {
-        "id": 5,
-        "carID": "CAR1005",
-        "name": "Neha Gupta",
-        "email": "neha.gupta@example.com",
-        "phone": "9871234567",
-        "address": "Sector 14, Noida",
-        "license": "6677889900"
-    },
-    {
-      "id": 6,
-      "carID": "CAR1005",
-      "name": "Neha Gupta",
-      "email": "neha.gupta@example.com",
-      "phone": "9871234567",
-      "address": "Sector 14, Noida",
-      "license": "6677889900"
-  },
+
+  public carList: CarData[] = [
+    { leadId: '#201', customerName: 'John Doe', carModel: 'Toyota Camry 2022', status: 'Pending', location: 'New York, USA', offeredPrice: '$22,000' },
+    { leadId: '#201', customerName: 'John Doe', carModel: 'Toyota Camry 2022', status: 'Pending', location: 'Los Angeles, USA', offeredPrice: '$21,500' },
+    { leadId: '#201', customerName: 'John Doe', carModel: 'Toyota Camry 2022', status: 'Pending', location: 'Chicago, USA', offeredPrice: '$22,300' },
+  ];
+
+
+  constructor(private httpService:HttpServiceService, private route:Router, private dialog:MatDialog)
   {
-    "id": 7,
-    "carID": "CAR1005",
-    "name": "Neha Gupta",
-    "email": "neha.gupta@example.com",
-    "phone": "9871234567",
-    "address": "Sector 14, Noida",
-    "license": "6677889900"
-},
-{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-}
-]
-
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license', 'actions'];
-
-
-  filteredRequests = this.requests;
-  public activeLoader = true;
-
-
-  constructor(private httpService:HttpServiceService,private dialog:MatDialog)
-  {
-
+  
   }
-
+  
+  searchQuery: string = '';
+  
+  public activeLoader = true;
+  
+  displayedColumns: string[] = ['leadId', 'customerName', 'carModel','location','offeredPrice', 'status', 'actions'];
+  dataSource = new MatTableDataSource<CarData>(this.carList);
+  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  
+  
+  
+  
+ 
   ngOnInit()
   {
     this.getOfferPriceList()
@@ -199,46 +60,84 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
     }, 1500);
   }
 
-  getOfferPriceList()
-  {
-    this.httpService.getOfferPrice().subscribe((value)=>{
-      console.log(value)
-    },(error)=>{
-      console.log(error)
-  })
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    setTimeout(() => {
+      this.activeLoader = false;
+    }, 1500);
   }
-
-  onSearch() {
-    const query = this.searchQuery.toLowerCase();
-    this.filteredRequests = this.requests.filter(
-      (req) =>
-        req.name.toLowerCase().includes(query) ||
-        req.email.toLowerCase().includes(query) ||
-        req.id.toString().includes(query)
-    );
+  
+  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  
+   viewDetails(element: CarData) {
+      alert(`Viewing details for: ${element.customerName}`);
+    }
+    getTestDrive() {
+      this.httpService.getTestDrive().subscribe((data) => {
+        this.carList = data;
+      });
+    }
+  
+    approve(element: any) {
+      this.openDialog('approveOfferPrice')
+      
+    }
+  
+    decline(element: any) {
+      this.openDialog('declineOfferPrice')
+  
+    }
+  
+  
+      openDialog(type:string)
+       {
+          const dialogRef =  this.dialog.open(AdminDialogComponent,{
+          data:{type:type},
+          width:'450px',
+         })
+      
+         dialogRef.afterClosed().subscribe(result=>{
+          console.log('addCar', result)
+         })
+       }
 
-  approve(element: any) {
-    this.openDialog('approveOfferPrice')
-    
-  }
-
-  decline(element: any) {
-    this.openDialog('declineOfferPrice')
-
-  }
-
-
-    openDialog(type:string)
+     getOfferPriceList()
      {
-        const dialogRef =  this.dialog.open(AdminDialogComponent,{
-        data:{type:type},
-        width:'450px',
-       })
-    
-       dialogRef.afterClosed().subscribe(result=>{
-        console.log('addCar', result)
-       })
+       this.httpService.getOfferPrice().subscribe((value)=>{
+         console.log(value)
+       },(error)=>{
+         console.log(error)
+     })
      }
-}
+  
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+ 
+
+
+
+  
+
 
