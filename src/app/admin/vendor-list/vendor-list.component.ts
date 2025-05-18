@@ -197,7 +197,7 @@ displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address'
   
     getVendorList()
     {
-      this.httpService.getVendorList().subscribe((value)=>{
+      this.httpService.getadminVendorList().subscribe((value)=>{
         console.log(value)
       },(error)=>{
         console.log(error)

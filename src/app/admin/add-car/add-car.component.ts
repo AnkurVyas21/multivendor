@@ -102,26 +102,49 @@ this.carlistingFormMedia = this.fb.group({
 
   }
 
-  onSubmit(form:FormGroup, nextIndex:number) {
-    console.log(form)
-    console.log(this.vendor)
-    if (form.valid) {
-      this.httpService.addCar(form.value,this.formType(nextIndex)).subscribe((value)=>{
+ onSubmit(form: FormGroup, nextIndex: number) {
+  console.log(form);
+  console.log(this.vendor);
 
-      },(error)=>{
-        if(nextIndex !=5)
-          {  this.tabsAccess[nextIndex] = true; // Enable the next tab
-            this.selectedTabIndex = nextIndex; // Move to the next tab
-          }
-         else {
-        this.openDialog('addCarSuccess')
-         }
-      })
-      console.log('Form Submitted', form.value);
-    } else {
-      console.log('Form is invalid');
+  if (form.valid) {
+    const timestamp = new Date().toISOString();
+
+    const payload = {
+      ...form.value,
+      id: null,
+      
+      status: null,
+      createTime: timestamp,
+      updateTime: timestamp
+    };
+
+    let vendorId = localStorage.getItem('vendorId');
+    if(vendorId==null)
+    {
+      vendorId=''
     }
+
+
+    this.httpService.addCar(payload, this.formType(nextIndex),parseInt(vendorId, 10)).subscribe(
+      (value) => {
+        // Success handler (if needed)
+      },
+      (error) => {
+        if (nextIndex !== 5) {
+          this.tabsAccess[nextIndex] = true; // Enable the next tab
+          this.selectedTabIndex = nextIndex; // Move to the next tab
+        } else {
+          this.openDialog('addCarSuccess');
+        }
+      }
+    );
+
+    console.log('Form Submitted', payload);
+  } else {
+    console.log('Form is invalid');
   }
+}
+
 
   formType(index:number)
   {

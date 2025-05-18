@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../enviornment/environment';
 
@@ -7,7 +7,7 @@ import { environment } from '../enviornment/environment';
   providedIn: 'root'
 })
 export class HttpServiceService {
-  private baseURL = environment.apiUrl;  // Use environment.apiUrl
+  private baseURL = '';  // Use environment.apiUrl
 
   constructor(private http: HttpClient) { }
 
@@ -21,17 +21,23 @@ export class HttpServiceService {
     );
   }
 
-  getCars(type:string): Observable<any> {
-    return this.http.get(`${this.baseURL}/api/cars`).pipe(
-      catchError((error) => {
-        console.error('Error fetching users:', error);
-        return throwError(() => error);
-      })
-    );
-  }
+ getCars(type: string, page?: number, size?: number): Observable<any> {
+  let url = type ? `${this.baseURL}/api/cars/${type}` : `${this.baseURL}/api/cars`;
+
+  const params = new HttpParams()
+    .set('page', page!.toString())
+    .set('size', size!.toString());
+
+  return this.http.get(url, { params }).pipe(
+    catchError((error) => {
+      console.error('Error fetching cars:', error);
+      return throwError(() => error);
+    })
+  );
+}
 
   getCarsDetailsBasics(id:number): Observable<any> {
-    return this.http.get(`${this.baseURL}/cars/${id}/basics`).pipe(
+    return this.http.get(`${this.baseURL}/api/cars/${id}/basics`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
         return throwError(() => error);
@@ -41,7 +47,7 @@ export class HttpServiceService {
 
 
   getCarsDetailsSpecification(id:number): Observable<any> {
-    return this.http.get(`${this.baseURL}/cars/${id}/specifications`).pipe(
+    return this.http.get(`${this.baseURL}/api/cars/${id}/specifications`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
         return throwError(() => error);
@@ -50,7 +56,7 @@ export class HttpServiceService {
   }
 
   getCarsDetailsFeature(id:number): Observable<any> {
-    return this.http.get(`${this.baseURL}/cars/${id}/features`).pipe(
+    return this.http.get(`${this.baseURL}/api/cars/${id}/features`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
         return throwError(() => error);
@@ -59,7 +65,7 @@ export class HttpServiceService {
   }
 
   getCarsDetailsMedia(id:number): Observable<any> {
-    return this.http.get(`${this.baseURL}/cars/${id}/media`).pipe(
+    return this.http.get(`${this.baseURL}/api/cars/${id}/media`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
         return throwError(() => error);
@@ -69,7 +75,7 @@ export class HttpServiceService {
 
 
   getCarsDetailsAddress(id:number): Observable<any> {
-    return this.http.get(`${this.baseURL}/cars/${id}/address`).pipe(
+    return this.http.get(`${this.baseURL}/api/cars/${id}/address`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
         return throwError(() => error);
@@ -79,7 +85,7 @@ export class HttpServiceService {
 
 
   getCarsDetailsPhoto(id:number): Observable<any> {
-    return this.http.get(`${this.baseURL}/cars/media/${id}/photo1`).pipe(
+    return this.http.get(`${this.baseURL}/api/cars/media/${id}/photo1`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
         return throwError(() => error);
@@ -124,14 +130,18 @@ export class HttpServiceService {
     );
   }
   
-  getVendorList():Observable<any> {
-    return this.http.get(`${this.baseURL}/vendorList`).pipe(
-      catchError((error) => {
-        console.error('Error fetching vendor list:', error);
-        return throwError(() => error);
-      })
-    );
-  }
+
+ getadminVendorList(): Observable<any> {
+
+
+  return this.http.get(`${this.baseURL}/api/admin/vendors`).pipe(
+    catchError((error) => {
+      console.error('Error fetching vendor list:', error);
+      return throwError(() => error);
+    })
+  );
+}
+
 
   getTransaction()
   {
@@ -149,32 +159,28 @@ export class HttpServiceService {
     return this.http.post(`${this.baseURL}/users`, user);
   }
 
-  addCar(carInfo: any,formType:string): Observable<any> {
+  addCar(carInfo: any,formType:string, vendorId:number): Observable<any> {
     let token = '';
-    token = localStorage.getItem("authorization") as string;
+     const params = new HttpParams().set('vendorID', vendorId.toString());
     console.log(token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': token,
     });
     const options = {
       headers,
     };
-    return this.http.post(`${this.baseURL}/cars/${formType}`, carInfo, options);
+    return this.http.post(`${this.baseURL}/api/cars/${formType}`, carInfo, {params});
   }
 
   updateCar(carInfo: any,formType:string): Observable<any> {
     let token = '';
-    token = localStorage.getItem("authorization") as string;
-    console.log(token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': token,
     });
     const options = {
       headers,
     };
-    return this.http.put(`${this.baseURL}/cars/${formType}`, carInfo, options);
+    return this.http.put(`${this.baseURL}/api/cars/${formType}`, carInfo, options);
   }
 
 
@@ -277,11 +283,9 @@ export class HttpServiceService {
 
   contactUS(offerId: string): Observable<any> {
     let token = '';
-    token = localStorage.getItem("authorization") as string;
     console.log(token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': token,
     });
     const options = {
       headers,
@@ -298,6 +302,21 @@ export class HttpServiceService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
+    if(userType=='superAdmin')
+    {
+        return this.http.post(`${this.baseURL}/api/public/create-admin`, userData, { headers }).pipe(
+      catchError((error) => {
+        console.error('Registration failed:', error);
+        return throwError(() => error);
+      })
+    );
+    }
+
+    if(userType=='vendor')
+    {
+      userType= 'vendors'
+    }
+  
   
     return this.http.post(`${this.baseURL}/api/${userType}/register`, userData, { headers }).pipe(
       catchError((error) => {

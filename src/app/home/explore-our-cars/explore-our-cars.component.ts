@@ -28,10 +28,11 @@ export class ExploreOurCarsComponent {
  
    getExploreCars()
    {
-     this.httpService.getCars('exploreOurcars').subscribe((value)=>{
+     this.httpService.getCars('recently',1,10).subscribe((value)=>{
       if(value.success)
       {
-        this.cars = value.cars
+        this.cars = value.data
+
       }
      },(error)=>{
         console.log('error occured in explore all car list ')

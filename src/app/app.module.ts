@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -46,7 +46,7 @@ import { VendorComponent } from './vendor/vendor/vendor.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { SharedModule } from './shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
-
+import { AuthInterceptor } from './interceptors/auth.service';
 
 @NgModule({
   declarations: [
@@ -104,7 +104,13 @@ import { MatTableModule } from '@angular/material/table';
   ],
  
  
-  providers: [],
+   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

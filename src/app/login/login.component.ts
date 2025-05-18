@@ -35,13 +35,25 @@ export class LoginComponent {
 
   onLogin(email: string, password: string) {
     let credentials = {email:email,password:password,userType:this.selectedUserType}
-    this.httpService.login(credentials).subscribe((value)=>{
-      if(value)
+    this.httpService.login(credentials).subscribe((response)=>{
+      if(response)
       {
-        this.authServiceLogin(email,password,this.selectedUserType)
+        console.log(response,'response')
+        localStorage.setItem('userType',response.roles[0].toLowerCase());
+        response.vendorId ? localStorage.setItem('vendorId',response.vendorId) : ''
+        localStorage.setItem('authorization',`Basic ${btoa(`${credentials.email}:${credentials.password}`)}`);
+
+          if(response.roles[0].toLowerCase() == 'user')
+       { window.location.href = 'home';}
+        else  if(response.roles[0].toLowerCase() == 'vendor')
+          { window.location.href = '/vendor/dashboard';} 
+      else 
+      {
+        window.location.href = '/admin/dashboard';
+      }
       }
     },(error)=>{
-      this.authServiceLogin(email,password,this.selectedUserType)
+      // this.authServiceLogin(email,password,this.selectedUserType)
   })
    
   }
