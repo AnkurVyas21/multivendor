@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpServiceService } from '../services/http-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,7 @@ export class RegisterComponent {
   registeForm!:FormGroup;
   public userType=''
 
-  constructor(private fb:FormBuilder, private httpService:HttpServiceService, private route:ActivatedRoute)
+  constructor(private fb:FormBuilder, private httpService:HttpServiceService, private route:ActivatedRoute, private router: Router)
   {
 
   }
@@ -43,6 +43,10 @@ export class RegisterComponent {
       console.log(value['userType'])
       this.httpService.register(value['userType'],this.registeForm.value).subscribe((value)=>{
         console.log(value)
+        if(value.success)
+        {
+          this.router.navigate(['/login'])
+        }
       },(error)=>{
         console.log(error)
       })

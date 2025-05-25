@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-car',
@@ -21,7 +22,7 @@ export class AddCarComponent {
   tabsAccess = [true, false, false,false,false];
   @Input() vendor = false;
 
-  constructor(private fb: FormBuilder, private httpService:HttpServiceService, private dialog:MatDialog) {
+  constructor(private fb: FormBuilder, private httpService:HttpServiceService, private dialog:MatDialog,private router: Router,private route: ActivatedRoute,) {
     this.carlistingFormBasic = this.fb.group({
       title: ['', Validators.required],
       make: ['', Validators.required],
@@ -127,15 +128,24 @@ this.carlistingFormMedia = this.fb.group({
 
     this.httpService.addCar(payload, this.formType(nextIndex),parseInt(vendorId, 10)).subscribe(
       (value) => {
-        // Success handler (if needed)
-      },
-      (error) => {
-        if (nextIndex !== 5) {
+        console.log(value);
+         if (nextIndex !== 5) {
           this.tabsAccess[nextIndex] = true; // Enable the next tab
           this.selectedTabIndex = nextIndex; // Move to the next tab
+          this.router.navigate([], {
+  relativeTo: this.route,
+  queryParams: {
+    id: value.data.carId,
+    formType: nextIndex
+  },
+  queryParamsHandling: 'merge' // keep other query params
+});
         } else {
           this.openDialog('addCarSuccess');
         }
+      },
+      (error) => {
+       console.log('Error Handling')
       }
     );
 

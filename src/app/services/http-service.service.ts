@@ -159,7 +159,7 @@ export class HttpServiceService {
     return this.http.post(`${this.baseURL}/users`, user);
   }
 
-  addCar(carInfo: any,formType:string, vendorId:number): Observable<any> {
+    addCar(carInfo: any,formType:string, vendorId:number): Observable<any> {
     let token = '';
      const params = new HttpParams().set('vendorID', vendorId.toString());
     console.log(token);
@@ -318,7 +318,7 @@ export class HttpServiceService {
     }
   
   
-    return this.http.post(`${this.baseURL}/api/${userType}/register`, userData, { headers }).pipe(
+    return this.http.post(`${this.baseURL}/api/public/${userType}/register`, userData, { headers }).pipe(
       catchError((error) => {
         console.error('Registration failed:', error);
         return throwError(() => error);

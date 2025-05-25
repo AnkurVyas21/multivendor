@@ -22,7 +22,7 @@ const route: Routes = [
 
   { path: 'dashboard', component: DashboardComponent, canActivate: [AdminAuthGuard] },
   { path: 'test-drives', component: TestDrivesComponent, canActivate: [AdminAuthGuard] },
-  { path: 'add-cars', component: AddcarsComponent, canActivate: [AdminAuthGuard] },
+  { path: 'add-cars/:id?/:formType?', component: AddcarsComponent, canActivate: [AdminAuthGuard] },
   { path: 'sold-cars', component: SoldcarsComponent, canActivate: [AdminAuthGuard] },
   {
     path: 'add-car', component: AddCarComponent, canActivate: [AdminAuthGuard]
