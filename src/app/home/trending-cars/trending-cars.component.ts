@@ -10,10 +10,10 @@ export class TrendingCarsComponent {
 
   constructor(private httpService:HttpServiceService)
   {
-
+    this.trendingCars()
   }
 
-  cars = [
+  public cars = [
 {
   "id": 2,
   "title": "Lexus LC Hybrid 2024",
@@ -172,18 +172,25 @@ export class TrendingCarsComponent {
     }},
   ];
 
-  ngOnInit(): void {
-    this.getExploreCars()
+  ngOnInits(): void {
+    // this.getExploreCars()
    }
- 
-   getExploreCars()
-   {
-     this.httpService.getCars('trendingcars').subscribe((value)=>{
-      if(value.success)
-      {
-        this.cars = value.cars
-      }
-     },(error)=>{
+
+   trendingCars(){
+    this.httpService.getCarsHome('trending-cars').subscribe((value) => {
+  if (value.length) {
+    value.forEach((newCar: any, index: number) => {
+      this.cars[index] = {
+        ...this.cars[index],         
+        ...newCar,                    
+        media: {
+          ...this.cars[index]?.media,  
+          ...newCar.media             
+        }
+      };
+    });
+  }
+},(error)=>{
         console.log('error occured in explore all car list ')
      })
    }

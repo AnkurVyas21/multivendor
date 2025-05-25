@@ -65,7 +65,6 @@ export class LoginComponent {
       error => {
         console.log(error),
         localStorage.setItem('userType',this.selectedUserType);
-        
         if(this.selectedUserType == 'user')
        { window.location.href = 'home';}
         else  if(this.selectedUserType == 'vendor')

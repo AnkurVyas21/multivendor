@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
   selector: 'app-vendor',
@@ -8,10 +9,11 @@ import { Router } from '@angular/router';
 })
 export class VendorComponent {
   searchQuery: string = '';
+  user:any
   adminName: string = 'Ankur Vyas'; // Example admin name
   profilePictureUrl: string | null = null; // Set to null if no picture available
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private httpService:HttpServiceService) {}
 
   isVisible = true;
   arrowButtonVisible = false;
@@ -28,6 +30,15 @@ ngOnInit() {
   console.log('vendor compoennt runs')
   this.isLogin = !!localStorage.getItem('adminUserType')&& !!localStorage.getItem('authorization')
   this.userType = localStorage.getItem('userType')
+  this.getProfileDetails()
+}
+
+getProfileDetails()
+{
+this.httpService.getSelfProfile().subscribe((value:any)=>{
+  this.user=value.data;
+})
+
 }
   getInitials(name: string): string {
     const [firstName, lastName] = name.split(' ');

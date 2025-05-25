@@ -173,20 +173,28 @@ export class RecentlyAddedCarsComponent {
       ];
 
     ngOnInit(): void {
-      this.getExploreCars()
+      this.getRecentCars()
      }
    
-     getExploreCars()
-     {
-       this.httpService.getCars('recentlyAddedCars').subscribe((value)=>{
-        if(value.success)
-        {
-          this.cars = value.cars
+     getRecentCars()
+    {
+    this.httpService.getCarsHome('recently-added').subscribe((value) => {
+  if (value.length) {
+    value.forEach((newCar: any, index: number) => {
+      this.cars[index] = {
+        ...this.cars[index],         
+        ...newCar,                    
+        media: {
+          ...this.cars[index]?.media,  
+          ...newCar.media             
         }
-       },(error)=>{
-          console.log('error occured in explore all car list ')
-       })
-     }
+      };
+    });
+  }
+},(error)=>{
+        console.log('error occured in explore all car list ')
+     })
+   }
 
      convertArray(media: any)
      {

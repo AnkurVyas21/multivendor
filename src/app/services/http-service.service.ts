@@ -36,6 +36,18 @@ export class HttpServiceService {
   );
 }
 
+ getCarsHome(type: string, page?: number, size?: number): Observable<any> {
+  let url = type ? `${this.baseURL}/api/home/${type}` : `${this.baseURL}/api/cars`;
+
+ 
+  return this.http.get(url).pipe(
+    catchError((error) => {
+      console.error('Error fetching cars:', error);
+      return throwError(() => error);
+    })
+  );
+}
+
   getCarsDetailsBasics(id:number): Observable<any> {
     return this.http.get(`${this.baseURL}/api/cars/${id}/basics`).pipe(
       catchError((error) => {
@@ -324,6 +336,16 @@ export class HttpServiceService {
         return throwError(() => error);
       })
     );
+  }
+
+  getSelfProfile()
+  {
+     return this.http.get(`${this.baseURL}/api/user/profile`).pipe(
+        catchError((error) => {
+          console.error('Error fetching user profile:', error);
+          return throwError(() => error);
+        })
+      );
   }
   
 }
