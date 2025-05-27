@@ -23,7 +23,7 @@ export class ExploreOurCarsComponent {
   ];
 
   ngOnInit(): void {
-    this.getExploreCars()
+    // this.getExploreCars()
    }
  
    getExploreCars()

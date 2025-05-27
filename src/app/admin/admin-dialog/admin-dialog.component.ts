@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 interface FeaturesGroup {  
@@ -164,6 +165,7 @@ export class AdminDialogComponent {
   constructor(  
     private fb: FormBuilder,  
     public dialogRef: MatDialogRef<AdminDialogComponent>,  
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any  
   ) {  
     this.carForm = this.fb.group({  
@@ -390,5 +392,6 @@ export class AdminDialogComponent {
 
   closeDialog() {
     this.dialogRef.close();
+     this.router.navigate(['/vendor/dashboard']);
   }
 }  

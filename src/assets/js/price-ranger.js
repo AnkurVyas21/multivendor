@@ -6,6 +6,9 @@ $(document).ready(function () {
     $(this).width(50);
   });
   var rangeSlider = document.getElementById('slider-range');
+  if(!rangeSlider) {
+    return
+  }
   var moneyFormat = wNumb({
     decimals: 0,
     thousand: ','
@@ -36,6 +39,9 @@ $(document).ready(function () {
     $(this).width(50);
   });
   var rangeSlider = document.getElementById('slider-range2');
+   if(!rangeSlider) {
+    return
+  }
   var moneyFormat = wNumb({
     decimals: 0,
     thousand: ',',
@@ -66,6 +72,9 @@ $(document).ready(function () {
     $(this).width(50);
   });
   var rangeSlider = document.getElementById('slider-range3');
+   if(!rangeSlider) {
+    return
+  }
   var moneyFormat = wNumb({
     decimals: 0,
     thousand: ',',
@@ -1315,7 +1324,7 @@ $(document).ready(function () {
     // Fire 'end' when a mouse or pen leaves the document.
 
     function documentLeave(event, data) {
-      if (event.type === "mouseout" && event.target.nodeName === "HTML" &&
+      if (event.type === "mouseout" && event.target?.nodename === "HTML" &&
         event.relatedTarget === null) {
         end(event, data);
       }
@@ -1751,7 +1760,7 @@ $(document).ready(function () {
   // Run the standard initializer
 
   function initialize(target, originalOptions) {
-    if (!target.nodeName) {
+    if (!target?.nodename) {
       throw new Error('noUiSlider.create requires a single element.');
     }
     // Test the options and create the slider environment;

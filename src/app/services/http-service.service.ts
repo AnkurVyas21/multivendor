@@ -21,34 +21,34 @@ export class HttpServiceService {
     );
   }
 
- getCars(type: string, page?: number, size?: number): Observable<any> {
-  let url = type ? `${this.baseURL}/api/cars/${type}` : `${this.baseURL}/api/cars`;
+  getCars(type: string, page?: number, size?: number): Observable<any> {
+    let url = type ? `${this.baseURL}/api/cars/${type}` : `${this.baseURL}/api/cars`;
 
-  const params = new HttpParams()
-    .set('page', page!.toString())
-    .set('size', size!.toString());
+    const params = new HttpParams()
+      .set('page', page?.toString()??'1')
+      .set('size', size?.toString()??'10');
 
-  return this.http.get(url, { params }).pipe(
-    catchError((error) => {
-      console.error('Error fetching cars:', error);
-      return throwError(() => error);
-    })
-  );
-}
+    return this.http.get(url, { params }).pipe(
+      catchError((error) => {
+        console.error('Error fetching cars:', error);
+        return throwError(() => error);
+      })
+    );
+  }
 
- getCarsHome(type: string, page?: number, size?: number): Observable<any> {
-  let url = type ? `${this.baseURL}/api/home/${type}` : `${this.baseURL}/api/cars`;
+  getCarsHome(type: string, page?: number, size?: number): Observable<any> {
+    let url = type ? `${this.baseURL}/api/home/${type}` : `${this.baseURL}/api/cars`;
 
- 
-  return this.http.get(url).pipe(
-    catchError((error) => {
-      console.error('Error fetching cars:', error);
-      return throwError(() => error);
-    })
-  );
-}
 
-  getCarsDetailsBasics(id:number): Observable<any> {
+    return this.http.get(url).pipe(
+      catchError((error) => {
+        console.error('Error fetching cars:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getCarsDetailsBasics(id: number): Observable<any> {
     return this.http.get(`${this.baseURL}/api/cars/${id}/basics`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
@@ -58,7 +58,7 @@ export class HttpServiceService {
   }
 
 
-  getCarsDetailsSpecification(id:number): Observable<any> {
+  getCarsDetailsSpecification(id: number): Observable<any> {
     return this.http.get(`${this.baseURL}/api/cars/${id}/specifications`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
@@ -67,7 +67,7 @@ export class HttpServiceService {
     );
   }
 
-  getCarsDetailsFeature(id:number): Observable<any> {
+  getCarsDetailsFeature(id: number): Observable<any> {
     return this.http.get(`${this.baseURL}/api/cars/${id}/features`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
@@ -76,7 +76,7 @@ export class HttpServiceService {
     );
   }
 
-  getCarsDetailsMedia(id:number): Observable<any> {
+  getCarsDetailsMedia(id: number): Observable<any> {
     return this.http.get(`${this.baseURL}/api/cars/${id}/media`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
@@ -86,7 +86,7 @@ export class HttpServiceService {
   }
 
 
-  getCarsDetailsAddress(id:number): Observable<any> {
+  getCarsDetailsAddress(id: number): Observable<any> {
     return this.http.get(`${this.baseURL}/api/cars/${id}/address`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
@@ -96,7 +96,7 @@ export class HttpServiceService {
   }
 
 
-  getCarsDetailsPhoto(id:number): Observable<any> {
+  getCarsDetailsPhoto(id: number): Observable<any> {
     return this.http.get(`${this.baseURL}/api/cars/media/${id}/photo1`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
@@ -115,7 +115,7 @@ export class HttpServiceService {
     );
   }
 
-  getCustomer(vendorId:string): Observable<any> {
+  getCustomer(vendorId: string): Observable<any> {
     return this.http.get(`${this.baseURL}/customers/${vendorId}`).pipe(
       catchError((error) => {
         console.error('Error fetching customers:', error);
@@ -141,22 +141,21 @@ export class HttpServiceService {
       })
     );
   }
-  
-
- getadminVendorList(): Observable<any> {
 
 
-  return this.http.get(`${this.baseURL}/api/admin/vendors`).pipe(
-    catchError((error) => {
-      console.error('Error fetching vendor list:', error);
-      return throwError(() => error);
-    })
-  );
-}
+  getadminVendorList(): Observable<any> {
 
 
-  getTransaction()
-  {
+    return this.http.get(`${this.baseURL}/api/admin/vendors`).pipe(
+      catchError((error) => {
+        console.error('Error fetching vendor list:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+
+  getTransaction() {
     return this.http.get(`${this.baseURL}/transactions`).pipe(
       catchError((error) => {
         console.error('Error fetching transaction:', error);
@@ -171,9 +170,10 @@ export class HttpServiceService {
     return this.http.post(`${this.baseURL}/users`, user);
   }
 
-    addCar(carInfo: any,formType:string, vendorId:number): Observable<any> {
+  addCar(carInfo: any, formType: string, id: number): Observable<any> {
+    console.log(formType,id,'424241')
     let token = '';
-     const params = new HttpParams().set('vendorID', vendorId.toString());
+    const params = formType == 'add-basic' ? new HttpParams().set('vendorID', id.toString()) : new HttpParams().set('carId', id.toString());
     console.log(token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -181,10 +181,10 @@ export class HttpServiceService {
     const options = {
       headers,
     };
-    return this.http.post(`${this.baseURL}/api/cars/${formType}`, carInfo, {params});
+    return (formType == 'add-basic' ? this.http.post(`${this.baseURL}/api/cars/${formType}`, carInfo, { params }) : this.http.post(`${this.baseURL}/api/cars/${id}/${formType}`, carInfo, { params }));
   }
 
-  updateCar(carInfo: any,formType:string): Observable<any> {
+  updateCar(carInfo: any, formType: string): Observable<any> {
     let token = '';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -213,7 +213,7 @@ export class HttpServiceService {
       'User-Type': credentials.userType,
       'Authorization': `Basic ${btoa(`${credentials.email}:${credentials.password}`)}`,
     });
-  
+
     return this.http.post(`${this.baseURL}/api/auth/login`, {}, { headers }).pipe(
       catchError((error) => {
         console.error('Login failed:', error);
@@ -221,7 +221,7 @@ export class HttpServiceService {
       })
     );
   }
-  
+
 
   // Forgot password
   forgotPassword(email: string): Observable<any> {
@@ -243,15 +243,15 @@ export class HttpServiceService {
     );
   }
 
-    // Get customer details
-    getVendorDetails(vendorId: string): Observable<any> {
-      return this.http.get(`${this.baseURL}/vendors/${vendorId}`).pipe(
-        catchError((error) => {
-          console.error('Error fetching customer details:', error);
-          return throwError(() => error);
-        })
-      );
-    }
+  // Get customer details
+  getVendorDetails(vendorId: string): Observable<any> {
+    return this.http.get(`${this.baseURL}/vendors/${vendorId}`).pipe(
+      catchError((error) => {
+        console.error('Error fetching customer details:', error);
+        return throwError(() => error);
+      })
+    );
+  }
 
   // Accept test drive request
   acceptTestDrive(message: string): Observable<any> {
@@ -314,22 +314,20 @@ export class HttpServiceService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    if(userType=='superAdmin')
-    {
-        return this.http.post(`${this.baseURL}/api/public/create-admin`, userData, { headers }).pipe(
-      catchError((error) => {
-        console.error('Registration failed:', error);
-        return throwError(() => error);
-      })
-    );
+    if (userType == 'superAdmin') {
+      return this.http.post(`${this.baseURL}/api/public/create-admin`, userData, { headers }).pipe(
+        catchError((error) => {
+          console.error('Registration failed:', error);
+          return throwError(() => error);
+        })
+      );
     }
 
-    if(userType=='vendor')
-    {
-      userType= 'vendors'
+    if (userType == 'vendor') {
+      userType = 'vendors'
     }
-  
-  
+
+
     return this.http.post(`${this.baseURL}/api/public/${userType}/register`, userData, { headers }).pipe(
       catchError((error) => {
         console.error('Registration failed:', error);
@@ -338,14 +336,13 @@ export class HttpServiceService {
     );
   }
 
-  getSelfProfile()
-  {
-     return this.http.get(`${this.baseURL}/api/user/profile`).pipe(
-        catchError((error) => {
-          console.error('Error fetching user profile:', error);
-          return throwError(() => error);
-        })
-      );
+  getSelfProfile() {
+    return this.http.get(`${this.baseURL}/api/user/profile`).pipe(
+      catchError((error) => {
+        console.error('Error fetching user profile:', error);
+        return throwError(() => error);
+      })
+    );
   }
-  
+
 }
