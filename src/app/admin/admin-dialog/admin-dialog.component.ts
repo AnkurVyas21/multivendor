@@ -394,4 +394,14 @@ export class AdminDialogComponent {
     this.dialogRef.close();
      this.router.navigate(['/vendor/dashboard']);
   }
+
+  approveCarListing(){
+    this.dialogRef.close('yes');
+  }
+
+  closeDialogapproveCar()
+  {
+    this.dialogRef.close();
+
+  }
 }  

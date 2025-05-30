@@ -132,3 +132,6 @@ a.bg-black {
 a.text-white {
   color: white !important;
 }
+.bg-success{
+  background-color: #198754 !important;
+}

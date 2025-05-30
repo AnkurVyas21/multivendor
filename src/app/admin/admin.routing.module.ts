@@ -25,7 +25,7 @@ const route: Routes = [
   { path: 'add-cars/:id?/:formType?', component: AddcarsComponent, canActivate: [AdminAuthGuard] },
   { path: 'sold-cars', component: SoldcarsComponent, canActivate: [AdminAuthGuard] },
   {
-    path: 'add-car', component: AddCarComponent, canActivate: [AdminAuthGuard]
+    path: 'add-car/:id?/:formType?', component: AddCarComponent, canActivate: [AdminAuthGuard]
   },
 
 

@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
       const fullUrl = this.router.url; 
       const segments = fullUrl.split('/'); 
       this.currentPath = segments[1] || ''; 
-      console.log('Current Path:', this.currentPath); 
     });
   }
 }

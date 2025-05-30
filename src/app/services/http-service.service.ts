@@ -36,6 +36,53 @@ export class HttpServiceService {
     );
   }
 
+
+   getCarsVendors(vendorId: string | null): Observable<any> {
+  const url = `${this.baseURL}/api/cars/vendor`;
+  let params = new HttpParams();
+
+  if (vendorId) {
+    params = params.set('vendorId', vendorId);
+  }
+
+  return this.http.get(url, { params }).pipe(
+    catchError((error) => {
+      console.error('Error fetching cars:', error);
+      return throwError(() => error);
+    })
+  );
+}
+
+   getCarsAdmin(status: string | null): Observable<any> {
+  const url = `${this.baseURL}/api/admin/cars`;
+  let params = new HttpParams();
+
+  if (status) {
+    params = params.set('status', status);
+  }
+
+  return this.http.get(url, { params }).pipe(
+    catchError((error) => {
+      console.error('Error fetching cars:', error);
+      return throwError(() => error);
+    })
+  );
+}
+
+
+approveCar(id:any){
+ let token = '';
+    const params =  new HttpParams().set('carId', id.toString());
+    console.log(token);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const options = {
+      headers,
+    };
+    return (this.http.post(`${this.baseURL}/api/admin/cars/${id}/approve`, { params }));
+}
+
   getCarsHome(type: string, page?: number, size?: number): Observable<any> {
     let url = type ? `${this.baseURL}/api/home/${type}` : `${this.baseURL}/api/cars`;
 
@@ -208,6 +255,7 @@ export class HttpServiceService {
 
   // Login method
   login(credentials: { email: string; password: string; userType: string }): Observable<any> {
+    console.log(credentials)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'User-Type': credentials.userType,

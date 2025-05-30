@@ -75,6 +75,12 @@
                       <button class="btn btn-danger btn-sm" title="Delete">
                           <i class="fas fa-trash-alt"></i>
                       </button>
+                      <button *ngIf="userType=='admin'||userType=='superadmin'" (click)="approve(element)" class="btn btn-success btn-sm" title="approve">
+                          <i class="fas fa-check"></i>
+                      </button>
+                      <button *ngIf="userType=='admin'||userType=='superadmin'" class="btn btn-danger btn-sm" title="reject">
+                          <i class="fas fa-times"></i>
+                      </button>
                       </td>
                     </ng-container>
                 
@@ -83,7 +89,8 @@
                   </table>
                 
                   <!-- Pagination -->
-                  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                  <mat-paginator *ngIf="carList?.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                  <span style="display: flex; justify-content: center;padding-top: 10px;" *ngIf="!carList?.length" class="no-data-found">No Data Found</span>
                 </div>							
                                   
               </div>

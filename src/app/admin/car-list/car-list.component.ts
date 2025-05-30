@@ -4,6 +4,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/services/http-service.service';
+import { formatDate } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 
 
 export interface CarData {
@@ -23,18 +26,13 @@ export interface CarData {
 export class CarListComponent {
 
   public carList: CarData[] = [
-    { id: '#101', name: 'Toyota Camry 2022', uploadDate: '2025/03/01', price: '$25,000', status: 'Approved' },
-    { id: '#102', name: 'Honda Civic 2021', uploadDate: '2025/02/28', price: '$22,500', status: 'Approved' },
-    { id: '#102', name: 'Honda Civic 2021', uploadDate: '2025/02/28', price: '$22,500', status: 'Approved' },
-    { id: '#102', name: 'Honda Civic 2021', uploadDate: '2025/02/28', price: '$22,500', status: 'Approved' },
-    { id: '#102', name: 'Honda Civic 2021', uploadDate: '2025/02/28', price: '$22,500', status: 'Approved' },
-    { id: '#102', name: 'Honda Civic 2021', uploadDate: '2025/02/28', price: '$22,500', status: 'Approved' }
+ 
   ];
+  public userType:any
   
 
-  constructor(private httpService:HttpServiceService, private route:Router)
+  constructor(private httpService:HttpServiceService, private route:Router,private dialog:MatDialog)
   {
-
   }
 
   searchQuery: string = '';
@@ -50,9 +48,17 @@ public activeLoader = true;
 
 
   
-  ngOnInit()
+   ngOnInit()
   {
-    this.carListApi()
+    this.userType= localStorage.getItem('userType')
+    if(this.userType == 'vendor')
+    {
+    this.carListApiVendor()
+    }
+    else if(this.userType == 'admin' || this.userType == 'superAdmin')
+    {
+      this.carListApiAdmin()
+    }
     setTimeout(() => {
       this.activeLoader = false;
     }, 1500);
@@ -76,18 +82,52 @@ public activeLoader = true;
       alert(`Viewing details for: ${element.name}`);
     }
 
-  carListApi()
+  carListApiVendor()
   {
-    this.httpService.getCars('all').subscribe((value)=>{
+    let vendorId=localStorage.getItem('vendorId')
+    this.httpService.getCarsVendors(vendorId).subscribe((value)=>{
       if(value.success)
       {
-        this.carList = value.cars;
+        this.carList=[]
+        value.data.forEach((data:any)=>{
+            this.carList.push({
+              id:data.id,
+              name:data.make+' '+data.model,
+              uploadDate:formatDate(data.createTime, 'dd/MM/yyyy hh:mm a', 'en-US'),
+              price:'$'+data.price,
+              status:data.status
+            })
+        })
+        this.dataSource = new MatTableDataSource<CarData>(this.carList);
+
       }
     },(error)=>{
 
     })
   }
 
+   carListApiAdmin()
+  {
+    this.httpService.getCarsAdmin('rejected').subscribe((value)=>{
+      if(value.success)
+      {
+        this.carList=[]
+        value.data.forEach((data:any)=>{
+            this.carList.push({
+              id:data.id,
+              name:data.make+' '+data.model,
+              uploadDate:formatDate(data.createTime, 'dd/MM/yyyy hh:mm a', 'en-US'),
+              price:'$'+data.price,
+              status:data.status
+            })
+        })
+        this.dataSource = new MatTableDataSource<CarData>(this.carList);
+
+      }
+    },(error)=>{
+
+    })
+  }
   // onSearch() {
   //   const query = this.searchQuery.toLowerCase();
   //   this.filteredRequests = this.carList.filter(
@@ -105,6 +145,31 @@ public activeLoader = true;
   editCar(id: any=25) {
     this.route.navigate(['vendor/car-edit/'+id])
 
+  }
+
+  approve(element:any){
+     const dialogRef =  this.dialog.open(AdminDialogComponent,{
+          data:{type:'approveCar',name:element.name},
+          width:'auto',
+          height: 'auto',
+         })
+      
+         dialogRef.afterClosed().subscribe(result=>{
+        if(result=='yes')
+          {
+            this.carApprove(element.id)
+          }
+        })
+  }
+
+  carApprove(id:any)
+  {
+    this.httpService.approveCar(id).subscribe((value:any)=>{
+      if(value.success)
+      {
+        this.carListApiVendor()
+      }
+    })
   }
 
 }

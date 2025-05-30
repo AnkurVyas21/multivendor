@@ -25,6 +25,7 @@ export class AddCarComponent implements AfterViewInit {
   carId=''
 
   constructor(private fb: FormBuilder, private httpService: HttpServiceService,  private cdr: ChangeDetectorRef,private dialog: MatDialog, private router: Router, private route: ActivatedRoute,) {
+   console.log('constuctor running')
     this.carlistingFormBasic = this.fb.group({
       title: ['', Validators.required],
       make: ['', Validators.required],
@@ -115,8 +116,6 @@ export class AddCarComponent implements AfterViewInit {
   }
 
   onSubmit(form: FormGroup, nextIndex: number) {
-    console.log(form);
-    console.log(this.vendor);
     if (form.valid) {
       const timestamp = new Date().toISOString();
 

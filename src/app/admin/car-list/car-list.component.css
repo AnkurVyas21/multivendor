@@ -101,6 +101,7 @@ button {
 .actionButton{
   display: flex;
   gap: 0.5vh;
+  justify-content: center;
 }
 
 .actionButton button {

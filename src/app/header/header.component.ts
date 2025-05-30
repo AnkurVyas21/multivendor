@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private activateRoute:ActivatedRoute) {}
   isDropdownOpen = false; // Flag to control dropdown visibility
   isLogin=false;
   userType:any
@@ -45,6 +45,8 @@ toggleDropdown(): void {
 navigateOnVisitPage()
 {
   let userType = localStorage.getItem('userType');
+  let isLogin = !!localStorage.getItem('authorization')
+  if(isLogin){
   if(userType=='vendor')
   {
     return {showText:'Visit Vendor Site', path:'/vendor'}
@@ -52,6 +54,14 @@ navigateOnVisitPage()
   else(userType=='admin' || userType=='superAdmin')
   {
     return {showText:'Visit Admin Site', path:'/admin'}
+  }}
+  else {
+   if (this.router.url.includes('/admin')) {
+    return {showText:'Visit Vendor Site', path:'/vendor'}
+  } 
+  else {
+    return {showText:'Visit Admin Site', path:'login/admin'}
+  }
   }
 }
 

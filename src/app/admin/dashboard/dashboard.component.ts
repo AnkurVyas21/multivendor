@@ -1,6 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class DashboardComponent {
  public activeLoader = true;
 
 
- constructor(private dialog:MatDialog) { }
+ constructor(private dialog:MatDialog, private router:Router) { }
 
  ngOnInit(): void {
   setTimeout(() => {
@@ -38,6 +39,9 @@ export class DashboardComponent {
    })
  }
 
+  addCar(){
+  this.router.navigate(['admin/add-car'])
+ }
  
 
 }
