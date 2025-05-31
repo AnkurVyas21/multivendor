@@ -415,15 +415,25 @@ disableVendor(id:any){
 
     if (userType == 'vendor') {
       userType = 'vendors'
-    }
-
-
-    return this.http.post(`${this.baseURL}/api/public/${userType}/register`, userData, { headers }).pipe(
+       return this.http.post(`${this.baseURL}/api/public/${userType}/register`, userData, { headers }).pipe(
       catchError((error) => {
         console.error('Registration failed:', error);
         return throwError(() => error);
       })
     );
+    }
+      else {
+      userType = 'public'
+       return this.http.post(`${this.baseURL}/api/${userType}/register`, userData, { headers }).pipe(
+      catchError((error) => {
+        console.error('Registration failed:', error);
+        return throwError(() => error);
+      })
+    );
+    }
+
+
+   
   }
 
   getSelfProfile() {

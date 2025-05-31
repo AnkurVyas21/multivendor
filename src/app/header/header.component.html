@@ -98,6 +98,24 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <div class="register ml--18" *ngIf="!isLogin">
+                                    <ul class="icon-topbar-nav">
+                                        <li>
+                                            <div mat-button [matMenuTriggerFor]="menu" (click)="toggleDropdown()">
+                                            <a><i class="icon-user"></i></a>
+                                                <!-- Dropdown Menu -->
+                                                <mat-menu #menu="matMenu">
+                                                  <button  mat-menu-item [routerLink]="'/login'" routerLinkActive="active-link">Login</button>
+                                                  <button mat-menu-item [routerLink]="'/register/public'" routerLinkActive="active-link" >User Registration</button>
+                                                  <button mat-menu-item [routerLink]="'/register/vendor'" routerLinkActive="active-link" >Vendor Registration</button>
+                                                </mat-menu>
+                                              </div>
+                                        </li>
+                                        <li *ngIf="!isAdmin && isLogin">
+                                            <a [routerLink]="'/watchlist'"><i class="icon-heart-1-1"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
