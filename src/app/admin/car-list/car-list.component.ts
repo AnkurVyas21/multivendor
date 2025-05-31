@@ -108,7 +108,7 @@ public activeLoader = true;
 
    carListApiAdmin()
   {
-    this.httpService.getCarsAdmin('rejected').subscribe((value)=>{
+    this.httpService.getCarsAdmin('PENDING').subscribe((value)=>{
       if(value.success)
       {
         this.carList=[]

@@ -15,7 +15,7 @@ export class SearchAndBannerComponent {
     'Toyota Corolla', 'Honda Civic', 'Ford Mustang', 'Tesla Model 3',
     'Chevrolet Camaro', 'BMW X5', 'Audi A4', 'Mercedes-Benz C-Class'
   ];
-  filteredOptions: string[] = [];
+  filteredOptions: any = [];
   showDropdown: boolean = false;
    constructor(public dialog: MatDialog, private httpService:HttpServiceService)
     {
@@ -28,10 +28,16 @@ export class SearchAndBannerComponent {
     }
 
     filterOptions() {
-      const value = this.searchControl.value.toLowerCase();
-      this.filteredOptions = this.carOptions.filter(option => 
-        option.toLowerCase().includes(value)
-      );
+      const keyword = this.searchControl.value.toLowerCase();
+      if(keyword.length<2)
+      {
+        this.filteredOptions=[]
+        return
+      } 
+      this.httpService.searchCarHome(keyword).subscribe((value)=>{
+         this.filteredOptions =value;
+      })
+     
     }
     
     selectOption(option: string) {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpServiceService } from '../services/http-service.service';
 
 @Component({
   selector: 'app-contact',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ContactComponent {
   buyCarForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private httpService:HttpServiceService) {
     // Initialize the form with validations
     this.buyCarForm = this.fb.group({
       fullName: ['', Validators.required],
@@ -21,9 +22,13 @@ export class ContactComponent {
 
   // Form submit handler
   onSubmit() {
+      console.log('Form Submitted:');
     if (this.buyCarForm.valid) {
-      console.log('Form Submitted:', this.buyCarForm.value);
-      // You can perform any action like sending this data to the backend
+      this.httpService.contactUS(this.buyCarForm.get('message')?.value).subscribe((value)=>{
+        console.log('contact is done')
+      },(error)=>{
+        console.log('error')
+      })
     } else {
       console.log('Form is not valid');
     }

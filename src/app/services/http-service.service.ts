@@ -111,8 +111,6 @@ disableVendor(id:any){
 
   getCarsHome(type: string, page?: number, size?: number): Observable<any> {
     let url = type ? `${this.baseURL}/api/home/${type}` : `${this.baseURL}/api/cars`;
-
-
     return this.http.get(url).pipe(
       catchError((error) => {
         console.error('Error fetching cars:', error);
@@ -383,7 +381,7 @@ disableVendor(id:any){
     );
   }
 
-  contactUS(offerId: string): Observable<any> {
+  contactUS(payload: string): Observable<any> {
     let token = '';
     console.log(token);
     const headers = new HttpHeaders({
@@ -392,7 +390,7 @@ disableVendor(id:any){
     const options = {
       headers,
     };
-    return this.http.post(`${this.baseURL}/contact/${offerId}`, {}, options).pipe(
+    return this.http.post(`${this.baseURL}/api/contact`, {payload}, options).pipe(
       catchError((error) => {
         console.error('Error rejecting offer price:', error);
         return throwError(() => error);
@@ -438,6 +436,17 @@ disableVendor(id:any){
 
   getSelfProfile() {
     return this.http.get(`${this.baseURL}/api/user/profile`).pipe(
+      catchError((error) => {
+        console.error('Error fetching user profile:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+  searchCarHome(keyword:string)
+  {
+       let url = `${this.baseURL}/api/cars/search`;
+    const params = new HttpParams().set('keyword', keyword.toString()) 
+     return this.http.get(url,{params}).pipe(
       catchError((error) => {
         console.error('Error fetching user profile:', error);
         return throwError(() => error);
