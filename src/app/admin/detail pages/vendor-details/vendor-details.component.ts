@@ -24,8 +24,7 @@ export class VendorDetailsComponent implements OnInit {
 
   getVendorDetails(id: string) {
     // 🔹 Dummy Data for testing
-
-    this.httpService.getVendorDetails(id).subscribe((value)=>{
+    this.httpService.getVendorDetailsforAdmin(id).subscribe((value)=>{
       console.log('success')
     },(error)=>{
       console.log(error)

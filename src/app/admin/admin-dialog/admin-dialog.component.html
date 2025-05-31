@@ -985,7 +985,27 @@
 
 <div class="car-approve-dialog-container" *ngIf="data.type === 'approveCar'">
   <h2 class="dialog-title">Approve Car Listing</h2>
-  <p class="dialog-message">Do you want to approve the listing of this car?</p>
+  <p class="dialog-message">Do you want to approve {{data.name}} car?</p>
+
+  <div class="dialog-actions">
+    <button mat-raised-button color="primary" class="approve-btn" (click)="approveCarListing()">Yes</button>
+    <button mat-raised-button color="warn" class="cancel-btn" (click)="closeDialogapproveCar()">Back</button>
+  </div>
+</div>
+
+<div class="car-approve-dialog-container" *ngIf="data.type === 'approveVendor'">
+  <h2 class="dialog-title">Enable Vendor</h2>
+  <p class="dialog-message">Do you want to Enable {{data.name}} vendor?</p>
+
+  <div class="dialog-actions">
+    <button mat-raised-button color="primary" class="approve-btn" (click)="approveCarListing()">Yes</button>
+    <button mat-raised-button color="warn" class="cancel-btn" (click)="closeDialogapproveCar()">Back</button>
+  </div>
+</div>
+
+<div class="car-approve-dialog-container" *ngIf="data.type === 'declineVendor'">
+  <h2 class="dialog-title">Disable Vendor</h2>
+  <p class="dialog-message">Do you want to Disable {{data.name}} vendor?</p>
 
   <div class="dialog-actions">
     <button mat-raised-button color="primary" class="approve-btn" (click)="approveCarListing()">Yes</button>

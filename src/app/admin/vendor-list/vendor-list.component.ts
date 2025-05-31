@@ -1,6 +1,10 @@
+import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
-import {  Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/services/http-service.service';
+import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
+import { error } from 'jquery';
 
 @Component({
   selector: 'app-vendor-list',
@@ -9,220 +13,108 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 })
 export class VendorListComponent {
   searchQuery: string = '';
-  requests = [
-    {
-        "id": 1,
-        "carID": "CAR1001",
-        "name": "Ankur Vyas",
-        "email": "ankurvyas033@gmail.com",
-        "phone": "9303493424",
-        "address": "H. No. 239",
-        "license": "5494654654"
-    },
-    {
-        "id": 2,
-        "carID": "CAR1002",
-        "name": "Rahul Sharma",
-        "email": "rahul.sharma@gmail.com",
-        "phone": "9876543210",
-        "address": "Flat No. 12, Green Park",
-        "license": "9876543211"
-    },
-    {
-        "id": 3,
-        "carID": "CAR1003",
-        "name": "Priya Verma",
-        "email": "priya.verma@example.com",
-        "phone": "9123456789",
-        "address": "House No. 45, Lake View",
-        "license": "1234567890"
-    },
-    {
-        "id": 4,
-        "carID": "CAR1004",
-        "name": "Amit Singh",
-        "email": "amit.singh@gmail.com",
-        "phone": "9988776655",
-        "address": "B-22, Skyline Apartments",
-        "license": "1122334455"
-    },
-    {
-        "id": 5,
-        "carID": "CAR1005",
-        "name": "Neha Gupta",
-        "email": "neha.gupta@example.com",
-        "phone": "9871234567",
-        "address": "Sector 14, Noida",
-        "license": "6677889900"
-    },
-    {
-      "id": 6,
-      "carID": "CAR1005",
-      "name": "Neha Gupta",
-      "email": "neha.gupta@example.com",
-      "phone": "9871234567",
-      "address": "Sector 14, Noida",
-      "license": "6677889900"
-  },
-  {
-    "id": 7,
-    "carID": "CAR1005",
-    "name": "Neha Gupta",
-    "email": "neha.gupta@example.com",
-    "phone": "9871234567",
-    "address": "Sector 14, Noida",
-    "license": "6677889900"
-},
-{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-}
-]
+  vendorList: any = []
 
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'enabled', 'date', 'license', 'actions'];
 
 
-  filteredRequests = this.requests;
+  filteredvendorList = this.vendorList;
 
-  constructor(public router:Router,private httpService:HttpServiceService)
-  {
+  constructor(public router: Router, private httpService: HttpServiceService,private dialog:MatDialog) {
 
   }
 
-    
-  
-    ngOnInit()
-    {
-      this.getVendorList()
-    }
-  
-    getVendorList()
-    {
-      this.httpService.getadminVendorList().subscribe((value)=>{
-        console.log(value)
-      },(error)=>{
-        console.log(error)
+
+
+  ngOnInit() {
+    this.getVendorList()
+  }
+
+  getVendorList() {
+    this.httpService.getadminVendorList().subscribe((value) => {
+      if (value.length) {
+        this.vendorList = []
+      }
+      console.log(value)
+      value.forEach((element: any) => {
+        this.vendorList.push({
+          "id": element.id,
+          "name": element.firstName + ' ' + element.lastName,
+          "email": element.email,
+          "phone": element.phoneNumber,
+          "enabled": element.enabled,
+          "date": formatDate(element.createTime, 'dd/MM/yyyy hh:mm a', 'en-US'),
+          "license": element.tradeLicenseNumber
+        })
       })
-    }
+    }, (error) => {
+      console.log(error)
+    })
+  }
 
   onSearch() {
     const query = this.searchQuery.toLowerCase();
-    this.filteredRequests = this.requests.filter(
-      (req) =>
+    this.filteredvendorList = this.vendorList.length && this.vendorList.filter(
+      (req: { name: string; email: string; id: { toString: () => string | string[]; }; }) =>
         req.name.toLowerCase().includes(query) ||
         req.email.toLowerCase().includes(query) ||
         req.id.toString().includes(query)
     );
   }
 
-  approve(element: any) {
-    alert(`Approved: ${element.name}`);
+  approve(element: any,event:any) {
+    event.stopPropagation();
+   const dialogRef =  this.dialog.open(AdminDialogComponent,{
+            data:{type:'approveVendor',name:element.name},
+            width:'auto',
+            height: 'auto',
+           })
+        
+           dialogRef.afterClosed().subscribe(result=>{
+          if(result=='yes')
+            {
+              this.vendorApprove(element.id)
+            }
+          })
   }
 
-  decline(element: any) {
-    alert(`Declined: ${element.name}`);
+  decline(element: any,event:any) {
+     event.stopPropagation();
+   const dialogRef =  this.dialog.open(AdminDialogComponent,{
+            data:{type:'declineVendor',name:element.name},
+            width:'auto',
+            height: 'auto',
+           })
+        
+           dialogRef.afterClosed().subscribe(result=>{
+          if(result=='yes')
+            {
+              this.vendorDecline(element.id)
+            }
+          })
   }
 
-  navigateToDetails(){
-    this.router.navigate(['admin/vendor-details/25'])
+  navigateToDetails(displayedColumns: any) {
+    console.log(displayedColumns,'displayedColumns')
+    this.router.navigate(['admin/vendor-details/' + displayedColumns.id]);
+  }
+
+  vendorApprove(id:any)
+  {
+     this.httpService.enableVendor(id).subscribe((value:any)=>{
+    },(error)=>{
+      console.log('approve',error)
+         this.getVendorList()
+
+    })
+  }
+  vendorDecline(id:any)
+  {
+     this.httpService.disableVendor(id).subscribe((value:any)=>{
+    },(error)=>{
+      console.log('decline',error)
+        this.getVendorList()
+
+    })
   }
 }

@@ -83,6 +83,32 @@ approveCar(id:any){
     return (this.http.post(`${this.baseURL}/api/admin/cars/${id}/approve`, { params }));
 }
 
+enableVendor(id:any){
+ let token = '';
+    const params =  new HttpParams().set('vendorId', id.toString());
+    console.log(token);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const options = {
+      headers,
+    };
+    return (this.http.post(`${this.baseURL}/api/admin/vendors/${id}/approve`, { params }));
+}
+
+disableVendor(id:any){
+ let token = '';
+    const params =  new HttpParams().set('vendorId', id.toString());
+    console.log(token);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const options = {
+      headers,
+    };
+    return (this.http.post(`${this.baseURL}/api/admin/vendors/${id}/suspend`, { params }));
+}
+
   getCarsHome(type: string, page?: number, size?: number): Observable<any> {
     let url = type ? `${this.baseURL}/api/home/${type}` : `${this.baseURL}/api/cars`;
 
@@ -191,8 +217,6 @@ approveCar(id:any){
 
 
   getadminVendorList(): Observable<any> {
-
-
     return this.http.get(`${this.baseURL}/api/admin/vendors`).pipe(
       catchError((error) => {
         console.error('Error fetching vendor list:', error);
@@ -299,6 +323,24 @@ approveCar(id:any){
         return throwError(() => error);
       })
     );
+  }
+
+
+    getVendorDetailsforAdmin(vendorId: string): Observable<any> {
+    let url = `${this.baseURL}/api/admin/vendors/${vendorId}`
+
+    let params = new HttpParams();
+
+  if (vendorId) {
+    params = params.set('vendorId', vendorId);
+  }
+
+  return this.http.get(url, { params }).pipe(
+    catchError((error) => {
+      console.error('Error fetching cars:', error);
+      return throwError(() => error);
+    })
+  );
   }
 
   // Accept test drive request
