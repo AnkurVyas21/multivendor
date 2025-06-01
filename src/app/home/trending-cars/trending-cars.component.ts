@@ -11,7 +11,6 @@ export class TrendingCarsComponent {
 
   constructor(private httpService:HttpServiceService)
   {
-    this.trendingCars()
   }
 
 //   public cars = [
@@ -174,8 +173,8 @@ export class TrendingCarsComponent {
 //   ];
 
 public cars:any = []
-  ngOnInits(): void {
-    // this.getExploreCars()
+  ngOnInit(): void {
+     this.trendingCars()
    }
 
    trendingCars(){

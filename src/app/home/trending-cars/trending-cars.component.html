@@ -10,7 +10,7 @@
                 <!-- Widget Car Service -->
                 <div class="car-list-item">
                     <div *ngFor="let car of cars" class="tf-car-service">
-                        <a href="detail/25" class="image">
+                        <a [attr.href]="'detail/' + car.id" class="image">
                             <div class="stm-badge-top">
                                 <div class="feature">
                                     <span>Featured</span>
@@ -39,8 +39,8 @@
                         </a>
                         <div class="content">
                             <span class="sub-title">{{ car.make+' '+car.model+' '+car.type }}</span>
-                            <h6 class="title"><a href="detail/25">{{ car.title }}</a></h6>
-                            <span class="price">{{ car.regularPrice }}</span>
+                            <h6 class="title"><a [attr.href]="'detail/' + car.id">{{ car.title }}</a></h6>
+                            <span class="price">{{ '$'+car.regularPrice }}</span>
                         </div>
                     </div>
                 </div>
