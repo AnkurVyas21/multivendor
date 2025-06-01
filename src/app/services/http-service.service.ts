@@ -110,8 +110,11 @@ disableVendor(id:any){
 }
 
   getCarsHome(type: string, page?: number, size?: number): Observable<any> {
-    let url = type ? `${this.baseURL}/api/home/${type}` : `${this.baseURL}/api/cars`;
-    return this.http.get(url).pipe(
+      const params = new HttpParams()
+      .set('page', page?.toString()??'0')
+      .set('size', size?.toString()??'10');
+    let url = type ? `${this.baseURL}/api/cars/${type}` : `${this.baseURL}/api/cars`;
+    return this.http.get(url,{params}).pipe(
       catchError((error) => {
         console.error('Error fetching cars:', error);
         return throwError(() => error);

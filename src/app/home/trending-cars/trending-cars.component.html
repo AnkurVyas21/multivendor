@@ -10,45 +10,41 @@
                 <!-- Widget Car Service -->
                 <div class="car-list-item">
                     <div *ngFor="let car of cars" class="tf-car-service">
-                      <a href="detail/25" class="image">
-                        <div class="stm-badge-top">
-                          <div class="feature">
-                            <span>Featured</span>
-                          </div>
-                        </div>
-                        <div class="listing-images">
-                          <div class="hover-listing-image">
-                            <div class="wrap-hover-listing">
-                              <div *ngFor="let image of convertArray(car.media); let first = first" 
-                                   class="listing-item" 
-                                   [class.active]="first" 
-                                   [title]="car.title">
-                                <div class="images">
-                                  <img [src]="image" class="swiper-image tfcl-light-gallery" alt="images">
-                                  <div *ngIf="first" class="overlay-limit">
-                                    <img src="assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                    <!-- <p>{{ car.additionalPhotos }} more photos</p> -->
-                                  </div>
+                        <a href="detail/25" class="image">
+                            <div class="stm-badge-top">
+                                <div class="feature">
+                                    <span>Featured</span>
                                 </div>
-                              </div>
-                              <div class="bullet-hover-listing">
-                                <div *ngFor="let dot of convertArray(car.media); let first = first" 
-                                     class="bl-item" 
-                                     [class.active]="first">
-                                </div>
-                              </div>
                             </div>
-                          </div>
+                            <div class="listing-images">
+                                <div class="hover-listing-image">
+                                    <div class="wrap-hover-listing">
+                                        <div *ngFor="let image of car.photoUrls; let first = first" class="listing-item" [class.active]="first" [title]="car.title">
+                                            <div class="images">
+                                                <img [src]="image" class="swiper-image tfcl-light-gallery" alt="images">
+                                                <div *ngIf="!first" class="overlay-limit">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
+                                                    <!-- <p>{{ car.additionalPhotos }} more photos</p> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bullet-hover-listing">
+                                            <div *ngFor="let dot of car.photoUrls; let first = first" class="bl-item" [class.active]="first">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content">
+                            <span class="sub-title">{{ car.make+' '+car.model+' '+car.type }}</span>
+                            <h6 class="title"><a href="detail/25">{{ car.title }}</a></h6>
+                            <span class="price">{{ car.regularPrice }}</span>
                         </div>
-                      </a>
-                      <div class="content">
-                        <span class="sub-title">{{ car.make+' '+car.model+' '+car.type }}</span>
-                        <h6 class="title"><a href="detail/25">{{ car.title }}</a></h6>
-                        <span class="price">{{ car.requestPrice }}</span>
-                      </div>
                     </div>
-                  </div>
-                  
+                </div>
+
                 <div class="row">
                     <div class="col-md-12 t-al-center">
                         <div class="btn-main mt-45">
@@ -57,7 +53,7 @@
                             </a>
                         </div>
                     </div>
-                </div>                
+                </div>
                 <!-- Widget Car Service -->
             </div>
 
@@ -102,8 +98,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -111,8 +106,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -204,8 +199,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -213,8 +207,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -306,8 +300,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -315,8 +308,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -408,8 +401,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -417,8 +409,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -510,8 +502,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -519,8 +510,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -612,8 +603,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -621,8 +611,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -729,8 +719,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -738,8 +727,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -831,8 +820,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -840,8 +828,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -933,8 +921,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -942,8 +929,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -1035,8 +1022,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -1044,8 +1030,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -1137,8 +1123,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -1146,8 +1131,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>
@@ -1239,8 +1224,7 @@
                                         <div class="listing-item" title="Lexus LC Hybrid 2024">
                                             <div class="images">
                                                 <img src="assets/images/car-list/car11.jpg"
-                                                    class="swiper-image lazy tfcl-light-gallery"
-                                                    alt="images">
+                                                    class="swiper-image lazy tfcl-light-gallery" alt="images">
                                             </div>
                                         </div>
                                         <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
@@ -1248,8 +1232,8 @@
                                                 <img src="assets/images/car-list/car12.jpg"
                                                     class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png"
-                                                        class="icon-img" alt="icon-map">
+                                                    <img src="assets/images/car-list/img.png" class="icon-img"
+                                                        alt="icon-map">
                                                     <p>2 more photos</p>
                                                 </div>
                                             </div>

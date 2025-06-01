@@ -23,6 +23,8 @@ export class AddCarComponent implements AfterViewInit {
   tabsAccess = [true, false, false, false, false];
   @Input() vendor = false;
   carId=''
+  mediaArray = ['photo1','photo2','photo3','photo4','photo5','VINReport']
+
 
   constructor(private fb: FormBuilder, private httpService: HttpServiceService,  private cdr: ChangeDetectorRef,private dialog: MatDialog, private router: Router, private route: ActivatedRoute,) {
    console.log('constuctor running')
@@ -99,6 +101,7 @@ export class AddCarComponent implements AfterViewInit {
       VINReport: ['']
     })
 
+
     this.carlistingFormAddress = this.fb.group({
       address: [''],
       cityName: ['']
@@ -115,21 +118,46 @@ export class AddCarComponent implements AfterViewInit {
     })
   }
 
-  onSubmit(form: FormGroup, nextIndex: number) {
-    if (form.valid) {
-      const timestamp = new Date().toISOString();
-
-      const payload = this.formType(nextIndex)=='add-basic' ?{
+  selectPayload(formType:string,form:FormGroup){
+    const timestamp = new Date().toISOString();
+    if(formType=='add-basic') {return {
         ...form.value,
         id: null,
 
         status: null,
         createTime: timestamp,
         updateTime: timestamp
-      }:{
+      }}
+      else if (formType=='add-media'){
+         const formData = new FormData();
+ ['photo1', 'photo2', 'photo3', 'photo4', 'photo5'].forEach(key => {
+    const file = this.carlistingFormMedia.get(key)?.value;
+    if (file) {
+      formData.append(key, file, file.name);
+    }
+  })
+  const vinReportFile = this.carlistingFormMedia.get('VINReport')?.value;
+  if (vinReportFile) {
+    formData.append('VINReport', vinReportFile, vinReportFile.name);
+  }
+    const videoString = this.carlistingFormMedia.get('video')?.value;
+  if (videoString) {
+    formData.append('video', videoString); // simple string field
+  }
+
+        return formData
+      }
+      else return {
         ...form.value,
         id: null,
       };
+}
+
+  onSubmit(form: FormGroup, nextIndex: number) {
+    if (form.valid) {
+      const timestamp = new Date().toISOString();
+
+      const payload = this.selectPayload(this.formType(nextIndex),form)
 
       let vendorId = localStorage.getItem('vendorId');
       if (vendorId == null) {
@@ -211,7 +239,21 @@ export class AddCarComponent implements AfterViewInit {
         this.imagePreview = reader.result;
         this.imagesList[index] = this.imagePreview
       };
-      reader.readAsDataURL(file); // Convert file to Base64
+      reader.readAsDataURL(file); 
+        // Only allow image uploads for photo1-5
+ // Only allow image uploads for photo1-5
+  if (this.mediaArray[index].startsWith('photo') && !file.type.startsWith('image/')) {
+    alert('Only image files are allowed for photos.');
+    return;
+  }
+
+  // For VINReport, accept PDF or Word files
+  if (this.mediaArray[index] === 'VINReport' && !file.type.match(/(pdf|msword|officedocument)/)) {
+    alert('Only PDF or Word documents allowed for VIN Report.');
+    return;
+  }
+
+  this.carlistingFormMedia.patchValue({ [this.mediaArray[index]]: file });
     }
 
   }
