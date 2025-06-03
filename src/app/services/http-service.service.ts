@@ -10,6 +10,7 @@ export class HttpServiceService {
   private baseURL = '';  // Use environment.apiUrl
 
   constructor(private http: HttpClient) { }
+ 
 
   // Fetch users
   getUser(): Observable<any> {
@@ -123,7 +124,7 @@ disableVendor(id:any){
   }
 
   getCarsDetailsBasics(id: number): Observable<any> {
-    return this.http.get(`${this.baseURL}/api/cars/${id}/basics`).pipe(
+     return this.http.get(`${this.baseURL}/api/cars/${id}`).pipe(
       catchError((error) => {
         console.error('Error fetching users:', error);
         return throwError(() => error);
@@ -140,6 +141,7 @@ disableVendor(id:any){
       })
     );
   }
+
 
   getCarsDetailsFeature(id: number): Observable<any> {
     return this.http.get(`${this.baseURL}/api/cars/${id}/features`).pipe(

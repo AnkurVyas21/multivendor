@@ -13,6 +13,10 @@ import { ActivatedRoute } from '@angular/router';
 export class ListingdetailsComponent {
 
   contactUs!:FormGroup
+  public basics:any
+  public features:any
+  public specification:any
+  public media:any
 
   constructor(public dialog: MatDialog, private fb:FormBuilder, private httpService:HttpServiceService,private route:ActivatedRoute)
   {
@@ -35,14 +39,25 @@ export class ListingdetailsComponent {
 
   getCarDetails(id:number)
   {
+
+    this.httpService.getCarsDetailsBasics(id).subscribe((value)=>{
+      console.log(value)
+      this.basics= value.data
+    },(error)=>{
+      console.log(error)
+    })
+
+
     this.httpService.getCarsDetailsFeature(id).subscribe((value)=>{
       console.log(value)
+      this.features = value.data
     },(error)=>{
       console.log(error)
     })
 
     this.httpService.getCarsDetailsSpecification(id).subscribe((value)=>{
       console.log(value)
+      this.specification = value.data
     },(error)=>{
       console.log(error)
     })

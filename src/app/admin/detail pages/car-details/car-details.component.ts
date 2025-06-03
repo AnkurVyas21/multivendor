@@ -35,6 +35,7 @@ export class CarDetailsComponent {
 
   getCarDetails(id:number)
   {
+
     this.httpService.getCarsDetailsFeature(id).subscribe((value)=>{
       console.log(value)
     },(error)=>{
