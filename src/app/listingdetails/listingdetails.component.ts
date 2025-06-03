@@ -64,6 +64,7 @@ export class ListingdetailsComponent {
 
     this.httpService.getCarsDetailsMedia(id).subscribe((value)=>{
       console.log(value)
+      this.media = value.data
     },(error)=>{
       console.log(error)
     })
