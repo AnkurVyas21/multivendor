@@ -17,6 +17,8 @@ export class ListingdetailsComponent {
   public features:any
   public specification:any
   public media:any
+  public frontImage:any;
+  public selectedPhotoIndex=1;
 
   constructor(public dialog: MatDialog, private fb:FormBuilder, private httpService:HttpServiceService,private route:ActivatedRoute)
   {
@@ -41,7 +43,7 @@ export class ListingdetailsComponent {
   {
 
     this.httpService.getCarsDetailsBasics(id).subscribe((value)=>{
-      console.log(value)
+ 
       this.basics= value.data
     },(error)=>{
       console.log(error)
@@ -49,34 +51,30 @@ export class ListingdetailsComponent {
 
 
     this.httpService.getCarsDetailsFeature(id).subscribe((value)=>{
-      console.log(value)
       this.features = value.data
     },(error)=>{
       console.log(error)
     })
 
     this.httpService.getCarsDetailsSpecification(id).subscribe((value)=>{
-      console.log(value)
       this.specification = value.data
     },(error)=>{
       console.log(error)
     })
 
     this.httpService.getCarsDetailsMedia(id).subscribe((value)=>{
-      console.log(value)
       this.media = value.data
+      this.frontImage=this.media.photo1;
     },(error)=>{
       console.log(error)
     })
 
     this.httpService.getCarsDetailsAddress(id).subscribe((value)=>{
-      console.log(value)
     },(error)=>{
       console.log(error)
     })
 
     this.httpService.getCarsDetailsPhoto(id).subscribe((value)=>{
-      console.log(value)
     },(error)=>{
       console.log(error)
     })
@@ -102,6 +100,34 @@ export class ListingdetailsComponent {
   submitContactUs()
   {
     console.log(this.contactUs)
+  }
+
+  prev()
+  {
+     if(this.selectedPhotoIndex>0)
+     {
+      this.selectedPhotoIndex--;
+      this.frontImage=this.media['photo'+this.selectedPhotoIndex];
+     }
+  }
+
+  next()
+  {
+     if(this.selectedPhotoIndex<Object.keys(this.media)?.slice(1,6).length)
+     {
+      this.selectedPhotoIndex++;
+      this.frontImage=this.media['photo'+this.selectedPhotoIndex];
+     }
+     else {
+       this.selectedPhotoIndex=1;
+       this.frontImage=this.media['photo'+this.selectedPhotoIndex];
+     }
+  }
+
+  selectPhoto(index:number,photo:any)
+  {
+   this.selectedPhotoIndex=index+1;
+   this.frontImage=photo
   }
 
 }

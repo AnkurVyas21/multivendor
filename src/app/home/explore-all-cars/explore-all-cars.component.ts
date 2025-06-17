@@ -175,7 +175,6 @@ export class ExploreAllCarsComponent {
 
 
   ngOnInit(): void {
-    this.getExploreCars()
    }
  
    getExploreCars()
