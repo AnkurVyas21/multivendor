@@ -17,6 +17,7 @@ import { AuthGuard } from "./services/authGuard/auth.guard";
 import { AdminAuthGuard } from "./services/authGuard/adminAuth.guard";
 import { NewsVideosComponent } from "./news-videos/news-videos.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
+import { SearchCarListComponent } from "./search-car-list/search-car-list.component";
 
 const routes: Routes = [
   {
@@ -68,6 +69,9 @@ const routes: Routes = [
   },
   {
     path: 'hotDeal', component: HotDealComponent , canActivate: [AuthGuard] 
+  },
+  {
+    path: 'search/:title', component: SearchCarListComponent  
   },
   {
     path: 'reset-password', component: ResetPasswordComponent , canActivate: [AuthGuard] 

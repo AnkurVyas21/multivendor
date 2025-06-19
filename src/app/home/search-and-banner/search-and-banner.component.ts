@@ -1,3 +1,4 @@
+import { Route, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,7 +18,7 @@ export class SearchAndBannerComponent {
   ];
   filteredOptions: any = [];
   showDropdown: boolean = false;
-   constructor(public dialog: MatDialog, private httpService:HttpServiceService)
+   constructor(public dialog: MatDialog, private httpService:HttpServiceService, private Route:Router)
     {
   
     }
@@ -65,5 +66,9 @@ export class SearchAndBannerComponent {
           // Apply filter logic with the selected data
         });
       }
-      
+
+      searchText()
+        {
+          this.Route.navigate(['/search',this.searchControl.value])
+        }
 }

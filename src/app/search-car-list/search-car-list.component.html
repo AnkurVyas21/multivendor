@@ -1,0 +1,146 @@
+  <!-- End Main Header -->
+     <div class="search-filter-listing-car" bis_skin_checked="1">
+                    <form id="filter-list-car-side-bar" class="list-filter" action="/">
+                        <div class="form-group" bis_skin_checked="1">
+                            <div class="input-search-list searchFilter" bis_skin_checked="1">
+                                <div class="input-search-list " style="position: relative; width: 72%;">
+                                    <input 
+                                      type="search"
+                                      class="form-control"
+                                      style="width: 100%; padding: 10px;"
+                                      placeholder="Search by make, model, or keyword"
+                                      [formControl]="searchControl"
+                                      (input)="filterOptions()"
+                                      (focus)="showDropdown = true"
+                                      (blur)="hideDropdownWithDelay()"
+                                    />
+                                    
+                                    <!-- Autocomplete Dropdown -->
+                                    <ul *ngIf="showDropdown" class="autocomplete-list">
+                                      <li *ngFor="let option of filteredOptions" (click)="selectOption(option)">
+                                        {{ option }}
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  
+                                <span class="input-group-text searchFilter " id="search-addon">
+                                    <div class="btn-main" bis_skin_checked="1">
+                                        <a (click)="searchText()" class="button_main_inner" bis_skin_checked="1">
+                                            <span>Search</span>
+                                        </a>
+                                    </div>
+                                    <div class="btn-main"  bis_skin_checked="1">
+                                        <a (click)="openFilterDialog()" class="button_main_inner"  bis_skin_checked="1">
+                                            <i  class="fa-solid fa-filter"> </i><span> Filter</span>
+                                        </a>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+    <div class="widget-car-listing-list" bis_skin_checked="1">
+    <div class="themesflat-container" bis_skin_checked="1">
+        <div class="row car-listing-list" bis_skin_checked="1">
+            <div class="col-md-12 col-lg-12 listing-list-car-wrap" bis_skin_checked="1">
+                <form action="/" class="tf-my-listing-search">
+                    <div class="mb-4">
+                    <div class="row" bis_skin_checked="1">
+                        <div class="col-md-6" bis_skin_checked="1">
+                            <p class="showing">Showing 1–{{searchResult.length}} of <span class="text-red">{{searchResult.length}}</span> results</p>
+                        </div>
+                        <div class="col-md-6 toolbar-search-list" bis_skin_checked="1">
+                            <div class="group-select-recently" bis_skin_checked="1">
+                                <div class="nice-select" tabindex="0" bis_skin_checked="1">
+                                    <span class="current">Recently Added</span>
+                                    <ul class="list">
+                                        <li data-value="" class="option">Recently Added</li>
+                                        <li data-value="new" class="option">Best Seller</li>
+                                        <li data-value="Recently Added" class="option selected focus">Recently Added</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+
+                <div class="tab-content" id="nav-listing-car" bis_skin_checked="1">
+                    <div class="tab-pane fade active show" id="all" role="tabpanel" aria-labelledby="all-tab" tabindex="0" bis_skin_checked="1">
+                        <div class="listing-list-car-grid" bis_skin_checked="1">
+                            <div class="listing-grid-item" *ngFor="let car of searchResult" bis_skin_checked="1">
+                              <div class="listing-item-image" bis_skin_checked="1">
+                                <div class="hover-listing-image" bis_skin_checked="1">
+                                  <div class="wrap-hover-listing" bis_skin_checked="1">
+                                    <div class="listing-item active" [title]="car.title" bis_skin_checked="1">
+                                      <div class="images" bis_skin_checked="1">
+                                        <img [src]="car.photoUrls[0]" class="swiper-image tfcl-light-gallery" alt="images">
+                                      </div>
+                                    </div>
+                                    <div class="listing-item" [title]="car.title" bis_skin_checked="1">
+                                      <div class="images" bis_skin_checked="1">
+                                        <img [src]="car.photoUrls[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
+                                      </div>
+                                    </div>
+                                    <div class="listing-item view-gallery" [title]="car.title" bis_skin_checked="1">
+                                      <div class="images" bis_skin_checked="1">
+                                        <img [src]="car.photoUrls[2]" class="swiper-image tfcl-light-gallery" alt="images">
+                                        <div class="overlay-limit" bis_skin_checked="1">
+                                          <img src={{car.photoUrls[0]}} class="icon-img" alt="icon-map">
+                                          <p>2 more photos</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="bullet-hover-listing" bis_skin_checked="1">
+                                      <div class="bl-item active" bis_skin_checked="1"></div>
+                                      <div class="bl-item" bis_skin_checked="1"></div>
+                                      <div class="bl-item" bis_skin_checked="1"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <a href="watchlist.html" class="icon-favorite">
+                                  <i class="icon-heart-1-1"></i>
+                                </a>
+                              </div>
+                              <div class="listing-item-content" bis_skin_checked="1">
+                                <div class="listing-top-content" bis_skin_checked="1">
+                                  <h6 class="title">
+                                    <a href="#"></a>
+                                    <a [routerLink]="car.id">{{ car.title }}</a>
+                                  </h6>
+                                </div>
+                                <div class="bottom-price-wrap" bis_skin_checked="1">
+                                  <div class="price-wrap" bis_skin_checked="1">
+                                    <p class="price">{{ car.regularPrice }}</p>
+                                    <p class="price-sale">{{ car.regularPrice }}</p>
+                                  </div>
+                                  <div class="btn-read-more" bis_skin_checked="1">
+                                    <a class="more-link" [routerLink]="car.detailLink">
+                                      <span (click)="openDetailPage(car.id)">View details</span>
+                                      <i class="icon-arrow-right2"></i>
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="tf-pagination" bis_skin_checked="1">
+                            <a class="prev page-numbers" href="#">
+                                <i class="icon-3"></i>
+                            </a>
+                            <a class="page-numbers" href="#">1</a>
+                            <a class="page-numbers active" href="#">2</a>
+                            <a class="page-numbers" href="#">3</a>
+                            <a class="page-numbers" href="#">...</a>
+                            <a class="next page-numbers" href="#">
+                                <i class="icon--1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

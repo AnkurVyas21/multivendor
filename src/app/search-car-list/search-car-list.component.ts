@@ -1,0 +1,192 @@
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import { HttpServiceService } from '../services/http-service.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-search-car-list',
+  templateUrl: './search-car-list.component.html',
+  styleUrls: ['./search-car-list.component.css']
+})
+export class SearchCarListComponent {
+
+    cars = [
+      {
+        title: 'Mercedez benz - c class',
+        images: [
+          './assets/images/car-list/car5.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail/25'
+      },
+      {
+        title: 'Lexus LC Hybrid 2024',
+        images: [
+          './assets/images/car-list/car16.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail/25'
+      },
+      {
+        title: 'BMW X5 2024',
+        images: [
+          './assets/images/car-list/car23.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail/25'
+      },
+      {
+        title: 'Mercedez benz - c class',
+        images: [
+          './assets/images/car-list/car5.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail/25'
+      },
+      {
+        title: 'Lexus LC Hybrid 2024',
+        images: [
+          './assets/images/car-list/car16.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail/25'
+      },
+      {
+        title: 'BMW X5 2024',
+        images: [
+          './assets/images/car-list/car23.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail/25'
+      },
+      {
+        title: 'Mercedez benz - c class',
+        images: [
+          './assets/images/car-list/car5.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail/25'
+      },
+      {
+        title: 'Lexus LC Hybrid 2024',
+        images: [
+          './assets/images/car-list/car16.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail/25'
+      },
+      {
+        title: 'BMW X5 2024',
+        images: [
+          './assets/images/car-list/car23.jpg',
+          './assets/images/car-list/car11.jpg',
+          './assets/images/car-list/car12.jpg'
+        ],
+        price: '$489',
+        priceSale: '$399',
+        detailLink: '/detail/25'
+      }
+    ];
+
+    searchResult:any =[]
+
+    searchControl = new FormControl();
+      carOptions: string[] = [
+        'Toyota Corolla', 'Honda Civic', 'Ford Mustang', 'Tesla Model 3',
+        'Chevrolet Camaro', 'BMW X5', 'Audi A4', 'Mercedes-Benz C-Class'
+      ];
+      filteredOptions: any = [];
+      showDropdown: boolean = false;
+       constructor(public dialog: MatDialog, private httpService:HttpServiceService, private Route:Router, private ActivatedRoute:ActivatedRoute, private cd: ChangeDetectorRef)
+        {
+      
+        }
+    
+        ngOnInit() {
+          // Initialize with all options
+          this.ActivatedRoute.params.subscribe((value:any)=>{
+            this.searchControl.setValue(value.title)
+            this.searchCars(value.title)
+          })
+        }
+
+        searchCars(title:string)
+        {
+          this.httpService.searchCarHome(title).subscribe((value:any)=>{
+             this.searchResult =value?.data;
+          })
+          console.log(this.filterOptions)
+             this.cd.detectChanges()
+             this.cd.markForCheck()
+        }
+    
+        filterOptions() {
+          const keyword = this.searchControl.value.toLowerCase();
+          this.httpService.searchCarHome(keyword).subscribe((value:any)=>{
+             this.searchResult =value.data;
+          })
+         
+        }
+        
+        selectOption(option: string) {
+          this.searchControl.setValue(option);
+          this.showDropdown = false;
+        }
+
+        openDetailPage(id:any)
+        {
+          this.Route.navigate(['/detail/'+id])
+        }
+        
+        hideDropdownWithDelay() {
+          setTimeout(() => {
+            this.showDropdown = false;
+          }, 200); // Small delay to allow item selection before hiding
+        }
+          openFilterDialog(): void {
+            const dialogRef = this.dialog.open(DialogBoxComponent, {
+              width: '100%',
+              panelClass:'transparent-dialog',
+              data:{dialogType:'filterCars'}
+            });
+        
+            dialogRef.afterClosed().subscribe(result => {
+              console.log('Filter data:', result);
+              // Apply filter logic with the selected data
+            });
+          }
+    
+          searchText()
+            {
+              this.Route.navigate(['/search',this.searchControl.value])
+            }
+    }
+    
+  
+

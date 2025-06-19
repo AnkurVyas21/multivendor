@@ -47,6 +47,7 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
 import { SharedModule } from './shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
 import { AuthInterceptor } from './interceptors/auth.service';
+import { SearchCarListComponent } from './search-car-list/search-car-list.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { AuthInterceptor } from './interceptors/auth.service';
     WebsiteFeaturesCardsComponent,
     SellOrBuycarsCardsComponent,
     ContactUsBannerComponent,
-    NewsVideosComponent
+    NewsVideosComponent,
+    SearchCarListComponent
 
   ],
   imports: [
