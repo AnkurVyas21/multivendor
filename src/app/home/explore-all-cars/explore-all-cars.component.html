@@ -14,28 +14,28 @@
             <div class="swiper new-cars mybest-selling">
                 <div class="swiper-wrapper">
                     <div class="tf-car-service swiper-slide" *ngFor="let car of cars">
-                      <a [attr.href]="'detail/' + car.id" class="image">
+                      <a [attr.href]="'detail/' + car?.id" class="image">
                         <div class="stm-badge-top">
                           <div class="feature">
-                            <span>{{ car.condition ?car.condition: 'New' }}</span>
+                            <span>{{ car?.condition ?car?.condition: 'New' }}</span>
                           </div>
                         </div>
                         <div class="listing-images">
                           <div class="hover-listing-image">
                             <div class="wrap-hover-listing">
-                              <div class="listing-item active" [title]="car.title">
+                              <div class="listing-item active" [title]="car?.title">
                                 <div class="images">
-                                  <img [src]="car.photoUrls[0]" class="swiper-image tfcl-light-gallery" alt="images">
+                                  <img [src]="baseUrl+car?.photoUrls[0]" class="swiper-image tfcl-light-gallery" alt="images">
                                 </div>
                               </div>
-                              <div class="listing-item" [title]="car.title">
+                              <div class="listing-item" [title]="car?.title">
                                 <div class="images">
-                                  <img  [src]="car.photoUrls[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
+                                  <img  [src]="baseUrl+car?.photoUrls[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
                                 </div>
                               </div>
-                              <div class="listing-item view-gallery" [title]="car.title">
+                              <div class="listing-item view-gallery" [title]="car?.title">
                                 <div class="images">
-                                  <img  [src]="car.photoUrls[2]" class="swiper-image tfcl-light-gallery" alt="images">
+                                  <img  [src]="baseUrl+car?.photoUrls[2]" class="swiper-image tfcl-light-gallery" alt="images">
                                   <div class="overlay-limit">
                                     <img src="assets/images/car-list/img.png" class="icon-img" alt="icon-map">
                                     <p>2 more photos</p>
@@ -52,12 +52,12 @@
                         </div>
                       </a>
                       <div class="content">
-                        <span class="sub-title">{{ car.make+' '+car.model+' '+car.type }}</span>
-                        <h6 class="title"><a [attr.href]="'detail/' + car.id">{{ car.title }}</a></h6>
-                        <span class="price">{{ '$'+ car.regularPrice }}</span>
+                        <span class="sub-title">{{ car?.make+' '+car?.model+' '+car?.type }}</span>
+                        <h6 class="title"><a [attr.href]="'detail/' + car?.id">{{ car?.title }}</a></h6>
+                        <span class="price">{{ '$'+ car?.regularPrice }}</span>
                         <div class="bottom-btn-wrap">
                           <div class="btn-read-more">
-                            <a class="more-link" [attr.href]="'detail/' + car.id">
+                            <a class="more-link" [attr.href]="'detail/' + car?.id">
                               <span>View details</span>
                               <i class="icon-arrow-right2"></i>
                             </a>

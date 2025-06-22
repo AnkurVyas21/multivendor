@@ -4,6 +4,7 @@ import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpServiceService } from '../services/http-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../enviornment/environment';
 
 @Component({
   selector: 'app-listingdetails',
@@ -19,6 +20,8 @@ export class ListingdetailsComponent {
   public media:any
   public frontImage:any;
   public selectedPhotoIndex=1;
+   baseUrl = environment.apiUrl
+  
 cars:any=[]
   constructor(public dialog: MatDialog, private fb:FormBuilder, private httpService:HttpServiceService,private route:ActivatedRoute)
   {

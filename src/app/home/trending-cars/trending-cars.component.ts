@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs';
+import { environment } from 'src/app/enviornment/environment';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
   styleUrls: ['./trending-cars.component.css']
 })
 export class TrendingCarsComponent {
+  baseUrl = environment.apiUrl;
 
   constructor(private httpService:HttpServiceService)
   {

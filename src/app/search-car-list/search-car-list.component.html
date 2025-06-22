@@ -74,21 +74,21 @@
                               <div class="listing-item-image" bis_skin_checked="1">
                                 <div class="hover-listing-image" bis_skin_checked="1">
                                   <div class="wrap-hover-listing" bis_skin_checked="1">
-                                    <div class="listing-item active" [title]="car.title" bis_skin_checked="1">
+                                    <div class="listing-item active" [title]="car?.title" bis_skin_checked="1">
                                       <div class="images" bis_skin_checked="1">
-                                        <img [src]="car.photoUrls[0]" class="swiper-image tfcl-light-gallery" alt="images">
+                                        <img [src]="baseUrl+car?.photoUrls[0]" class="swiper-image tfcl-light-gallery" alt="images">
                                       </div>
                                     </div>
-                                    <div class="listing-item" [title]="car.title" bis_skin_checked="1">
+                                    <div class="listing-item" [title]="car?.title" bis_skin_checked="1">
                                       <div class="images" bis_skin_checked="1">
-                                        <img [src]="car.photoUrls[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
+                                        <img [src]="baseUrl+car?.photoUrls[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
                                       </div>
                                     </div>
-                                    <div class="listing-item view-gallery" [title]="car.title" bis_skin_checked="1">
+                                    <div class="listing-item view-gallery" [title]="car?.title" bis_skin_checked="1">
                                       <div class="images" bis_skin_checked="1">
-                                        <img [src]="car.photoUrls[2]" class="swiper-image tfcl-light-gallery" alt="images">
+                                        <img [src]="baseUrl+car?.photoUrls[2]" class="swiper-image tfcl-light-gallery" alt="images">
                                         <div class="overlay-limit" bis_skin_checked="1">
-                                          <img src={{car.photoUrls[0]}} class="icon-img" alt="icon-map">
+                                          <img src={{car?.photoUrls[0]}} class="icon-img" alt="icon-map">
                                           <p>2 more photos</p>
                                         </div>
                                       </div>
@@ -108,17 +108,17 @@
                                 <div class="listing-top-content" bis_skin_checked="1">
                                   <h6 class="title">
                                     <a href="#"></a>
-                                    <a [routerLink]="car.id">{{ car.title }}</a>
+                                    <a [routerLink]="car?.id">{{ car?.title }}</a>
                                   </h6>
                                 </div>
                                 <div class="bottom-price-wrap" bis_skin_checked="1">
                                   <div class="price-wrap" bis_skin_checked="1">
-                                    <p class="price">{{ car.regularPrice }}</p>
-                                    <p class="price-sale">{{ car.regularPrice }}</p>
+                                    <p class="price">{{ car?.regularPrice }}</p>
+                                    <p class="price-sale">{{ car?.regularPrice }}</p>
                                   </div>
                                   <div class="btn-read-more" bis_skin_checked="1">
-                                    <a class="more-link" [routerLink]="car.detailLink">
-                                      <span (click)="openDetailPage(car.id)">View details</span>
+                                    <a class="more-link" [routerLink]="car?.detailLink">
+                                      <span (click)="openDetailPage(car?.id)">View details</span>
                                       <i class="icon-arrow-right2"></i>
                                     </a>
                                   </div>

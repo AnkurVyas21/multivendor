@@ -21,7 +21,7 @@
                                     <div class="wrap-hover-listing">
                                         <div *ngFor="let image of car.photoUrls; let first = first" class="listing-item" [class.active]="first" [title]="car.title">
                                             <div class="images">
-                                                <img [src]="image" class="swiper-image tfcl-light-gallery" alt="images">
+                                                <img [src]="baseUrl+image" class="swiper-image tfcl-light-gallery" alt="images">
                                                 <div *ngIf="!first" class="overlay-limit">
                                                     <img src="assets/images/car-list/img.png" class="icon-img"
                                                         alt="icon-map">

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/app/enviornment/environment';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
   styleUrls: ['./recently-added-cars.component.css']
 })
 export class RecentlyAddedCarsComponent {
+ baseUrl = environment.apiUrl
 
   constructor(private httpService:HttpServiceService)
   {

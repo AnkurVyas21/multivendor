@@ -4,6 +4,7 @@ import { HttpServiceService } from '../services/http-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
+import { environment } from '../enviornment/environment';
 
 @Component({
   selector: 'app-search-car-list',
@@ -113,6 +114,7 @@ export class SearchCarListComponent {
         detailLink: '/detail/25'
       }
     ];
+ baseUrl = environment.apiUrl
 
     searchResult:any =[]
 
