@@ -471,7 +471,7 @@
             <div class="new-cars-wrap">
                 <div class="header-section-main mb-46">
                     <h2 class="title-section-main wow fadeInUp">Similar Products</h2>
-                    <div class="btn-read-more wow fadeInUp">
+                    <div class="btn-read-more wow fadeInUp" *ngIf="cars.length > 0">
                         <a class="more-link" href="shop.html">
                             <span>View More</span>
                             <i class="icon-arrow-up-right2"></i>
@@ -480,384 +480,72 @@
 
                 </div>
                 <div class="swiper new-cars mybest-selling">
-                    <div class="swiper-wrapper">
-                        <div class="tf-car-service swiper-slide">
-                            <a href="listing-details.html" class="image">
-                                <div class="stm-badge-top">
-                                    <div class="feature">
-                                        <span>Featured</span>
-                                    </div>
-
-                                </div>
-                                <div class="listing-images">
-                                    <div class="hover-listing-image">
-                                        <div class="wrap-hover-listing">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car7.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car11.jpg"
-                                                        class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car12.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit">
-                                                        <img src="assets/images/car-list/img.png" class="icon-img"
-                                                            alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing">
-                                                <div class="bl-item active"></div>
-                                                <div class="bl-item"></div>
-                                                <div class="bl-item"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="content">
-                                <span class="sub-title">Mini Cooper 3 Similar</span>
-                                <h6 class="title"><a href="listing-details.html">Chevrolet Suburban 2021 mo</a></h6>
-                                <span class="price">$27,000</span>
-                                <div class="bottom-btn-wrap">
-                                    <div class="btn-read-more">
-                                        <a class="more-link" href="listing-details.html">
-                                            <span>View details</span>
-                                            <i class="icon-arrow-right2"></i>
-                                        </a>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a href="watchlist.html" class="icon-service">
-                                            <i class="icon-heart-1-1"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
+                <div class="swiper-wrapper">
+                    <div class="tf-car-service swiper-slide" *ngFor="let car of cars">
+                      <a [attr.href]="'detail/' + car.id" class="image">
+                        <div class="stm-badge-top">
+                          <div class="feature">
+                            <span>{{ car.condition ?car.condition: 'New' }}</span>
+                          </div>
                         </div>
-                        <div class="tf-car-service swiper-slide">
-                            <a href="listing-details.html" class="image">
-                                <div class="stm-badge-top">
-                                    <div class="feature">
-                                        <span>Featured</span>
-                                    </div>
-
+                        <div class="listing-images">
+                          <div class="hover-listing-image">
+                            <div class="wrap-hover-listing">
+                              <div class="listing-item active" [title]="car.title">
+                                <div class="images">
+                                  <img [src]="car.photoUrls[0]" class="swiper-image tfcl-light-gallery" alt="images">
                                 </div>
-                                <div class="listing-images">
-                                    <div class="hover-listing-image">
-                                        <div class="wrap-hover-listing">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car2.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car11.jpg"
-                                                        class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car12.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit">
-                                                        <img src="assets/images/car-list/img.png" class="icon-img"
-                                                            alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing">
-                                                <div class="bl-item active"></div>
-                                                <div class="bl-item"></div>
-                                                <div class="bl-item"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                              </div>
+                              <div class="listing-item" [title]="car.title">
+                                <div class="images">
+                                  <img  [src]="car.photoUrls[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
                                 </div>
-                            </a>
-                            <div class="content">
-                                <span class="sub-title">Mini Cooper 3 Similar</span>
-                                <h6 class="title"><a href="listing-details.html">Chevrolet Suburban 2021 mo</a></h6>
-                                <span class="price">$27,000</span>
-                                <div class="bottom-btn-wrap">
-                                    <div class="btn-read-more">
-                                        <a class="more-link" href="listing-details.html">
-                                            <span>View details</span>
-                                            <i class="icon-arrow-right2"></i>
-                                        </a>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a href="watchlist.html" class="icon-service">
-                                            <i class="icon-heart-1-1"></i>
-                                        </a>
-                                    </div>
+                              </div>
+                              <div class="listing-item view-gallery" [title]="car.title">
+                                <div class="images">
+                                  <img  [src]="car.photoUrls[2]" class="swiper-image tfcl-light-gallery" alt="images">
+                                  <div class="overlay-limit">
+                                    <img src="assets/images/car-list/img.png" class="icon-img" alt="icon-map">
+                                    <p>2 more photos</p>
+                                  </div>
                                 </div>
-
+                              </div>
+                              <div class="bullet-hover-listing">
+                                <div class="bl-item active"></div>
+                                <div class="bl-item"></div>
+                                <div class="bl-item"></div>
+                              </div>
                             </div>
+                          </div>
                         </div>
-                        <div class="tf-car-service swiper-slide">
-                            <a href="listing-details.html" class="image">
-                                <div class="stm-badge-top">
-                                    <div class="feature">
-                                        <span>Featured</span>
-                                    </div>
-                                </div>
-                                <div class="listing-images">
-                                    <div class="hover-listing-image">
-                                        <div class="wrap-hover-listing">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car6.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car11.jpg"
-                                                        class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car12.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit">
-                                                        <img src="assets/images/car-list/img.png" class="icon-img"
-                                                            alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing">
-                                                <div class="bl-item active"></div>
-                                                <div class="bl-item"></div>
-                                                <div class="bl-item"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                      </a>
+                      <div class="content">
+                        <span class="sub-title">{{ car.make+' '+car.model+' '+car.type }}</span>
+                        <h6 class="title"><a [attr.href]="'detail/' + car.id">{{ car.title }}</a></h6>
+                        <span class="price">{{ '$'+ car.regularPrice }}</span>
+                        <div class="bottom-btn-wrap">
+                          <div class="btn-read-more">
+                            <a class="more-link" [attr.href]="'detail/' + car.id">
+                              <span>View details</span>
+                              <i class="icon-arrow-right2"></i>
                             </a>
-                            <div class="content">
-                                <span class="sub-title">Mini Cooper 3 Similar</span>
-                                <h6 class="title"><a href="listing-details.html">Chevrolet Suburban 2021 mo</a></h6>
-                                <span class="price">$27,000</span>
-                                <div class="bottom-btn-wrap">
-                                    <div class="btn-read-more">
-                                        <a class="more-link" href="listing-details.html">
-                                            <span>View details</span>
-                                            <i class="icon-arrow-right2"></i>
-                                        </a>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a href="watchlist.html" class="icon-service">
-                                            <i class="icon-heart-1-1"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="tf-car-service swiper-slide">
-                            <a href="listing-details.html" class="image">
-                                <div class="stm-badge-top">
-                                    <div class="feature">
-                                        <span>Featured</span>
-                                    </div>
-                                </div>
-                                <div class="listing-images">
-                                    <div class="hover-listing-image">
-                                        <div class="wrap-hover-listing">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car7.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car11.jpg"
-                                                        class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car12.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit">
-                                                        <img src="assets/images/car-list/img.png" class="icon-img"
-                                                            alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing">
-                                                <div class="bl-item active"></div>
-                                                <div class="bl-item"></div>
-                                                <div class="bl-item"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                          </div>
+                          <div class="btn-group">
+                            <a href="watchlist.html" class="icon-service">
+                              <i class="icon-heart-1-1"></i>
                             </a>
-                            <div class="content">
-                                <span class="sub-title">Mini Cooper 3 Similar</span>
-                                <h6 class="title"><a href="listing-details.html">Chevrolet Suburban 2021 mo</a></h6>
-                                <span class="price">$27,000</span>
-                                <div class="bottom-btn-wrap">
-                                    <div class="btn-read-more">
-                                        <a class="more-link" href="listing-details.html">
-                                            <span>View details</span>
-                                            <i class="icon-arrow-right2"></i>
-                                        </a>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a href="watchlist.html" class="icon-service">
-                                            <i class="icon-heart-1-1"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
+                          </div>
                         </div>
-                        <div class="tf-car-service swiper-slide">
-                            <a href="listing-details.html" class="image">
-                                <div class="stm-badge-top">
-                                    <div class="feature">
-                                        <span>Featured</span>
-                                    </div>
-                                </div>
-                                <div class="listing-images">
-                                    <div class="hover-listing-image">
-                                        <div class="wrap-hover-listing">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car2.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car11.jpg"
-                                                        class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car12.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit">
-                                                        <img src="assets/images/car-list/img.png" class="icon-img"
-                                                            alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing">
-                                                <div class="bl-item active"></div>
-                                                <div class="bl-item"></div>
-                                                <div class="bl-item"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="content">
-                                <span class="sub-title">Mini Cooper 3 Similar</span>
-                                <h6 class="title"><a href="listing-details.html">Chevrolet Suburban 2021 mo</a></h6>
-                                <span class="price">$27,000</span>
-                                <div class="bottom-btn-wrap">
-                                    <div class="btn-read-more">
-                                        <a class="more-link" href="listing-details.html">
-                                            <span>View details</span>
-                                            <i class="icon-arrow-right2"></i>
-                                        </a>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a href="watchlist.html" class="icon-service">
-                                            <i class="icon-heart-1-1"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="tf-car-service swiper-slide">
-                            <a href="listing-details.html" class="image">
-                                <div class="stm-badge-top">
-                                    <div class="feature">
-                                        <span>Featured</span>
-                                    </div>
-                                </div>
-                                <div class="listing-images">
-                                    <div class="hover-listing-image">
-                                        <div class="wrap-hover-listing">
-                                            <div class="listing-item active" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car6.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car11.jpg"
-                                                        class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                                </div>
-                                            </div>
-                                            <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
-                                                <div class="images">
-                                                    <img src="assets/images/car-list/car12.jpg"
-                                                        class="swiper-image tfcl-light-gallery" alt="images">
-                                                    <div class="overlay-limit">
-                                                        <img src="assets/images/car-list/img.png" class="icon-img"
-                                                            alt="icon-map">
-                                                        <p>2 more photos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bullet-hover-listing">
-                                                <div class="bl-item active"></div>
-                                                <div class="bl-item"></div>
-                                                <div class="bl-item"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="content">
-                                <span class="sub-title">Mini Cooper 3 Similar</span>
-                                <h6 class="title"><a href="listing-details.html">Chevrolet Suburban 2021 mo</a></h6>
-                                <span class="price">$27,000</span>
-                                <div class="bottom-btn-wrap">
-                                    <div class="btn-read-more">
-                                        <a class="more-link" href="listing-details.html">
-                                            <span>View details</span>
-                                            <i class="icon-arrow-right2"></i>
-                                        </a>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a href="watchlist.html" class="icon-service">
-                                            <i class="icon-heart-1-1"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                      </div>
                     </div>
-                    <div class="swiper-pagination"></div>
-                </div>
+                    <div *ngIf="cars.length == 0" class="no-data-found">
+                           <h5>No Similar Car Found</h5>
+                    </div>
+                  </div>
+                  
+                <div class="swiper-pagination"></div>
+
+            </div>
             </div>
         </div>
     </div>

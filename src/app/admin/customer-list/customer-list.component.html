@@ -15,38 +15,38 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element?.id }} </td>
       </ng-container>
 
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element?.firstName+' '+element?.lastName }} </td>
       </ng-container>
 
       <!-- Email Column -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element?.email }} </td>
       </ng-container>
 
       <!-- Phone Column -->
       <ng-container matColumnDef="phone">
         <th mat-header-cell *matHeaderCellDef> Phone </th>
-        <td mat-cell *matCellDef="let element"> {{ element.phone }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element?.phoneNumber }} </td>
       </ng-container>
 
       <!-- Address Column -->
-      <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef> Address </th>
-        <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+      <ng-container matColumnDef="enable">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{ element?.enable ? 'Enabled' : 'Disabled' }} </td>
       </ng-container>
 
       <!-- License Column -->
-      <ng-container matColumnDef="license">
-        <th mat-header-cell *matHeaderCellDef> License </th>
-        <td mat-cell *matCellDef="let element"> {{ element.license }} </td>
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef> Create at </th>
+        <td mat-cell *matCellDef="let element"> {{ convertDate(element?.createTime) }} </td>
       </ng-container>
 
       <!-- Actions Column -->

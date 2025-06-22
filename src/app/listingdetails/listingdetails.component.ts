@@ -19,7 +19,7 @@ export class ListingdetailsComponent {
   public media:any
   public frontImage:any;
   public selectedPhotoIndex=1;
-
+cars:any=[]
   constructor(public dialog: MatDialog, private fb:FormBuilder, private httpService:HttpServiceService,private route:ActivatedRoute)
   {
 
@@ -36,6 +36,8 @@ export class ListingdetailsComponent {
 
     this.route.params.subscribe((value)=>{
     this.getCarDetails(value['id'])
+    this.getSimilarCar(value['id'])
+
     })
   }
 
@@ -129,5 +131,24 @@ export class ListingdetailsComponent {
    this.selectedPhotoIndex=index+1;
    this.frontImage=photo
   }
+
+    getSimilarCar(id:any)
+    {
+    this.httpService.getCarsSimilar(id).subscribe((value) => {
+  if (value.success) {
+    this.cars= value.data;
+  }
+},(error)=>{
+        console.log('error occured in explore all car list ')
+     })
+   }
+
+     convertArray(media: any)
+     {
+       const photos = Object.keys(media)
+       .filter(key => key.startsWith("photo")) // Filter only keys that start with "photo"
+       .map(key => media[key]); // Get the corresponding values
+       return photos
+     }
 
 }

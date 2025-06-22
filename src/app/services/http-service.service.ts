@@ -132,6 +132,15 @@ disableVendor(id:any){
     );
   }
 
+    getCarsSimilar(id: number): Observable<any> {
+     return this.http.get(`${this.baseURL}/api/cars/${id}/similar`).pipe(
+      catchError((error) => {
+        console.error('Error fetching users:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
 
   getCarsDetailsSpecification(id: number): Observable<any> {
     return this.http.get(`${this.baseURL}/api/cars/${id}/specifications`).pipe(
@@ -191,8 +200,8 @@ disableVendor(id:any){
     );
   }
 
-  getCustomer(vendorId: string): Observable<any> {
-    return this.http.get(`${this.baseURL}/customers/${vendorId}`).pipe(
+  getCustomer(): Observable<any> {
+    return this.http.get(`${this.baseURL}/api/admin/users`).pipe(
       catchError((error) => {
         console.error('Error fetching customers:', error);
         return throwError(() => error);
