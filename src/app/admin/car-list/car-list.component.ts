@@ -108,11 +108,9 @@ public activeLoader = true;
 
    carListApiAdmin()
   {
-    this.httpService.getCarsAdmin('PENDING').subscribe((value)=>{
-      if(value.success)
-      {
+    this.httpService.getCarsAdmin('pending').subscribe((value)=>{
         this.carList=[]
-        value.data.forEach((data:any)=>{
+        value.forEach((data:any)=>{
             this.carList.push({
               id:data.id,
               name:data.make+' '+data.model,
@@ -122,8 +120,6 @@ public activeLoader = true;
             })
         })
         this.dataSource = new MatTableDataSource<CarData>(this.carList);
-
-      }
     },(error)=>{
 
     })
