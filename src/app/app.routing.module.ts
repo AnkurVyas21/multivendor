@@ -43,7 +43,7 @@ const routes: Routes = [
   },
  
   {
-    path: 'detail/:id', component: ListingdetailsComponent , canActivate: [AuthGuard] 
+    path: 'detail/:id', component: ListingdetailsComponent 
   },
   {
     path: 'search', component: SearchResultComponent , canActivate: [AuthGuard] 
