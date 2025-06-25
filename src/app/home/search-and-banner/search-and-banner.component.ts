@@ -69,6 +69,6 @@ export class SearchAndBannerComponent {
 
       searchText()
         {
-          this.Route.navigate(['/search',this.searchControl.value])
+          this.Route.navigate(['/search'],{queryParams:{title:this.searchControl.value}})
         }
 }

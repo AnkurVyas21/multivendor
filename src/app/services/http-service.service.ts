@@ -317,6 +317,24 @@ disableVendor(id:any){
     );
   }
 
+  wishlistPost(id:any,email:any): Observable<any> {
+    return this.http.post(`${this.baseURL}/api/wishlist/add/`+email+'/'+id, { email,id }).pipe(
+      catchError((error) => {
+        console.error('Forgot password request failed:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getWishlist(email: string|null): Observable<any> {
+    return this.http.get(`${this.baseURL}/api/wishlist/${email}`).pipe(
+      catchError((error) => {
+        console.error('Error fetching customer details:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
   // Get customer details
   getCustomerDetails(customerId: string): Observable<any> {
     return this.http.get(`${this.baseURL}/customers/${customerId}`).pipe(
@@ -459,8 +477,20 @@ disableVendor(id:any){
   searchCarHome(keyword:string)
   {
        let url = `${this.baseURL}/api/cars/search`;
-    const params = new HttpParams().set('keyword', keyword.toString()) 
+    const params = new HttpParams().set('keyword', keyword?.toString()) 
      return this.http.get(url,{params}).pipe(
+      catchError((error) => {
+        console.error('Error fetching user profile:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  searchCarType(type:string)
+  {
+       let url = `${this.baseURL}/api/cars/type`;
+    // const params = new HttpParams().set('type', keyword?.toString()) 
+     return this.http.get(url+'/'+type).pipe(
       catchError((error) => {
         console.error('Error fetching user profile:', error);
         return throwError(() => error);

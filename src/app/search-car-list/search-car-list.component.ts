@@ -132,9 +132,17 @@ export class SearchCarListComponent {
     
         ngOnInit() {
           // Initialize with all options
-          this.ActivatedRoute.params.subscribe((value:any)=>{
-            this.searchControl.setValue(value.title)
-            this.searchCars(value.title)
+          this.ActivatedRoute.queryParamMap.subscribe((value:any)=>{
+            console.log(Object.keys(value.params))
+
+            if(Object.keys(value.params)[0]=='title')
+           { this.searchControl.setValue(value.params.title)
+            this.searchCars(value.params.title)}
+            else if (Object.keys(value.params)[0]=='type')
+            {
+              this.searchControl.setValue(value.params.type)
+              this.searchCarsType(value.params.type)
+            }
           })
         }
 
@@ -143,7 +151,15 @@ export class SearchCarListComponent {
           this.httpService.searchCarHome(title).subscribe((value:any)=>{
              this.searchResult =value?.data;
           })
-          console.log(this.filterOptions)
+             this.cd.detectChanges()
+             this.cd.markForCheck()
+        }
+
+        searchCarsType(type:string)
+        {
+          this.httpService.searchCarType(type).subscribe((value:any)=>{
+             this.searchResult =value?.data;
+          })
              this.cd.detectChanges()
              this.cd.markForCheck()
         }
@@ -186,7 +202,7 @@ export class SearchCarListComponent {
     
           searchText()
             {
-              this.Route.navigate(['/search',this.searchControl.value])
+              this.Route.navigate(['/search'],{queryParams:{title:this.searchControl.value}})
             }
     }
     

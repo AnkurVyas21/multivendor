@@ -49,8 +49,8 @@
                     </div>
                     <div class="box-2 t-al-right" bis_skin_checked="1">
                         <div class="icon-boxs flex" bis_skin_checked="1">
-                            <a href="#">
-                                <i class="icon-heart-1-1"></i>
+                            <a (click)="addToFav(basics?.id)">
+                                <i [ngClass]="wishlisted ? 'icon-heart': 'icon-heart-1-1'"></i>
                                 <span>Favorite</span>
                             </a>
                             <a href="#">
@@ -134,7 +134,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Condition:</span>
-                                            <p class="listing-info-value">{{basics.condition}}</p>
+                                            <p class="listing-info-value">{{basics?.condition}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Cylinders: </span>
-                                            <p class="listing-info-value">{{specification.cylinders}}</p>
+                                            <p class="listing-info-value">{{specification?.cylinders}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Stock Number:</span>
-                                            <p class="listing-info-value">{{basics.stockNumber}}</p>
+                                            <p class="listing-info-value">{{basics?.stockNumber}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Fuel Type:</span>
-                                            <p class="listing-info-value">{{specification.fuel}}</p>
+                                            <p class="listing-info-value">{{specification?.fuel}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +178,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">VIN Number:</span>
-                                            <p class="listing-info-value">{{basics.vinNumber}}</p>
+                                            <p class="listing-info-value">{{basics?.vinNumber}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Doors:</span>
-                                            <p class="listing-info-value">{{specification.doors}}</p>
+                                            <p class="listing-info-value">{{specification?.doors}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Year:</span>
-                                            <p class="listing-info-value">{{basics.year}}</p>
+                                            <p class="listing-info-value">{{basics?.year}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +211,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Color:</span>
-                                            <p class="listing-info-value">{{specification.color}}</p>
+                                            <p class="listing-info-value">{{specification?.color}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -222,7 +222,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Mileage: </span>
-                                            <p class="listing-info-value">{{specification.mileage}} miles</p>
+                                            <p class="listing-info-value">{{specification?.mileage}} miles</p>
                                         </div>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Seats:</span>
-                                            <p class="listing-info-value">{{specification.seats}}</p>
+                                            <p class="listing-info-value">{{specification?.seats}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +244,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Transmission :</span>
-                                            <p class="listing-info-value">{{specification.transmission}}</p>
+                                            <p class="listing-info-value">{{specification?.transmission}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -255,7 +255,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">City MPG:</span>
-                                            <p class="listing-info-value">{{specification.cityMPG}}</p>
+                                            <p class="listing-info-value">{{specification?.cityMPG}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +266,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Engine Size:</span>
-                                            <p class="listing-info-value">{{specification.engineSize}}</p>
+                                            <p class="listing-info-value">{{specification?.engineSize}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -277,7 +277,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Highway MPG:</span>
-                                            <p class="listing-info-value">{{specification.highwayMPG}}</p>
+                                            <p class="listing-info-value">{{specification?.highwayMPG}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -288,7 +288,7 @@
                                         </div>
                                         <div class="content-listing-info" bis_skin_checked="1">
                                             <span class="listing-info-title">Driver type: </span>
-                                            <p class="listing-info-value">{{specification.driverType}}</p>
+                                            <p class="listing-info-value">{{specification?.driverType}}</p>
                                         </div>
                                     </div>
                                 </div>

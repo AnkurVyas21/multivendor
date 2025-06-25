@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 })
 export class ExploreOurCarsComponent {
 
-  constructor(private httpService:HttpServiceService)
+  constructor(private httpService:HttpServiceService,public Route:Router)
   {
 
   }
@@ -37,5 +38,11 @@ export class ExploreOurCarsComponent {
      },(error)=>{
         console.log('error occured in explore all car list ')
      })
+   }
+
+   searchCar(type:string)
+   {
+              this.Route.navigate(['/search'],{queryParams:{type:type}})
+
    }
 }

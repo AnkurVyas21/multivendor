@@ -45,9 +45,9 @@ const routes: Routes = [
   {
     path: 'detail/:id', component: ListingdetailsComponent 
   },
-  {
-    path: 'search', component: SearchResultComponent , canActivate: [AuthGuard] 
-  },
+  // {
+  //   path: 'search', component: SearchResultComponent , canActivate: [AuthGuard] 
+  // },
   {
     path: 'brands', component: ShopComponent , canActivate: [AuthGuard] 
   },
@@ -71,7 +71,7 @@ const routes: Routes = [
     path: 'hotDeal', component: HotDealComponent , canActivate: [AuthGuard] 
   },
   {
-    path: 'search/:title', component: SearchCarListComponent  
+    path: 'search', component: SearchCarListComponent  
   },
   {
     path: 'reset-password', component: ResetPasswordComponent , canActivate: [AuthGuard] 

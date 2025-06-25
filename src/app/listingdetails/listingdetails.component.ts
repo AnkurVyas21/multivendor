@@ -21,6 +21,7 @@ export class ListingdetailsComponent {
   public frontImage:any;
   public selectedPhotoIndex=1;
    baseUrl = environment.apiUrl
+   public wishlisted = false;
   
 cars:any=[]
   constructor(public dialog: MatDialog, private fb:FormBuilder, private httpService:HttpServiceService,private route:ActivatedRoute)
@@ -42,6 +43,7 @@ cars:any=[]
     this.getSimilarCar(value['id'])
 
     })
+    this.getWishlist()
   }
 
   getCarDetails(id:number)
@@ -152,6 +154,34 @@ cars:any=[]
        .filter(key => key.startsWith("photo")) // Filter only keys that start with "photo"
        .map(key => media[key]); // Get the corresponding values
        return photos
+     }
+
+     addToFav(id:any)
+     {
+      let email = localStorage.getItem('email')
+      this.httpService.wishlistPost(id,email).subscribe((value)=>{
+        this.getWishlist()
+      },(error)=>{
+        this.getWishlist()
+      })
+     }
+
+     getWishlist()
+     {
+      let email = localStorage.getItem('email')
+      this.httpService.getWishlist(email).subscribe((value)=>{
+        console.log(value)
+        for(let car of value)
+        {
+          if(car.car.id==this.route.snapshot.params['id'])
+          {
+            this.wishlisted = true
+            return 0
+          }
+        }
+        this.wishlisted = false
+        return 0
+      })
      }
 
 }
