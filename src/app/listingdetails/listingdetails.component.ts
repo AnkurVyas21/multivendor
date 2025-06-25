@@ -91,7 +91,7 @@ cars:any=[]
   opendialogBox(type:string)
   {
     const dialogRef = this.dialog.open(DialogBoxComponent,{
-      data:{dialogType:type},
+      data:{dialogType:type,id:this.basics.id,model:this.basics.model},
       width: '500px',
       height: '800px',
       disableClose: false,

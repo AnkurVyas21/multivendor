@@ -78,7 +78,7 @@ applyFilter(event: Event) {
     alert(`Viewing details for: ${element.customerName}`);
   }
   getTestDrive() {
-    this.httpService.getTestDrive().subscribe((data) => {
+    this.httpService.getTestDrive('pending').subscribe((data) => {
       this.carList = data;
     });
   }

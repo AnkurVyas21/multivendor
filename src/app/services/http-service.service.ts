@@ -218,8 +218,14 @@ disableVendor(id:any){
     );
   }
 
-  getTestDrive(): Observable<any> {
-    return this.http.get(`${this.baseURL}/testDrive`).pipe(
+  getTestDrive(status:any): Observable<any> {
+      let params = new HttpParams();
+
+  if (status) {
+    params = params.set('status', status);
+  }
+
+    return this.http.get(`${this.baseURL}/api/admin/test-drives`,{params}).pipe(
       catchError((error) => {
         console.error('Error fetching test drive:', error);
         return throwError(() => error);
@@ -251,6 +257,15 @@ disableVendor(id:any){
   // Add a user
   addUser(user: any): Observable<any> {
     return this.http.post(`${this.baseURL}/users`, user);
+  }
+
+
+   sendTestDrive(formData: any): Observable<any> {
+    return this.http.post(`${this.baseURL}/api/users/test-drive/request`, formData);
+  }
+
+  sendMakeOffer(formData: any): Observable<any> {
+    return this.http.post(`${this.baseURL}/api/users/offer/request`, formData);
   }
 
   addCar(carInfo: any, formType: string, id: number): Observable<any> {
