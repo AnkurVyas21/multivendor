@@ -1,0 +1,38 @@
+.listing-item {
+  display: none;
+}
+
+.listing-item.active {
+  display: block;
+}
+
+.bullet-hover-listing {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.bl-item {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #bbb;
+}
+
+.bl-item.active {
+  background: #333;
+}
+
+.overlay-limit {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  padding: 4px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

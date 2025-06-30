@@ -208,4 +208,14 @@ this.httpService.getCarsHome('trending', page).pipe(
     return photos
   }
 
+  hoveredIndexes: { [carId: number]: number | null } = {};
+
+setHoveredImage(carId: number, index: number) {
+  this.hoveredIndexes[carId] = index;
+}
+
+resetHoveredImage(carId: number) {
+  this.hoveredIndexes[carId] = null;
+}
+
 }

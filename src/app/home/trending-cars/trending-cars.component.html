@@ -8,42 +8,66 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home-service" role="tabpanel">
                 <!-- Widget Car Service -->
-                <div class="car-list-item">
-                    <div *ngFor="let car of cars" class="tf-car-service">
-                        <a [attr.href]="'detail/' + car.id" class="image">
-                            <div class="stm-badge-top">
-                                <div class="feature">
-                                    <span>Featured</span>
-                                </div>
-                            </div>
-                            <div class="listing-images">
-                                <div class="hover-listing-image">
-                                    <div class="wrap-hover-listing">
-                                        <div *ngFor="let image of car.photoUrls; let first = first" class="listing-item" [class.active]="first" [title]="car.title">
-                                            <div class="images">
-                                                <img [src]="baseUrl+image" class="swiper-image tfcl-light-gallery" alt="images">
-                                                <div *ngIf="!first" class="overlay-limit">
-                                                    <img src="assets/images/car-list/img.png" class="icon-img"
-                                                        alt="icon-map">
-                                                    <!-- <p>{{ car.additionalPhotos }} more photos</p> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="bullet-hover-listing">
-                                            <div *ngFor="let dot of car.photoUrls; let first = first" class="bl-item" [class.active]="first">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="content">
-                            <span class="sub-title">{{ car.make+' '+car.model+' '+car.type }}</span>
-                            <h6 class="title"><a [attr.href]="'detail/' + car.id">{{ car.title }}</a></h6>
-                            <span class="price">{{ '$'+car.regularPrice }}</span>
-                        </div>
-                    </div>
-                </div>
+               <div class="car-list-item">
+  <div *ngFor="let car of cars" class="tf-car-service">
+    <a [attr.href]="'detail/' + car.id" class="image">
+      <div class="stm-badge-top">
+        <div class="feature">
+          <span>Featured</span>
+        </div>
+      </div>
+
+      <div class="listing-images">
+        <div class="hover-listing-image">
+          <div class="wrap-hover-listing">
+            <!-- Image Carousel -->
+            <div *ngFor="let image of car.photoUrls; let i = index"
+                 class="listing-item"
+                 [class.active]="hoveredIndexes[car.id] === i || (!hoveredIndexes[car.id] && i === 0)"
+                 [title]="car.title"
+                 (mouseover)="setHoveredImage(car.id, i)"
+                 (mouseleave)="resetHoveredImage(car.id)">
+              <div class="images">
+                <img [src]="baseUrl + image" class="swiper-image tfcl-light-gallery" alt="images">
+              </div>
+            </div>
+
+            <!-- Bullets -->
+            <div class="bullet-hover-listing">
+              <div *ngFor="let dot of car.photoUrls; let i = index"
+                   class="bl-item"
+                   [class.active]="hoveredIndexes[car.id] === i || (!hoveredIndexes[car.id] && i === 0)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Car Content -->
+    <div class="content">
+      <span class="sub-title">{{ car.make + ' ' + car.model + ' ' + car.type }}</span>
+      <h6 class="title"><a [attr.href]="'detail/' + car.id">{{ car.title }}</a></h6>
+      <span class="price">{{ '$' + car.regularPrice }}</span>
+       <div class="bottom-btn-wrap">
+          <div class="btn-read-more">
+            <a class="more-link" [attr.href]="'detail/' + car?.id">
+              <span>View details</span>
+              <i class="icon-arrow-right2"></i>
+            </a>
+          </div>
+          <div class="btn-group">
+            <a href="watchlist.html" class="icon-service">
+              <i class="icon-heart-1-1"></i>
+            </a>
+          </div>
+        </div>
+    </div>
+
+      
+  </div>
+</div>
+
 
                 <div class="row">
                     <div class="col-md-12 t-al-center">
@@ -56,6 +80,41 @@
                 </div>
                 <!-- Widget Car Service -->
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

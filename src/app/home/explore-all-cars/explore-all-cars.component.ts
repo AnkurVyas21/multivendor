@@ -9,6 +9,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 })
 export class ExploreAllCarsComponent {
  baseUrl = environment.apiUrl
+ 
   constructor(private httpService:HttpServiceService)
   {
 
@@ -37,5 +38,15 @@ export class ExploreAllCarsComponent {
        .map(key => media[key]); // Get the corresponding values
        return photos
      }
+
+      hoveredIndexes: { [carId: number]: number | null } = {};
+
+  setHoveredImage(carId: number, index: number) {
+    this.hoveredIndexes[carId] = index;
+  }
+
+  resetHoveredImage(carId: number) {
+    this.hoveredIndexes[carId] = null;
+  }
   }
   

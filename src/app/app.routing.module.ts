@@ -56,7 +56,7 @@ const routes: Routes = [
   },
  
   {
-    path: 'watchlist', component: WatchlistComponent , canActivate: [AuthGuard] 
+    path: 'wishlist', component: WatchlistComponent , canActivate: [AuthGuard] 
   },
   {
     path: 'Aboutus', component: AboutComponent , canActivate: [AuthGuard] 

@@ -21,9 +21,13 @@
                                         {{ option }}
                                       </li>
                                     </ul>
+                                       <div class="iconOnly input-group-text" style="padding-right: 10px;">
+                                        <i (click)="searchText()" class="fa-solid fa-magnifying-glass "></i>
+                                        <i (click)="openFilterDialog()" class="fa-solid fa-filter"></i>
+                                       </div>
                                   </div>
                                   
-                                <span class="input-group-text searchFilter " id="search-addon">
+                                <span class="input-group-text searchFilter displaybutton" id="search-addon">
                                     <div class="btn-main" bis_skin_checked="1">
                                         <a (click)="searchText()" class="button_main_inner" bis_skin_checked="1">
                                             <span>Search</span>

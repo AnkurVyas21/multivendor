@@ -1,32 +1,75 @@
-
+/* ========== DEFAULT STYLES (Desktop/Tablet) ========== */
 .autocomplete-list {
-    position: absolute;
-    width: 100%;
-    background: white;
-    border: 1px solid #ccc;
-    max-height: 200px;
-    overflow-y: auto;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    z-index: 10;
+  position: absolute;
+  width: 50vw;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.autocomplete-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+  background: #f0f0f0;
+}
+
+.searchFilter {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.transparent-dialog .mat-dialog-container {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.inputWidth{
+  width: 50vw;
+}
+
+.list-filter{
+  background-color: transparent;
+}
+.iconOnly{
+display: none;
+}
+
+/* ========== RESPONSIVE STYLES FOR SMALL SCREENS (<650px) ========== */
+@media screen and (max-width: 650px) {
+  .displaybutton{
+    display: none;
   }
-  
-  .autocomplete-list li {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .autocomplete-list li:hover {
-    background: #f0f0f0;
+  .iconOnly {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding-right:10px
   }
   
 
-  .searchFilter{
-    display: flex;
-    gap: 5px;
+  .autocomplete-list {
+    font-size: 14px;
+    max-height: 160px;
+  }
+
+  .autocomplete-list li {
+    padding: 12px;
+    font-size: 15px;
   }
 
   .transparent-dialog .mat-dialog-container {
-    background-color: rgba(0, 0, 0, 0.7); 
+    margin: 20px;
+    padding: 10px;
+    border-radius: 8px;
   }
+}

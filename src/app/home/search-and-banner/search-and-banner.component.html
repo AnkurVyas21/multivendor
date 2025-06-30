@@ -6,11 +6,11 @@
                     <form id="filter-list-car-side-bar" class="list-filter" action="/">
                         <div class="form-group" bis_skin_checked="1">
                             <div class="input-search-list searchFilter" bis_skin_checked="1">
-                                <div class="input-search-list " style="position: relative; width: 72%;">
+                                <div class="input-search-list " >
                                     <input 
+                                      min-width="200px"
                                       type="search"
-                                      class="form-control"
-                                      style="width: 100%; padding: 10px;"
+                                      class="form-control inputWidth"
                                       placeholder="Search by make, model, or keyword"
                                       [formControl]="searchControl"
                                       (input)="filterOptions()"
@@ -24,9 +24,13 @@
                                         {{ option }}
                                       </li>
                                     </ul>
+                                       <div class="iconOnly input-group-text" style="padding-right: 10px;">
+                                        <i (click)="searchText()" class="fa-solid fa-magnifying-glass "></i>
+                                        <i (click)="openFilterDialog()" class="fa-solid fa-filter"></i>
+                                       </div>
                                   </div>
                                   
-                                <span class="input-group-text searchFilter " id="search-addon">
+                                <span class="input-group-text searchFilter displaybutton" id="search-addon">
                                     <div class="btn-main" bis_skin_checked="1">
                                         <a (click)="searchText()" class="button_main_inner" bis_skin_checked="1">
                                             <span>Search</span>
@@ -38,6 +42,7 @@
                                         </a>
                                     </div>
                                 </span>
+                             
                             </div>
                         </div>
                     </form>
