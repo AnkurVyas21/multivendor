@@ -35,9 +35,9 @@ export class SearchAndBannerComponent {
         this.filteredOptions=[]
         return
       } 
-      this.httpService.searchCarHome(keyword).subscribe((value)=>{
-         this.filteredOptions =value;
-      })
+      // this.httpService.searchCarHome(keyword).subscribe((value)=>{
+      //    this.filteredOptions =value;
+      // })
      
     }
     

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoaderService } from './services/loaderService/loader.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +11,10 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'multivendor';
   currentPath: string = '';
-
-  constructor(private router: Router) {}
+ loader$: Observable<boolean>;
+  constructor(private router: Router,private loaderService: LoaderService) {
+     this.loader$ = this.loaderService.loaderState$;
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe(() => {

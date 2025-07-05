@@ -23,3 +23,8 @@
     <app-admin *ngIf="currentPath=='admin'"></app-admin>
     <app-vendor *ngIf="currentPath=='vendor'"></app-vendor>
   </div>
+
+    <div class="preload preload-container" *ngIf="loader$ | async">
+            <div class="middle">
+            </div>
+        </div>
