@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpServiceService } from '../services/http-service.service';
 import { ActivatedRoute, Router, } from '@angular/router';
+import { SnackbarService } from '../snackBar/services/snackbar.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent {
   maxDate!: string;
 
 
-  constructor(private fb:FormBuilder, private httpService:HttpServiceService, private route:ActivatedRoute, private router: Router)
+  constructor(private fb:FormBuilder, private httpService:HttpServiceService, private route:ActivatedRoute, private router: Router, private snackbar: SnackbarService)
   {
 
   }
@@ -67,9 +68,11 @@ export class RegisterComponent {
         if(value.success)
         {
           this.router.navigate(['/login'])
+         this.snackbar.show('your account created successfully', 5000, 'success')
+
         }
       },(error)=>{
-        console.log(error)
+                this.snackbar.show('something went wrong', 5000, 'error')
       })
     })
 

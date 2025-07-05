@@ -34,7 +34,7 @@
                     <div class="p-3 p-sm-4 p-md-5" bis_skin_checked="1">
                         <!-- Title -->
                         <h2 class="mb-2 fs-2">Welcome!</h2>
-                        <p class="mb-0">Are you new here?<a href={{userType()}} class="fw-medium text-primary"> Create a {{selectedUserType}}
+                        <p *ngIf="selectedUserType=='vendor' || selectedUserType=='user'"class="mb-0">Are you new here?<a href={{userType()}} class="fw-medium text-primary"> Create a {{selectedUserType}}
                                 account</a></p>
 
                         <!-- Form START -->

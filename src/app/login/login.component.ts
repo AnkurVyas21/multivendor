@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/authService/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpServiceService } from '../services/http-service.service';
+import { SnackbarService } from '../snackBar/services/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
   lastSegment=''
   showPassword: boolean = false;
 
-  constructor(private authService: AuthService, private route:ActivatedRoute, private httpService:HttpServiceService)
+  constructor(private authService: AuthService, private route:ActivatedRoute, private httpService:HttpServiceService, private snackbar: SnackbarService)
   {
 
   }
@@ -40,6 +41,7 @@ export class LoginComponent {
     this.httpService.login(credentials).subscribe((response)=>{
       if(response)
       {
+         this.snackbar.show('Logged In successfull !', 5000, 'success')
         console.log(response,'response')
         localStorage.setItem('userType',response.roles[0].toLowerCase());
         localStorage.setItem('email',email);
@@ -56,7 +58,7 @@ export class LoginComponent {
       }
       }
     },(error)=>{
-      // this.authServiceLogin(email,password,this.selectedUserType)
+      this.snackbar.show('Please check login credentials', 5000, 'error')
   })
    
   }

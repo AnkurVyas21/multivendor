@@ -15,7 +15,7 @@ export class TrendingCarsComponent {
   {
   }
 
-//   public cars = [
+
 // {
 //   "id": 2,
 //   "title": "Lexus LC Hybrid 2024",
@@ -217,5 +217,23 @@ setHoveredImage(carId: number, index: number) {
 resetHoveredImage(carId: number) {
   this.hoveredIndexes[carId] = null;
 }
+
+wishlist(carId: number){
+  let email = localStorage.getItem('email')
+      this.httpService.wishlistPost(carId,email).subscribe((value)=>{
+        this.getWishlist()
+      },(error)=>{
+        this.getWishlist()
+      })
+}
+
+getWishlist()
+     {
+      let email = localStorage.getItem('email')
+      this.httpService.getWishlist(email).subscribe((value)=>{
+        console.log(value)
+        return 0
+      })
+     }
 
 }

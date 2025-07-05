@@ -13,107 +13,7 @@ import { environment } from '../enviornment/environment';
 })
 export class SearchCarListComponent {
 
-    cars = [
-      {
-        title: 'Mercedez benz - c class',
-        images: [
-          './assets/images/car-list/car5.jpg',
-          './assets/images/car-list/car11.jpg',
-          './assets/images/car-list/car12.jpg'
-        ],
-        price: '$489',
-        priceSale: '$399',
-        detailLink: '/detail/25'
-      },
-      {
-        title: 'Lexus LC Hybrid 2024',
-        images: [
-          './assets/images/car-list/car16.jpg',
-          './assets/images/car-list/car11.jpg',
-          './assets/images/car-list/car12.jpg'
-        ],
-        price: '$489',
-        priceSale: '$399',
-        detailLink: '/detail/25'
-      },
-      {
-        title: 'BMW X5 2024',
-        images: [
-          './assets/images/car-list/car23.jpg',
-          './assets/images/car-list/car11.jpg',
-          './assets/images/car-list/car12.jpg'
-        ],
-        price: '$489',
-        priceSale: '$399',
-        detailLink: '/detail/25'
-      },
-      {
-        title: 'Mercedez benz - c class',
-        images: [
-          './assets/images/car-list/car5.jpg',
-          './assets/images/car-list/car11.jpg',
-          './assets/images/car-list/car12.jpg'
-        ],
-        price: '$489',
-        priceSale: '$399',
-        detailLink: '/detail/25'
-      },
-      {
-        title: 'Lexus LC Hybrid 2024',
-        images: [
-          './assets/images/car-list/car16.jpg',
-          './assets/images/car-list/car11.jpg',
-          './assets/images/car-list/car12.jpg'
-        ],
-        price: '$489',
-        priceSale: '$399',
-        detailLink: '/detail/25'
-      },
-      {
-        title: 'BMW X5 2024',
-        images: [
-          './assets/images/car-list/car23.jpg',
-          './assets/images/car-list/car11.jpg',
-          './assets/images/car-list/car12.jpg'
-        ],
-        price: '$489',
-        priceSale: '$399',
-        detailLink: '/detail/25'
-      },
-      {
-        title: 'Mercedez benz - c class',
-        images: [
-          './assets/images/car-list/car5.jpg',
-          './assets/images/car-list/car11.jpg',
-          './assets/images/car-list/car12.jpg'
-        ],
-        price: '$489',
-        priceSale: '$399',
-        detailLink: '/detail/25'
-      },
-      {
-        title: 'Lexus LC Hybrid 2024',
-        images: [
-          './assets/images/car-list/car16.jpg',
-          './assets/images/car-list/car11.jpg',
-          './assets/images/car-list/car12.jpg'
-        ],
-        price: '$489',
-        priceSale: '$399',
-        detailLink: '/detail/25'
-      },
-      {
-        title: 'BMW X5 2024',
-        images: [
-          './assets/images/car-list/car23.jpg',
-          './assets/images/car-list/car11.jpg',
-          './assets/images/car-list/car12.jpg'
-        ],
-        price: '$489',
-        priceSale: '$399',
-        detailLink: '/detail/25'
-      }
-    ];
+    cars = []
  baseUrl = environment.apiUrl
 
     searchResult:any =[]
@@ -143,6 +43,9 @@ export class SearchCarListComponent {
               this.searchControl.setValue(value.params.type)
               this.searchCarsType(value.params.type)
             }
+            else {
+              this.searchAllCars()
+            }
           })
         }
 
@@ -158,6 +61,15 @@ export class SearchCarListComponent {
         searchCarsType(type:string)
         {
           this.httpService.searchCarType(type).subscribe((value:any)=>{
+             this.searchResult =value?.data;
+          })
+             this.cd.detectChanges()
+             this.cd.markForCheck()
+        }
+
+        searchAllCars()
+        {
+          this.httpService.getAllCars().subscribe((value:any)=>{
              this.searchResult =value?.data;
           })
              this.cd.detectChanges()

@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 export class ShopByBrandComponent {
 
   brands = [
-    { name: 'Sedan', image: './assets/images/banner/1.jpg' },
-    { name: 'SUV', image: './assets/images/banner/2.jpg' },
-    { name: 'Hatchback', image: './assets/images/banner/3.jpg' },
-    { name: 'Hybrid', image: './assets/images/banner/4.jpg' },
-    { name: 'Coupe', image: './assets/images/banner/5.jpg' }
+    { name: 'Mercedes', image: './assets/images/banner/1.jpg' },
+    { name: 'BMW', image: './assets/images/banner/2.jpg' },
+    { name: 'Lexus', image: './assets/images/banner/3.jpg' },
+    { name: 'Tesla', image: './assets/images/banner/4.jpg' },
+    { name: 'Honda', image: './assets/images/banner/5.jpg' }
   ];
 
   

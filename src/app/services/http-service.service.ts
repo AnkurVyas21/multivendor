@@ -430,16 +430,14 @@ disableVendor(id:any){
     );
   }
 
-  contactUS(payload: string): Observable<any> {
+  contactUS(payload: any): Observable<any> {
     let token = '';
     console.log(token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    const options = {
-      headers,
-    };
-    return this.http.post(`${this.baseURL}/api/contact`, {payload}, options).pipe(
+   
+    return this.http.post(`${this.baseURL}/api/contact`, payload).pipe(
       catchError((error) => {
         console.error('Error rejecting offer price:', error);
         return throwError(() => error);
@@ -513,6 +511,18 @@ disableVendor(id:any){
         return throwError(() => error);
       })
     );
+  }
+
+  getAllCars()
+  { 
+       let url = `${this.baseURL}/api/cars/all`;
+    return this.http.get(url).pipe(
+      catchError((error) => {
+        console.error('Error fetching user profile:', error);
+        return throwError(() => error);
+      })
+    );
+
   }
 
   

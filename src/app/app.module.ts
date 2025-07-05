@@ -49,6 +49,7 @@ import { MatTableModule } from '@angular/material/table';
 import { AuthInterceptor } from './interceptors/auth.service';
 import { SearchCarListComponent } from './search-car-list/search-car-list.component';
 import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { CommonModule } from '@angular/common';
     SharedModule,
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
     
   ],
  

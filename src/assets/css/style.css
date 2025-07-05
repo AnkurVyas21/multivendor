@@ -8725,6 +8725,26 @@ a.mapboxgl-ctrl-logo {
   margin-bottom: 30px;
 }
 
+
+.snackbar-success .mdc-snackbar__surface {
+  background-color: #4caf50 !important; /* green */
+  color: white !important;
+  margin-bottom: 2.5vw;
+}
+
+.snackbar-error .mdc-snackbar__surface {
+  background-color: #f44336 !important; /* red */
+  color: white !important;
+  margin-bottom: 2.5vw;
+
+}
+
+.snackbar-info .mdc-snackbar__surface {
+  background-color: #2196f3 !important; /* blue */
+  color: white !important;
+  margin-bottom: 2.5vw;
+}
+
 /*--------- Abstracts variable ---------- */
 @media only screen and (max-width: 1399px) {
   .widget-tf-slider .slider-wrap .tf-slide-item .slide-item-content > .box {
@@ -9961,4 +9981,7 @@ a.mapboxgl-ctrl-logo {
     padding: 10px 15px;
   }
 }
+
+
+
 /*-------------- Font ----------------- */

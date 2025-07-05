@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpServiceService } from '../services/http-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from '../snackBar/services/snackbar.service';
 
 @Component({
   selector: 'app-forgot',
@@ -11,7 +13,7 @@ export class ForgotComponent {
      newPassword = ''
      copySuccess = false;
 
-     constructor(private httpService:HttpServiceService)
+     constructor(private httpService:HttpServiceService,private snackbar: SnackbarService)
      {
 
      }
@@ -22,6 +24,7 @@ export class ForgotComponent {
        this.httpService.forgotPassword({ emailOrPhone: cleanEmail}).subscribe((value)=>{
          console.log(value)
          this.newPassword = value.temporaryPassword
+         this.snackbar.show(value.message, 5000, 'success')
        },(error)=>{
          console.log(error)
        })
@@ -39,4 +42,13 @@ export class ForgotComponent {
     console.error('Could not copy text: ', err);
   });
 }
+
+// showSnackBar(message:string,time:number) {
+//     this.snackBar.open(message, '', {
+//       duration: time, 
+//       horizontalPosition: 'right',
+//       verticalPosition: 'bottom',
+//       panelClass: ['custom-snackbar']
+//     });
+//   }
 }

@@ -7,7 +7,7 @@
         <app-explore-our-cars>   <div class="header-section-main mb-46">
             <h2 class="title-section-main wow fadeInUp">Explore Our cars</h2>
             <div class="btn-read-more wow fadeInUp">
-                <a class="more-link">
+                <a class="more-link" [routerLink]="['/search']">
                     <span>View More</span>
                     <i class="icon-arrow-up-right2"></i>
                 </a>
@@ -35,7 +35,7 @@
         <!-- Form buy car -->
         <!-- Widget Car List V2 -->
         <!-- Widget New cars -->
-        <app-explore-all-cars></app-explore-all-cars>
+        <app-explore-all-cars ></app-explore-all-cars>
 
         <div class="preload preload-container" *ngIf="loader">
             <div class="middle">
