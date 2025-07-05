@@ -48,6 +48,7 @@ import { SharedModule } from './shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
 import { AuthInterceptor } from './interceptors/auth.service';
 import { SearchCarListComponent } from './search-car-list/search-car-list.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,9 @@ import { SearchCarListComponent } from './search-car-list/search-car-list.compon
     MatSelectModule,
     MatCheckboxModule,
     SharedModule,
-     
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule
     
   ],
  

@@ -12,6 +12,9 @@ export class RegisterComponent {
 
   registeForm!:FormGroup;
   public userType=''
+  showPassword: boolean = false;
+  maxDate!: string;
+
 
   constructor(private fb:FormBuilder, private httpService:HttpServiceService, private route:ActivatedRoute, private router: Router)
   {
@@ -20,25 +23,43 @@ export class RegisterComponent {
 
   ngOnInit()
   {
+
+    const today = new Date();
+  const year = today.getFullYear() - 18;
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  this.maxDate = `${year}-${month}-${day}`;
+
     this.route.params.subscribe((value)=>{
       this.userType=value['userType'];
     })
-    this.registeForm = this.fb.group({
-      firstName:['', [Validators.required,Validators.maxLength(32)]],
-      lastName:['',[Validators.required,Validators.maxLength(32)]],
-      email:['',[Validators.required,Validators.email,Validators.maxLength(68)]],
-      phoneNumber:['',[Validators.required,Validators.email,Validators.maxLength(68)]],
-      dob:['',[Validators.required]],
-      address:['',Validators.required],
-      tradeLicenseNumber:[''],
-      password:['',[Validators.required,Validators.maxLength(32)]],
-      confirmPassword:['',[Validators.required,Validators.maxLength(32)]],
-    })
+     this.registeForm = this.fb.group({
+    firstName: ['', [Validators.required, Validators.minLength(2)]],
+    lastName: ['', [Validators.required,Validators.minLength(2)]],
+    email: ['', [Validators.required, Validators.email]],
+    phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+    dob: ['', [Validators.required]],
+    address: ['', [Validators.required]],
+    tradeLicenseNumber: [this.userType === 'vendor' ? '' : null],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    confirmPassword: ['', [Validators.required]],
+    keepSignIn: [false]
+  }, { validators: this.passwordMatchValidator });
   }
+
+  passwordMatchValidator(form: FormGroup) {
+  const password = form.get('password')?.value;
+  const confirm = form.get('confirmPassword')?.value;
+  return password === confirm ? null : { mismatch: true };
+}
 
   registerUserFormSubmit()
   {
     console.log(this.registeForm)
+     if (this.registeForm.invalid) {
+    this.registeForm.markAllAsTouched(); 
+    return;
+  }
     this.route.params.subscribe((value)=>{
       console.log(value['userType'])
       this.httpService.register(value['userType'],this.registeForm.value).subscribe((value)=>{
@@ -53,5 +74,9 @@ export class RegisterComponent {
     })
 
   }
+
+  togglePasswordVisibility() {
+  this.showPassword = !this.showPassword;
+}
 
 }

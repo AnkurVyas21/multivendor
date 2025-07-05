@@ -22,6 +22,8 @@ export class HttpServiceService {
     );
   }
 
+  
+
   getCars(type: string, page?: number, size?: number): Observable<any> {
     let url = type ? `${this.baseURL}/api/cars/${type}` : `${this.baseURL}/api/cars`;
 
@@ -323,8 +325,8 @@ disableVendor(id:any){
 
 
   // Forgot password
-  forgotPassword(email: string): Observable<any> {
-    return this.http.post(`${this.baseURL}/auth/forgot-password`, { email }).pipe(
+  forgotPassword(payload: { emailOrPhone: string }): Observable<any> {
+    return this.http.post(`${this.baseURL}/api/auth/forgot-password`, payload).pipe(
       catchError((error) => {
         console.error('Forgot password request failed:', error);
         return throwError(() => error);

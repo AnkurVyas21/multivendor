@@ -13,6 +13,8 @@ export class LoginComponent {
   email=''
   selectedUserType:'user'|'vendor'|'admin'|'superAdmin'='user'
   lastSegment=''
+  showPassword: boolean = false;
+
   constructor(private authService: AuthService, private route:ActivatedRoute, private httpService:HttpServiceService)
   {
 
@@ -84,4 +86,9 @@ export class LoginComponent {
         return '/register/'+registerUser
   }
   
+    togglePasswordVisibility() {
+  this.showPassword = !this.showPassword;
+}
+
+
 }
