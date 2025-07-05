@@ -18,8 +18,8 @@ export class ForgotComponent {
 
      forgotPassword()
      {
-      console.log(this.email)
-       this.httpService.forgotPassword({ emailOrPhone: 'vendor1@mailinator.com' }).subscribe((value)=>{
+      const cleanEmail = this.email?.trim().toLowerCase();
+       this.httpService.forgotPassword({ emailOrPhone: cleanEmail}).subscribe((value)=>{
          console.log(value)
          this.newPassword = value.temporaryPassword
        },(error)=>{
