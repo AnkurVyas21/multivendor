@@ -24,6 +24,7 @@ export class CarEditComponent {
   @Input() vendor = false;
 
   constructor(private fb: FormBuilder, private httpService: HttpServiceService, private dialog: MatDialog,private route:ActivatedRoute) {
+  console.log('constuctor running')
     this.carlistingFormBasic = this.fb.group({
       title: ['', Validators.required],
       make: ['', Validators.required],
@@ -107,7 +108,8 @@ export class CarEditComponent {
   ngOnInit()
   {
     this.route.paramMap.subscribe((value:any)=>{
-      this.getCarDetails(value['id'])
+      console.log(value)
+      this.getCarDetails(value.params.id)
     })
   }
 
@@ -179,25 +181,26 @@ export class CarEditComponent {
     }
   }
 
-  getCarDetails(id:number=25) {
+  getCarDetails(id:number) {
     this.httpService.getCarsDetailsBasics(id).subscribe((value)=>{
-      this.fillForm("basics",value)
+      console.log(value,'value')
+      this.fillForm("basics",value.data)
     })
 
     this.httpService.getCarsDetailsSpecification(id).subscribe((value)=>{
-      this.fillForm("specification",value)
+      this.fillForm("specification",value.data)
     })
 
     this.httpService.getCarsDetailsFeature(id).subscribe((value)=>{
-      this.fillForm("feature",value)
+      this.fillForm("feature",value.data)
     })
 
     this.httpService.getCarsDetailsMedia(id).subscribe((value)=>{
-      this.fillForm("media",value)
+      this.fillForm("media",value.data)
     })
 
     this.httpService.getCarsDetailsAddress(id).subscribe((value)=>{
-      this.fillForm("address",value)
+      this.fillForm("address",value.data)
     })
   }
 
@@ -208,7 +211,7 @@ export class CarEditComponent {
       this.carlistingFormBasic = this.fb.group({
         title: [value.title, Validators.required],
         make: [value.make, Validators.required],
-        model: [value.title, Validators.required],
+        model: [value.model, Validators.required],
         type: [value.type, Validators.required],
         year: [value.year, [Validators.required, Validators.min(1900), Validators.max(new Date().getFullYear())]],
         condition: [value.condition, Validators.required],
@@ -225,16 +228,16 @@ export class CarEditComponent {
     {
       this.carlistingFormSpecification = this.fb.group({
         mileage: [value.mileage, Validators.required],
-        transmission: [value.mileage, Validators.required],
-        driverType: [value.mileage, Validators.required],
-        engineSize: [value.mileage, Validators.required],
-        cylinders: [value.mileage, Validators.required],
-        fuel: [value.mileage, Validators.required],
-        doors: [value.mileage, Validators.required],
-        color: [value.mileage, Validators.required],
-        seats: [value.mileage, Validators.required],
-        cityMPG: [value.mileage, Validators.required],
-        highwayMPG: [value.mileage, Validators.required],
+        transmission: [value.transmission, Validators.required],
+        driverType: [value.driverType, Validators.required],
+        engineSize: [value.engineSize, Validators.required],
+        cylinders: [value.cylinders, Validators.required],
+        fuel: [value.fuel, Validators.required],
+        doors: [value.doors, Validators.required],
+        color: [value.color, Validators.required],
+        seats: [value.seats, Validators.required],
+        cityMPG: [value.cityMPG, Validators.required],
+        highwayMPG: [value.highwayMPG, Validators.required],
       })
       
     }
@@ -242,36 +245,36 @@ export class CarEditComponent {
     if(type=='feature')
     {
       this.carlistingFormFeature = this.fb.group({
-        ACFront: [value.mileage],
-        ACRear: [value.mileage],
-        backupCamera: [value.mileage],
-        cruiseControl: [value.mileage],
-        navigation: [value.mileage],
-        powerLocks: [value.mileage],
-        amfmStereo: [value.mileage],
-        cdPlayer: [value.mileage],
-        dvdSystem: [value.mileage],
-        mp3Player: [value.mileage],
-        portableAudio: [value.mileage],
-        premiumAudio: [value.mileage],
-        airbagDriver: [value.mileage],
-        airbagPassenger: [value.mileage],
-        antilockBrakes: [value.mileage],
-        bluetooth: [value.mileage],
-        handsFree: [value.mileage],
-        fogLights: [value.mileage],
-        powerWindows: [value.mileage],
-        windowsDefroster: [value.mileage],
-        rearWindow: [value.mileage],
-        wiperTintedglass: [value.mileage],
-        sunroof: [value.mileage],
-        towPackage: [value.mileage],
-        bucketSeats: [value.mileage],
-        heatedSeats: [value.mileage],
-        leatherInterior: [value.mileage],
-        memorySeats: [value.mileage],
-        powerSeats: [value.mileage],
-        thirdRowSeats: [value.mileage],
+        ACFront: [value.ACFront],
+        ACRear: [value.ACRear],
+        backupCamera: [value.backupCamera],
+        cruiseControl: [value.cruiseControl],
+        navigation: [value.navigation],
+        powerLocks: [value.powerLocks],
+        amfmStereo: [value.amfmStereo],
+        cdPlayer: [value.cdPlayer],
+        dvdSystem: [value.dvdSystem],
+        mp3Player: [value.mp3Player],
+        portableAudio: [value.portableAudio],
+        premiumAudio: [value.premiumAudio],
+        airbagDriver: [value.airbagDriver],
+        airbagPassenger: [value.airbagPassenger],
+        antilockBrakes: [value.antilockBrakes],
+        bluetooth: [value.bluetooth],
+        handsFree: [value.handsFree],
+        fogLights: [value.fogLights],
+        powerWindows: [value.powerWindows],
+        windowsDefroster: [value.windowsDefroster],
+        rearWindow: [value.rearWindow],
+        wiperTintedglass: [value.wiperTintedglass],
+        sunroof: [value.sunroof],
+        towPackage: [value.towPackage],
+        bucketSeats: [value.bucketSeats],
+        heatedSeats: [value.heatedSeats],
+        leatherInterior: [value.leatherInterior],
+        memorySeats: [value.memorySeats],
+        powerSeats: [value.powerSeats],
+        thirdRowSeats: [value.thirdRowSeats]
       })
       
     }
@@ -279,21 +282,25 @@ export class CarEditComponent {
     if(type=='media')
     {
       this.carlistingFormMedia = this.fb.group({
-        photo1: [value.mileage],
-        photo2: [value.mileage],
-        photo3: [value.mileage],
-        photo4: [value.mileage],
-        photo5: [value.mileage],
-        video: [value.mileage],
-        VINReport: [value.mileage]
+        photo1: [value.photo1],
+        photo2: [value.photo2],
+        photo3: [value.photo3],
+        photo4: [value.photo4],
+        photo5: [value.photo5],
+        video: [value.videoUrl],
+        VINReport: [value.vinReport]
       })
-      
+      this.imagesList[0] = value.photo1
+      this.imagesList[1] = value.photo2
+      this.imagesList[2] = value.photo3
+      this.imagesList[3] = value.photo4
+      this.imagesList[4] = value.photo5
     }
     if(type=='address')
     {
       this.carlistingFormAddress = this.fb.group({
-        address: [value.mileage],
-        cityName: [value.mileage]
+        address: [value.address],
+        cityName: [value.mapLocation]
       })
       
     }

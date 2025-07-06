@@ -168,6 +168,12 @@ public activeLoader = true;
     })
   }
 
+  navigateToedit(id:any)
+  {
+    console.log(id)
+    this.route.navigate(['vendor/car-edit/'+id])
+  }
+
 }
 
 

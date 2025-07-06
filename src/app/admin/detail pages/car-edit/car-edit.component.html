@@ -187,7 +187,7 @@
         </form> </mat-tab>
 
 
-        <mat-tab label="Car Specifications" >    <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormSpecification" (ngSubmit)="onSubmit(carlistingFormSpecification,2)">
+        <mat-tab label="Car Specifications" [disabled]="!tabsAccess[1]">    <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormSpecification" (ngSubmit)="onSubmit(carlistingFormSpecification,2)">
             <fieldset id="information" class="pd-bg">
                 <div class="inner-title mb-30" bis_skin_checked="1">
                     <!-- <span class="sub-title">Specification</span> -->
@@ -343,13 +343,13 @@
                 </div>
                 </fieldset>
                 <fieldset style="margin-right: 2vw;">
-                    <button type="submit" class="btn commissionBtn  me-2" style="margin-bottom: 25px; float: right">Save Specification and Next</button>
+                    <button type="submit" class="btn commissionBtn  me-2" style="margin-bottom: 25px; float: right; z-index: 999;">Save Specification and Next</button>
                 </fieldset>
             </form>
                  </mat-tab>
 
 
-        <mat-tab label="Car Features" > 
+        <mat-tab label="Car Features" [disabled]="!tabsAccess[2]"> 
                <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormFeature" (ngSubmit)="onSubmit(carlistingFormFeature,3)">
            
             <fieldset id="amenities" class="pd-bg">
@@ -522,7 +522,7 @@
         </form> </mat-tab>
 
 
-        <mat-tab label="Car Media Features" >    
+        <mat-tab label="Car Media Features" [disabled]="!tabsAccess[3]">    
             <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormMedia" (ngSubmit)="onSubmit(carlistingFormMedia,4)">
             <fieldset id="upload-media" class="pd-bg">
                 <div class="inner-title mb-30" bis_skin_checked="1">
@@ -629,10 +629,11 @@
         
             <fieldset style="margin-right: 2vw;">
                 <button type="submit" class="btn commissionBtn  me-2" style="margin-bottom: 25px; float: right">Save media and Next</button>
-            </fieldset></form> </mat-tab>
+            </fieldset>
+        </form> </mat-tab>
 
 
-        <mat-tab label="Location" >   
+        <mat-tab label="Location" [disabled]="!tabsAccess[4]">   
              <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate="" [formGroup]="carlistingFormAddress" (ngSubmit)="onSubmit(carlistingFormAddress,5)">
          
             <fieldset id="location" class="pd-bg mb-60">
@@ -652,9 +653,6 @@
                     <label>City Name</label>
                     <div class="group-map-address-field" bis_skin_checked="1">
                         <input class="address-searching " id="address-searching" type="text" value="" aria-invalid="false" formControlName="cityName">
-                        <!-- <button type="button" class="button-location">
-                            <i class="icon-search-1"></i>
-                        </button> -->
                     </div>
                 </div>
             </fieldset>
@@ -667,4 +665,3 @@
       </mat-tab-group>
  </div>
  
-    
