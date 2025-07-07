@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { environment } from '../enviornment/environment';
+import { param } from 'jquery';
 
 @Component({
   selector: 'app-search-car-list',
@@ -34,7 +35,7 @@ export class SearchCarListComponent {
           // Initialize with all options
           this.ActivatedRoute.queryParamMap.subscribe((value:any)=>{
             console.log(Object.keys(value.params))
-
+            let paramKeys = Object.keys(value.params)
             if(Object.keys(value.params)[0]=='title')
            { this.searchControl.setValue(value.params.title)
             this.searchCars(value.params.title)}
@@ -42,6 +43,18 @@ export class SearchCarListComponent {
             {
               this.searchControl.setValue(value.params.type)
               this.searchCarsType(value.params.type)
+            }
+             else if (paramKeys.includes('brand')|| paramKeys.includes('color')|| paramKeys.includes('engineSize')|| paramKeys.includes('location')|| paramKeys.includes('model')|| paramKeys.includes('transmission')|| paramKeys.includes('used')|| paramKeys.includes('year'))
+            {
+              console.log(value.params,'make')
+              this.searchControl.setValue(value.params.make)
+              this.filterCars(value.params)
+            }
+              else if (Object.keys(value.params)[0]=='make')
+            {
+              console.log(value.params.make,'make')
+              this.searchControl.setValue(value.params.make)
+              this.searchCarsMake(value.params.make)
             }
             else {
               this.searchAllCars()
@@ -61,6 +74,14 @@ export class SearchCarListComponent {
         searchCarsType(type:string)
         {
           this.httpService.searchCarType(type).subscribe((value:any)=>{
+             this.searchResult =value?.data;
+          })
+             this.cd.detectChanges()
+             this.cd.markForCheck()
+        }
+
+        searchCarsMake(make:string){
+          this.httpService.searchCarMake(make).subscribe((value:any)=>{
              this.searchResult =value?.data;
           })
              this.cd.detectChanges()
@@ -115,6 +136,15 @@ export class SearchCarListComponent {
           searchText()
             {
               this.Route.navigate(['/search'],{queryParams:{title:this.searchControl.value}})
+            }
+
+            filterCars(value:any)
+            {
+             this.httpService.filterCars(value).subscribe((value:any)=>{
+             this.searchResult =value?.data;
+          })
+             this.cd.detectChanges()
+             this.cd.markForCheck()
             }
     }
     

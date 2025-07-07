@@ -175,4 +175,14 @@ cars:any=[]
       })
      }
 
+       removeWishlist(carId: number)
+     {
+       let email = localStorage.getItem('email')
+      this.httpService.deleteWishlist(carId).subscribe((value)=>{
+        this.getWishlist()
+      },(error)=>{
+        this.getWishlist()
+      })
+     }
+
 }

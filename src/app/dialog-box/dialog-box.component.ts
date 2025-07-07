@@ -2,6 +2,8 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { usCarBrands } from '../common/config'
+import { Route, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dialog-box',
@@ -14,11 +16,14 @@ export class DialogBoxComponent implements OnInit {
   public makeOfferForm!: FormGroup;
  public  filterForm!: FormGroup;
  public minDateTime:any
+ public usCarBrands = usCarBrands
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<DialogBoxComponent>, 
     private fb: FormBuilder,
-    private httpservice:HttpServiceService
+    private httpservice:HttpServiceService,
+    private route:Router,
+    private ActivatedRoute:ActivatedRoute
     
   ) {
      const now = new Date();
@@ -58,15 +63,21 @@ export class DialogBoxComponent implements OnInit {
     })
 
     this.filterForm = this.fb.group({
-      brand: [''],
+      make: [''],
       transmission: [''],
-      used: [false],
+      condition: [false],
       model: [''],
       year: [''],
       engineSize: [''],
-      location: [''],
+      mapLocation: [''],
       color: ['']
     });
+
+    this.ActivatedRoute.queryParams.subscribe(params => {
+    this.filterForm.patchValue(params);
+  });
+
+  
   }
 
   submitTestDrive() {
@@ -115,5 +126,19 @@ export class DialogBoxComponent implements OnInit {
     },(error)=>{
       console.log(error)
     })
+  }
+
+  onFilterSubmit()
+  {
+    if (this.filterForm.valid) {
+  const raw = this.filterForm.value;
+  const cleaned = Object.fromEntries(
+    Object.entries(raw).filter(([_, v]) => v !== '' && v !== null)
+  );
+
+  this.route.navigate(['/search'], {
+    queryParams: cleaned
+  });
+}
   }
 }

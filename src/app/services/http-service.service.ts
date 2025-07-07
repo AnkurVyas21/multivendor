@@ -448,7 +448,7 @@ deleteWishlist(id: any) {
       'Content-Type': 'application/json',
     });
    
-    return this.http.post(`${this.baseURL}/api/contact`, payload).pipe(
+    return this.http.post(`${this.baseURL}/api/public/contact/add`, payload).pipe(
       catchError((error) => {
         console.error('Error rejecting offer price:', error);
         return throwError(() => error);
@@ -523,6 +523,42 @@ deleteWishlist(id: any) {
       })
     );
   }
+
+  searchCarMake(make:string)
+  {
+       let url = `${this.baseURL}/api/cars/make`;
+    // const params = new HttpParams().set('type', keyword?.toString()) 
+     return this.http.get(url+'/'+make).pipe(
+      catchError((error) => {
+        console.error('Error fetching user profile:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+filterCars(value: any) {
+  const url = `${this.baseURL}/api/cars/filter-advanced`;
+
+  // Step 1: Replace condition boolean with 'used' or 'unused'
+  const queryParams = { ...value };
+  if ('condition' in queryParams) {
+    queryParams.condition = queryParams.condition ? 'used' : 'unused';
+  }
+
+  // Step 2: Remove empty, null, or undefined fields
+  const filteredBody = Object.fromEntries(
+    Object.entries(queryParams).filter(([_, v]) => v !== '' && v != null)
+  );
+
+  // Step 3: Make POST request with body (not as query params)
+  return this.http.post(url, filteredBody).pipe(
+    catchError((error) => {
+      console.error('Error fetching cars:', error);
+      return throwError(() => error);
+    })
+  );
+}
+
 
   getAllCars()
   { 

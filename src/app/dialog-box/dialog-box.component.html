@@ -107,16 +107,13 @@
 
 <div class="p-3 p-sm-4 p-md-5 scroll" bis_skin_checked="1" *ngIf="data?.dialogType =='filterCars'" style="scrollbar-width: none">
  <h1 mat-dialog-title>Filter Cars</h1>
-<form [formGroup]="filterForm">
+<form (ngSubmit)="onFilterSubmit()" [formGroup]="filterForm">
   <div mat-dialog-content style="display: flex; flex-wrap: wrap;gap: 5px;">
     <div class="form-group">
       <mat-form-field appearance="fill">
         <mat-label>Brand</mat-label>
-        <mat-select formControlName="brand">
-          <mat-option value="toyota">Toyota</mat-option>
-          <mat-option value="honda">Honda</mat-option>
-          <mat-option value="ford">Ford</mat-option>
-          <!-- Add other brands -->
+        <mat-select formControlName="make">
+          <mat-option *ngFor="let brand of usCarBrands" value="toyota">{{brand}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -131,9 +128,7 @@
       </mat-form-field>
     </div>
 
-    <div class="form-group">
-      <mat-checkbox formControlName="used">Used</mat-checkbox>
-    </div>
+ 
 
     <div class="form-group">
       <mat-form-field appearance="fill">
@@ -159,7 +154,7 @@
     <div class="form-group">
       <mat-form-field appearance="fill">
         <mat-label>Location</mat-label>
-        <input matInput formControlName="location" />
+        <input matInput formControlName="mapLocation" />
       </mat-form-field>
     </div>
 
@@ -169,12 +164,15 @@
         <input matInput formControlName="color" />
       </mat-form-field>
     </div>
+       <div class="form-group" style="display: flex;justify-content: center;align-items: center;text-align: center;margin-right: 20px;">
+      <mat-checkbox formControlName="condition"></mat-checkbox><span>Used</span>
+    </div>
 
   </div>
 
   <mat-dialog-actions style="display: flex; gap: 10px; justify-content: right;">
     <button style="width: auto;" mat-button mat-dialog-close>Cancel</button>
-    <button style="width: auto;" mat-button [mat-dialog-close]="filterForm.value">Apply Filters</button>
+    <button type="submit" style="width: auto;" mat-button [mat-dialog-close]="filterForm.value">Apply Filters</button>
   </mat-dialog-actions>
 </form>
 

@@ -13,7 +13,7 @@
             </div>
             </div>
             <div class="explore-car">
-                <a *ngFor="let brand of brands" href="/brands" class="explore-car-item">
+                <a *ngFor="let brand of brands" (click)="searchCar(brand.name)" class="explore-car-item">
                     <img [src]="brand.image" alt="{{brand.name}}">
                     <h5 class="title-explore">{{ brand.name }}</h5>
                 </a>

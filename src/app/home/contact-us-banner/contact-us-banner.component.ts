@@ -33,13 +33,10 @@ export class ContactUsBannerComponent {
       let now = new Date()
       console.log('Form Submitted:', this.buyCarForm.value);
       let payload = {
-        "id": localStorage.getItem('vendorId') ? localStorage.getItem('vendorId') : localStorage.getItem('userId'),
         "name": this.buyCarForm.get('fullName')?.value,
         "email": this.buyCarForm.get('email')?.value,
-        "phone": this.buyCarForm.get('phone')?.value,
+        // "phone": this.buyCarForm.get('phone')?.value,
         "message": this.buyCarForm.get('message')?.value,
-        "createTime": now.toISOString(),
-        "updateTime":now.toISOString(),
       }
       this.HttpService.contactUS(payload).subscribe((value) => {
        this.snackbar.show('your message sent successfully', 5000, 'success')

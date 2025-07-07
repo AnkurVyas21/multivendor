@@ -49,8 +49,9 @@
                     </div>
                     <div class="box-2 t-al-right" bis_skin_checked="1">
                         <div class="icon-boxs flex" bis_skin_checked="1">
-                            <a (click)="addToFav(basics?.id)">
-                                <i [ngClass]="wishlisted ? 'icon-heart': 'icon-heart-1-1'"></i>
+                            <a >
+                                <i (click)="addToFav(basics?.id)" *ngIf="!wishlisted" class="icon-heart-1-1"></i>
+                                <i (click)="removeWishlist(basics?.id)" *ngIf="wishlisted" class="icon-heart"></i>
                                 <span>Favorite</span>
                             </a>
                             <a href="#">
@@ -75,13 +76,17 @@
                             bis_skin_checked="1" style="transform: translate3d(0px, 0px, 0px);">
                             <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
                                 bis_skin_checked="1" style="width: 1350px; margin-right: 10px;">
-                                <img style="max-width: 1350px; min-width: 1350px;min-height: 700px;max-height:700px;" [src]="'data:image/jpeg;base64,' + frontImage" alt="Image">
+                                <img style="max-width: 1350px; min-width: 1350px;min-height: 700px;max-height:700px;"
+                                    [src]="'data:image/jpeg;base64,' + frontImage" alt="Image">
                             </div>
                         </div>
-                        <div class="swiper-button-next" [ngClass]="{'swiper-button-disabled': selectedPhotoIndex ==5}" tabindex="0" role="button" aria-label="Next slide"
-                            aria-controls="swiper-wrapper-69d2ab12f125f937" aria-disabled="false" bis_skin_checked="1" (click)="next()">
+                        <div class="swiper-button-next" [ngClass]="{'swiper-button-disabled': selectedPhotoIndex ==5}"
+                            tabindex="0" role="button" aria-label="Next slide"
+                            aria-controls="swiper-wrapper-69d2ab12f125f937" aria-disabled="false" bis_skin_checked="1"
+                            (click)="next()">
                         </div>
-                        <div class="swiper-button-prev swiper-button-disabled" [ngClass]="{'swiper-button-disabled': selectedPhotoIndex == 1}" tabindex="-1" role="button"
+                        <div class="swiper-button-prev swiper-button-disabled"
+                            [ngClass]="{'swiper-button-disabled': selectedPhotoIndex == 1}" tabindex="-1" role="button"
                             aria-label="Previous slide" aria-controls="swiper-wrapper-69d2ab12f125f937"
                             aria-disabled="true" bis_skin_checked="1" (click)="prev()"></div>
                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
@@ -91,23 +96,29 @@
                         <div class="swiper-wrapper" id="swiper-wrapper-3b5110f0360fcb0e6" aria-live="polite"
                             bis_skin_checked="1" style="transform: translate3d(0px, 0px, 0px);">
                             <div class="swiper-slide swiper-slide-thumb-active swiper-slide-active" role="group"
-                                aria-label="1 / 10" bis_skin_checked="1" style="width: 254px;height:170px; margin-right: 20px;" (click)="selectPhoto(0,media?.photo1)">
-                                <img [src]="'data:image/jpeg;base64,' + media?.photo1" alt="Image" >
+                                aria-label="1 / 10" bis_skin_checked="1"
+                                style="width: 254px;height:170px; margin-right: 20px;"
+                                (click)="selectPhoto(0,media?.photo1)">
+                                <img [src]="'data:image/jpeg;base64,' + media?.photo1" alt="Image">
                             </div>
                             <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"
-                                bis_skin_checked="1" style="width: 254px;height:170px; margin-right: 20px;" (click)="selectPhoto(1,media?.photo2)">
-                               <img [src]="'data:image/jpeg;base64,' + media?.photo2" alt="Image">
+                                bis_skin_checked="1" style="width: 254px;height:170px; margin-right: 20px;"
+                                (click)="selectPhoto(1,media?.photo2)">
+                                <img [src]="'data:image/jpeg;base64,' + media?.photo2" alt="Image">
                             </div>
                             <div class="swiper-slide" role="group" aria-label="3 / 10" bis_skin_checked="1"
-                                style="width: 254px;height:170px; margin-right: 20px;" (click)="selectPhoto(2,media?.photo3)">
-                               <img [src]="'data:image/jpeg;base64,' + media?.photo3" alt="Image">
+                                style="width: 254px;height:170px; margin-right: 20px;"
+                                (click)="selectPhoto(2,media?.photo3)">
+                                <img [src]="'data:image/jpeg;base64,' + media?.photo3" alt="Image">
                             </div>
                             <div class="swiper-slide" role="group" aria-label="4 / 10" bis_skin_checked="1"
-                                style="width: 254px;height:170px; margin-right: 20px;"  (click)="selectPhoto(3,media?.photo4)">
-                               <img [src]="'data:image/jpeg;base64,' + media?.photo4" alt="Image">
+                                style="width: 254px;height:170px; margin-right: 20px;"
+                                (click)="selectPhoto(3,media?.photo4)">
+                                <img [src]="'data:image/jpeg;base64,' + media?.photo4" alt="Image">
                             </div>
                             <div class="swiper-slide" role="group" aria-label="5 / 10" bis_skin_checked="1"
-                                style="width: 254px;height:170px; margin-right: 20px;"  (click)="selectPhoto(4,media?.photo5)">
+                                style="width: 254px;height:170px; margin-right: 20px;"
+                                (click)="selectPhoto(4,media?.photo5)">
                                 <img [src]="'data:image/jpeg;base64,' + media?.photo5" alt="Image">
                             </div>
                         </div>
@@ -309,7 +320,8 @@
                                         Air Bag
                                     </div>
                                     <div class="listing-feature-wrap" bis_skin_checked="1"><i
-                                            [ngClass]="features?.airbagPassenger ? 'icon-Vector-32' : 'icon-cross crossIcon'"></i>Passanger Air
+                                            [ngClass]="features?.airbagPassenger ? 'icon-Vector-32' : 'icon-cross crossIcon'"></i>Passanger
+                                        Air
                                         Bag</div>
 
                                     <div class="listing-feature-wrap" bis_skin_checked="1"><i
@@ -480,72 +492,76 @@
 
                 </div>
                 <div class="swiper new-cars mybest-selling">
-                <div class="swiper-wrapper">
-                    <div class="tf-car-service swiper-slide" *ngFor="let car of cars">
-                      <a [attr.href]="'detail/' + car?.id" class="image">
-                        <div class="stm-badge-top">
-                          <div class="feature">
-                            <span>{{ car?.condition ?car?.condition: 'New' }}</span>
-                          </div>
-                        </div>
-                        <div class="listing-images">
-                          <div class="hover-listing-image">
-                            <div class="wrap-hover-listing">
-                              <div class="listing-item active" [title]="car?.title">
-                                <div class="images">
-                                  <img [src]="baseUrl+car?.photoUrls[0]" class="swiper-image tfcl-light-gallery" alt="images">
+                    <div class="swiper-wrapper">
+                        <div class="tf-car-service swiper-slide" *ngFor="let car of cars">
+                            <a [attr.href]="'detail/' + car?.id" class="image">
+                                <div class="stm-badge-top">
+                                    <div class="feature">
+                                        <span>{{ car?.condition ?car?.condition: 'New' }}</span>
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="listing-item" [title]="car?.title">
-                                <div class="images">
-                                  <img  [src]="baseUrl+car?.photoUrls[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
+                                <div class="listing-images">
+                                    <div class="hover-listing-image">
+                                        <div class="wrap-hover-listing">
+                                            <div class="listing-item active" [title]="car?.title">
+                                                <div class="images">
+                                                    <img [src]="baseUrl+car?.photoUrls[0]"
+                                                        class="swiper-image tfcl-light-gallery" alt="images">
+                                                </div>
+                                            </div>
+                                            <div class="listing-item" [title]="car?.title">
+                                                <div class="images">
+                                                    <img [src]="baseUrl+car?.photoUrls[1]"
+                                                        class="swiper-image lazy tfcl-light-gallery" alt="images">
+                                                </div>
+                                            </div>
+                                            <div class="listing-item view-gallery" [title]="car?.title">
+                                                <div class="images">
+                                                    <img [src]="baseUrl+car?.photoUrls[2]"
+                                                        class="swiper-image tfcl-light-gallery" alt="images">
+                                                    <div class="overlay-limit">
+                                                        <img src="assets/images/car-list/img.png" class="icon-img"
+                                                            alt="icon-map">
+                                                        <p>2 more photos</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bullet-hover-listing">
+                                                <div class="bl-item active"></div>
+                                                <div class="bl-item"></div>
+                                                <div class="bl-item"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="listing-item view-gallery" [title]="car?.title">
-                                <div class="images">
-                                  <img  [src]="baseUrl+car?.photoUrls[2]" class="swiper-image tfcl-light-gallery" alt="images">
-                                  <div class="overlay-limit">
-                                    <img src="assets/images/car-list/img.png" class="icon-img" alt="icon-map">
-                                    <p>2 more photos</p>
-                                  </div>
+                            </a>
+                            <div class="content">
+                                <span class="sub-title">{{ car?.make+' '+car?.model+' '+car?.type }}</span>
+                                <h6 class="title"><a [attr.href]="'detail/' + car?.id">{{ car?.title }}</a></h6>
+                                <span class="price">{{ '$'+ car?.regularPrice }}</span>
+                                <div class="bottom-btn-wrap">
+                                    <div class="btn-read-more">
+                                        <a class="more-link" [attr.href]="'detail/' + car?.id">
+                                            <span>View details</span>
+                                            <i class="icon-arrow-right2"></i>
+                                        </a>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="watchlist.html" class="icon-service">
+                                            <i class="icon-heart-1-1"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="bullet-hover-listing">
-                                <div class="bl-item active"></div>
-                                <div class="bl-item"></div>
-                                <div class="bl-item"></div>
-                              </div>
                             </div>
-                          </div>
                         </div>
-                      </a>
-                      <div class="content">
-                        <span class="sub-title">{{ car?.make+' '+car?.model+' '+car?.type }}</span>
-                        <h6 class="title"><a [attr.href]="'detail/' + car?.id">{{ car?.title }}</a></h6>
-                        <span class="price">{{ '$'+ car?.regularPrice }}</span>
-                        <div class="bottom-btn-wrap">
-                          <div class="btn-read-more">
-                            <a class="more-link" [attr.href]="'detail/' + car?.id">
-                              <span>View details</span>
-                              <i class="icon-arrow-right2"></i>
-                            </a>
-                          </div>
-                          <div class="btn-group">
-                            <a href="watchlist.html" class="icon-service">
-                              <i class="icon-heart-1-1"></i>
-                            </a>
-                          </div>
+                        <div *ngIf="cars.length == 0" class="no-data-found">
+                            <h5>No Similar Car Found</h5>
                         </div>
-                      </div>
                     </div>
-                    <div *ngIf="cars.length == 0" class="no-data-found">
-                           <h5>No Similar Car Found</h5>
-                    </div>
-                  </div>
-                  
-                <div class="swiper-pagination"></div>
 
-            </div>
+                    <div class="swiper-pagination"></div>
+
+                </div>
             </div>
         </div>
     </div>
