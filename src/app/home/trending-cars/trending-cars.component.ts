@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from 'src/app/enviornment/environment';
 import { HttpServiceService } from 'src/app/services/http-service.service';
@@ -10,172 +10,16 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 })
 export class TrendingCarsComponent {
   baseUrl = environment.apiUrl;
+  wishlistedCars :any
 
-  constructor(private httpService:HttpServiceService)
+  constructor(private httpService:HttpServiceService,private cd: ChangeDetectorRef)
   {
   }
 
 
-// {
-//   "id": 2,
-//   "title": "Lexus LC Hybrid 2024",
-//   "make": "Audi",
-//   "model": "X5",
-//   "type": "Compact",
-//   "year": "2020",
-//   "condition": "Used",
-//   "stockNumber": "2514251",
-//   "vinNumber": "52415241",
-//   "regularPrice": 80000,
-//   "salePrice": 27000,
-//   "requestPrice": 142334.0,
-//   "description": null,
-//   "priceLabel": false,
-//   "createTime": "2025-02-24T19:54:24.000+00:00",
-//   "updateTime": "2025-02-24T19:54:52.000+00:00",
-//   "media": {
-//       "photo1": "assets/images/car-list/car11.jpg",
-//       "photo2": "assets/images/car-list/car18.jpg",
-//       "photo3": "assets/images/car-list/car12.jpg",
-//       "photo4": "assets/images/car-list/car11.jpg",
-//       "photo5": "assets/images/car-list/car12.jpg",
-//       "videoUrl": "https://www.youtube.com/shorts/example",
-//       "vinReport": null
-//     }},
-// {
-//   "id": 2,
-//   "title": "Chevrolet Suburban 2021 mo",
-//   "make": "Audi",
-//   "model": "X5",
-//   "type": "Compact",
-//   "year": "2020",
-//   "condition": "Used",
-//   "stockNumber": "2514251",
-//   "vinNumber": "52415241",
-//   "regularPrice": 33332.0,
-//   "salePrice": 27000,
-//   "requestPrice": 142334.0,
-//   "description": null,
-//   "priceLabel": false,
-//   "createTime": "2025-02-24T19:54:24.000+00:00",
-//   "updateTime": "2025-02-24T19:54:52.000+00:00",
-//   "media": {
-//       "photo1": "assets/images/car-list/car12.jpg",
-//       "photo2": "assets/images/car-list/car11.jpg",
-//       "photo3": "assets/images/car-list/car12.jpg",
-//       "photo4": "assets/images/car-list/car11.jpg",
-//       "photo5": "assets/images/car-list/car12.jpg",
-//       "videoUrl": "https://www.youtube.com/shorts/example",
-//       "vinReport": null
-//     }},
-// {
-//   "id": 2,
-//   "title": "Chevrolet Suburban 2021 mo",
-//   "make": "Audi",
-//   "model": "X5",
-//   "type": "Compact",
-//   "year": "2020",
-//   "condition": "Used",
-//   "stockNumber": "2514251",
-//   "vinNumber": "52415241",
-//   "regularPrice": 33332.0,
-//   "salePrice": 27000,
-//   "requestPrice": 142334.0,
-//   "description": null,
-//   "priceLabel": false,
-//   "createTime": "2025-02-24T19:54:24.000+00:00",
-//   "updateTime": "2025-02-24T19:54:52.000+00:00",
-//   "media": {
-//       "photo1": "assets/images/car-list/car18.jpg",
-//       "photo2": "assets/images/car-list/car11.jpg",
-//       "photo3": "assets/images/car-list/car12.jpg",
-//       "photo4": "assets/images/car-list/car11.jpg",
-//       "photo5": "assets/images/car-list/car12.jpg",
-//       "videoUrl": "https://www.youtube.com/shorts/example",
-//       "vinReport": null
-//     }},
-// {
-//   "id": 2,
-//   "title": "Chevrolet Suburban 2021 mo",
-//   "make": "Audi",
-//   "model": "X5",
-//   "type": "Compact",
-//   "year": "2020",
-//   "condition": "Used",
-//   "stockNumber": "2514251",
-//   "vinNumber": "52415241",
-//   "regularPrice": 33332.0,
-//   "salePrice": 27000,
-//   "requestPrice": 142334.0,
-//   "description": null,
-//   "priceLabel": false,
-//   "createTime": "2025-02-24T19:54:24.000+00:00",
-//   "updateTime": "2025-02-24T19:54:52.000+00:00",
-//   "media": {
-//       "photo1": "assets/images/car-list/car12.jpg",
-//       "photo2": "assets/images/car-list/car11.jpg",
-//       "photo3": "assets/images/car-list/car12.jpg",
-//       "photo4": "assets/images/car-list/car11.jpg",
-//       "photo5": "assets/images/car-list/car12.jpg",
-//       "videoUrl": "https://www.youtube.com/shorts/example",
-//       "vinReport": null
-//     }},
-// {
-//   "id": 2,
-//   "title": "Chevrolet Suburban 2021 mo",
-//   "make": "Audi",
-//   "model": "X5",
-//   "type": "Compact",
-//   "year": "2020",
-//   "condition": "Used",
-//   "stockNumber": "2514251",
-//   "vinNumber": "52415241",
-//   "regularPrice": 33332.0,
-//   "salePrice": 27000,
-//   "requestPrice": 142334.0,
-//   "description": null,
-//   "priceLabel": false,
-//   "createTime": "2025-02-24T19:54:24.000+00:00",
-//   "updateTime": "2025-02-24T19:54:52.000+00:00",
-//   "media": {
-//       "photo1": "assets/images/car-list/car2.jpg",
-//       "photo2": "assets/images/car-list/car11.jpg",
-//       "photo3": "assets/images/car-list/car12.jpg",
-//       "photo4": "assets/images/car-list/car11.jpg",
-//       "photo5": "assets/images/car-list/car12.jpg",
-//       "videoUrl": "https://www.youtube.com/shorts/example",
-//       "vinReport": null
-//     }},
-// {
-//   "id": 2,
-//   "title": "Chevrolet Suburban 2021 mo",
-//   "make": "Audi",
-//   "model": "X5",
-//   "type": "Compact",
-//   "year": "2020",
-//   "condition": "Used",
-//   "stockNumber": "2514251",
-//   "vinNumber": "52415241",
-//   "regularPrice": 33332.0,
-//   "salePrice": 27000,
-//   "requestPrice": 142334.0,
-//   "description": null,
-//   "priceLabel": false,
-//   "createTime": "2025-02-24T19:54:24.000+00:00",
-//   "updateTime": "2025-02-24T19:54:52.000+00:00",
-//   "media": {
-//       "photo1": "assets/images/car-list/car18.jpg",
-//       "photo2": "assets/images/car-list/car11.jpg",
-//       "photo3": "assets/images/car-list/car12.jpg",
-//       "photo4": "assets/images/car-list/car11.jpg",
-//       "photo5": "assets/images/car-list/car12.jpg",
-//       "videoUrl": "https://www.youtube.com/shorts/example",
-//       "vinReport": null
-//     }},
-//   ];
-
 public cars:any = []
   ngOnInit(): void {
+    this.getWishlist()
      this.trendingCars()
    }
 
@@ -231,8 +75,23 @@ getWishlist()
      {
       let email = localStorage.getItem('email')
       this.httpService.getWishlist(email).subscribe((value)=>{
-        console.log(value)
-        return 0
+       this.wishlistedCars=value.carIds;
+         this.cd.detectChanges();
+      })
+     }
+
+     checkWishlist(id:any)
+     {
+      return this.wishlistedCars.includes(id)
+     }
+
+     removeWishlist(carId: number)
+     {
+       let email = localStorage.getItem('email')
+      this.httpService.deleteWishlist(carId).subscribe((value)=>{
+        this.getWishlist()
+      },(error)=>{
+        this.getWishlist()
       })
      }
 

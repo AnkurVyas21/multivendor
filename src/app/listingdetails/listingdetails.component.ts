@@ -170,16 +170,7 @@ cars:any=[]
      {
       let email = localStorage.getItem('email')
       this.httpService.getWishlist(email).subscribe((value)=>{
-        console.log(value)
-        for(let car of value)
-        {
-          if(car.car.id==this.route.snapshot.params['id'])
-          {
-            this.wishlisted = true
-            return 0
-          }
-        }
-        this.wishlisted = false
+       this.wishlisted = value.carIds.includes(+this.route.snapshot.params['id'])
         return 0
       })
      }

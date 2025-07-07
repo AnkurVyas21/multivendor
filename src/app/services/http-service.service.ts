@@ -335,7 +335,7 @@ disableVendor(id:any){
   }
 
   wishlistPost(id:any,email:any): Observable<any> {
-    return this.http.post(`${this.baseURL}/api/wishlist/add/`+email+'/'+id, { email,id }).pipe(
+    return this.http.post(`${this.baseURL}/api/wishlist/add/`+id, {carId:id }).pipe(
       catchError((error) => {
         console.error('Forgot password request failed:', error);
         return throwError(() => error);
@@ -343,8 +343,19 @@ disableVendor(id:any){
     );
   }
 
+deleteWishlist(id: any) {
+  return this.http.delete(`${this.baseURL}/api/wishlist/remove/${id}`, {
+    body: { carId: id }
+  }).pipe(
+    catchError((error) => {
+      console.error('Delete wishlist request failed:', error);
+      return throwError(() => error);
+    })
+  );
+}
+
   getWishlist(email: string|null): Observable<any> {
-    return this.http.get(`${this.baseURL}/api/wishlist/${email}`).pipe(
+    return this.http.get(`${this.baseURL}/api/wishlist/wishlist`).pipe(
       catchError((error) => {
         console.error('Error fetching customer details:', error);
         return throwError(() => error);
