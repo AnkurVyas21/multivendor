@@ -113,7 +113,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Brand</mat-label>
         <mat-select formControlName="make">
-          <mat-option *ngFor="let brand of usCarBrands" value="toyota">{{brand}}</mat-option>
+          <mat-option *ngFor="let brand of usCarBrands" value={{brand}}>{{brand}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -164,13 +164,21 @@
         <input matInput formControlName="color" />
       </mat-form-field>
     </div>
-       <div class="form-group" style="display: flex;justify-content: center;align-items: center;text-align: center;margin-right: 20px;">
-      <mat-checkbox formControlName="condition"></mat-checkbox><span>Used</span>
+
+      <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Condition</mat-label>
+        <mat-select formControlName="condition">
+          <mat-option value="used">Used</mat-option>
+          <mat-option value="unused">Unused</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
   </div>
 
   <mat-dialog-actions style="display: flex; gap: 10px; justify-content: right;">
+    <a style="color: blue; text-decoration: underline;" (click)="resetForm()">Reset</a>
     <button style="width: auto;" mat-button mat-dialog-close>Cancel</button>
     <button type="submit" style="width: auto;" mat-button [mat-dialog-close]="filterForm.value">Apply Filters</button>
   </mat-dialog-actions>

@@ -65,7 +65,7 @@ export class DialogBoxComponent implements OnInit {
     this.filterForm = this.fb.group({
       make: [''],
       transmission: [''],
-      condition: [false],
+      condition: [''],
       model: [''],
       year: [''],
       engineSize: [''],
@@ -140,5 +140,10 @@ export class DialogBoxComponent implements OnInit {
     queryParams: cleaned
   });
 }
+  }
+
+  resetForm()
+  {
+    this.filterForm.reset()
   }
 }

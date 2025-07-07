@@ -541,10 +541,6 @@ filterCars(value: any) {
 
   // Step 1: Replace condition boolean with 'used' or 'unused'
   const queryParams = { ...value };
-  if ('condition' in queryParams) {
-    queryParams.condition = queryParams.condition ? 'used' : 'unused';
-  }
-
   // Step 2: Remove empty, null, or undefined fields
   const filteredBody = Object.fromEntries(
     Object.entries(queryParams).filter(([_, v]) => v !== '' && v != null)

@@ -46,13 +46,11 @@ export class SearchCarListComponent {
             }
              else if (paramKeys.includes('brand')|| paramKeys.includes('color')|| paramKeys.includes('engineSize')|| paramKeys.includes('location')|| paramKeys.includes('model')|| paramKeys.includes('transmission')|| paramKeys.includes('used')|| paramKeys.includes('year'))
             {
-              console.log(value.params,'make')
               this.searchControl.setValue(value.params.make)
               this.filterCars(value.params)
             }
               else if (Object.keys(value.params)[0]=='make')
             {
-              console.log(value.params.make,'make')
               this.searchControl.setValue(value.params.make)
               this.searchCarsMake(value.params.make)
             }
