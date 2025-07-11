@@ -73,6 +73,15 @@ const routes: Routes = [
   {
     path: 'search', component: SearchCarListComponent  
   },
+   {
+    path: 'trending', component: SearchCarListComponent  
+  },
+   {
+    path: 'recently', component: SearchCarListComponent  
+  },
+   {
+    path: 'explore-all', component: SearchCarListComponent  
+  },
   {
     path: 'reset-password', component: ResetPasswordComponent , canActivate: [AuthGuard] 
   },
