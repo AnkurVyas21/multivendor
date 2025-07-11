@@ -355,6 +355,12 @@ deleteWishlist(id: any) {
 }
 
   getWishlist(email: string|null): Observable<any> {
+    if(localStorage.getItem('userType')!='user')
+    {
+      return new Observable(Observer=>{
+       Observer.next([]),Observer.complete()  ,Observer.error([])
+      })
+    }
     return this.http.get(`${this.baseURL}/api/wishlist/wishlist`).pipe(
       catchError((error) => {
         console.error('Error fetching customer details:', error);

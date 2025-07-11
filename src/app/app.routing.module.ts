@@ -39,7 +39,7 @@ const routes: Routes = [
     path: 'forgot', component: ForgotComponent , canActivate: [AuthGuard], data: { isLoginPage: true }
   }, 
   {
-    path: 'shop', component: CategoryComponent , canActivate: [AuthGuard] 
+    path: 'shop', component: CategoryComponent  
   },
  
   {
@@ -49,7 +49,7 @@ const routes: Routes = [
   //   path: 'search', component: SearchResultComponent , canActivate: [AuthGuard] 
   // },
   {
-    path: 'brands', component: ShopComponent , canActivate: [AuthGuard] 
+    path: 'brands', component: ShopComponent  
   },
   {
     path: 'profile', component: ProfilePageComponent , canActivate: [AuthGuard] 
@@ -59,16 +59,16 @@ const routes: Routes = [
     path: 'wishlist', component: WatchlistComponent , canActivate: [AuthGuard] 
   },
   {
-    path: 'Aboutus', component: AboutComponent , canActivate: [AuthGuard] 
+    path: 'Aboutus', component: AboutComponent  
   },
   {
-    path: 'contact', component: ContactComponent , canActivate: [AuthGuard] 
+    path: 'contact', component: ContactComponent  
   },
   {
-    path: 'news', component: NewsVideosComponent , canActivate: [AuthGuard] 
+    path: 'news', component: NewsVideosComponent  
   },
   {
-    path: 'hotDeal', component: HotDealComponent , canActivate: [AuthGuard] 
+    path: 'hotDeal', component: HotDealComponent  
   },
   {
     path: 'search', component: SearchCarListComponent  
