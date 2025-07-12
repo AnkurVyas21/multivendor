@@ -42,7 +42,7 @@ export class ExploreOurCarsComponent {
 
    searchCar(type:string)
    {
-              this.Route.navigate(['/search'],{queryParams:{type:type}})
+              this.Route.navigate(['/explore'],{queryParams:{type:type}})
 
    }
 }

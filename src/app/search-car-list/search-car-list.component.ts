@@ -5,7 +5,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { environment } from '../enviornment/environment';
-import { param } from 'jquery';
 
 @Component({
   selector: 'app-search-car-list',
@@ -33,6 +32,7 @@ export class SearchCarListComponent {
     
         ngOnInit() {
           // Initialize with all options
+            console.log('search component works')
           this.ActivatedRoute.queryParamMap.subscribe((value:any)=>{
             console.log(Object.keys(value.params))
             let paramKeys = Object.keys(value.params)

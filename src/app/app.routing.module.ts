@@ -48,9 +48,9 @@ const routes: Routes = [
   // {
   //   path: 'search', component: SearchResultComponent , canActivate: [AuthGuard] 
   // },
-  {
-    path: 'brands', component: ShopComponent  
-  },
+  // {
+  //   path: 'brands', component: ShopComponent  
+  // },
   {
     path: 'profile', component: ProfilePageComponent , canActivate: [AuthGuard] 
   },
@@ -81,6 +81,12 @@ const routes: Routes = [
   },
    {
     path: 'explore-all', component: SearchCarListComponent  
+  },
+  {
+    path: 'brands', component: SearchCarListComponent  
+  },
+  {
+    path: 'explore', component: SearchCarListComponent  
   },
   {
     path: 'reset-password', component: ResetPasswordComponent , canActivate: [AuthGuard] 

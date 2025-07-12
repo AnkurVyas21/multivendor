@@ -571,9 +571,6 @@ filterCars(value: any) {
         return throwError(() => error);
       })
     );
-
   }
-
-  
 
 }

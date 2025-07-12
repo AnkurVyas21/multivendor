@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoaderService } from './services/loaderService/loader.service';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'multivendor';
   currentPath: string = '';
  loader$: Observable<boolean>;
-  constructor(private router: Router,private loaderService: LoaderService) {
+  constructor(private router: Router,private loaderService: LoaderService,  private cd: ChangeDetectorRef) {
      this.loader$ = this.loaderService.loaderState$;
   }
 
@@ -21,6 +21,12 @@ export class AppComponent implements OnInit {
       const fullUrl = this.router.url; 
       const segments = fullUrl.split('/'); 
       this.currentPath = segments[1] || ''; 
+    });
+  }
+
+  ngAfterViewInit(){
+    this.loader$.subscribe(() => {
+      this.cd.detectChanges();  // Safe here!
     });
   }
 }
