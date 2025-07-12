@@ -77,32 +77,27 @@
                             <div class="listing-grid-item" *ngFor="let car of searchResult" bis_skin_checked="1">
                               <div class="listing-item-image" bis_skin_checked="1">
                                 <div class="hover-listing-image" bis_skin_checked="1">
-                                  <div class="wrap-hover-listing" bis_skin_checked="1">
-                                    <div class="listing-item active" [title]="car?.title" bis_skin_checked="1">
-                                      <div class="images" bis_skin_checked="1">
-                                        <img [src]="baseUrl+car?.photoUrls[0]" class="swiper-image tfcl-light-gallery" alt="images">
-                                      </div>
-                                    </div>
-                                    <div class="listing-item" [title]="car?.title" bis_skin_checked="1">
-                                      <div class="images" bis_skin_checked="1">
-                                        <img [src]="baseUrl+car?.photoUrls[1]" class="swiper-image lazy tfcl-light-gallery" alt="images">
-                                      </div>
-                                    </div>
-                                    <div class="listing-item view-gallery" [title]="car?.title" bis_skin_checked="1">
-                                      <div class="images" bis_skin_checked="1">
-                                        <img [src]="baseUrl+car?.photoUrls[2]" class="swiper-image tfcl-light-gallery" alt="images">
-                                        <div class="overlay-limit" bis_skin_checked="1">
-                                          <img src={{car?.photoUrls[0]}} class="icon-img" alt="icon-map">
-                                          <p>2 more photos</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="bullet-hover-listing" bis_skin_checked="1">
-                                      <div class="bl-item active" bis_skin_checked="1"></div>
-                                      <div class="bl-item" bis_skin_checked="1"></div>
-                                      <div class="bl-item" bis_skin_checked="1"></div>
-                                    </div>
-                                  </div>
+                                  <div class="wrap-hover-listing">
+            <!-- Image Carousel -->
+            <div *ngFor="let image of car.photoUrls; let i = index"
+                 class="listing-item"
+                 [class.active]="hoveredIndexes[car.id] === i || (!hoveredIndexes[car.id] && i === 0)"
+                 [title]="car.title"
+                 (mouseover)="setHoveredImage(car.id, i)"
+                 (mouseleave)="resetHoveredImage(car.id)">
+              <div class="images">
+                <img [src]="baseUrl + image" class="swiper-image tfcl-light-gallery" alt="images">
+              </div>
+            </div>
+
+            <!-- Bullets -->
+            <div class="bullet-hover-listing">
+              <div *ngFor="let dot of car.photoUrls; let i = index"
+                   class="bl-item"
+                   [class.active]="hoveredIndexes[car.id] === i || (!hoveredIndexes[car.id] && i === 0)">
+              </div>
+            </div>
+          </div>
                                 </div>
                                 <a href="watchlist.html" class="icon-favorite">
                                   <i class="icon-heart-1-1"></i>

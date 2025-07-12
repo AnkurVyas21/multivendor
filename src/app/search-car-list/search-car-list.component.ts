@@ -15,6 +15,9 @@ export class SearchCarListComponent {
 
     cars = []
  baseUrl = environment.apiUrl
+   hoveredIndexes: { [carId: number]: number | null } = {};
+
+
 
     searchResult:any =[]
 
@@ -59,6 +62,15 @@ export class SearchCarListComponent {
             }
           })
         }
+
+
+        setHoveredImage(carId: number, index: number) {
+  this.hoveredIndexes[carId] = index;
+}
+
+resetHoveredImage(carId: number) {
+  this.hoveredIndexes[carId] = null;
+}
 
         searchCars(title:string)
         {
