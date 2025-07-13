@@ -21,7 +21,7 @@
         <div class="hover-listing-image">
           <div class="wrap-hover-listing">
             <!-- Image Carousel -->
-            <div *ngFor="let image of car.photoUrls; let i = index"
+            <div *ngFor="let image of car.photoUrls.length ? car.photoUrls : dummyImage; let i = index"
                  class="listing-item"
                  [class.active]="hoveredIndexes[car.id] === i || (!hoveredIndexes[car.id] && i === 0)"
                  [title]="car.title"

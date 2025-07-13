@@ -10,6 +10,7 @@ export class CategoriesViewMoreComponent {
 public   carCategories = [
   { category: "Sedan",            imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMfrT7CTCyXnkJ-q5x0fVktp1QgCy8ef_kng&s" },
   { category: "Coupe",            imageUrl: "https://i.pinimg.com/736x/e7/85/86/e785862c4ed9f1cc8d5fa58350d03266.jpg" },
+  { category: "Cabriolet",        imageUrl: "https://png.pngtree.com/png-clipart/20250112/original/pngtree-amazing-car-open-door-car-png-image_20151777.png" },
   { category: "Hatchback",        imageUrl: "https://png.pngtree.com/png-vector/20241211/ourmid/pngtree-red-hatchback-car-design-png-image_14712851.png" },
   { category: "SUV",              imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC6uAS794AVidtYiSkmWEJc3ttCYSb8c5Xtg&s" },
   { category: "Crossover",        imageUrl: "https://png.pngtree.com/png-vector/20241210/ourmid/pngtree-compact-white-crossover-car-with-a-glossy-finish-png-image_14654494.png" },
@@ -25,6 +26,8 @@ public   carCategories = [
   { category: "Targa Top",        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjfEpoeb3qHQTc3o6kbqacZ9r2l9AuyNyhIg&s" },
   { category: "Buggy",            imageUrl: "https://png.pngtree.com/png-clipart/20240726/original/pngtree-atv-car-buggy-off-roads-png-image_15638022.png" },
   { category: "Panel Van",        imageUrl: "https://media.istockphoto.com/id/2149237608/photo/van-with-empty-side-space-for-design-transport-car-mock-up-delivery-van-isolated-on-white.jpg?s=612x612&w=0&k=20&c=mPSRjRGuABnHIUBUUOP3JYQy2t6ebEtO9HYNuBPBp34=" },
+  { category: "Supercar",        imageUrl: "https://img.freepik.com/free-photo/3d-car-with-simple-background_23-2150796882.jpg" },
+  { category: "Campers",        imageUrl: "https://atlas-content-cdn.pixelsquid.com/stock-images/camper-recreational-vehicle-y1vqkl1-600.jpg" },
   { category: "Limousine",        imageUrl: "https://png.pngtree.com/png-clipart/20240316/original/pngtree-elegant-limousine-png-object-png-image_14597540.png" }
 ];
 

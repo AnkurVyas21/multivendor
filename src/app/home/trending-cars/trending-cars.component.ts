@@ -11,6 +11,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 export class TrendingCarsComponent {
   baseUrl = environment.apiUrl;
   wishlistedCars :any
+  public dummyImage = ['src\assets\images\logo\search.png']
 
   constructor(private httpService:HttpServiceService,private cd: ChangeDetectorRef)
   {
