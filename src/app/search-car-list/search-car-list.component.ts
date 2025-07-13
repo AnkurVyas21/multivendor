@@ -16,7 +16,7 @@ export class SearchCarListComponent {
     cars = []
  baseUrl = environment.apiUrl
    hoveredIndexes: { [carId: number]: number | null } = {};
-
+  title = 'all cars';
 
 
     searchResult:any =[]
@@ -41,23 +41,28 @@ export class SearchCarListComponent {
             let paramKeys = Object.keys(value.params)
             if(Object.keys(value.params)[0]=='title')
            { this.searchControl.setValue(value.params.title)
+            this.title = value.params.title
             this.searchCars(value.params.title)}
             else if (Object.keys(value.params)[0]=='type')
             {
+              this.title = value.params.type+' cars'
               this.searchControl.setValue(value.params.type)
               this.searchCarsType(value.params.type)
             }
              else if (paramKeys.includes('brand')|| paramKeys.includes('color')|| paramKeys.includes('engineSize')|| paramKeys.includes('location')|| paramKeys.includes('model')|| paramKeys.includes('transmission')|| paramKeys.includes('used')|| paramKeys.includes('year'))
             {
+              this.title = paramKeys.join(',')
               this.searchControl.setValue(value.params.make)
               this.filterCars(value.params)
             }
               else if (Object.keys(value.params)[0]=='make')
             {
+              this.title = value.params.make+' cars'
               this.searchControl.setValue(value.params.make)
               this.searchCarsMake(value.params.make)
             }
             else {
+              this.title = 'all cars'
               this.searchAllCars()
             }
           })

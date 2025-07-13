@@ -18,6 +18,8 @@ import { AdminAuthGuard } from "./services/authGuard/adminAuth.guard";
 import { NewsVideosComponent } from "./news-videos/news-videos.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { SearchCarListComponent } from "./search-car-list/search-car-list.component";
+import { BrandViewMoreComponent } from "./brand-view-more/brand-view-more.component";
+import { CategoriesViewMoreComponent } from "./categories-view-more/categories-view-more.component";
 
 const routes: Routes = [
   {
@@ -83,10 +85,10 @@ const routes: Routes = [
     path: 'explore-all', component: SearchCarListComponent  
   },
   {
-    path: 'brands', component: SearchCarListComponent  
+    path: 'brands', component: BrandViewMoreComponent  
   },
   {
-    path: 'explore', component: SearchCarListComponent  
+    path: 'categories', component: CategoriesViewMoreComponent  
   },
   {
     path: 'reset-password', component: ResetPasswordComponent , canActivate: [AuthGuard] 

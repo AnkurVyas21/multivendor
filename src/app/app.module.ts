@@ -50,6 +50,8 @@ import { AuthInterceptor } from './interceptors/auth.service';
 import { SearchCarListComponent } from './search-car-list/search-car-list.component';
 import { CommonModule } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrandViewMoreComponent } from './brand-view-more/brand-view-more.component';
+import { CategoriesViewMoreComponent } from './categories-view-more/categories-view-more.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     SellOrBuycarsCardsComponent,
     ContactUsBannerComponent,
     NewsVideosComponent,
-    SearchCarListComponent
+    SearchCarListComponent,
+    BrandViewMoreComponent,
+    CategoriesViewMoreComponent
 
   ],
   imports: [

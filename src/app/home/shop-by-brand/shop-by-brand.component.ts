@@ -20,9 +20,7 @@ export class ShopByBrandComponent {
 
   searchCar(type:string)
   {
-    console.log('clicked',type)
-    this.route.navigate(['/brands'],{queryParams:{make:type}})
-
+    this.route.navigate(['/search'],{queryParams:{make:type}})
   }
   
 }

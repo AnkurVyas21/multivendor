@@ -1,0 +1,17 @@
+<div class="widget-explore-car">
+    <div class="themesflat-container">
+        <div class="explore-car-wrap">
+             <div class="header-section-main mb-46">
+                <h2 class="title-section-main wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                    Shop by Categories
+                </h2>
+            </div>
+  <div class="explore-car">
+                <a *ngFor="let car of carCategories" (click)="searchCar(car.category)" class="explore-car-item">
+                    <img [src]="car.imageUrl" alt="{{car.category}}">
+                    <h5 class="title-explore">{{ car.category }}</h5>
+                </a>
+            </div>
+  </div>
+  </div>
+  </div>
