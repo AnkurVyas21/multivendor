@@ -23,7 +23,7 @@
 
         <div class="listing-images">
           <div class="hover-listing-image">
-            <div class="wrap-hover-listing">
+            <div class="wrap-hover-listing" *ngIf="car.photoUrls.length">
               <div class="listing-item"
                    *ngFor="let img of car?.photoUrls; let i = index"
                    [class.active]="hoveredIndexes[car.id] === i || (!hoveredIndexes[car.id] && i === 0)"
@@ -34,12 +34,20 @@
                   <img [src]="baseUrl + img" class="swiper-image tfcl-light-gallery" alt="image">
                 </div>
               </div>
+             
 
               <div class="bullet-hover-listing">
                 <div class="bl-item"
                      *ngFor="let dot of car?.photoUrls; let i = index"
                      [class.active]="hoveredIndexes[car.id] === i || (!hoveredIndexes[car.id] && i === 0)">
                 </div>
+              </div>
+            </div>
+             <div *ngIf="!car.photoUrls || !car.photoUrls.length"
+                 [title]="car.title"
+              >
+              <div class="images">
+               <img src="assets/images/logo/search.png" class="swiper-image tfcl-light-gallery" alt="images">
               </div>
             </div>
           </div>

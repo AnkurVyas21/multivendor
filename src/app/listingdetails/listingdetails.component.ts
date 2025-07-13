@@ -120,7 +120,7 @@ cars:any=[]
 
   next()
   {
-     if(this.selectedPhotoIndex<Object.keys(this.media)?.slice(1,6).length)
+     if(this.selectedPhotoIndex<Object.keys(this.media)?.slice(1,6)?.length)
      {
       this.selectedPhotoIndex++;
       this.frontImage=this.media['photo'+this.selectedPhotoIndex];

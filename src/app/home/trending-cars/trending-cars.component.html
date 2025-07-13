@@ -19,18 +19,19 @@
 
       <div class="listing-images">
         <div class="hover-listing-image">
-          <div class="wrap-hover-listing">
+          <div class="wrap-hover-listing" *ngIf="car.photoUrls.length">
             <!-- Image Carousel -->
-            <div *ngFor="let image of car.photoUrls.length ? car.photoUrls : dummyImage; let i = index"
+            <div *ngFor="let image of car.photoUrls; let i = index"
                  class="listing-item"
                  [class.active]="hoveredIndexes[car.id] === i || (!hoveredIndexes[car.id] && i === 0)"
                  [title]="car.title"
                  (mouseover)="setHoveredImage(car.id, i)"
                  (mouseleave)="resetHoveredImage(car.id)">
               <div class="images">
-                <img [src]="baseUrl + image" class="swiper-image tfcl-light-gallery" alt="images">
+                <img [src]="image ? baseUrl + image:'src/assets/images/logo/search.png'" class="swiper-image tfcl-light-gallery" alt="images">
               </div>
             </div>
+            
 
             <!-- Bullets -->
             <div class="bullet-hover-listing">
@@ -40,6 +41,13 @@
               </div>
             </div>
           </div>
+            <div *ngIf="!car.photoUrls || !car.photoUrls.length"
+                 [title]="car.title"
+              >
+              <div class="images">
+               <img src="assets/images/logo/search.png" class="swiper-image tfcl-light-gallery" alt="images">
+              </div>
+            </div>
         </div>
       </div>
     </a>

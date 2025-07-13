@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { environment } from '../enviornment/environment';
+import { environment } from '../enviornment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpServiceService {
-  private baseURL = '';  // Use environment.apiUrl
+  private baseURL = environment.apiUrl;  // Use environment.apiUrl
 
   constructor(private http: HttpClient) { }
  

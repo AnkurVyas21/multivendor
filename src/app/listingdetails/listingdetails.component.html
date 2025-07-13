@@ -77,7 +77,7 @@
                             <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
                                 bis_skin_checked="1" style="width: 1350px; margin-right: 10px;">
                                 <img style="max-width: 1350px; min-width: 1350px;min-height: 700px;max-height:700px;"
-                                    [src]="'data:image/jpeg;base64,' + frontImage" alt="Image">
+                                    [src]="frontImage ? 'data:image/jpeg;base64,' + frontImage:'assets/images/logo/search.png'" alt="Image">
                             </div>
                         </div>
                         <div class="swiper-button-next" [ngClass]="{'swiper-button-disabled': selectedPhotoIndex ==5}"
@@ -93,7 +93,7 @@
                     </div>
                     <div class="swiper property-gallary swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-container-free-mode swiper-container-thumbs"
                         bis_skin_checked="1">
-                        <div class="swiper-wrapper" id="swiper-wrapper-3b5110f0360fcb0e6" aria-live="polite"
+                        <div class="swiper-wrapper" *ngIf="media?.photo1 || media?.photo2 || media?.photo3 || media?.photo4 || media?.photo5"  id="swiper-wrapper-3b5110f0360fcb0e6" aria-live="polite"
                             bis_skin_checked="1" style="transform: translate3d(0px, 0px, 0px);">
                             <div class="swiper-slide swiper-slide-thumb-active swiper-slide-active" role="group"
                                 aria-label="1 / 10" bis_skin_checked="1"
