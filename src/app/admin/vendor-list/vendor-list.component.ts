@@ -1,21 +1,38 @@
 import { formatDate } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import 'datatables.net';
+import 'datatables.net-bs5';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
-import { error } from 'jquery';
+import { MatTableDataSource } from '@angular/material/table';
+
+export interface vendorData {
+  id:string;
+  name: string;
+  email: string;
+  phone:string;
+  enabled: boolean;
+  date:string;
+  license:string;
+  actions: string;
+}
 
 @Component({
   selector: 'app-vendor-list',
   templateUrl: './vendor-list.component.html',
-  styleUrls: ['./vendor-list.component.css']
+  styleUrls: ['./vendor-list.component.css','../../../assets/css/modern.css'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class VendorListComponent {
-  searchQuery: string = '';
-  vendorList: any = []
 
+export class VendorListComponent { 
+  searchQuery: string = '';
+  vendorList: any=[{}];
+  activeLoader = false;
   displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'enabled', 'date', 'license', 'actions'];
+
+  dataSource = new MatTableDataSource<any>(this.vendorList);
 
 
   filteredvendorList = this.vendorList;
@@ -24,13 +41,12 @@ export class VendorListComponent {
 
   }
 
-
-
   ngOnInit() {
     this.getVendorList()
   }
 
   getVendorList() {
+      this.activeLoader = true;
     this.httpService.getadminVendorList().subscribe((value) => {
       if (value.length) {
         this.vendorList = []
@@ -47,7 +63,11 @@ export class VendorListComponent {
           "license": element.tradeLicenseNumber
         })
       })
+     this.dataSource = new MatTableDataSource<any>(this.vendorList);
+
+      this.activeLoader = false;
     }, (error) => {
+      this.activeLoader = false;
       console.log(error)
     })
   }
@@ -117,4 +137,10 @@ export class VendorListComponent {
 
     })
   }
+
+  applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+}
+
 }

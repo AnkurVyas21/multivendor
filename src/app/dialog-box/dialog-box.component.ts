@@ -101,10 +101,8 @@ export class DialogBoxComponent implements OnInit {
     let payload ={
   carId: this.data.id,
   drivingLicenseNumber: this.testDriveForm.value.license,
-  appointmentRequest: {
-    carModel: this.data.model,
-    appointmentDate: this.testDriveForm.value.date
-  }
+  appointmentTime: this.testDriveForm.value.date,
+  userId: localStorage.getItem('userId'),
 }
     this.httpservice.sendTestDrive(payload).subscribe((value)=>{
       console.log(value)

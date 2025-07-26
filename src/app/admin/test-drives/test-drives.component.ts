@@ -27,11 +27,7 @@ export interface CarData {
 
 export class TestDrivesComponent { 
   
-  public carList: CarData[] = [
-    { leadId: '#201', carId: '#car01', customerName: 'John Doe', carModel: 'Toyota Camry 2022', status: 'Pending' },
-    { leadId: '#201', carId: '#car01', customerName: 'John Doe', carModel: 'Toyota Camry 2022', status: 'Pending' },
-    { leadId: '#201', carId: '#car01', customerName: 'John Doe', carModel: 'Toyota Camry 2022', status: 'Pending' },
-  ];
+  public carList:any[] = [{}]
 
 
 constructor(private httpService:HttpServiceService, private route:Router, private dialog:MatDialog)
@@ -43,7 +39,7 @@ searchQuery: string = '';
 
 public activeLoader = true;
 
-displayedColumns: string[] = ['leadId', 'carId', 'customerName', 'carModel', 'status', 'actions'];
+displayedColumns: string[] = ['id', 'carId', 'userName', 'carTitle', 'status','createdAt', 'actions'];
 dataSource = new MatTableDataSource<CarData>(this.carList);
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -54,6 +50,7 @@ dataSource = new MatTableDataSource<CarData>(this.carList);
 
 ngOnInit()
 {
+  
   this.getTestDrive()
   setTimeout(() => {
     this.activeLoader = false;
@@ -78,19 +75,32 @@ applyFilter(event: Event) {
     alert(`Viewing details for: ${element.customerName}`);
   }
   getTestDrive() {
-    this.httpService.getTestDrive('pending').subscribe((data) => {
+    let userType = localStorage.getItem('userType');
+  if(userType == 'admin')
+  {
+   this.httpService.getTestDriveAdmin('pending').subscribe((data) => {
       this.carList = data;
+this.dataSource = new MatTableDataSource<CarData>(this.carList);
+
     });
+  }
+  if(userType == 'vendor')
+  {
+    this.httpService.getTestDriveVendor().subscribe((data) => {
+      this.carList = data;
+this.dataSource = new MatTableDataSource<CarData>(this.carList);
+
+    });
+  }
+    
   }
 
   approve(element: any) {
     this.openDialog('approveTestDrive')
-    
   }
 
   decline(element: any) {
     this.openDialog('declineTestDrive')
-
   }
 
   openDialog(type:string)

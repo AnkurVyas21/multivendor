@@ -79,9 +79,9 @@ export class OfferPriceComponent {
       alert(`Viewing details for: ${element.customerName}`);
     }
     getTestDrive() {
-      this.httpService.getTestDrive('pending').subscribe((data) => {
-        this.carList = data;
-      });
+      // this.httpService.getTestDrive('pending').subscribe((data) => {
+      //   this.carList = data;
+      // });
     }
   
     approve(element: any) {

@@ -1,224 +1,179 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpServiceService } from 'src/app/services/http-service.service';
+import { formatDate } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
+
+
+export interface CarData {
+  id:string;
+  name: string;
+  uploadDate: string;
+  status: string;
+  price:string;
+}
 
 @Component({
   selector: 'app-soldcars',
   templateUrl: './soldcars.component.html',
-  styleUrls: ['./soldcars.component.css']
-})
+  styleUrls: ['./soldcars.component.css','../../../assets/css/modern.css'],
+    encapsulation: ViewEncapsulation.None,
+  })
 export class SoldcarsComponent {
 
+  public carList: CarData[] = [
+ 
+  ];
+  public userType:any
+  
+
+  constructor(private httpService:HttpServiceService, private route:Router,private dialog:MatDialog)
+  {
+  }
 
   searchQuery: string = '';
-  requests = [
-    {
-        "id": 1,
-        "carID": "CAR1001",
-        "name": "Ankur Vyas",
-        "email": "ankurvyas033@gmail.com",
-        "phone": "9303493424",
-        "address": "H. No. 239",
-        "license": "5494654654"
-    },
-    {
-        "id": 2,
-        "carID": "CAR1002",
-        "name": "Rahul Sharma",
-        "email": "rahul.sharma@gmail.com",
-        "phone": "9876543210",
-        "address": "Flat No. 12, Green Park",
-        "license": "9876543211"
-    },
-    {
-        "id": 3,
-        "carID": "CAR1003",
-        "name": "Priya Verma",
-        "email": "priya.verma@example.com",
-        "phone": "9123456789",
-        "address": "House No. 45, Lake View",
-        "license": "1234567890"
-    },
-    {
-        "id": 4,
-        "carID": "CAR1004",
-        "name": "Amit Singh",
-        "email": "amit.singh@gmail.com",
-        "phone": "9988776655",
-        "address": "B-22, Skyline Apartments",
-        "license": "1122334455"
-    },
-    {
-        "id": 5,
-        "carID": "CAR1005",
-        "name": "Neha Gupta",
-        "email": "neha.gupta@example.com",
-        "phone": "9871234567",
-        "address": "Sector 14, Noida",
-        "license": "6677889900"
-    },
-    {
-      "id": 6,
-      "carID": "CAR1005",
-      "name": "Neha Gupta",
-      "email": "neha.gupta@example.com",
-      "phone": "9871234567",
-      "address": "Sector 14, Noida",
-      "license": "6677889900"
-  },
+
+public activeLoader = true;
+
+  displayedColumns: string[] = ['id', 'name', 'uploadDate', 'price', 'status', 'actions'];
+  dataSource = new MatTableDataSource<CarData>(this.carList);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+
+
+  
+   ngOnInit()
   {
-    "id": 7,
-    "carID": "CAR1005",
-    "name": "Neha Gupta",
-    "email": "neha.gupta@example.com",
-    "phone": "9871234567",
-    "address": "Sector 14, Noida",
-    "license": "6677889900"
-},
-{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-}
-]
-
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license' ];
-
-
-  filteredRequests = this.requests;
-
-  constructor(private httpService:HttpServiceService)
-  {
-
+    this.userType= localStorage.getItem('userType')
+    if(this.userType == 'vendor')
+    {
+    this.carListApiVendor()
+    }
+    else if(this.userType == 'admin' || this.userType == 'superAdmin')
+    {
+      this.carListApiAdmin()
+    }
+    setTimeout(() => {
+      this.activeLoader = false;
+    }, 1500);
   }
 
-  ngOnInit()
-  {
-    this.getSoldCars()
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    setTimeout(() => {
+      this.activeLoader = false;
+    }, 1500);
   }
 
-  getSoldCars()
+  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+   viewDetails(element: CarData) {
+      alert(`Viewing details for: ${element.name}`);
+    }
+
+  carListApiVendor()
   {
-    this.httpService.getSoldCars().subscribe((value)=>{
-      console.log(value)
+    let vendorId=localStorage.getItem('vendorId')
+    this.httpService.getCarsVendors(vendorId).subscribe((value)=>{
+      if(value.success)
+      {
+        this.carList=[]
+        value.data.forEach((data:any)=>{
+            this.carList.push({
+              id:data.id,
+              name:data.make+' '+data.model,
+              uploadDate:formatDate(data.createTime, 'dd/MM/yyyy hh:mm a', 'en-US'),
+              price:'$'+data.price,
+              status:data.status
+            })
+        })
+        this.dataSource = new MatTableDataSource<CarData>(this.carList);
+
+      }
     },(error)=>{
-      console.log(error)
+
     })
   }
 
-  onSearch() {
-    const query = this.searchQuery.toLowerCase();
-    this.filteredRequests = this.requests.filter(
-      (req) =>
-        req.name.toLowerCase().includes(query) ||
-        req.email.toLowerCase().includes(query) ||
-        req.id.toString().includes(query)
-    );
+   carListApiAdmin()
+  {
+    this.httpService.getCarsAdmin('pending').subscribe((value)=>{
+        this.carList=[]
+        value.forEach((data:any)=>{
+            this.carList.push({
+              id:data.id,
+              name:data.make+' '+data.model,
+              uploadDate:formatDate(data.createTime, 'dd/MM/yyyy hh:mm a', 'en-US'),
+              price:'$'+data.price,
+              status:data.status
+            })
+        })
+        this.dataSource = new MatTableDataSource<CarData>(this.carList);
+    },(error)=>{
+
+    })
+  }
+  // onSearch() {
+  //   const query = this.searchQuery.toLowerCase();
+  //   this.filteredRequests = this.carList.filter(
+  //     (req) =>
+  //       req.name.toLowerCase().includes(query) ||
+  //       req.email.toLowerCase().includes(query) ||
+  //       req.id.toString().includes(query)
+  //   );
+  // }
+
+  viewCar(id: any=25) {
+   this.route.navigate(['vendor/car-detail/'+id])
   }
 
-  approve(element: any) {
-    alert(`Approved: ${element.name}`);
+  editCar(id: any=25) {
+    this.route.navigate(['vendor/car-edit/'+id])
+
   }
 
-  decline(element: any) {
-    alert(`Declined: ${element.name}`);
+  approve(element:any){
+     const dialogRef =  this.dialog.open(AdminDialogComponent,{
+          data:{type:'approveCar',name:element.name},
+          width:'auto',
+          height: 'auto',
+         })
+      
+         dialogRef.afterClosed().subscribe(result=>{
+        if(result=='yes')
+          {
+            this.carApprove(element.id)
+          }
+        })
   }
+
+  carApprove(id:any)
+  {
+    this.httpService.approveCar(id).subscribe((value:any)=>{
+      if(value.success)
+      {
+        this.carListApiVendor()
+      }
+    })
+  }
+
+  navigateToedit(id:any)
+  {
+    console.log(id)
+    this.route.navigate(['vendor/car-edit/'+id])
+  }
+
 }
+
 

@@ -46,6 +46,7 @@ export class LoginComponent {
         localStorage.setItem('userType',response.roles[0].toLowerCase());
         localStorage.setItem('email',email);
         response.vendorId ? localStorage.setItem('vendorId',response.vendorId) : ''
+        response.userId ? localStorage.setItem('userId',response.userId) : ''
         localStorage.setItem('authorization',`Basic ${btoa(`${credentials.email}:${credentials.password}`)}`);
 
           if(response.roles[0].toLowerCase() == 'user')
