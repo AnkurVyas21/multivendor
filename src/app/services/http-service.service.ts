@@ -243,6 +243,40 @@ disableVendor(id:any){
     );
   }
 
+  approveTestDrive(id: any) {
+  const params = new HttpParams()
+    .set('appointmentId', id.toString())
+    .set('status', 'CONFIRMED');
+
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+  });
+
+  return this.http.patch(
+    `${this.baseURL}/api/vendor/test-drive/appointments/status`,
+    {},
+    { headers, params }
+  );
+}
+
+
+  declineTestDrive(id: any) {
+  const params = new HttpParams()
+    .set('appointmentId', id.toString())
+    .set('status', 'CANCELED');
+
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+  });
+
+  return this.http.patch(
+    `${this.baseURL}/api/vendor/test-drive/appointments/status`,
+    {}, 
+    { headers, params }
+  );
+}
+
+
 
   getadminVendorList(): Observable<any> {
     return this.http.get(`${this.baseURL}/api/admin/vendors`).pipe(

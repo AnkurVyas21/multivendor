@@ -67,6 +67,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div *ngIf="cars.length && mergedCarData.length === 0" class="loading-dots">
+                                Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+                            </div>
+                             <div *ngIf="cars.length === 0" class="empty-data">
+                                No Data Found 
+                            </div>
                         </div>
                     </div>
 

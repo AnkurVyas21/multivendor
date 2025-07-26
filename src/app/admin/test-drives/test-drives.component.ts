@@ -96,14 +96,14 @@ this.dataSource = new MatTableDataSource<CarData>(this.carList);
   }
 
   approve(element: any) {
-    this.openDialog('approveTestDrive')
+    this.openDialog('approveTestDrive',element)
   }
 
   decline(element: any) {
-    this.openDialog('declineTestDrive')
+    this.openDialog('declineTestDrive',element)
   }
 
-  openDialog(type:string)
+  openDialog(type:string,id:any)
    {
       const dialogRef =  this.dialog.open(AdminDialogComponent,{
       data:{type:type},
@@ -111,8 +111,23 @@ this.dataSource = new MatTableDataSource<CarData>(this.carList);
      })
   
      dialogRef.afterClosed().subscribe(result=>{
-      console.log('addCar', result)
-     })
+      console.log('addCar', type)
+      if(result == 'yes')
+      {
+        if(type == 'declineTestDrive')
+        {
+
+          this.httpService.declineTestDrive(id).subscribe((value:any)=>{
+            this.getTestDrive()
+          })
+        }
+        else if (type == 'approveTestDrive')
+        {
+        this.httpService.approveTestDrive(id).subscribe((value:any)=>{
+          this.getTestDrive()
+        })
+      }
+     }})
    }
 
 }
