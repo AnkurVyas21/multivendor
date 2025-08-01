@@ -168,9 +168,18 @@
     border: 1px solid lightgray;
   }
 
+  a {
+    cursor: pointer;
+  }
   a.bg-black {
     background-color: black !important;
   }
   a.text-white {
     color: white !important;
   }
+
+  .profileItem {
+  flex: 0 0 48%; 
+  box-sizing: border-box;
+  margin-bottom: 5%;
+}

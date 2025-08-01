@@ -1,240 +1,92 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpServiceService } from '../services/http-service.service';
 
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.css','../../assets/css/modern.css'],
+  styleUrls: ['./profile-page.component.css', '../../assets/css/modern.css'],
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ProfilePageComponent implements OnInit {
   customer: any;
-  tabName:string= 'profile';
-  selectSubButton:string = 'testDrive'
+  tabName: string = 'profile';
+  currentSubTab = 'account'
+  selectSubButton: string = 'testDrive'
+  edit = false;
+  displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license'];
+  profileForm!: FormGroup;
+  biographyForm!: FormGroup;
+  constructor(private httpService: HttpServiceService, private fb: FormBuilder) {
 
-  requests = [
-    {
-        "id": 1,
-        "carID": "CAR1001",
-        "name": "Ankur Vyas",
-        "email": "ankurvyas033@gmail.com",
-        "phone": "9303493424",
-        "address": "H. No. 239",
-        "license": "5494654654"
-    },
-    {
-        "id": 2,
-        "carID": "CAR1002",
-        "name": "Rahul Sharma",
-        "email": "rahul.sharma@gmail.com",
-        "phone": "9876543210",
-        "address": "Flat No. 12, Green Park",
-        "license": "9876543211"
-    },
-    {
-        "id": 3,
-        "carID": "CAR1003",
-        "name": "Priya Verma",
-        "email": "priya.verma@example.com",
-        "phone": "9123456789",
-        "address": "House No. 45, Lake View",
-        "license": "1234567890"
-    },
-    {
-        "id": 4,
-        "carID": "CAR1004",
-        "name": "Amit Singh",
-        "email": "amit.singh@gmail.com",
-        "phone": "9988776655",
-        "address": "B-22, Skyline Apartments",
-        "license": "1122334455"
-    },
-    {
-        "id": 5,
-        "carID": "CAR1005",
-        "name": "Neha Gupta",
-        "email": "neha.gupta@example.com",
-        "phone": "9871234567",
-        "address": "Sector 14, Noida",
-        "license": "6677889900"
-    },
-    {
-      "id": 6,
-      "carID": "CAR1005",
-      "name": "Neha Gupta",
-      "email": "neha.gupta@example.com",
-      "phone": "9871234567",
-      "address": "Sector 14, Noida",
-      "license": "6677889900"
-  },
-  {
-    "id": 7,
-    "carID": "CAR1005",
-    "name": "Neha Gupta",
-    "email": "neha.gupta@example.com",
-    "phone": "9871234567",
-    "address": "Sector 14, Noida",
-    "license": "6677889900"
-},
-{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},{
-  "id": 8,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-},
-{
-  "id": 9,
-  "carID": "CAR1005",
-  "name": "Neha Gupta",
-  "email": "neha.gupta@example.com",
-  "phone": "9871234567",
-  "address": "Sector 14, Noida",
-  "license": "6677889900"
-}
-]
-
-public activeLoader = true;
-displayedColumns: string[] = ['id', 'carID', 'name', 'email', 'phone', 'address', 'license'];
-
-
-  filteredRequests = this.requests;
-
-  @Input()  userType = ''
+  }
+  today: string = '';
+  @Input() userType: any
+ user:any = 'user'
 
   ngOnInit(): void {
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const dd = String(now.getDate()).padStart(2, '0');
+    this.today = `${yyyy}-${mm}-${dd}`;
     this.loadCustomerDetails();
-    setTimeout(() => {
-      this.activeLoader = false;
-    }, 1500);
 
   }
 
   loadCustomerDetails() {
-    // Dummy customer data for ID 25
-    this.customer = {
-      id: '25',
-      name: 'Amit Sharma',
-      email: 'amit@example.com',
-      status: 'Active',
-      inquiries: [
-        { id: 1, car: 'Toyota Camry', date: '2024-01-10' },
-        { id: 2, car: 'Honda Civic', date: '2024-02-15' }
-      ],
-      purchasedCars: ['Ford Mustang', 'BMW X5']
-    };
+    this.httpService.getProfile('user').subscribe((value: any) => {
+      this.customer = value.data
+      this.biographyForm = this.fb.group({
+        biography: [''],
+      });
+
+      this.profileForm = this.fb.group({
+        firstName: [this.customer.firstName],
+        lastName: [this.customer.lastName],
+        email: [this.customer.email],
+        address: [this.customer.address],
+        dob: [''],
+        phoneNumber: [''],
+        city: [''],
+        state: [''],
+        zip: ['']
+      });
+    })
   }
 
-  getStatusClass(status: string): string {
-    return status === 'Active' ? 'bg-success text-white' : 'bg-warning text-dark';
-  }
-
-  suspendUser() {
-    this.customer.status = 'Suspended';
-  }
-
-  removeUser() {
-    if (confirm('Are you sure you want to remove this customer?')) {
-      this.customer = null; // Simulating removal
-      alert('Customer removed successfully!');
-    }
-  }
-
-  selectTab(tab:string)
-  {
-    this.tabName = tab;
-  }
-
-  selectSubType(tab:string)
-  {
+  selectSubType(tab: string) {
     this.selectSubButton = tab;
+  }
+
+  openTab(tab: string) {
+    this.currentSubTab = tab;
+  }
+
+  editProfile() {
+    this.edit = true;
+  }
+
+  onSubmit(): void {
+    this.user = localStorage.getItem('userType')
+    console.log(this.profileForm.value);
+    let body = {
+      "firstName": this.profileForm.value.firstName,
+      "lastName": this.profileForm.value.lastName ,
+      "email": this.profileForm.value.email,
+      "phoneNumber": this.profileForm.value.phoneNumber,
+      "dob": this.profileForm.value.dob,
+      "address": this.profileForm.value.address,
+    }
+    this.httpService.updateProfile(body, this.user=='user'?'user':'vendor').subscribe((value: any) => {
+      this.edit = false;
+    })
+  }
+
+  onSubmitBiography(): void {
+    console.log(this.biographyForm.value);
+      this.edit = false;
+    
   }
 }

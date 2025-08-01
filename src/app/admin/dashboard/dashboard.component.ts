@@ -40,7 +40,8 @@ export class DashboardComponent {
  }
 
   addCar(){
-  this.router.navigate(['admin/add-car'])
+    let userType = localStorage.getItem('userType')
+  this.router.navigate([userType+'/add-cars'])
  }
  
 

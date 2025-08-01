@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../enviornment/environment.prod';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { environment } from '../enviornment/environment.prod';
 export class HttpServiceService {
   private baseURL = environment.apiUrl;  // Use environment.apiUrl
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
  
 
   // Fetch users
@@ -221,12 +222,7 @@ disableVendor(id:any){
   }
 
   getTestDriveAdmin(status:any): Observable<any> {
-      let params = new HttpParams();
-  if (status) {
-    params = params.set('status', status);
-  }
-
-    return this.http.get(`${this.baseURL}/api/admin/test-drives`,{params}).pipe(
+    return this.http.get(`${this.baseURL}/api/admin/test-drive/appointments`,).pipe(
       catchError((error) => {
         console.error('Error fetching test drive:', error);
         return throwError(() => error);
@@ -377,9 +373,17 @@ disableVendor(id:any){
   }
 
   wishlistPost(id:any,email:any): Observable<any> {
+    const userType = localStorage.getItem('userType');
+
+    if (!userType) {
+      // Not logged in: Redirect to login page
+      this.router.navigate(['/login']); // Make sure the route is correct
+      return throwError(() => new Error('User not logged in'));
+    }
     return this.http.post(`${this.baseURL}/api/wishlist/add/`+id, {carId:id }).pipe(
       catchError((error) => {
         console.error('Forgot password request failed:', error);
+    
         return throwError(() => error);
       })
     );
@@ -608,6 +612,68 @@ filterCars(value: any) {
   { 
        let url = `${this.baseURL}/api/cars/all`;
     return this.http.get(url).pipe(
+      catchError((error) => {
+        console.error('Error fetching user profile:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getProfile(type:any)
+  {
+    if(type=='user')
+    {
+      return this.http.get(`${this.baseURL}/api/user/profile`).pipe(
+        catchError((error) => {
+          console.error('Error fetching user profile:', error);
+          return throwError(() => error);
+        })
+      );
+    }
+    else
+    {
+      return this.http.get(`${this.baseURL}/api/${type}/profile`).pipe(
+        catchError((error) => {
+          console.error('Error fetching user profile:', error);
+          return throwError(() => error);
+        })
+      );
+    }
+  }
+
+  updateProfile(body:{},type:any)
+  {
+    if(type=='user')
+    {
+      return this.http.put(`${this.baseURL}/api/user/profile`,body).pipe(
+        catchError((error) => {
+          console.error('Error fetching user profile:', error);
+          return throwError(() => error);
+        })
+      );
+    }
+    else if(type=='vendor')
+    {
+      return this.http.put(`${this.baseURL}/api/public/vendors/profile`,body).pipe(
+        catchError((error) => {
+          console.error('Error fetching user profile:', error);
+          return throwError(() => error);
+        })
+      );
+    }
+    else {
+      return this.http.put(`${this.baseURL}/api/admin/profile`,body).pipe(
+        catchError((error) => {
+          console.error('Error fetching user profile:', error);
+          return throwError(() => error);
+        })
+      );
+    }
+  }
+
+  deleteCar(id:any)
+  {
+    return this.http.delete(`${this.baseURL}/api/cars/${id}`).pipe(
       catchError((error) => {
         console.error('Error fetching user profile:', error);
         return throwError(() => error);

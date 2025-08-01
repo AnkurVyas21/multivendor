@@ -174,6 +174,37 @@ public activeLoader = true;
     this.route.navigate(['vendor/car-edit/'+id])
   }
 
+  navigateToView(id:any)
+  {
+   this.route.navigate(['vendor/car-detail/'+id])
+  }
+
+  deleteCar(element:any)
+  {
+    const dialogRef =  this.dialog.open(AdminDialogComponent,{
+            data:{type:'deleteCar',name:element.name},
+            width:'auto',
+            height: 'auto',
+           })
+        
+           dialogRef.afterClosed().subscribe(result=>{
+          if(result=='yes')
+            {
+              this.deleteCarAPI(element.id)
+            }
+          })
+  }
+
+  deleteCarAPI(id:any)
+  {
+    this.httpService.deleteCar(id).subscribe((value:any)=>{
+      if(value.success)
+      {
+        this.carListApiVendor()
+      }
+    })
+  }
+
 }
 
 

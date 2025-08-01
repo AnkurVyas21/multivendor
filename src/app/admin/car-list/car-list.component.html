@@ -62,13 +62,13 @@
                     <ng-container matColumnDef="actions">
                       <th mat-header-cell *matHeaderCellDef> Actions </th>
                       <td mat-cell *matCellDef="let element" class="actionButton">
-                        <button class="btn btn-info btn-sm" title="View">
+                        <button class="btn btn-info btn-sm" title="View" (click)="navigateToView(element.id)">
                           <i class="fas fa-eye"></i>
                       </button>
                       <button (click)="navigateToedit(element.id)" class="btn btn-warning btn-sm" title="Edit">
                           <i class="fas fa-edit"></i>
                       </button>
-                      <button class="btn btn-danger btn-sm" title="Delete">
+                      <button class="btn btn-danger btn-sm" title="Delete" (click)="deleteCar(element)">
                           <i class="fas fa-trash-alt"></i>
                       </button>
                       <button *ngIf="userType=='admin'||userType=='superadmin'" (click)="approve(element)" class="btn btn-success btn-sm" title="approve">

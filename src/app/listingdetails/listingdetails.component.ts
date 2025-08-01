@@ -22,6 +22,8 @@ export class ListingdetailsComponent {
   public selectedPhotoIndex=1;
    baseUrl = environment.apiUrl
    public wishlisted = false;
+   public userType:any = 'user'
+   discountPercentage:any
   
 cars:any=[]
   constructor(public dialog: MatDialog, private fb:FormBuilder, private httpService:HttpServiceService,private route:ActivatedRoute)
@@ -31,6 +33,7 @@ cars:any=[]
 
   ngOnInit()
   {
+    this.userType = localStorage.getItem('userType')  
     this.contactUs = this.fb.group({
       name:['',Validators.required],
       email:['',Validators.required, Validators.email],
@@ -52,6 +55,7 @@ cars:any=[]
     this.httpService.getCarsDetailsBasics(id).subscribe((value)=>{
  
       this.basics= value.data
+      this.discountPercentage = (100-this.basics.salePrice/this.basics.regularPrice*100).toFixed(2)
     },(error)=>{
       console.log(error)
     })

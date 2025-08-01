@@ -1013,3 +1013,16 @@
   </div>
 </div>
 
+
+<div class="car-approve-dialog-container" *ngIf="data.type === 'deleteCar'">
+  <h2 class="dialog-title">Delete Car</h2>
+  <p class="dialog-message">Do you want to Delete {{data.name}} car?</p>
+
+  <div class="dialog-actions">
+    <button mat-raised-button color="primary" class="approve-btn" (click)="approveCarListing()">Yes</button>
+    <button mat-raised-button color="warn" class="cancel-btn" (click)="closeDialogapproveCar()">Back</button>
+  </div>
+</div>
+
+
+

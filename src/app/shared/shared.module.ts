@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ProfilePageComponent } from '../profile-page/profile-page.component';
 import { MatTableModule } from '@angular/material/table';
 import { ResetPasswordComponent } from '../reset-password/reset-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ListingdetailsComponent } from '../listingdetails/listingdetails.component';
 
 @NgModule({
-  declarations: [ProfilePageComponent,ResetPasswordComponent],
+  declarations: [ProfilePageComponent,ResetPasswordComponent,ListingdetailsComponent],
   imports: [CommonModule,
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule
   ],
-  exports: [ProfilePageComponent,ResetPasswordComponent] // Exporting so other modules can use it
+  exports: [ProfilePageComponent,ResetPasswordComponent,ListingdetailsComponent] // Exporting so other modules can use it
 })
 export class SharedModule { }

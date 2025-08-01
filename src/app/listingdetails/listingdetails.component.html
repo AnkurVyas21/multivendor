@@ -25,7 +25,7 @@
                     <div class="box-1" bis_skin_checked="1">
                         <div class="icon-box-info flex" bis_skin_checked="1">
                             <div class="info-sale" bis_skin_checked="1">
-                                <span class="sale">-34%</span>
+                                <span class="sale">- {{discountPercentage}}%</span>
                             </div>
                             <div class="info flex" bis_skin_checked="1">
                                 <span>Make:</span>
@@ -427,7 +427,7 @@
 
             </div>
             <div class="col-lg-4 col-md-12" bis_skin_checked="1">
-                <div class="driver-price-wrap mb-40" bis_skin_checked="1">
+                <div class="driver-price-wrap mb-40" bis_skin_checked="1" *ngIf="userType == 'user'">
                     <a class="test-driver mb-16" data-bs-toggle="modal" (click)="opendialogBox('testDrive')"
                         role="button">
                         Schedule Test Driver

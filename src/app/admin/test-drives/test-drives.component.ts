@@ -28,8 +28,7 @@ export interface CarData {
 export class TestDrivesComponent { 
   
   public carList:any[] = [{}]
-
-
+  public userType:any='vendor'
 constructor(private httpService:HttpServiceService, private route:Router, private dialog:MatDialog)
 {
 
@@ -37,9 +36,8 @@ constructor(private httpService:HttpServiceService, private route:Router, privat
 
 searchQuery: string = '';
 
-public activeLoader = true;
 
-displayedColumns: string[] = ['id', 'carId', 'userName', 'carTitle', 'status','createdAt', 'actions'];
+displayedColumns = ['id', 'carId', 'userName', 'carTitle', 'status', 'createdAt'];
 dataSource = new MatTableDataSource<CarData>(this.carList);
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -51,18 +49,18 @@ dataSource = new MatTableDataSource<CarData>(this.carList);
 ngOnInit()
 {
   
+  this.userType = localStorage.getItem('userType');
+  this.displayedColumns = ['id', 'carId', 'userName', 'carTitle', 'status', 'createdAt'];
+  if (this.userType === 'vendor') {
+    this.displayedColumns.push('actions');
+  }
   this.getTestDrive()
-  setTimeout(() => {
-    this.activeLoader = false;
-  }, 1500);
+ 
 }
 
 ngAfterViewInit() {
   this.dataSource.paginator = this.paginator;
   this.dataSource.sort = this.sort;
-  setTimeout(() => {
-    this.activeLoader = false;
-  }, 1500);
 }
 
 

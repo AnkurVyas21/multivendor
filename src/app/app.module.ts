@@ -63,7 +63,6 @@ import { CategoriesViewMoreComponent } from './categories-view-more/categories-v
     RegisterComponent,
     ForgotComponent,
     CategoryComponent,
-    ListingdetailsComponent,
     SearchResultComponent,
     ShopComponent,
     WatchlistComponent,
@@ -85,13 +84,13 @@ import { CategoriesViewMoreComponent } from './categories-view-more/categories-v
     NewsVideosComponent,
     SearchCarListComponent,
     BrandViewMoreComponent,
-    CategoriesViewMoreComponent
+    CategoriesViewMoreComponent,
 
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     appRoutingModule,
-    ReactiveFormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -108,10 +107,8 @@ import { CategoriesViewMoreComponent } from './categories-view-more/categories-v
     MatCheckboxModule,
     SharedModule,
     CommonModule,
-    ReactiveFormsModule,
     FormsModule,
     MatSnackBarModule
-    
   ],
  
  
