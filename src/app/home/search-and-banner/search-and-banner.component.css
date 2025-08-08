@@ -34,6 +34,7 @@
 
 .inputWidth{
   width: 50vw;
+  border-radius: 9999px
 }
 
 .list-filter{
@@ -44,7 +45,7 @@ display: none;
 }
 
 /* ========== RESPONSIVE STYLES FOR SMALL SCREENS (<650px) ========== */
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 1100px) {
   .displaybutton{
     display: none;
   }
@@ -53,9 +54,14 @@ display: none;
     align-items: center;
     justify-content: center;
     gap: 5px;
-    padding-right:10px
+    padding-right:10px;
+    opacity: 0.7;
   }
   
+  .inputWidth{
+  width: 80vw;
+  border-radius: 9999px
+}
 
   .autocomplete-list {
     font-size: 14px;
@@ -72,4 +78,9 @@ display: none;
     padding: 10px;
     border-radius: 8px;
   }
+
+  .searchFilter2 {
+  display: flex; 
+  justify-content: center;
+}
 }

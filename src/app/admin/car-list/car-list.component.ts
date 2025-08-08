@@ -170,13 +170,20 @@ public activeLoader = true;
 
   navigateToedit(id:any)
   {
-    console.log(id)
+    let userType=localStorage.getItem('userType')
+    if(userType=='vendor')
     this.route.navigate(['vendor/car-edit/'+id])
+    else
+    this.route.navigate(['admin/car-edit/'+id])
   }
 
   navigateToView(id:any)
   {
+    let userType=localStorage.getItem('userType')
+    if(userType=='vendor')
    this.route.navigate(['vendor/car-detail/'+id])
+    else
+    this.route.navigate(['admin/car-detail/'+id])
   }
 
   deleteCar(element:any)
