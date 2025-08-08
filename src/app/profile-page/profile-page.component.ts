@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpServiceService } from '../services/http-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class ProfilePageComponent implements OnInit {
  user:any = 'user'
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType')||'admin'
     const now = new Date();
     const yyyy = now.getFullYear();
     const mm = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed

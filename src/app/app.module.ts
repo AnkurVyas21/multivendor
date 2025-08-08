@@ -108,7 +108,7 @@ import { CategoriesViewMoreComponent } from './categories-view-more/categories-v
     SharedModule,
     CommonModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
  
  

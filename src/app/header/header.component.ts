@@ -60,7 +60,7 @@ navigateOnVisitPage()
     return {showText:'Visit Vendor Site', path:'/vendor'}
   } 
   else {
-    return {showText:'Visit Admin Site', path:'login/admin'}
+    return {showText:'Sell With Us', path:'register/vendor'}
   }
   }
 }

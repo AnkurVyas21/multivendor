@@ -64,7 +64,7 @@
                                 <div class="form-floating mb-4" bis_skin_checked="1">
                                     <input [(ngModel)]="password"  [type]="showPassword ? 'text' : 'password'" class="form-control" id="password-field" name="password" placeholder="Password" required="">
                                     <label>Password</label>
-                                    <span (click)="togglePasswordVisibility()" style="cursor: pointer;" class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
+                                    <span (click)="togglePasswordVisibility()" style="cursor: pointer;" class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 " [ngClass]="showPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"></span>
                                 </div>
  
                                 <div class="form-group mb-2" bis_skin_checked="1">

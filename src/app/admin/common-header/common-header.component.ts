@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./common-header.component.css','../../../assets/css/modern.css']
 })
 export class CommonHeaderComponent {
-
+  public userType = 'admin'
   constructor(private router: Router) {}
   logout() {
-    console.log("Logout clicked");
+    this.userType = localStorage.getItem('userType')||'admin'
     localStorage.clear()
     this.router.navigate(['/login'])
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -27,12 +27,12 @@ export class AdminComponent implements OnInit {
 ngOnInit() {
   this.isLogin = !!localStorage.getItem('adminUserType')&& !!localStorage.getItem('authorization')
   this.userType = localStorage.getItem('userType')
+  this.checkScreenSize()
 }
 
 
 checkScreenSize() {
-  console.log(window.innerWidth, 'inner widhth')
-  this.isVisible = (window.innerWidth < 768); // Adjust breakpoint as needed
+  this.isVisible = (window.innerWidth > 800); 
 }
   getInitials(name: string): string {
     const [firstName, lastName] = name.split(' ');
@@ -70,4 +70,11 @@ checkScreenSize() {
     localStorage.clear()
     this.router.navigate(['/login'])
   }
+
+   @HostListener('window:resize', [])
+  onResize() {
+    this.checkScreenSize();  // On every resize
+  }
+
+ 
 }

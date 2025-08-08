@@ -22,6 +22,7 @@ export class DashboardComponent {
 
  ngOnInit(): void {
   setTimeout(() => {
+    this.userType = localStorage.getItem('userType') || 'admin';
     this.activeLoader = false;
   }, 1500);
  }
@@ -43,6 +44,12 @@ export class DashboardComponent {
     let userType = localStorage.getItem('userType')
   this.router.navigate([userType+'/add-cars'])
  }
+ 
+  logout() {
+    console.log("Logout clicked");
+    localStorage.clear()
+    this.router.navigate(['/login'])
+  }
  
 
 }

@@ -1,47 +1,12 @@
-
-<div class="parentHeader">
-  <div [ngClass]="isVisible ?'titleImage':'collapse'" >
-    <img class="multiVendorImage"
-     src="assets/images/logo/search.png">
-     <a href="index.html" style="cursor: pointer;" target="_blank"> <h5 *ngIf="isVisible">Multi Vendor</h5></a>
-  </div>
-  <div class="headerBar" >
-    <div style="cursor: pointer;">
-      <i *ngIf="isVisible" (click)="toggleToolBar()" style="font-size: x-large; margin-left: 2vw;" class="fa-regular fa-square-caret-left"></i>
-      <i *ngIf="!isVisible" (click)="toggleToolBar()" style="font-size: x-large; margin-left: 2vw;" class="fa-regular fa-square-caret-right"></i>
-    </div>
-    <div style="position: relative; display: inline-block;">
-      <input type="text" placeholder="search..." class="searchInput">
-      <i class="fa-solid fa-magnifying-glass magnifyingGlass"></i>
-    </div>
-
-    <div class="rightSideHeader">
-      <div style="display: flex; align-items: center; gap: 0.5vw; cursor: pointer;" [matMenuTriggerFor]="menu">
-        <img class="profileImage"
-          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" 
-          alt="Profile">
-        <i style="font-size: x-large;" class="fa-solid fa-angle-down"></i>
-      </div>
-      
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['admin/profile']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-          <i class="fa-solid fa-user"></i> Profile
-        </button>
-        <button mat-menu-item (click)="resetPassword()">
-          <i class="fa-solid fa-key"></i> Reset Password
-        </button>
-        <button mat-menu-item (click)="logout()">
-          <i class="fa-solid fa-sign-out"></i> Logout
-        </button>
-      </mat-menu>
-    </div>
-  </div>
-</div>
-
 <mat-drawer-container [autosize]="true" class="admin-layout" >
 <div style="font-family: roboto, sans-serif;color: black; display: flex;">
-<mat-drawer mode="side" open *ngIf="isVisible" style="opacity: 0.5;">
+<mat-drawer mode="side" open *ngIf="isVisible" class="OpacityCustom" style="font-size: 15px !important;" >
   <div class="sideMenu">
+    <div class='Dashboard' style="opacity: 0.9" >
+    <img class="multiVendorImage"
+     src="assets/images/logo/search.png">
+     <a  style="cursor: pointer;" target="_blank"> <h5 >Multi Vendor</h5></a>
+  </div>
     <div class="Dashboard" [routerLink]="['/admin/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
       <i style="font-size: medium ;" class="fa-solid fa-qrcode"></i>
       <h6 class="dashboardTxt">Dashboard</h6>
@@ -84,6 +49,10 @@
 </mat-drawer>
 <mat-drawer *ngIf="!isVisible" style="opacity: 0.5;">
   <div class="collapseSideMenu">
+    <div class='collapse' style="opacity: 0.9" >
+    <img class="multiVendorImage"
+     src="assets/images/logo/search.png">
+  </div>
     <div class="Dashboard" [routerLink]="['/admin/dashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
       <i style="font-size: large ;" class="fa-solid fa-qrcode"></i>
     </div>

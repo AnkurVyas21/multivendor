@@ -95,31 +95,31 @@
                         bis_skin_checked="1">
                         <div class="swiper-wrapper" *ngIf="media?.photo1 || media?.photo2 || media?.photo3 || media?.photo4 || media?.photo5"  id="swiper-wrapper-3b5110f0360fcb0e6" aria-live="polite"
                             bis_skin_checked="1" style="transform: translate3d(0px, 0px, 0px);">
-                            <div class="swiper-slide swiper-slide-thumb-active swiper-slide-active" role="group"
+                            <div class="swiper-slide swiper-slide-thumb-active swiper-slide-active image-wrapper " role="group"
                                 aria-label="1 / 10" bis_skin_checked="1"
-                                style="width: 254px;height:170px; margin-right: 20px;"
+                                
                                 (click)="selectPhoto(0,media?.photo1)">
-                                <img [src]="'data:image/jpeg;base64,' + media?.photo1" alt="Image">
+                                <img class="fixed-image" [src]="'data:image/jpeg;base64,' + media?.photo1" alt="Image">
                             </div>
-                            <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 10"
-                                bis_skin_checked="1" style="width: 254px;height:170px; margin-right: 20px;"
+                            <div class="swiper-slide swiper-slide-next image-wrapper" role="group" aria-label="2 / 10"
+                                bis_skin_checked="1" 
                                 (click)="selectPhoto(1,media?.photo2)">
-                                <img [src]="'data:image/jpeg;base64,' + media?.photo2" alt="Image">
+                                <img class="fixed-image" [src]="'data:image/jpeg;base64,' + media?.photo2" alt="Image">
                             </div>
-                            <div class="swiper-slide" role="group" aria-label="3 / 10" bis_skin_checked="1"
-                                style="width: 254px;height:170px; margin-right: 20px;"
+                            <div class="swiper-slide image-wrapper" role="group" aria-label="3 / 10" bis_skin_checked="1"
+                                
                                 (click)="selectPhoto(2,media?.photo3)">
-                                <img [src]="'data:image/jpeg;base64,' + media?.photo3" alt="Image">
+                                <img class="fixed-image" [src]="'data:image/jpeg;base64,' + media?.photo3" alt="Image">
                             </div>
-                            <div class="swiper-slide" role="group" aria-label="4 / 10" bis_skin_checked="1"
-                                style="width: 254px;height:170px; margin-right: 20px;"
+                            <div class="swiper-slide image-wrapper" role="group" aria-label="4 / 10" bis_skin_checked="1"
+                                
                                 (click)="selectPhoto(3,media?.photo4)">
-                                <img [src]="'data:image/jpeg;base64,' + media?.photo4" alt="Image">
+                                <img class="fixed-image" [src]="'data:image/jpeg;base64,' + media?.photo4" alt="Image">
                             </div>
-                            <div class="swiper-slide" role="group" aria-label="5 / 10" bis_skin_checked="1"
-                                style="width: 254px;height:170px; margin-right: 20px;"
+                            <div class="swiper-slide image-wrapper" role="group" aria-label="5 / 10" bis_skin_checked="1"
+                                
                                 (click)="selectPhoto(4,media?.photo5)">
-                                <img [src]="'data:image/jpeg;base64,' + media?.photo5" alt="Image">
+                                <img class="fixed-image" [src]="'data:image/jpeg;base64,' + media?.photo5" alt="Image">
                             </div>
                         </div>
                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>

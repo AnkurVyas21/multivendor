@@ -42,11 +42,6 @@
    </div>
  
   -->
-  <div class="splash" [ngClass]="activeLoader ? 'active':''">
-    <div class="splash-icon"></div>
-  </div>
-  
-
 	<div class="wrapper">
   <div class="main">
     <nav class="navbar navbar-expand navbar-theme">
@@ -64,12 +59,12 @@
                       <i class="align-middle fas fa-cog"></i>
                   </a>
                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                      <a class="dropdown-item" [routerLink]="['/vendor/profile']" ><i class="align-middle me-1 fas fa-fw fa-user"></i> View Profile</a>
+                      <a class="dropdown-item" [routerLink]="['/' + userType + '/profile']" ><i class="align-middle me-1 fas fa-fw fa-user"></i> View Profile</a>
                       <a class="dropdown-item" ><i class="align-middle me-1 fas fa-fw fa-comments"></i> Contacts</a>
                       <a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-chart-pie"></i> Analytics</a>
-                      <a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Settings</a>
+                      <a class="dropdown-item" [routerLink]="['/' + userType + '/profile']"><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Reset Password</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" ><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Sign out</a>
+                      <a class="dropdown-item" (click)="logout()" ><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Sign out</a>
                   </div>
               </li>
           </ul>
