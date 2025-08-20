@@ -168,6 +168,31 @@ public activeLoader = true;
     })
   }
 
+  reject(element:any){
+     const dialogRef =  this.dialog.open(AdminDialogComponent,{
+          data:{type:'rejectCar',name:element.name},
+          width:'auto',
+          height: 'auto',
+         })
+      
+         dialogRef.afterClosed().subscribe(result=>{
+        if(result=='yes')
+          {
+            this.carReject(element.id)
+          }
+        })
+  }
+
+  carReject(id:any)
+  {
+    this.httpService.approveCar(id).subscribe((value:any)=>{
+      if(value.success)
+      {
+        this.carListApiVendor()
+      }
+    })
+  }
+
   navigateToedit(id:any)
   {
     let userType=localStorage.getItem('userType')

@@ -58,9 +58,53 @@
     background-color: darkred;
 }
 
+.delete-btn-vin:hover {
+    background-color: darkred;
+}
+
 .image-container img {
   max-width: 30vh;
   height: auto;
   border-radius: 5px;
   max-height: 20vh;
+}
+
+
+
+
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  padding: 8px 32px 8px 8px; /* add right padding so text isn't blocked */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.delete-btn-vin {
+  position: absolute;
+  top: 4px;
+  right:-46px;
+  background: #f44336;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.file-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.file-icon {
+  font-size: 24px;
+  color: #555;
 }

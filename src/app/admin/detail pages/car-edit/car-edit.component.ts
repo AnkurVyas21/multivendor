@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 import { AdminDialogComponent } from '../../admin-dialog/admin-dialog.component';
 import { ActivatedRoute } from '@angular/router';
-
+import { carBrands } from 'src/app/common/config';
+import { carCategories } from 'src/app/common/config';
 
 @Component({
   selector: 'app-car-edit',
@@ -22,6 +23,8 @@ export class CarEditComponent {
   imagesList: any = []
   tabsAccess = [true, false, false, false, false];
   @Input() vendor = false;
+    public carBrandsNames: any = []
+  public carCategoriesNames:any= []
 
   constructor(private fb: FormBuilder, private httpService: HttpServiceService, private dialog: MatDialog,private route:ActivatedRoute) {
   console.log('constuctor running')
@@ -111,6 +114,8 @@ export class CarEditComponent {
       console.log(value)
       this.getCarDetails(value.params.id)
     })
+      this.carBrandsNames = carBrands.filter((brand:any) => brand.name).map((brand:any) => brand.name)
+        this.carCategoriesNames = carCategories.filter((category:any) => category.category).map((category:any) => category.category)
   }
 
   onSubmit(form: FormGroup, nextIndex: number) {
@@ -170,16 +175,35 @@ export class CarEditComponent {
   }
 
   onFileSelected(event: Event, index: number): void {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (file) {
+    // Save file reference in FormControl
+    this.carlistingFormMedia.get('VINReport')?.setValue(file);
+
+    const fileType = file.type;
+
+    if (fileType.startsWith('image/')) {
+      // Image preview as Base64
       const reader = new FileReader();
       reader.onload = () => {
-        this.imagePreview = reader.result;
-        this.imagesList[index] = this.imagePreview
+        this.imagesList[index] = reader.result as string;
       };
-      reader.readAsDataURL(file); // Convert file to Base64
+      reader.readAsDataURL(file);
+    } else if (fileType === 'application/pdf') {
+      // For PDF, just create an object URL
+      this.imagesList[index] = URL.createObjectURL(file);
+    } else if (
+      fileType === 'application/msword' ||
+      fileType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ) {
+      // For Word file
+      this.imagesList[index] = URL.createObjectURL(file);
+    } else {
+      console.warn('Unsupported file type:', fileType);
     }
   }
+}
+
 
   getCarDetails(id:number) {
     this.httpService.getCarsDetailsBasics(id).subscribe((value)=>{
@@ -290,11 +314,11 @@ export class CarEditComponent {
         video: [value.videoUrl],
         VINReport: [value.vinReport]
       })
-      this.imagesList[0] = value.photo1
-      this.imagesList[1] = value.photo2
-      this.imagesList[2] = value.photo3
-      this.imagesList[3] = value.photo4
-      this.imagesList[4] = value.photo5
+        this.imagesList[0] = value.photo1 ? `data:image/jpeg;base64,${value.photo1}` : null;
+  this.imagesList[1] = value.photo2 ? `data:image/jpeg;base64,${value.photo2}` : null;
+  this.imagesList[2] = value.photo3 ? `data:image/jpeg;base64,${value.photo3}` : null;
+  this.imagesList[3] = value.photo4 ? `data:image/jpeg;base64,${value.photo4}` : null;
+  this.imagesList[4] = value.photo5 ? `data:image/jpeg;base64,${value.photo5}` : null;
     }
     if(type=='address')
     {
@@ -306,6 +330,10 @@ export class CarEditComponent {
     }
 
   }
+
+  isImage(fileUrl: string): boolean {
+  return /\.(jpg|jpeg|png|gif)$/i.test(fileUrl);
+}
 
 }
 

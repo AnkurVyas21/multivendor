@@ -87,6 +87,19 @@ approveCar(id:any){
     return (this.http.post(`${this.baseURL}/api/admin/cars/${id}/approve`, { params }));
 }
 
+rejectCar(id:any){
+ let token = '';
+    const params =  new HttpParams().set('carId', id.toString());
+    console.log(token);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const options = {
+      headers,
+    };
+    return (this.http.post(`${this.baseURL}/api/admin/cars/${id}/reject`, { params }));
+}
+
 enableVendor(id:any){
  let token = '';
     const params =  new HttpParams().set('vendorId', id.toString());

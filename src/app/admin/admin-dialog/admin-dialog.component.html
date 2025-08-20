@@ -970,11 +970,22 @@
   </mat-tab-group>
 </div>
 
-<div class="dialog-container" *ngIf="data.type=='addCarSuccess'">
-  <h2>🎉 Congratulations!</h2>
-  <p>Your car is added successfully.</p>
-  <button mat-button color="primary" (click)="closeDialog()">OK</button>
-</div>
+ <div  *ngIf="data.type=='addCarSuccess'">
+        <div class="container congratulation-area text-center">
+            <div class="congratulation-wrapper">
+                <div class="congratulation-contents center-text">
+                    <div class="congratulation-contents-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h4 class="congratulation-contents-title"> Congratulations! </h4>
+                    <p class="congratulation-contents-para"> Your Car added successfully. </p>
+                    <div class="btn-wrapper mt-4">
+                        <a style="background-color: #3e7600; color: #f4f5f4; border-radius: 5px;" class="cmn-btn btn-bg-1" (click)="gotTovendor()"> Go to Dashboard </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <div class="dialog-container" *ngIf="data.type=='approveTestDrive' || data.type=='declineTestDrive' || data.type=='approveOfferPrice' || data.type=='declineOfferPrice'">
   <p *ngIf="data.type=='approveTestDrive'|| data.type=='declineTestDrive'" style="color: black;">Do you want to {{data.type=='approveTestDrive' ? 'approve':'reject'}} this test drive ?</p>
@@ -986,6 +997,16 @@
 <div class="car-approve-dialog-container" *ngIf="data.type === 'approveCar'">
   <h2 class="dialog-title">Approve Car Listing</h2>
   <p class="dialog-message">Do you want to approve {{data.name}} car?</p>
+
+  <div class="dialog-actions">
+    <button mat-raised-button color="primary" class="approve-btn" (click)="approveCarListing()">Yes</button>
+    <button mat-raised-button color="warn" class="cancel-btn" (click)="closeDialogapproveCar()">Back</button>
+  </div>
+</div>
+
+<div class="car-approve-dialog-container" *ngIf="data.type === 'rejectCar'">
+  <h2 class="dialog-title">Reject Car Listing</h2>
+  <p class="dialog-message">Do you want to reject {{data.name}} car?</p>
 
   <div class="dialog-actions">
     <button mat-raised-button color="primary" class="approve-btn" (click)="approveCarListing()">Yes</button>

@@ -5,6 +5,8 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 import { AdminDialogComponent } from '../admin-dialog/admin-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { param } from 'jquery';
+import { carBrands } from 'src/app/common/config';
+import { carCategories } from 'src/app/common/config';
 
 @Component({
   selector: 'app-add-car',
@@ -24,10 +26,11 @@ export class AddCarComponent implements AfterViewInit {
   @Input() vendor = false;
   carId=''
   mediaArray = ['photo1','photo2','photo3','photo4','photo5','VINReport']
+  public carBrandsNames: any = []
+  public carCategoriesNames:any= []
 
 
   constructor(private fb: FormBuilder, private httpService: HttpServiceService,  private cdr: ChangeDetectorRef,private dialog: MatDialog, private router: Router, private route: ActivatedRoute,) {
-   console.log('constuctor running')
     this.carlistingFormBasic = this.fb.group({
       title: ['', Validators.required],
       make: ['', Validators.required],
@@ -109,6 +112,12 @@ export class AddCarComponent implements AfterViewInit {
 
   }
 
+
+  ngOnInit()
+  {
+    this.carBrandsNames = carBrands.filter((brand:any) => brand.name).map((brand:any) => brand.name)
+    this.carCategoriesNames = carCategories.filter((category:any) => category.category).map((category:any) => category.category)
+  }
   ngAfterViewInit(): void {
     this.route.queryParamMap.subscribe(params => {
       this.selectedTabIndex = parseInt(params.get('formType') || '0', 10);
@@ -129,6 +138,7 @@ export class AddCarComponent implements AfterViewInit {
         updateTime: timestamp
       }}
       else if (formType=='add-media'){
+  console.log(this.carlistingFormMedia,'this.carlistingFormMedia.value')
          const formData = new FormData();
  ['photo1', 'photo2', 'photo3', 'photo4', 'photo5'].forEach(key => {
     const file = this.carlistingFormMedia.get(key)?.value;
@@ -231,15 +241,15 @@ export class AddCarComponent implements AfterViewInit {
     this.carlistingFormMedia.get(formType)?.reset()
   }
 
-  onFileSelected(event: Event, index: number): void {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
+    onFileSelected(event: Event, index: number): void {
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (file) {
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
         this.imagesList[index] = this.imagePreview
       };
-      reader.readAsDataURL(file); 
+      reader.readAsDataURL(file);
         // Only allow image uploads for photo1-5
  // Only allow image uploads for photo1-5
   if (this.mediaArray[index].startsWith('photo') && !file.type.startsWith('image/')) {

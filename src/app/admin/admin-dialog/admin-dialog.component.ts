@@ -405,4 +405,10 @@ export class AdminDialogComponent {
     this.dialogRef.close();
 
   }
+
+  gotTovendor()
+  {
+    this.dialogRef.close();
+    this.router.navigate(['/vendor/dashboard']);
+  }
 }  

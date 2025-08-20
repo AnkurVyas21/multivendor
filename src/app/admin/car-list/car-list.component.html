@@ -74,7 +74,7 @@
                       <button *ngIf="userType=='admin'||userType=='superadmin'" (click)="approve(element)" class="btn btn-success btn-sm" title="approve">
                           <i class="fas fa-check"></i>
                       </button>
-                      <button *ngIf="userType=='admin'||userType=='superadmin'" class="btn btn-danger btn-sm" title="reject">
+                      <button *ngIf="userType=='admin'||userType=='superadmin'" (click)="reject(element)" class="btn btn-danger btn-sm" title="reject">
                           <i class="fas fa-times"></i>
                       </button>
                       </td>
